@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">USDriving</string>
+    <string name="topic">TOPIC</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_dmv_written_test">DMV WRITTEN TEST</string>
+    <string name="title_activity_test_topic">TestTopicActivity</string>
+    <string name="title_activity_test_topic_study_all_in_one_page_">TestTopic_StudyAllInOnePage_Activity</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="title_activity_exam_simulator">EXAM SIMULATOR</string>
+    <string name="title_activity_main">US DRIVING</string>
+    <string name="title_activity_video_tips">DRIVING TIPS</string>
+    <string name="banner_ad_unit_id">ca-app-pub-1669381788971337/1485297808</string>
+
+    <string name="title_dmv_written_test">DMV Written test</string>
+    <string name="title_test_topic">Test topic</string>
+    <string name="title_exam_simulator">Exam simulator</string>
+    <string name="title_learning_card">Learning card</string>
+    <string name="title_driver_manual">Driver manual</string>
+    <string name="title_video_tips">Video tips</string>
+    <string name="title_change_state">Change State</string>
+
+
+    <string name="title_activity_drivers_manual">DriversManualActivity</string>
+    <string name="sliding_menu_title">US DRIVING</string>
+    <string name="sliding_menu_state">Current State: California</string>
+
+    <string name="written_test_result_title">My test result summary</string>
+    <string name="written_test_correct_answer">Correct</string>
+    <string name="written_test_wrong_answer">Wrong</string>
+    <string name="written_test_not_answered">Not answered</string>
+    <string name="written_test_total_answer">{0}/30</string>
+    <string name="written_test_question_no">Q{0}</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="choice_a">A. {0}</string>
+    <string name="choice_b">B. {0}</string>
+    <string name="choice_c">C. {0}</string>
+    <string name="choice_d">D. {0}</string>
+
+    <string name="exam_simulator_rule">This DMV Written Test Simulation Practice Engine consist of: \n30 multiple-choice driving theory questions.\n\nTo pass the test, you must get at least:\n21 correct answers out of the total 30 DMV Questions</string>
+    <string name="exam_simulator_not_show_again">Do not show this rule again</string>
+    <string name="exam_simulator_dialog_text_1">\tFinish answering all the questions?\nYou will be shown with the final result.\n\t\t\t\tProceed to end this test?</string>
+    <string name="exam_simulator_dialog_text_2">If you see the answers, you will not able to redo the test. Want to continue?</string>
+
+
+    //Driver's Manual
+    <string name="text_hint_search_state">Search your state here</string>
+
+    //Test Topic
+    <string name="text_study_one">Practice one by one</string>
+    <string name="text_study_all">Study all in one page</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="pass_exam">YOU PASS!</string>
+    <string name="fail_exam">YOU FAIL!</string>
+    <string name="is_shown_again">Show Rule Again</string>
+    <string name="wrong_answer">You are wrong!</string>
+    <string name="correct_answer">You are right!</string>
+
+    <string name="dmv_driving_test_tips">DMV Driving Test Tips</string>
+    <string name="ten_tips">10 Tips For New Drivers</string>
+    <string name="confession">Matthew Cordle confession (drunk driving, I killed a man)</string>
+    <string name="ten_reasons_for_failing_driving_test">Top 10 Reasons for Failing the Driving Test</string>
+    <string name="rules_of_the_road">Rules of the Road</string>
+    <string name="california_driver_license_info">California Driver License Information</string>
+
+    <string name="feedback">Feedback?</string>
+    <string name="rate">Rate us</string>
+    <string name="remove_ads">Remove Ads</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+</resources>
