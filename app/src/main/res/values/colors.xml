@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ColorPrimary">#00ABC0</color>
+    <color name="ColorPrimaryDark">#008999</color>
+    <color name="colorPrimaryLight">#969696</color>
+    <color name="colorAccent">#e9484b</color>
+    <color name="nav_selected">#dedddd</color>
+
+    <color name="sliding_menu_title">#1BFFE9</color>
+    <color name="button_state_pressed">#BEFFF8</color>
+    <color name="sliding_menu_stroke_color">#BCBCBC</color>
+    <color name="sliding_menu_background_color">#DBE3E4</color>
+    <color name="sliding_menu_state_color">#424242</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="orange">#EF6C00</color>
+    <color name="written_test_color_1">#BDBDBD</color>
+    <color name="written_test_color_2">#FF9F00</color>
+    <color name="written_test_button_shadow">#757575</color>
+    <color name="written_test_color_3">#FAFAFA</color>
+    <color name="written_test_text_answer">#757575</color>
+    <color name="right_answer_color">#8DC44D</color>
+    <color name="wrong_answer_color">#F44336</color>
+    <color name="written_test_text_highlight">#757575</color>
+    <color name="circle_stroke_line">#616161</color>
+    <color name="result_not_answer">#FFEB3B</color>
+    <color name="exam_simulator_stroke_line">#039BE5</color>
+    <color name="exam_simulator_color_1">#FF6A00</color>
+    <color name="exam_simulator_button_shadow">#90CAF9</color>
+    <color name="stroke_color">#BCBCBC</color>
+    <color name="button_test_topic_bgcolor">#0d000000</color>
+
+    <color name="video_tips_title_background_color">#FF6A00</color>
+    <color name="window_background">#f1f1f1</color>
+    <color name="window_background1">#d9d9d9</color>
+    <color name="window_background2">#e8e8e8</color>
+
+    <color name="splash_screen">#00ABC0</color>
+</resources>
