@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.entity.HomeEntity;
+import com.essential.usdriving.ui.learning_card.LearningCardFragment;
 import com.essential.usdriving.ui.videotip.VideoTipsFragment;
 
 import java.util.ArrayList;
@@ -103,7 +104,8 @@ public class HomeFragment extends BaseFragment {
                 public void onClick(View v) {
 
                     switch (position){
-                        case 5: replaceFragment(new VideoTipsFragment(),getString(R.string.title_video_tips));
+                        case 3:replaceFragment(new LearningCardFragment(),getString(R.string.title_learning_card));break;
+                        case 5: replaceFragment(new VideoTipsFragment(),getString(R.string.title_video_tips));break;
                     }
 
                 }
