@@ -87,7 +87,7 @@ public class VideoTipsFragment extends BaseFragment {
 
     @Override
     protected String setTitle() {
-        return getString(R.string.title_activity_video_tips);
+        return getString(R.string.title_video_tips);
     }
 
     private void getVideos() {

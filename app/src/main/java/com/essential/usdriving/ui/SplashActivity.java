@@ -27,7 +27,7 @@ public class SplashActivity extends BaseSplashActivity {
         AppCommon.getInstance().initIfNeeded(getApplicationContext());
         AppCommon.getInstance().increaseLaunchTime();
         AppCommon.getInstance().syncAdsIfNeeded(AppConstant.AdsType.SMALL_BANNER_TEST, AppConstant.AdsType.BIG_BANNER_TEST);
-      //  DatabaseLoader.getInstance().createIfNeeded(getApplicationContext(), "test_common.db");
+        DatabaseLoader.getInstance().createIfNeeded(getApplicationContext(), "usdriving.db");
     }
 
     @Override

@@ -15,6 +15,7 @@
         android:id="@+id/cardView"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center|top"
+        card_view:cardPreventCornerOverlap="false"
         >
         <LinearLayout
             android:layout_width="match_parent"

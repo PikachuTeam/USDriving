@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">USDriving</string>
-    <string name="topic">TOPIC</string>
+    <string name="topic">Topic</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_dmv_written_test">DMV WRITTEN TEST</string>
@@ -19,8 +19,8 @@
     <string name="title_driver_manual">Driver manual</string>
     <string name="title_video_tips">Video tips</string>
     <string name="title_change_state">Change State</string>
-
-
+    <string name="next" >Next</string>
+    <string name="previous" >Previous</string>
     <string name="title_activity_drivers_manual">DriversManualActivity</string>
     <string name="sliding_menu_title">US DRIVING</string>
     <string name="sliding_menu_state">Current State: California</string>
@@ -75,4 +75,7 @@
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+
+    <string name="test_card_question">Question :</string>
+    <string name="test_card_answer">Answer :</string>
 </resources>
