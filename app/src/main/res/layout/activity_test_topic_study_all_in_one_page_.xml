@@ -1,0 +1,23 @@
+<tatteam.com.app_common.ui.drawable.FractionFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/common_size_30"
+    android:paddingRight="@dimen/common_size_30"
+    android:paddingTop="@dimen/common_size_10"
+    android:paddingBottom="@dimen/common_size_10"
+    >
+
+    <ListView
+        android:id="@+id/lv_StudyInOnePage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        >
+
+    </ListView>
+</tatteam.com.app_common.ui.drawable.FractionFrameLayout>
+
+

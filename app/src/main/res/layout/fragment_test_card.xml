@@ -29,7 +29,9 @@
                 android:layout_margin="@dimen/common_size_5"
                 android:text="@string/test_card_question"
                 android:textColor="@color/black"
-                android:textSize="@dimen/common_text_size_17" />
+                android:textSize="@dimen/common_text_size_17"
+                android:textStyle="bold"
+                />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPagerQuestion"
@@ -94,7 +96,10 @@
                 android:layout_margin="@dimen/common_size_5"
                 android:text="@string/test_card_answer"
                 android:textColor="@color/black"
-                android:textSize="@dimen/common_text_size_17" />
+                android:textSize="@dimen/common_text_size_17"
+                android:textStyle="bold"
+
+                />
             <TextView
                 android:id="@+id/definition"
                 android:layout_width="wrap_content"

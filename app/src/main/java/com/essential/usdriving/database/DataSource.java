@@ -7,7 +7,9 @@ import android.graphics.BitmapFactory;
 
 
 import com.essential.usdriving.entity.Card;
+import com.essential.usdriving.entity.Question;
 import com.essential.usdriving.entity.TopicCard;
+import com.essential.usdriving.ui.test_topic.TestTopicListItem;
 
 import java.util.ArrayList;
 
@@ -85,4 +87,63 @@ public class DataSource  extends BaseDataSource{
         closeConnection();
         return Topic;
     }
+
+    public ArrayList<TestTopicListItem> getTopic() {
+        ArrayList<TestTopicListItem> Topic = new ArrayList<>();
+        SQLiteDatabase sqLite = openConnection();
+        Cursor cursor = sqLite.rawQuery("select ID,Name, NumberofQuestion from USA_TestTopics ", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            TestTopicListItem tc = new TestTopicListItem();
+            tc.setId(cursor.getInt(0));
+            tc.setTopicName(cursor.getString(1));
+            tc.setNumberOfQuestion(cursor.getInt(2));
+            cursor.moveToNext();
+            Topic.add(tc);
+        }
+        cursor.close();
+        return Topic;
+    }
+    //TEST TOPIC
+    public ArrayList<Question> getTopicItem(String ID) {
+        ArrayList<Question> questions = new ArrayList<>();
+        SQLiteDatabase sqLite = openConnection();
+        Cursor cursor = sqLite.rawQuery("select * from USA_TestQuestions where TopicID=?", new String[]{ID});
+        cursor.moveToFirst();
+        int tmp = 1;
+        while (!cursor.isAfterLast()) {
+            Question question = new Question();
+            question.questionNo = tmp;
+            question.question = cursor.getString(2);
+            byte[] imageData = cursor.getBlob(4);
+            if (imageData != null) {
+                question.image = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+            }
+            question.choiceA = cursor.getString(5);
+            question.choiceB = cursor.getString(6);
+            question.choiceC = cursor.getString(7);
+            question.choiceD = cursor.getString(8);
+            switch (cursor.getString(9)) {
+                case "A":
+                    question.correctAnswer = 0;
+                    break;
+                case "B":
+                    question.correctAnswer = 1;
+                    break;
+                case "C":
+                    question.correctAnswer = 2;
+                    break;
+                case "D":
+                    question.correctAnswer = 3;
+                    break;
+            }
+            question.explanation = cursor.getString(10);
+            questions.add(question);
+            tmp++;
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return questions;
+    }
+
 }

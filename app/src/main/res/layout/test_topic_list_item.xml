@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/tv_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01"
+        android:textSize="@dimen/text_size_15"
+        android:layout_marginLeft="@dimen/common_size_15"
+        android:layout_marginTop="@dimen/common_size_10"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
+
+    <LinearLayout
+        android:id="@+id/layout_Topic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_size_10"
+        android:layout_marginTop="@dimen/common_size_10"
+        android:layout_toRightOf="@+id/tv_Id"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_TopicName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alcohol and other drugs"
+            android:textSize="@dimen/text_size_6"
+            android:textColor="@color/black"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/number_of_question"
+                android:textSize="@dimen/text_size_5"
+
+                />
+            <TextView
+                android:id="@+id/tv_NumberOfQuestions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_5"
+                android:text="19"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/img_arrow"
+        android:layout_width="@dimen/common_size_50"
+        android:layout_height="@dimen/common_size_50"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/common_size_3"
+        android:src="@drawable/test_image"
+        android:layout_marginBottom="@dimen/common_size_5"
+        ></ImageView>
+    <LinearLayout
+        android:id="@+id/layout_Button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_size_70"
+        android:layout_below="@+id/layout_Topic"
+        >
+
+        <TextView
+            android:id="@+id/tvPracticeOne"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_study_one"
+            android:gravity="center"
+            android:textColor="@color/ColorPrimaryDark"
+            android:background="@color/window_background2"
+            android:textSize="@dimen/text_size_7"/>
+        <View
+            android:layout_width="@dimen/text_size_0_5"
+            android:layout_height="fill_parent"
+            android:background="@color/ColorPrimaryDark" />
+        <TextView
+            android:id="@+id/tvStudyAll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/text_study_all"
+            android:gravity="center"
+            android:textColor="@color/ColorPrimaryDark"
+            android:background="@color/window_background2"
+            android:textSize="@dimen/text_size_7"/>
+    </LinearLayout>
+
+</RelativeLayout>
