@@ -16,6 +16,8 @@ public class ClientApp extends Application {
     public void onCreate() {
         super.onCreate();
         DataSource.getInstance().init(getApplicationContext());
+        AppCommon.getInstance().initIfNeeded(getApplicationContext());
+        DatabaseLoader.getInstance().restoreState(getApplicationContext());
     }
 
     @Override

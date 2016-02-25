@@ -28,7 +28,6 @@ public class TestCardFragment  extends BaseFragment implements ViewPager.OnPageC
     private CardAdapter adapter;
     private String getTopic;
     private View viewWhite,viewOrange;
-    private Button btnPrevious,btnNext;
     private CardView cardPrevious;
     private CardView cardNext;
     @Override

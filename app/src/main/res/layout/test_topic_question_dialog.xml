@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/common_size_10">
+    <LinearLayout
+        android:layout_width="@dimen/common_size_300"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_dialog_test_topic"
+            android:padding="@dimen/common_size_5">
+            <TextView
+                android:id="@+id/tv_DialogContentQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_text_size_15"
+                android:text="question ??"
+                android:textColor="@color/black"
+                />
+            <ImageView
+                android:id="@+id/img_DialogImageQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/test_image"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_size_5"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/common_size_15">
+            <TextView
+                android:id="@+id/tv_AnswerA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_text_size_15"
+                android:text="A"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/tv_AnswerB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_text_size_15"
+                android:text="B"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/tv_AnswerC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_text_size_15"
+                android:text="C"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/tv_AnswerD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_text_size_15"
+                android:text="D"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_Explain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/common_text_size_15"
+            android:layout_marginTop="@dimen/common_size_15"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:text="this is explain !!!"/>
+    </LinearLayout>
+
+</LinearLayout>

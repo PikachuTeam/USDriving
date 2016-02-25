@@ -48,7 +48,7 @@
     <string name="text_hint_search_state">Search your state here</string>
 
     //Test Topic
-    <string name="text_study_one">Practice one by one</string>
+    <string name="text_study_one">   Practice one by one</string>
     <string name="text_study_all">Study all in one page</string>
 
     <string name="cancel">Cancel</string>
@@ -78,4 +78,6 @@
 
     <string name="test_card_question">Question :</string>
     <string name="test_card_answer">Answer :</string>
+    <string name="title_dialog"> Detail</string>
+    <string name="number_of_question">Number of question : </string>
 </resources>
