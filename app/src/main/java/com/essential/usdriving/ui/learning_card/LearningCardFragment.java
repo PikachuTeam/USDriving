@@ -35,6 +35,12 @@ public class LearningCardFragment extends BaseFragment {
     protected boolean enableBackButton() {
         return true;
     }
+
+    @Override
+    public void defineButtonResult() {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

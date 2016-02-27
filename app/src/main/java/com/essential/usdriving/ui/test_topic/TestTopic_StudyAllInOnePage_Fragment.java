@@ -35,6 +35,11 @@ public class TestTopic_StudyAllInOnePage_Fragment extends BaseFragment {
     }
 
     @Override
+    public void defineButtonResult() {
+
+    }
+
+    @Override
     protected String setTitle() {
         return "Test Topic";
     }

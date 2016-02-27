@@ -6,6 +6,7 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,7 +27,7 @@ public class MyDialogFragment extends DialogFragment {
         View rootView = inflater.inflate(R.layout.test_topic_question_dialog, container, false);
         findViewDialogId(rootView);
         GetandSetData();
-        getDialog().setTitle(getString(R.string.title_dialog));
+        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);;
         return rootView;
     }
 

@@ -24,7 +24,7 @@ public class BaseActivity extends tatteam.com.app_common.ui.activity.BaseActivit
     private Toolbar toolbar;
     private FrameLayout adsContainer;
     private AdsSmallBannerHandler adsSmallBannerHandler;
-
+    private  MenuItem menuToolbar;
 
     @Override
     protected int getLayoutResIdContentView() {
@@ -38,6 +38,7 @@ public class BaseActivity extends tatteam.com.app_common.ui.activity.BaseActivit
         adsSmallBannerHandler = new AdsSmallBannerHandler(this, adsContainer, AppConstant.AdsType.SMALL_BANNER_TEST);
         adsSmallBannerHandler.setup();
         setUpToolbar();
+        invalidateOptionsMenu();
     }
 
     @Override
@@ -58,10 +59,16 @@ public class BaseActivity extends tatteam.com.app_common.ui.activity.BaseActivit
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_base, menu);
+        menuToolbar = menu.findItem(R.id.Result);
+        menuToolbar.setVisible(false);
+
         return true;
     }
     public Toolbar getToolbar() {
         return toolbar;
     }
+   public MenuItem getMenuToolbar(){
+       return menuToolbar;
+   }
 
 }

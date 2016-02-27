@@ -18,6 +18,7 @@ import com.essential.usdriving.entity.HomeEntity;
 import com.essential.usdriving.ui.learning_card.LearningCardFragment;
 import com.essential.usdriving.ui.test_topic.TestTopicFragment;
 import com.essential.usdriving.ui.videotip.VideoTipsFragment;
+import com.essential.usdriving.ui.written_test.DMVWrittenTestFragment;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,12 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected boolean enableBackButton() {
         return false;
+    }
+
+
+    @Override
+    public void defineButtonResult() {
+
     }
 
     @Override
@@ -53,7 +60,6 @@ public class HomeFragment extends BaseFragment {
         list.add(new HomeEntity(getString(R.string.title_exam_simulator),ContextCompat.getDrawable(getActivity(),R.drawable.ic_exam_simulator) ));
         list.add(new HomeEntity(getString(R.string.title_test_topic),ContextCompat.getDrawable(getActivity(),R.drawable.ic_dmv_test_topics )));
         list.add(new HomeEntity(getString(R.string.title_learning_card),ContextCompat.getDrawable(getActivity(),R.drawable.ic_learning_cards) ));
-        list.add(new HomeEntity(getString(R.string.title_driver_manual),ContextCompat.getDrawable(getActivity(),R.drawable.ic_driver_manual )));
         list.add(new HomeEntity(getString(R.string.title_video_tips), ContextCompat.getDrawable(getActivity(),R.drawable.ic_driving_tips)));
     }
 
@@ -105,9 +111,11 @@ public class HomeFragment extends BaseFragment {
                 public void onClick(View v) {
 
                     switch (position){
+                        case 0:replaceFragment(new DMVWrittenTestFragment(),getString(R.string.written_test_result_title));break;
                         case 2:replaceFragment(new TestTopicFragment(),getString(R.string.title_learning_card));break;
                         case 3:replaceFragment(new LearningCardFragment(),getString(R.string.title_learning_card));break;
-                        case 5: replaceFragment(new VideoTipsFragment(),getString(R.string.title_video_tips));break;
+                        case 4: replaceFragment(new VideoTipsFragment(),getString(R.string.title_video_tips));break;
+
                     }
 
                 }
