@@ -36,6 +36,11 @@ public class VideoTipsFragment extends BaseFragment {
     }
 
     @Override
+    public void defineButtonResult() {
+
+    }
+
+    @Override
     protected int getLayoutResIdContentView() {
         return R.layout.fragment_video_tips;
     }

@@ -1,13 +1,14 @@
 package com.essential.usdriving.app;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.essential.usdriving.R;
 
 
-public class BaseFragment extends tatteam.com.app_common.ui.fragment.BaseFragment {
+public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.BaseFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,11 @@ public class BaseFragment extends tatteam.com.app_common.ui.fragment.BaseFragmen
                 } else {
                     getBaseActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 }
+                if (enableResultButton()) {
+                   //getBaseActivity().getMenuToolbar().setVisible(false);
+                } else {
+                 //  getBaseActivity().getMenuToolbar().setVisible(false);
+                }
             }
         } else {
             getBaseActivity().getToolbar().setVisibility(View.GONE);
@@ -45,6 +51,14 @@ public class BaseFragment extends tatteam.com.app_common.ui.fragment.BaseFragmen
                     onBackPressed();
                 }
                 break;
+
+
+            case R.id.Result:
+                if (enableResultButton()) {
+                    defineButtonResult();
+                }
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -62,7 +76,7 @@ public class BaseFragment extends tatteam.com.app_common.ui.fragment.BaseFragmen
 
 
     protected String setTitle() {
-        return getString(R.string.topic);
+        return getString(R.string.app_name);
     }
 
     protected boolean enableToolbar() {
@@ -73,6 +87,10 @@ public class BaseFragment extends tatteam.com.app_common.ui.fragment.BaseFragmen
         return true;
     }
 
+    protected boolean enableResultButton() {
+        return false;
+    }
+
     protected boolean enableBackButton() {
         return false;
     }
@@ -81,4 +99,6 @@ public class BaseFragment extends tatteam.com.app_common.ui.fragment.BaseFragmen
 
         return (BaseActivity) getActivity();
     }
+
+    public abstract void defineButtonResult();
 }

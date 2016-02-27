@@ -102,6 +102,7 @@ public class DataSource  extends BaseDataSource{
             Topic.add(tc);
         }
         cursor.close();
+        closeConnection();
         return Topic;
     }
     //TEST TOPIC
@@ -143,7 +144,49 @@ public class DataSource  extends BaseDataSource{
             cursor.moveToNext();
         }
         cursor.close();
+        closeConnection();
         return questions;
     }
 
+    public ArrayList<Question> getQuestions() {
+        ArrayList<Question> questions = new ArrayList<>();
+        SQLiteDatabase sqLite = openConnection();
+        Cursor cursor = sqLite.rawQuery("select * from USA_TestQuestions order by Random() limit 30", null);
+        cursor.moveToFirst();
+        int tmp = 1;
+        while (!cursor.isAfterLast()) {
+            Question question = new Question();
+            question.questionNo = tmp;
+            question.question = cursor.getString(2);
+            byte[] imageData = cursor.getBlob(4);
+            if (imageData != null) {
+                question.image = BitmapFactory.decodeByteArray(imageData, 0, imageData.length);
+            }
+            question.choiceA = cursor.getString(5);
+            question.choiceB = cursor.getString(6);
+            question.choiceC = cursor.getString(7);
+            question.choiceD = cursor.getString(8);
+            switch (cursor.getString(9)) {
+                case "A":
+                    question.correctAnswer = 0;
+                    break;
+                case "B":
+                    question.correctAnswer = 1;
+                    break;
+                case "C":
+                    question.correctAnswer = 2;
+                    break;
+                case "D":
+                    question.correctAnswer = 3;
+                    break;
+            }
+            question.explanation = cursor.getString(10);
+            questions.add(question);
+            tmp++;
+            cursor.moveToNext();
+        }
+        cursor.close();
+        closeConnection();
+        return questions;
+    }
 }

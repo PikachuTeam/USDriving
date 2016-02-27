@@ -16,6 +16,8 @@
         android:id="@+id/lv_Topic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbarStyle="outsideInset"
+        android:paddingRight="10dp"
         />
 </tatteam.com.app_common.ui.drawable.FractionFrameLayout>
 

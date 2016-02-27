@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
+import com.essential.usdriving.entity.CustomViewPager;
 import com.essential.usdriving.entity.Question;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
 
 
     ArrayList<Question> list;
-    private ViewPager viewPager;
+    private CustomViewPager viewPager;
     private int currentQuesIndex;
     private TextView tvChoiceA,tvChoiceB,tvChoiceC,tvChoiceD,tvExplanation,tvNumber;
     private CardAdapter adapter;
@@ -37,6 +38,11 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
     @Override
     protected boolean enableBackButton() {
         return true;
+    }
+
+    @Override
+    public void defineButtonResult() {
+
     }
 
     @Override
@@ -65,7 +71,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
     private void findViews(View rootView) {
         cardPrevious= (CardView) rootView.findViewById(R.id.btnPreviousLayout);
         cardNext =(CardView) rootView.findViewById(R.id.btnNextLayout);
-        viewPager = (ViewPager) rootView.findViewById(R.id.viewPagerQuestion);
+        viewPager = (CustomViewPager) rootView.findViewById(R.id.viewPagerQuestion);
         tvChoiceA= (TextView) rootView.findViewById(R.id.tvChoiceA);
         tvChoiceB= (TextView) rootView.findViewById(R.id.tvChoiceB);
         tvChoiceC= (TextView) rootView.findViewById(R.id.tvChoiceC);
@@ -76,6 +82,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
         viewOrange= rootView.findViewById(R.id.viewOrange);
         cardPrevious.setOnClickListener(this);
         cardNext.setOnClickListener(this);
+        viewPager.setPagingEnabled(false);
     }
     private void loadData() {
         list = new ArrayList<>();

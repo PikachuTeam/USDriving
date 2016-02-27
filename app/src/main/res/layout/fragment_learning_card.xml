@@ -15,6 +15,9 @@
             android:id="@+id/lvcard"
             android:divider="@null"
             android:dividerHeight="0dp"
+            android:verticalScrollbarPosition="right"
+            android:scrollbarStyle="outsideInset"
+            android:paddingRight="@dimen/common_size_5"
             >
 
         </ListView>

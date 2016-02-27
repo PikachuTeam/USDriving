@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.essential.usdriving.app.FractionFrameLayout
+<tatteam.com.app_common.ui.drawable.FractionFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
@@ -28,4 +28,4 @@
             android:dividerHeight="0dp"></ListView>
 
     </LinearLayout>
-</com.essential.usdriving.app.FractionFrameLayout>
+</tatteam.com.app_common.ui.drawable.FractionFrameLayout>

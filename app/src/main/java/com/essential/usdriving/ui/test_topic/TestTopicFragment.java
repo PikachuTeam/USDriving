@@ -28,7 +28,7 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
 
     @Override
     protected String setTitle() {
-        return "Test Topic";
+        return getString(R.string.title_test_topic);
     }
 
     @Override
@@ -39,6 +39,11 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
     @Override
     protected boolean enableBackButton() {
         return true;
+    }
+
+    @Override
+    public void defineButtonResult() {
+
     }
 
     @Override

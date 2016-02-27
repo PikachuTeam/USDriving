@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ColorPrimary">#00ABC0</color>
-    <color name="ColorPrimaryDark">#008999</color>
+    <color name="ColorPrimary">#01a2b6</color>
+    <color name="ColorPrimaryDark">#017987</color>
     <color name="colorPrimaryLight">#969696</color>
     <color name="colorAccent">#e9484b</color>
     <color name="nav_selected">#dedddd</color>
@@ -15,11 +15,11 @@
     <color name="white">#FFFFFF</color>
     <color name="orange">#EF6C00</color>
     <color name="written_test_color_1">#BDBDBD</color>
-    <color name="written_test_color_2">#FF9F00</color>
+    <color name="written_test_color_2">#ba7503</color>
     <color name="written_test_button_shadow">#757575</color>
     <color name="written_test_color_3">#FAFAFA</color>
     <color name="written_test_text_answer">#757575</color>
-    <color name="right_answer_color">#8DC44D</color>
+    <color name="right_answer_color">#6a933b</color>
     <color name="wrong_answer_color">#F44336</color>
     <color name="written_test_text_highlight">#757575</color>
     <color name="circle_stroke_line">#616161</color>
