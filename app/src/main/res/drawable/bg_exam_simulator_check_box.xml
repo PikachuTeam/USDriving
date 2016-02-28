@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <stroke android:width="@dimen/stroke_line_size" android:color="@color/exam_simulator_stroke_line" />
+        </shape>
+    </item>
+</selector>

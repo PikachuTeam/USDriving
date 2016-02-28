@@ -23,7 +23,7 @@
     <color name="wrong_answer_color">#F44336</color>
     <color name="written_test_text_highlight">#757575</color>
     <color name="circle_stroke_line">#616161</color>
-    <color name="result_not_answer">#FFEB3B</color>
+    <color name="result_not_answer">#cbbb30</color>
     <color name="exam_simulator_stroke_line">#039BE5</color>
     <color name="exam_simulator_color_1">#FF6A00</color>
     <color name="exam_simulator_button_shadow">#90CAF9</color>

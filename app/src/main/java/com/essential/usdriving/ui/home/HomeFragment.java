@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.entity.HomeEntity;
+import com.essential.usdriving.ui.exam_simulator.ExamSimulatorDoExamFragment;
+import com.essential.usdriving.ui.exam_simulator.ExamSimulatorStartFragment;
 import com.essential.usdriving.ui.learning_card.LearningCardFragment;
 import com.essential.usdriving.ui.test_topic.TestTopicFragment;
 import com.essential.usdriving.ui.videotip.VideoTipsFragment;
@@ -112,6 +114,7 @@ public class HomeFragment extends BaseFragment {
 
                     switch (position){
                         case 0:replaceFragment(new DMVWrittenTestFragment(),getString(R.string.written_test_result_title));break;
+                        case 1:replaceFragment(new ExamSimulatorStartFragment(),getString(R.string.written_test_result_title));break;
                         case 2:replaceFragment(new TestTopicFragment(),getString(R.string.title_learning_card));break;
                         case 3:replaceFragment(new LearningCardFragment(),getString(R.string.title_learning_card));break;
                         case 4: replaceFragment(new VideoTipsFragment(),getString(R.string.title_video_tips));break;
