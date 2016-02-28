@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false">
+        <layer-list>
+            <item android:top="@dimen/margin_3">
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/radius_4" />
+                    <solid android:color="@color/exam_simulator_button_shadow" />
+                </shape>
+            </item>
+
+            <item android:bottom="@dimen/margin_3">
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/radius_4" />
+                    <solid android:color="@color/ColorPrimary" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <item android:state_pressed="true">
+        <layer-list>
+            <item android:top="@dimen/margin_3">
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/radius_4" />
+                    <solid android:color="@color/exam_simulator_button_shadow" />
+                </shape>
+            </item>
+
+            <item android:bottom="@dimen/margin_3">
+                <shape android:shape="rectangle">
+                    <corners android:radius="@dimen/radius_4" />
+                    <solid android:color="@color/button_state_pressed" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

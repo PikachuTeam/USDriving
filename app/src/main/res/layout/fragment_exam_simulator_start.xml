@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tatteam.com.app_common.ui.drawable.FractionFrameLayout
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layoutRule"
+            android:layout_width="@dimen/exam_simulator_layout_rule_width"
+            android:layout_height="@dimen/exam_simulator_layout_rule_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_20"
+            android:background="@drawable/bg_layout_rule">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_3"
+                android:layout_marginTop="@dimen/margin_20"
+                android:text="@string/exam_simulator_rule"
+                android:textSize="@dimen/text_size_4" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="@dimen/exam_simulator_button_width"
+            android:layout_height="@dimen/size_5"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_20"
+            android:background="@drawable/bg_exam_simulator_button"
+            android:text="Start"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_6"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/layoutNotShowAgain"
+            android:layout_width="290dp"
+            android:layout_height="@dimen/size_3"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_20"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/checkboxNotShowAgain"
+                layout="@layout/item_check_box" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:text="@string/exam_simulator_not_show_again"
+                android:textSize="@dimen/text_size_4" />
+        </LinearLayout>
+    </LinearLayout>
+</tatteam.com.app_common.ui.drawable.FractionFrameLayout>

@@ -31,11 +31,7 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
                 } else {
                     getBaseActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 }
-                if (enableResultButton()) {
-                   //getBaseActivity().getMenuToolbar().setVisible(false);
-                } else {
-                 //  getBaseActivity().getMenuToolbar().setVisible(false);
-                }
+
             }
         } else {
             getBaseActivity().getToolbar().setVisibility(View.GONE);
