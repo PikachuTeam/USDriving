@@ -9,7 +9,9 @@
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/common_size_5"
     app:cardElevation="@dimen/common_size_3"
-    card_view:cardPreventCornerOverlap="false">
+    card_view:cardPreventCornerOverlap="false"
+    android:background="@drawable/raised_button"
+    >
 
     <LinearLayout
         android:id="@+id/layoutVideoItem"
@@ -19,6 +21,7 @@
         android:background="@drawable/raised_button"
         android:orientation="horizontal"
         android:padding="@dimen/common_size_10"
+
         >
 
         <ImageView

@@ -23,7 +23,7 @@ public class ClientApp extends Application {
     @Override
     public void onTerminate() {
         AppCommon.getInstance().destroy();
-        AppSpeaker.getInstance().destroy();
+       // AppSpeaker.getInstance().destroy();
         DatabaseLoader.getInstance().destroy();
 
         super.onTerminate();
