@@ -65,9 +65,12 @@ public class VideoTipsFragment extends BaseFragment {
                 if (e.getAction() == MotionEvent.ACTION_DOWN) {
                     View view = rv.findChildViewUnder(e.getX(), e.getY());
                     int position = rv.getChildLayoutPosition(view);
-                    VideoTipsListItem item = videos.get(position);
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.link));
-                    startActivity(browserIntent);
+                    if(position>=0){
+                        VideoTipsListItem item = videos.get(position);
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.link));
+                        startActivity(browserIntent);
+                    }
+
                 }
                 return false;
             }
@@ -75,6 +78,7 @@ public class VideoTipsFragment extends BaseFragment {
             @Override
             public void onTouchEvent(RecyclerView rv, MotionEvent e) {
 
+                //
             }
 
             @Override
@@ -137,6 +141,7 @@ public class VideoTipsFragment extends BaseFragment {
             VideoTipsListItem item = items.get(position);
             holder.setText(item.sectionTitle);
             holder.setImage(item.image);
+
         }
 
         @Override
