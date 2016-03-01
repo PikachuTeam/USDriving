@@ -1,35 +1,31 @@
 package com.essential.usdriving.ui.learning_card;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.entity.Card;
-import com.essential.usdriving.entity.CustomViewPager;
 
 import java.util.ArrayList;
 
-public class TestCardFragment extends BaseFragment implements ViewPager.OnPageChangeListener {
+public class TestCardFragment extends BaseFragment {
 
     ArrayList<Card> listCard;
-    private CustomViewPager viewPager;
-    private int currentQuesIndex;
-    private TextView tvAnswer, tvNumber;
-    private CardAdapter adapter;
+    private int currentQuesIndex = 0;
+    private TextView tvAnswer, tvNumber, tvQuestion;
+
     private String getTopic;
-    private View viewWhite, viewOrange;
     private CardView cardPrevious;
     private CardView cardNext;
+    private ProgressBar progressBar;
+    private ImageView imageQuestion;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,45 +62,25 @@ public class TestCardFragment extends BaseFragment implements ViewPager.OnPageCh
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
         findViews(rootView);
+        loadData();
+
 
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        loadData();
-        adapter = new CardAdapter(getActivity(), listCard);
-        viewPager.setAdapter(adapter);
-        viewPager.setOnPageChangeListener(this);
+
     }
 
     private void findViews(View rootView) {
-        viewPager = (CustomViewPager) rootView.findViewById(R.id.viewPagerQuestion);
+        progressBar = (ProgressBar) rootView.findViewById(R.id.readingProgress);
+        imageQuestion = (ImageView) rootView.findViewById(R.id.image_question_card);
+        tvQuestion = (TextView) rootView.findViewById(R.id.tvQuestionPage);
         tvAnswer = (TextView) rootView.findViewById(R.id.definition);
         tvNumber = (TextView) rootView.findViewById(R.id.tv_Number);
-        viewWhite = rootView.findViewById(R.id.viewWhite);
-        viewOrange = rootView.findViewById(R.id.viewOrange);
         cardPrevious = (CardView) rootView.findViewById(R.id.btnPreviousLayout);
         cardNext = (CardView) rootView.findViewById(R.id.btnNextLayout);
-        cardPrevious.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuesIndex > 0) {
-                    computeSize(currentQuesIndex - 1, listCard.size());
-                    viewPager.setCurrentItem(currentQuesIndex - 1);
-                }
-            }
-        });
-        cardNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuesIndex < listCard.size()) {
-                    computeSize(currentQuesIndex + 1, listCard.size());
-                    viewPager.setCurrentItem(currentQuesIndex + 1);
-                }
-            }
-        });
-        viewPager.setPagingEnabled(false);
     }
 
     private void loadData() {
@@ -113,99 +89,78 @@ public class TestCardFragment extends BaseFragment implements ViewPager.OnPageCh
         Bundle bundle = this.getArguments();
         getTopic = bundle.getString(LearningCardFragment.KEY_CARD);
         listCard = DataSource.getInstance().getCard(getTopic);
-
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-        currentQuesIndex = position;
-        computeSize((position + 1), listCard.size());
-        tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + listCard.size());
-        tvAnswer.setText(listCard.get(position).getCardDefinition());
-
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-
-    private void computeSize(int position, int size) {
-        viewOrange.setLayoutParams(new RelativeLayout.LayoutParams(viewWhite.getMeasuredWidth() * position / size,
-                viewWhite.getMeasuredHeight()));
-    }
-/*
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.btnPreviousLayout:
-
-                // computeSize(1,listCard.size());
-                //viewPager.setCurrentItem(0);
-                break;
-            case R.id.btnNextLayout:
-
-               //computeSize(listCard.size(),listCard.size());
-               // viewPager.setCurrentItem(listCard.size());
-                break;
-        }
-
-    }
-*/
-
-    private class CardAdapter extends PagerAdapter {
-
-        private ArrayList<Card> data;
-        private Context context;
-
-        public CardAdapter(Context context, ArrayList<Card> data) {
-            this.context = context;
-            this.data = data;
-        }
-
-        @Override
-        public int getCount() {
-            return data.size();
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            View view = View.inflate(this.context, R.layout.item_card, null);
-
-            Card card = data.get(position);
-            ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
-            TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
-            if (position == 0) {
-                tvAnswer.setText(listCard.get(0).getCardDefinition());
-                tvNumber.setText("  " + (position + 1) + "  of  " + listCard.size());
+        tvQuestion.setText("" + listCard.get(0).getCardTerm());
+        tvAnswer.setText(listCard.get(0).getCardDefinition());
+        tvNumber.setText("  " + (1) + "  of  " + listCard.size());
+        progressBar.setMax(listCard.size());
+        progressBar.setProgress(currentQuesIndex + 1);
+        progressBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    float rate = event.getX() / progressBar.getWidth();
+                    float tmp = listCard.size() * rate;
+                    currentQuesIndex = (int) tmp;
+                    tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + listCard.size());
+                    tvAnswer.setText(listCard.get(currentQuesIndex).getCardDefinition());
+                    progressBar.setProgress(currentQuesIndex);
+                    tvQuestion.setText("" + listCard.get(currentQuesIndex).getCardTerm());
+                    if (imageQuestion != null) {
+                        imageQuestion.setVisibility(View.VISIBLE);
+                        imageQuestion.setImageBitmap(listCard.get(currentQuesIndex).image);
+                    } else {
+                        imageQuestion.setVisibility(View.GONE);
+                    }
+                }
+                return false;
             }
-            tvQuestion.setText(card.getCardTerm());
+        });
+        cardPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentQuesIndex > 0) {
+                   // cardPrevious.setClickable(true);
+                    computeSize(1);
 
-            if (card.image != null) {
-                questionImage.setVisibility(View.VISIBLE);
-                questionImage.setImageBitmap(card.image);
-            } else {
-                questionImage.setVisibility(View.GONE);
+                }else{
+                   // cardPrevious.setClickable(false);
+                }
             }
-            container.addView(view);
-            return view;
-        }
+        });
+        cardNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentQuesIndex < listCard.size()) {
+                    //cardNext.setClickable(true);
+                    computeSize(2);
+                }else{
+                  //  cardNext.setClickable(false);
+                }
+            }
+        });
+    }
 
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView((View) object);
-        }
 
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view == object;
+    private void computeSize(int id) {
+        switch (id) {
+            case 1:
+                currentQuesIndex = currentQuesIndex - 1;
+                break;
+            case 2:
+                currentQuesIndex = currentQuesIndex + 1;
+                break;
+        }
+        tvQuestion.setText(listCard.get(currentQuesIndex).getCardTerm());
+        tvAnswer.setText(listCard.get(currentQuesIndex).getCardDefinition());
+        tvNumber.setText("  " + (currentQuesIndex+1) + "  of  " + listCard.size());
+        progressBar.setProgress(currentQuesIndex);
+        if (imageQuestion != null) {
+            imageQuestion.setVisibility(View.VISIBLE);
+            imageQuestion.setImageBitmap(listCard.get(currentQuesIndex).image);
+        } else {
+            imageQuestion.setVisibility(View.GONE);
         }
     }
+
+
 }
