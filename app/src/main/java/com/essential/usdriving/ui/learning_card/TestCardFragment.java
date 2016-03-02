@@ -20,7 +20,6 @@ public class TestCardFragment extends BaseFragment {
     ArrayList<Card> listCard;
     private int currentQuesIndex = 0;
     private TextView tvAnswer, tvNumber, tvQuestion;
-
     private String getTopic;
     private CardView cardPrevious;
     private CardView cardNext;
@@ -103,14 +102,9 @@ public class TestCardFragment extends BaseFragment {
                     currentQuesIndex = (int) tmp;
                     tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + listCard.size());
                     tvAnswer.setText(listCard.get(currentQuesIndex).getCardDefinition());
-                    progressBar.setProgress(currentQuesIndex);
+                    progressBar.setProgress(currentQuesIndex + 1);
                     tvQuestion.setText("" + listCard.get(currentQuesIndex).getCardTerm());
-                    if (imageQuestion != null) {
-                        imageQuestion.setVisibility(View.VISIBLE);
-                        imageQuestion.setImageBitmap(listCard.get(currentQuesIndex).image);
-                    } else {
-                        imageQuestion.setVisibility(View.GONE);
-                    }
+                    setData();
                 }
                 return false;
             }
@@ -119,27 +113,35 @@ public class TestCardFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (currentQuesIndex > 0) {
-                   // cardPrevious.setClickable(true);
+                    // cardPrevious.setClickable(true);
                     computeSize(1);
 
-                }else{
-                   // cardPrevious.setClickable(false);
+                } else {
+                    // cardPrevious.setClickable(false);
                 }
             }
         });
         cardNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currentQuesIndex < listCard.size()) {
+                if (currentQuesIndex < listCard.size() - 1) {
                     //cardNext.setClickable(true);
                     computeSize(2);
-                }else{
-                  //  cardNext.setClickable(false);
+                } else {
+                    //  cardNext.setClickable(false);
                 }
             }
         });
     }
 
+    private void setData() {
+        if (imageQuestion != null) {
+            imageQuestion.setVisibility(View.VISIBLE);
+            imageQuestion.setImageBitmap(listCard.get(currentQuesIndex).image);
+        } else {
+            imageQuestion.setVisibility(View.GONE);
+        }
+    }
 
     private void computeSize(int id) {
         switch (id) {
@@ -150,16 +152,12 @@ public class TestCardFragment extends BaseFragment {
                 currentQuesIndex = currentQuesIndex + 1;
                 break;
         }
+        setData();
         tvQuestion.setText(listCard.get(currentQuesIndex).getCardTerm());
         tvAnswer.setText(listCard.get(currentQuesIndex).getCardDefinition());
-        tvNumber.setText("  " + (currentQuesIndex+1) + "  of  " + listCard.size());
-        progressBar.setProgress(currentQuesIndex);
-        if (imageQuestion != null) {
-            imageQuestion.setVisibility(View.VISIBLE);
-            imageQuestion.setImageBitmap(listCard.get(currentQuesIndex).image);
-        } else {
-            imageQuestion.setVisibility(View.GONE);
-        }
+        tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + listCard.size());
+        progressBar.setProgress(currentQuesIndex + 1);
+
     }
 
 
