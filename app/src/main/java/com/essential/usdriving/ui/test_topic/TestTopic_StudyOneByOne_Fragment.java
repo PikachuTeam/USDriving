@@ -56,20 +56,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
         findViews(rootView);
         oldColors = tvNumber.getTextColors();
         loadData();
-      //  currentQuesIndex = loadState();
         SetData(0);
-         /*
-        if(currentQuesIndex==0){
-
-
-        }else{
-            SetData(currentQuesIndex);
-        }
-*/
-
-
-        // SetData(0);
-
     }
 
     @Override
@@ -101,7 +88,6 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
 
     private void loadData() {
         list = new ArrayList<>();
-        currentQuesIndex = 0;
         Bundle bundle = this.getArguments();
         getTopic = bundle.getString(TestTopicFragment.KEY_TESTTOPIC);
         list = DataSource.getInstance().getTopicItem(getTopic);
@@ -134,11 +120,8 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (currentQuesIndex < list.size() - 1) {
-
                        // cardNext.setEnabled(true);
                         computeSize(2);
-
-
                 } else {
                    // cardNext.setEnabled(false);
                 }
@@ -180,10 +163,10 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
         if (imageQuestion != null) {
             imageQuestion.setVisibility(View.VISIBLE);
           imageQuestion.setImageBitmap(list.get(currentQuesIndex).image);
-            imageZoom.setVisibility(View.VISIBLE);
+          //  imageZoom.setVisibility(View.VISIBLE);
         } else {
             imageQuestion.setVisibility(View.GONE);
-            imageZoom.setVisibility(View.GONE);
+          //  imageZoom.setVisibility(View.GONE);
         }
         tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + list.size());
         tvQuestion.setText("" + list.get(currentQuesIndex).question);
