@@ -1,15 +1,15 @@
-<tatteam.com.app_common.ui.drawable.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_centerVertical="true"
-    android:layout_gravity="center"
-    android:gravity="center_horizontal"
-    android:paddingLeft="@dimen/common_size_30"
-    android:paddingRight="@dimen/common_size_30"
-    android:paddingTop="@dimen/common_size_10"
-    android:paddingBottom="@dimen/common_size_10"
-    android:background="@color/window_background"
-    >
+    <tatteam.com.app_common.ui.drawable.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/common_size_30"
+        android:paddingRight="@dimen/common_size_30"
+        android:paddingTop="@dimen/common_size_10"
+        android:paddingBottom="@dimen/common_size_10"
+        android:background="@color/window_background"
+        >
 
     <ListView
         android:id="@+id/Chooselist"

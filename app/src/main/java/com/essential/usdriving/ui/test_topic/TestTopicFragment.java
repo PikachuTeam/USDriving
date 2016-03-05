@@ -24,7 +24,7 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
 
     ArrayList<TestTopicListItem> list_Topic;
     TestTopicListAdapter adapter;
-    public  static  final String KEY_TESTTOPIC="keytesttopic";
+    public static final String KEY_TESTTOPIC = "keytesttopic";
 
     @Override
     protected String setTitle() {
@@ -36,6 +36,7 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         list_Topic = new ArrayList<TestTopicListItem>();
     }
+
     @Override
     protected boolean enableBackButton() {
         return true;
@@ -56,18 +57,23 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
 
         lv_Topic = (ListView) rootView.findViewById(R.id.lv_Topic);
         LoadDataGuide();
-        adapter = new TestTopicListAdapter(getActivity(),list_Topic);
+        adapter = new TestTopicListAdapter(getActivity(), list_Topic);
         lv_Topic.setAdapter(adapter);
         lv_Topic.setOnItemClickListener(this);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (list_Topic.get(position).isClose()){
+        if (list_Topic.get(position).isClose()) {
             list_Topic.get(position).setClose(false);
+            for (TestTopicListItem n : list_Topic) {
+             if(!n.isClose()){
+
+             }
+            }
             adapter.notifyDataSetChanged();
-        }
-        else {
+
+        } else {
             list_Topic.get(position).setClose(true);
             adapter.notifyDataSetChanged();
         }
@@ -76,7 +82,6 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
     private void LoadDataGuide() {
         list_Topic = DataSource.getInstance().getTopic();
     }
-
 
 
     private class TestTopicListAdapter extends BaseAdapter {
@@ -133,31 +138,30 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
 
             mViewHolder.layoutButton = (LinearLayout) convertView.findViewById(R.id.layout_Button);
             mViewHolder.layoutButton.setVisibility(View.GONE);
-            if (topic_List.get(position).isClose()){
+            if (topic_List.get(position).isClose()) {
                 mViewHolder.layoutButton.setVisibility(View.GONE);
-            }
-            else {
+            } else {
                 mViewHolder.layoutButton.setVisibility(View.VISIBLE);
             }
 
             mViewHolder.tvStudyAll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle bundle=new Bundle();
-                    bundle.putString(KEY_TESTTOPIC,String.valueOf(list_Topic.get(position).getId()));
-                    TestTopic_StudyAllInOnePage_Fragment fragment=new TestTopic_StudyAllInOnePage_Fragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString(KEY_TESTTOPIC, String.valueOf(list_Topic.get(position).getId()));
+                    TestTopic_StudyAllInOnePage_Fragment fragment = new TestTopic_StudyAllInOnePage_Fragment();
                     fragment.setArguments(bundle);
-                    replaceFragment(fragment ,getString(R.string.title_test_topic));
+                    replaceFragment(fragment, getString(R.string.title_test_topic));
                 }
             });
             mViewHolder.tvPracticeOne.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle bundle=new Bundle();
-                    bundle.putString(KEY_TESTTOPIC,String.valueOf(list_Topic.get(position).getId()));
-                    TestTopic_StudyOneByOne_Fragment fragment=new TestTopic_StudyOneByOne_Fragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString(KEY_TESTTOPIC, String.valueOf(list_Topic.get(position).getId()));
+                    TestTopic_StudyOneByOne_Fragment fragment = new TestTopic_StudyOneByOne_Fragment();
                     fragment.setArguments(bundle);
-                    replaceFragment(fragment,getString(R.string.title_test_topic));
+                    replaceFragment(fragment,KEY_TESTTOPIC);
                 }
             });
             return convertView;
