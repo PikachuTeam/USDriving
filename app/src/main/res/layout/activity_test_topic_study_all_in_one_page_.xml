@@ -17,6 +17,7 @@
         android:dividerHeight="0dp"
         android:scrollbarStyle="outsideInset"
         android:paddingRight="@dimen/common_size_5"
+        android:background="@color/window_background"
         >
 
     </ListView>
