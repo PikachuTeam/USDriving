@@ -59,7 +59,6 @@ public class TestTopic_StudyAllInOnePage_Fragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(KEY_DIALOG, list_Question.get(position));
-                // FragmentManager fm = getFragmentManager();
                 MyDialogFragment dialogFragment = new MyDialogFragment();
                 dialogFragment.setArguments(bundle);
                 dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
@@ -115,15 +114,6 @@ public class TestTopic_StudyAllInOnePage_Fragment extends BaseFragment {
             mViewHolder.tv_Question = (TextView) convertView.findViewById(R.id.tv_Question);
             mViewHolder.tv_Id.setText(""+(position+1));
             mViewHolder.tv_Question.setText(""+question_List.get(position).question);
-/*
-            if (question_List.get(position).getImageData()!=null){
-                mViewHolder.img_ImageQuestion.setImageBitmap(question_List.get(position).getImageData());
-            }
-            else {
-                mViewHolder.img_ImageQuestion.setVisibility(View.GONE);
-
-            }
-            */
             return convertView;
         }
 

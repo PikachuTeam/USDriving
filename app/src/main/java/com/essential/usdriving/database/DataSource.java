@@ -19,6 +19,7 @@ import tatteam.com.app_common.sqlite.BaseDataSource;
 public class DataSource  extends BaseDataSource{
     private static DataSource instance;
     private Context context;
+
     public static DataSource getInstance() {
         if (instance == null) {
             instance = new DataSource();
@@ -29,22 +30,6 @@ public class DataSource  extends BaseDataSource{
         this.context = context;
     }
 
-    public static int countExams() {
-        //open connection
-        SQLiteDatabase sqLite = openConnection();
-
-        Cursor cursor = sqLite.rawQuery("select count(1) from Exams", null);
-        cursor.moveToFirst();
-        int count = cursor.getInt(0);
-
-        //close cursor
-        cursor.close();
-
-        //close connection
-        closeConnection();
-
-        return count;
-    }
 
     public ArrayList<TopicCard> getTopicCard() {
         ArrayList<TopicCard> Topic = new ArrayList<>();

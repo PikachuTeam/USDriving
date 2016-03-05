@@ -113,11 +113,9 @@ public class TestCardFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (currentQuesIndex > 0) {
-                    // cardPrevious.setClickable(true);
                     computeSize(1);
 
                 } else {
-                    // cardPrevious.setClickable(false);
                 }
             }
         });
@@ -125,10 +123,8 @@ public class TestCardFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (currentQuesIndex < listCard.size() - 1) {
-                    //cardNext.setClickable(true);
                     computeSize(2);
                 } else {
-                    //  cardNext.setClickable(false);
                 }
             }
         });
