@@ -81,4 +81,30 @@
     <string name="title_dialog"> Detail</string>
     <string name="number_of_question">Number of question: </string>
     <string name="Result">Result</string>
+
+
+    <string name="test_topic_1">Alcohol and Other Drugs</string>
+    <string name="test_topic_2">Defensive Driving</string>
+    <string name="test_topic_3">Driving Record Information</string>
+    <string name="test_topic_4">Intersections and Turns</string>
+    <string name="test_topic_5">Parallel Parking</string>
+    <string name="test_topic_6">Passing</string>
+    <string name="test_topic_7">Road Signs</string>
+    <string name="test_topic_8">Sharing the Road</string>
+    <string name="test_topic_9">Special Driving Conditions</string>
+    <string name="test_topic_10">State Related Driving Knowledge</string>
+    <string name="test_topic_11">Traffic Control</string>
+
+     <string name="position_1">Position 1</string>
+    <string name="position_2">Position 2</string>
+    <string name="position_3">Position 3</string>
+    <string name="position_4">Position 4</string>
+    <string name="position_5">Position 5</string>
+    <string name="position_6">Position 6</string>
+    <string name="position_7">Position 7</string>
+    <string name="position_8">Position 8</string>
+    <string name="position_9">Position 9</string>
+    <string name="position_10">Position 10</string>
+    <string name="position_11">Position 11</string>
+
 </resources>

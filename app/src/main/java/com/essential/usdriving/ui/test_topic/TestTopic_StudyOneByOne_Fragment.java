@@ -15,8 +15,6 @@ import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.entity.Question;
-import com.essential.usdriving.ui.widget.QuestionDialogFragment;
-import com.essential.usdriving.ui.written_test.DMVWrittenTestFragment;
 
 import java.util.ArrayList;
 
@@ -34,8 +32,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
     private ProgressBar progressBar;
     private ImageView imageQuestion, imageZoom;
     private int type;
-    public final static int  TEST_TOPIC_1 = 1,TEST_TOPIC_2 = 2,TEST_TOPIC_3 = 3,TEST_TOPIC_4 = 4,TEST_TOPIC_5 = 5,TEST_TOPIC_6 = 6,
-            TEST_TOPIC_7 = 7,TEST_TOPIC_8 = 8,TEST_TOPIC_9 = 9,TEST_TOPIC_10 = 10,TEST_TOPIC_11 = 11;
+
     @Override
     protected boolean enableBackButton() {
         return true;
@@ -56,7 +53,16 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
         findViews(rootView);
         oldColors = tvNumber.getTextColors();
         loadData();
-        SetData(0);
+        currentQuesIndex=loadState();
+        if(currentQuesIndex==0){
+            SetData(0);
+        }
+        else{
+            progressBar.setProgress(currentQuesIndex + 1);
+            SetData(currentQuesIndex);
+        }
+
+
     }
 
     @Override
@@ -89,7 +95,8 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
     private void loadData() {
         list = new ArrayList<>();
         Bundle bundle = this.getArguments();
-        getTopic = bundle.getString(TestTopicFragment.KEY_TESTTOPIC);
+        getTopic = bundle.getString(TestTopicFragment.KEY_TESTTOPIC_1);
+        type = bundle.getInt(TestTopicFragment.KEY_TESTTOPIC_2);
         list = DataSource.getInstance().getTopicItem(getTopic);
         progressBar.setMax(list.size());
         progressBar.setProgress(currentQuesIndex + 1);
@@ -120,10 +127,10 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (currentQuesIndex < list.size() - 1) {
-                       // cardNext.setEnabled(true);
-                        computeSize(2);
+                    // cardNext.setEnabled(true);
+                    computeSize(2);
                 } else {
-                   // cardNext.setEnabled(false);
+                    // cardNext.setEnabled(false);
                 }
             }
         });
@@ -154,7 +161,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
                 break;
         }
         SetData(currentQuesIndex);
-       // tvQuestion.setText();
+        // tvQuestion.setText();
         //tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + list.size());
         progressBar.setProgress(currentQuesIndex + 1);
     }
@@ -162,11 +169,11 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
     public void SetData(int position) {
         if (imageQuestion != null) {
             imageQuestion.setVisibility(View.VISIBLE);
-          imageQuestion.setImageBitmap(list.get(currentQuesIndex).image);
-          //  imageZoom.setVisibility(View.VISIBLE);
+            imageQuestion.setImageBitmap(list.get(currentQuesIndex).image);
+            //  imageZoom.setVisibility(View.VISIBLE);
         } else {
             imageQuestion.setVisibility(View.GONE);
-          //  imageZoom.setVisibility(View.GONE);
+            //  imageZoom.setVisibility(View.GONE);
         }
         tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + list.size());
         tvQuestion.setText("" + list.get(currentQuesIndex).question);
@@ -214,6 +221,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
                 break;
         }
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -230,38 +238,38 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
         SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         switch (type) {
-            case TEST_TOPIC_1:
-                editor.putInt("Position 1", currentQuesIndex);
+            case 1:
+                editor.putInt(getString(R.string.position_1), currentQuesIndex);
                 break;
-            case TEST_TOPIC_2:
-                editor.putInt("Position 2", currentQuesIndex);
+            case 2:
+                editor.putInt(getString(R.string.position_2), currentQuesIndex);
                 break;
-            case TEST_TOPIC_3:
-                editor.putInt("Position 3", currentQuesIndex);
+            case 3:
+                editor.putInt(getString(R.string.position_3), currentQuesIndex);
                 break;
-            case TEST_TOPIC_4:
-                editor.putInt("Position 4", currentQuesIndex);
+            case 4:
+                editor.putInt(getString(R.string.position_4), currentQuesIndex);
                 break;
-            case TEST_TOPIC_5:
-                editor.putInt("Position 5", currentQuesIndex);
+            case 5:
+                editor.putInt(getString(R.string.position_5), currentQuesIndex);
                 break;
-            case TEST_TOPIC_6:
-                editor.putInt("Position 6", currentQuesIndex);
+            case 6:
+                editor.putInt(getString(R.string.position_6), currentQuesIndex);
                 break;
-            case TEST_TOPIC_7:
-                editor.putInt("Position 7", currentQuesIndex);
+            case 7:
+                editor.putInt(getString(R.string.position_7), currentQuesIndex);
                 break;
-            case TEST_TOPIC_8:
-                editor.putInt("Position 8", currentQuesIndex);
+            case 8:
+                editor.putInt(getString(R.string.position_8), currentQuesIndex);
                 break;
-            case TEST_TOPIC_9:
-                editor.putInt("Position 9", currentQuesIndex);
+            case 9:
+                editor.putInt(getString(R.string.position_9), currentQuesIndex);
                 break;
-            case TEST_TOPIC_10:
-                editor.putInt("Position 10", currentQuesIndex);
+            case 10:
+                editor.putInt(getString(R.string.position_10), currentQuesIndex);
                 break;
-            case TEST_TOPIC_11:
-                editor.putInt("Position 11", currentQuesIndex);
+            case 11:
+                editor.putInt(getString(R.string.position_11), currentQuesIndex);
                 break;
         }
         editor.commit();
@@ -271,38 +279,38 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
     private int loadState() {
         SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         switch (type) {
-            case TEST_TOPIC_1:
-                return sharedPreferences.getInt("Position 1", 0);
+            case 1:
+                return sharedPreferences.getInt(getString(R.string.position_1), 0);
 
-            case TEST_TOPIC_2:
-                return sharedPreferences.getInt("Position 2", 0);
+            case 2:
+                return sharedPreferences.getInt(getString(R.string.position_2), 0);
 
-            case TEST_TOPIC_3:
-                return sharedPreferences.getInt("Position 3", 0);
+            case 3:
+                return sharedPreferences.getInt(getString(R.string.position_3), 0);
 
-            case TEST_TOPIC_4:
-                return sharedPreferences.getInt("Position 4", 0);
+            case 4:
+                return sharedPreferences.getInt(getString(R.string.position_4), 0);
 
-            case TEST_TOPIC_5:
-                return sharedPreferences.getInt("Position 5", 0);
+            case 5:
+                return sharedPreferences.getInt(getString(R.string.position_5), 0);
 
-            case TEST_TOPIC_6:
-                return sharedPreferences.getInt("Position 6", 0);
+            case 6:
+                return sharedPreferences.getInt(getString(R.string.position_6), 0);
 
-            case TEST_TOPIC_7:
-                return sharedPreferences.getInt("Position 7", 0);
+            case 7:
+                return sharedPreferences.getInt(getString(R.string.position_7), 0);
 
-            case TEST_TOPIC_8:
-                return sharedPreferences.getInt("Position 8", 0);
+            case 8:
+                return sharedPreferences.getInt(getString(R.string.position_8), 0);
 
-            case TEST_TOPIC_9:
-                return sharedPreferences.getInt("Position 9", 0);
+            case 9:
+                return sharedPreferences.getInt(getString(R.string.position_9), 0);
 
-            case TEST_TOPIC_10:
-                return sharedPreferences.getInt("Position 10", 0);
+            case 10:
+                return sharedPreferences.getInt(getString(R.string.position_10), 0);
 
-            case TEST_TOPIC_11:
-                return sharedPreferences.getInt("Position 11", 0);
+            case 11:
+                return sharedPreferences.getInt(getString(R.string.position_11), 0);
 
             default:
                 return 0;
