@@ -24,7 +24,7 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
 
     ArrayList<TestTopicListItem> list_Topic;
     TestTopicListAdapter adapter;
-    public static final String KEY_TESTTOPIC = "keytesttopic";
+    public static final String KEY_TESTTOPIC_1 = "Name",KEY_TESTTOPIC_2="Id";
 
     @Override
     protected String setTitle() {
@@ -148,7 +148,7 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
-                    bundle.putString(KEY_TESTTOPIC, String.valueOf(list_Topic.get(position).getId()));
+                    bundle.putString(KEY_TESTTOPIC_1, String.valueOf(list_Topic.get(position).getId()));
                     TestTopic_StudyAllInOnePage_Fragment fragment = new TestTopic_StudyAllInOnePage_Fragment();
                     fragment.setArguments(bundle);
                     replaceFragment(fragment, getString(R.string.title_test_topic));
@@ -158,10 +158,11 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
-                    bundle.putString(KEY_TESTTOPIC, String.valueOf(list_Topic.get(position).getId()));
+                    bundle.putString(KEY_TESTTOPIC_1, String.valueOf(list_Topic.get(position).getId()));
+                    bundle.putInt(KEY_TESTTOPIC_2, list_Topic.get(position).getId());
                     TestTopic_StudyOneByOne_Fragment fragment = new TestTopic_StudyOneByOne_Fragment();
                     fragment.setArguments(bundle);
-                    replaceFragment(fragment,KEY_TESTTOPIC);
+                    replaceFragment(fragment,getString(R.string.title_test_topic));
                 }
             });
             return convertView;
