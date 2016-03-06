@@ -1,5 +1,7 @@
 package com.essential.usdriving.ui.learning_card;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.MotionEvent;
@@ -25,6 +27,7 @@ public class TestCardFragment extends BaseFragment {
     private CardView cardNext;
     private ProgressBar progressBar;
     private ImageView imageQuestion;
+    private int type;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,13 @@ public class TestCardFragment extends BaseFragment {
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
         findViews(rootView);
         loadData();
+        currentQuesIndex=loadState();
+        if (currentQuesIndex == 0) {
+            setData(0);
+        } else {
+            progressBar.setProgress(currentQuesIndex + 1);
+            setData(currentQuesIndex);
+        }
 
 
     }
@@ -87,10 +97,11 @@ public class TestCardFragment extends BaseFragment {
         currentQuesIndex = 0;
         Bundle bundle = this.getArguments();
         getTopic = bundle.getString(LearningCardFragment.KEY_CARD);
+        type = bundle.getInt(LearningCardFragment.KEY_CARD_TOPIC);
         listCard = DataSource.getInstance().getCard(getTopic);
-        tvQuestion.setText("" + listCard.get(0).getCardTerm());
-        tvAnswer.setText(listCard.get(0).getCardDefinition());
-        tvNumber.setText("  " + (1) + "  of  " + listCard.size());
+//        tvQuestion.setText("" + listCard.get(0).getCardTerm());
+//        tvAnswer.setText(listCard.get(0).getCardDefinition());
+//        tvNumber.setText("  " + (1) + "  of  " + listCard.size());
         progressBar.setMax(listCard.size());
         progressBar.setProgress(currentQuesIndex + 1);
         progressBar.setOnTouchListener(new View.OnTouchListener() {
@@ -100,11 +111,11 @@ public class TestCardFragment extends BaseFragment {
                     float rate = event.getX() / progressBar.getWidth();
                     float tmp = listCard.size() * rate;
                     currentQuesIndex = (int) tmp;
-                    tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + listCard.size());
-                    tvAnswer.setText(listCard.get(currentQuesIndex).getCardDefinition());
-                    progressBar.setProgress(currentQuesIndex + 1);
-                    tvQuestion.setText("" + listCard.get(currentQuesIndex).getCardTerm());
-                    setData();
+//                    tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + listCard.size());
+//                    tvAnswer.setText(listCard.get(currentQuesIndex).getCardDefinition());
+//                    progressBar.setProgress(currentQuesIndex + 1);
+//                    tvQuestion.setText("" + listCard.get(currentQuesIndex).getCardTerm());
+                    setData(currentQuesIndex);
                 }
                 return false;
             }
@@ -130,13 +141,17 @@ public class TestCardFragment extends BaseFragment {
         });
     }
 
-    private void setData() {
+    private void setData(int position) {
         if (imageQuestion != null) {
             imageQuestion.setVisibility(View.VISIBLE);
             imageQuestion.setImageBitmap(listCard.get(currentQuesIndex).image);
         } else {
             imageQuestion.setVisibility(View.GONE);
         }
+        tvQuestion.setText(listCard.get(position).getCardTerm());
+        tvAnswer.setText(listCard.get(position).getCardDefinition());
+        tvNumber.setText("  " + (position + 1) + "  of  " + listCard.size());
+        progressBar.setProgress(position + 1);
     }
 
     private void computeSize(int id) {
@@ -148,13 +163,166 @@ public class TestCardFragment extends BaseFragment {
                 currentQuesIndex = currentQuesIndex + 1;
                 break;
         }
-        setData();
-        tvQuestion.setText(listCard.get(currentQuesIndex).getCardTerm());
-        tvAnswer.setText(listCard.get(currentQuesIndex).getCardDefinition());
-        tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + listCard.size());
-        progressBar.setProgress(currentQuesIndex + 1);
+        setData(currentQuesIndex);
+
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        saveState();
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        saveState();
+    }
+
+    private void saveState() {
+        SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        switch (type) {
+            case 22:
+                editor.putInt(getString(R.string.test_card_position_22), currentQuesIndex);
+                break;
+            case 23:
+                editor.putInt(getString(R.string.test_card_position_23), currentQuesIndex);
+                break;
+            case 24:
+                editor.putInt(getString(R.string.test_card_position_24), currentQuesIndex);
+                break;
+            case 25:
+                editor.putInt(getString(R.string.test_card_position_25), currentQuesIndex);
+                break;
+            case 26:
+                editor.putInt(getString(R.string.test_card_position_26), currentQuesIndex);
+                break;
+            case 27:
+                editor.putInt(getString(R.string.test_card_position_27), currentQuesIndex);
+                break;
+            case 28:
+                editor.putInt(getString(R.string.test_card_position_28), currentQuesIndex);
+                break;
+            case 29:
+                editor.putInt(getString(R.string.test_card_position_29), currentQuesIndex);
+                break;
+            case 30:
+                editor.putInt(getString(R.string.test_card_position_30), currentQuesIndex);
+                break;
+            case 31:
+                editor.putInt(getString(R.string.test_card_position_31), currentQuesIndex);
+                break;
+            case 32:
+                editor.putInt(getString(R.string.test_card_position_32), currentQuesIndex);
+                break;
+            case 33:
+                editor.putInt(getString(R.string.test_card_position_33), currentQuesIndex);
+                break;
+            case 34:
+                editor.putInt(getString(R.string.test_card_position_34), currentQuesIndex);
+                break;
+            case 35:
+                editor.putInt(getString(R.string.test_card_position_35), currentQuesIndex);
+                break;
+            case 36:
+                editor.putInt(getString(R.string.test_card_position_36), currentQuesIndex);
+                break;
+            case 37:
+                editor.putInt(getString(R.string.test_card_position_37), currentQuesIndex);
+                break;
+            case 38:
+                editor.putInt(getString(R.string.test_card_position_38), currentQuesIndex);
+                break;
+            case 39:
+                editor.putInt(getString(R.string.test_card_position_39), currentQuesIndex);
+                break;
+            case 40:
+                editor.putInt(getString(R.string.test_card_position_40), currentQuesIndex);
+                break;
+            case 41:
+                editor.putInt(getString(R.string.test_card_position_41), currentQuesIndex);
+                break;
+            case 42:
+                editor.putInt(getString(R.string.test_card_position_42), currentQuesIndex);
+                break;
+        }
+        editor.commit();
+
+    }
+
+    private int loadState() {
+        SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        switch (type) {
+            case 22:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_22), 0);
+
+            case 23:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_23), 0);
+
+            case 24:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_24), 0);
+
+            case 25:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_25), 0);
+
+            case 26:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_26), 0);
+
+            case 27:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_27), 0);
+
+            case 28:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_28), 0);
+
+            case 29:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_29), 0);
+
+            case 30:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_30), 0);
+
+            case 31:
+                return  sharedPreferences.getInt(getString(R.string.test_card_position_31), 0);
+
+            case 32:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_32), 0);
+
+            case 33:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_33), 0);
+
+            case 34:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_34), 0);
+
+            case 35:
+                return  sharedPreferences.getInt(getString(R.string.test_card_position_35), 0);
+
+            case 36:
+                return  sharedPreferences.getInt(getString(R.string.test_card_position_36), 0);
+
+            case 37:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_37), 0);
+
+            case 38:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_38), 0);
+
+            case 39:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_39), 0);
+
+            case 40:
+                return  sharedPreferences.getInt(getString(R.string.test_card_position_40), 0);
+
+            case 41:
+                return sharedPreferences.getInt(getString(R.string.test_card_position_41), 0);
+
+            case 42:
+                return  sharedPreferences.getInt(getString(R.string.test_card_position_42), 0);
+
+            default:
+                return 0;
+
+        }
+
+
+    }
 }

@@ -24,8 +24,8 @@ public class LearningCardFragment extends BaseFragment {
     ListView lvcard;
     ListCardAdapter cardAdapter;
     ArrayList<TopicCard> arrayListCard;
-    public static final String KEY_CARD = "keycard";
-
+    public static final String KEY_CARD = "keycard",KEY_CARD_TOPIC="";
+    private int type;
 
     @Override
     protected String setTitle() {
@@ -125,6 +125,7 @@ public class LearningCardFragment extends BaseFragment {
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
                     bundle.putString(KEY_CARD, String.valueOf(topicCards.get(position).getID()));
+                    bundle.putInt(KEY_CARD_TOPIC, topicCards.get(position).getID());
                     TestCardFragment testCardFragment = new TestCardFragment();
                     testCardFragment.setArguments(bundle);
                     replaceFragment(testCardFragment, getString(R.string.title_learning_card));

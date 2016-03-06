@@ -107,4 +107,27 @@
     <string name="position_10">Position 10</string>
     <string name="position_11">Position 11</string>
 
+
+    <string name="test_card_position_22">Position 22</string>
+    <string name="test_card_position_23">Position 23</string>
+    <string name="test_card_position_24">Position 24</string>
+    <string name="test_card_position_25">Position 25</string>
+    <string name="test_card_position_26">Position 26</string>
+    <string name="test_card_position_27">Position 27</string>
+    <string name="test_card_position_28">Position 28</string>
+    <string name="test_card_position_29">Position 29</string>
+    <string name="test_card_position_30">Position 30</string>
+    <string name="test_card_position_31">Position 31</string>
+    <string name="test_card_position_32">Position 32</string>
+    <string name="test_card_position_33">Position 33</string>
+    <string name="test_card_position_34">Position 34</string>
+    <string name="test_card_position_35">Position 35</string>
+    <string name="test_card_position_36">Position 36</string>
+    <string name="test_card_position_37">Position 37</string>
+    <string name="test_card_position_38">Position 38</string>
+    <string name="test_card_position_39">Position 39</string>
+    <string name="test_card_position_40">Position 40</string>
+    <string name="test_card_position_41">Position 41</string>
+    <string name="test_card_position_42">Position 42</string>
+
 </resources>
