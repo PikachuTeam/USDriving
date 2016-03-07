@@ -15,7 +15,6 @@
             android:layout_marginLeft="@dimen/margin_15"
             android:layout_marginRight="@dimen/margin_15"
             android:layout_marginTop="@dimen/margin_15"
-            android:background="@drawable/bg_dialog"
             android:orientation="vertical">
 
             <ImageView

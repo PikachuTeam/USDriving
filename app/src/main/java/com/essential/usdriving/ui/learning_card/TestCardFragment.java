@@ -65,7 +65,7 @@ public class TestCardFragment extends BaseFragment {
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
         findViews(rootView);
         loadData();
-        currentQuesIndex=loadState();
+        currentQuesIndex = loadState();
         if (currentQuesIndex == 0) {
             setData(0);
         } else {
@@ -99,9 +99,6 @@ public class TestCardFragment extends BaseFragment {
         getTopic = bundle.getString(LearningCardFragment.KEY_CARD);
         type = bundle.getInt(LearningCardFragment.KEY_CARD_TOPIC);
         listCard = DataSource.getInstance().getCard(getTopic);
-//        tvQuestion.setText("" + listCard.get(0).getCardTerm());
-//        tvAnswer.setText(listCard.get(0).getCardDefinition());
-//        tvNumber.setText("  " + (1) + "  of  " + listCard.size());
         progressBar.setMax(listCard.size());
         progressBar.setProgress(currentQuesIndex + 1);
         progressBar.setOnTouchListener(new View.OnTouchListener() {
@@ -111,10 +108,7 @@ public class TestCardFragment extends BaseFragment {
                     float rate = event.getX() / progressBar.getWidth();
                     float tmp = listCard.size() * rate;
                     currentQuesIndex = (int) tmp;
-//                    tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + listCard.size());
-//                    tvAnswer.setText(listCard.get(currentQuesIndex).getCardDefinition());
-//                    progressBar.setProgress(currentQuesIndex + 1);
-//                    tvQuestion.setText("" + listCard.get(currentQuesIndex).getCardTerm());
+
                     setData(currentQuesIndex);
                 }
                 return false;
@@ -283,7 +277,7 @@ public class TestCardFragment extends BaseFragment {
                 return sharedPreferences.getInt(getString(R.string.test_card_position_30), 0);
 
             case 31:
-                return  sharedPreferences.getInt(getString(R.string.test_card_position_31), 0);
+                return sharedPreferences.getInt(getString(R.string.test_card_position_31), 0);
 
             case 32:
                 return sharedPreferences.getInt(getString(R.string.test_card_position_32), 0);
@@ -295,10 +289,10 @@ public class TestCardFragment extends BaseFragment {
                 return sharedPreferences.getInt(getString(R.string.test_card_position_34), 0);
 
             case 35:
-                return  sharedPreferences.getInt(getString(R.string.test_card_position_35), 0);
+                return sharedPreferences.getInt(getString(R.string.test_card_position_35), 0);
 
             case 36:
-                return  sharedPreferences.getInt(getString(R.string.test_card_position_36), 0);
+                return sharedPreferences.getInt(getString(R.string.test_card_position_36), 0);
 
             case 37:
                 return sharedPreferences.getInt(getString(R.string.test_card_position_37), 0);
@@ -310,13 +304,13 @@ public class TestCardFragment extends BaseFragment {
                 return sharedPreferences.getInt(getString(R.string.test_card_position_39), 0);
 
             case 40:
-                return  sharedPreferences.getInt(getString(R.string.test_card_position_40), 0);
+                return sharedPreferences.getInt(getString(R.string.test_card_position_40), 0);
 
             case 41:
                 return sharedPreferences.getInt(getString(R.string.test_card_position_41), 0);
 
             case 42:
-                return  sharedPreferences.getInt(getString(R.string.test_card_position_42), 0);
+                return sharedPreferences.getInt(getString(R.string.test_card_position_42), 0);
 
             default:
                 return 0;

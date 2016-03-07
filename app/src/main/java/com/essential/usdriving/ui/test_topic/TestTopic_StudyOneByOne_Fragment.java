@@ -15,6 +15,7 @@ import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.entity.Question;
+import com.essential.usdriving.ui.widget.ZoomDialog;
 
 import java.util.ArrayList;
 
@@ -88,8 +89,8 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
         tvQuestion = (TextView) rootView.findViewById(R.id.tvQuestionPage);
         progressBar = (ProgressBar) rootView.findViewById(R.id.readingProgress);
         imageQuestion = (ImageView) rootView.findViewById(R.id.image_question_test_topic);
-        //imageZoom = (ImageView) rootView.findViewById(R.id.buttonZoomIn);
-
+        imageZoom = (ImageView) rootView.findViewById(R.id.buttonZoomIn);
+        imageZoom.setVisibility(View.GONE);
     }
 
     private void loadData() {
@@ -127,25 +128,33 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 if (currentQuesIndex < list.size() - 1) {
-                    // cardNext.setEnabled(true);
                     computeSize(2);
                 } else {
-                    // cardNext.setEnabled(false);
+
                 }
             }
         });
-        /*
+
         imageZoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putParcelable(DMVWrittenTestFragment.KEY_DIALOG, list.get(currentQuesIndex).image);
-                QuestionDialogFragment dialogFragment = new QuestionDialogFragment();
+                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, list.get(currentQuesIndex).image);
+                ZoomDialog dialogFragment = new ZoomDialog();
                 dialogFragment.setArguments(bundle);
-                dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
+                dialogFragment.show(getBaseActivity().getSupportFragmentManager(),"");
             }
         });
-        */
+        imageQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, list.get(currentQuesIndex).image);
+                ZoomDialog dialogFragment = new ZoomDialog();
+                dialogFragment.setArguments(bundle);
+                dialogFragment.show(getBaseActivity().getSupportFragmentManager(),"");
+            }
+        });
     }
 
 
@@ -161,19 +170,17 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
                 break;
         }
         SetData(currentQuesIndex);
-        // tvQuestion.setText();
-        //tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + list.size());
         progressBar.setProgress(currentQuesIndex + 1);
     }
 
     public void SetData(int position) {
-        if (imageQuestion != null) {
+        if (list.get(position).image != null) {
             imageQuestion.setVisibility(View.VISIBLE);
             imageQuestion.setImageBitmap(list.get(currentQuesIndex).image);
-            //  imageZoom.setVisibility(View.VISIBLE);
+            imageZoom.setVisibility(View.VISIBLE);
         } else {
             imageQuestion.setVisibility(View.GONE);
-            //  imageZoom.setVisibility(View.GONE);
+             imageZoom.setVisibility(View.GONE);
         }
         tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + list.size());
         tvQuestion.setText("" + list.get(currentQuesIndex).question);

@@ -23,41 +23,45 @@
             card_view:cardElevation="@dimen/common_size_3"
             card_view:cardUseCompatPadding="true">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tvQuestion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/common_size_5"
-                    android:gravity="top"
-                    android:text="@string/test_card_question"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/common_text_size_17"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvQuestionPage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="@dimen/common_size_5"
-                    android:text="aa"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/common_text_size_17"
-                    />
+                    <TextView
+                        android:id="@+id/tvQuestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/common_size_5"
+                        android:gravity="top"
+                        android:text="@string/test_card_question"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/common_text_size_17"
+                        android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/image_question_card"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"></ImageView>
+                    <TextView
+                        android:id="@+id/tvQuestionPage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="@dimen/common_size_5"
+                        android:text="aa"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/common_text_size_17" />
 
-                >
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/image_question_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"></ImageView>
+
+                    >
+                </LinearLayout>
+            </ScrollView>
 
 
         </android.support.v7.widget.CardView>
@@ -137,14 +141,15 @@
                 card_view:cardPreventCornerOverlap="false"
 
                 >
-                    <ImageView
-                        android:id="@+id/btnPrevious"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/raised_button"
-                        android:clickable="false"
-                        android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/btnPrevious"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/raised_button"
+                    android:clickable="false"
+                    android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
 
 
             </android.support.v7.widget.CardView>
@@ -157,16 +162,16 @@
                 card_view:cardCornerRadius="@dimen/common_size_3"
                 card_view:cardPreventCornerOverlap="false">
 
-                    <ImageView
-                        android:id="@+id/btnNext"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/raised_button"
-                        android:clickable="false"
-                        android:src="@drawable/ic_keyboard_arrow_right_black_24dp">
+                <ImageView
+                    android:id="@+id/btnNext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/raised_button"
+                    android:clickable="false"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp">
 
-                    </ImageView>
+                </ImageView>
 
             </android.support.v7.widget.CardView>
 

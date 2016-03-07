@@ -1,9 +1,9 @@
 package com.essential.usdriving.ui.widget;
 
 
+
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +11,11 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import com.essential.usdriving.R;
-import com.essential.usdriving.ui.written_test.DMVWrittenTestFragment;
+import com.essential.usdriving.ui.test_topic.TestTopic_StudyAllInOnePage_Fragment;
 
-public class QuestionDialogFragment extends DialogFragment {
 
-    ImageView img_DialogImageQuestion;
+public class ZoomDialog extends android.support.v4.app.DialogFragment {
+    ImageView imageZoom;
     Bitmap bm;
 
     @Override
@@ -25,10 +25,10 @@ public class QuestionDialogFragment extends DialogFragment {
         Bundle bundle = this.getArguments();
 
 
-        bm = bundle.getParcelable(DMVWrittenTestFragment.KEY_DIALOG);
-        img_DialogImageQuestion.setImageBitmap(bm);
+        bm = bundle.getParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG);
+        imageZoom.setImageBitmap(bm);
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        img_DialogImageQuestion.setOnClickListener(new View.OnClickListener() {
+        imageZoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
@@ -40,10 +40,8 @@ public class QuestionDialogFragment extends DialogFragment {
 
     private void findViewDialogId(View rootview) {
 
-        img_DialogImageQuestion = (ImageView) rootview.findViewById(R.id.image_question_dialog);
+        imageZoom = (ImageView) rootview.findViewById(R.id.image_question_dialog);
 
 
     }
-
-
 }
