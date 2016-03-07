@@ -52,14 +52,29 @@
                         android:text="aa"
                         android:textColor="@color/black"
                         android:textSize="@dimen/common_text_size_17" />
+                    <RelativeLayout
 
-                    <ImageView
-                        android:id="@+id/image_question_card"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"></ImageView>
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/common_size_90"
+                        android:layout_marginTop="@dimen/common_size_5"
+                        >
+                        <ImageView
+                            android:id="@+id/image_question_card"
+                            android:layout_width="@dimen/common_size_70"
+                            android:layout_height="@dimen/common_size_70"
+                            android:clickable="true"
+                            android:layout_centerHorizontal="true"/>
+                        <ImageView
+                            android:id="@+id/buttonZoomIn"
+                            android:layout_width="@dimen/common_size_30"
+                            android:layout_height="@dimen/common_size_30"
+                            android:layout_toRightOf="@id/image_question_card"
+                            android:clickable="true"
+                            android:src="@drawable/ic_zoom_in_normal"
+                            />
+                    </RelativeLayout>
 
-                    >
+
                 </LinearLayout>
             </ScrollView>
 

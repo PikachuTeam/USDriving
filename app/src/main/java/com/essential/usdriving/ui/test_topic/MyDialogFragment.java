@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.essential.usdriving.R;
@@ -22,6 +23,7 @@ public class MyDialogFragment extends DialogFragment {
     TextView tv_AnswerC;
     TextView tv_AnswerD;
      Question  Question;
+    LinearLayout layout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.test_topic_question_dialog, container, false);
@@ -74,6 +76,12 @@ public class MyDialogFragment extends DialogFragment {
                 ;
                 break;
         }
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
     }
 
     private void findViewDialogId(View rootview){
@@ -84,7 +92,7 @@ public class MyDialogFragment extends DialogFragment {
         tv_AnswerB = (TextView) rootview.findViewById(R.id.tv_AnswerB);
         tv_AnswerC = (TextView) rootview. findViewById(R.id.tv_AnswerC);
         tv_AnswerD = (TextView) rootview. findViewById(R.id.tv_AnswerD);
-
+        layout= (LinearLayout) rootview. findViewById(R.id.linearLayoutDialog);
 
     }
 

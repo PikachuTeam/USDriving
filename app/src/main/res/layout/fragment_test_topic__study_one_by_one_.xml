@@ -68,7 +68,6 @@
                           android:layout_toRightOf="@id/image_question_test_topic"
                           android:clickable="true"
                           android:src="@drawable/ic_zoom_in_normal"
-                          android:visibility="gone"
                           />
 
                   </RelativeLayout>

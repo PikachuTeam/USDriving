@@ -45,4 +45,6 @@
     <color name="progress_start">#fda523</color>
     <color name="progress_end">#4CAF50</color>
     <color name="splash_screen">#00ABC0</color>
+
+    <color name="transparent">#00ffffff</color>
 </resources>

@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/common_size_30"
     android:paddingRight="@dimen/common_size_30"
     android:paddingTop="@dimen/common_size_10"
-    android:background="@color/window_background"
+    android:background="@color/transparent"
     >
 
     <ListView
@@ -18,6 +18,8 @@
         android:layout_height="match_parent"
         android:scrollbarStyle="outsideInset"
         android:paddingRight="10dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
         />
 </tatteam.com.app_common.ui.drawable.FractionFrameLayout>
 

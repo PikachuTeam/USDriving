@@ -3,7 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="@dimen/common_size_10">
+    android:padding="@dimen/common_size_10"
+    android:id="@+id/linearLayoutDialog"
+    >
     <LinearLayout
         android:layout_width="@dimen/common_size_300"
         android:layout_height="wrap_content"
@@ -13,14 +15,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/bg_dialog_test_topic"
             android:padding="@dimen/common_size_5">
+            <TextView
+                android:id="@+id/tv_Question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_text_size_15"
+                android:text="@string/test_card_question"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
             <TextView
                 android:id="@+id/tv_DialogContentQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/common_text_size_15"
-                android:text="question ??"
                 android:textColor="@color/black"
                 />
             <ImageView
@@ -39,6 +48,15 @@
             android:layout_marginLeft="@dimen/common_size_5"
             android:orientation="vertical"
             android:layout_marginTop="@dimen/common_size_15">
+            <TextView
+                android:id="@+id/tv_Answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/common_text_size_15"
+                android:text="@string/test_card_answer"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
             <TextView
                 android:id="@+id/tv_AnswerA"
                 android:layout_width="match_parent"
