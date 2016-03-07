@@ -36,7 +36,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     private Button btnResult;
     private int currentQuesIndex;
     private QuestionPagerAdapter adapter;
-    public static String KEY_DIALOG = "key_question";
+    public static String KEY_DIALOG = "key_dialog";
     private MenuItem menuToolbar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
