@@ -14,7 +14,7 @@
         <android.support.v7.widget.CardView
             android:id="@+id/card_question"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_180"
+            android:layout_height="@dimen/size_150"
             android:layout_marginLeft="@dimen/common_size_5"
             android:layout_marginRight="@dimen/common_size_5"
             android:layout_marginTop="@dimen/common_size_7"
@@ -124,38 +124,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/common_size_65"
+            android:layout_height="@dimen/common_size_80"
             android:layout_alignParentBottom="true"
-            android:layout_margin="@dimen/common_size_1"
-            android:gravity="center"
-            android:padding="@dimen/common_size_1">
+            android:gravity="center">
 
             <android.support.v7.widget.CardView
                 android:id="@+id/btnPreviousLayout"
                 android:layout_width="@dimen/common_size_100"
                 android:layout_height="@dimen/common_size_55"
                 android:layout_marginRight="@dimen/common_size_30"
-                android:background="@drawable/raised_button"
-                android:gravity="center"
-                card_view:cardCornerRadius="@dimen/common_size_6"
-                card_view:cardElevation="@dimen/common_size_3"
-                card_view:cardUseCompatPadding="true"
+                card_view:cardCornerRadius="@dimen/common_size_3"
+                card_view:cardPreventCornerOverlap="false"
 
                 >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:background="@drawable/raised_button">
-
                     <ImageView
                         android:id="@+id/btnPrevious"
-                        android:layout_width="@dimen/common_size_50"
-                        android:layout_height="@dimen/common_size_50"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/ic_keyboard_arrow_left_black_24dp" />
-                </RelativeLayout>
+                        android:background="@drawable/raised_button"
+                        android:clickable="false"
+                        android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
 
 
             </android.support.v7.widget.CardView>
@@ -164,30 +153,20 @@
                 android:id="@+id/btnNextLayout"
                 android:layout_width="@dimen/common_size_100"
                 android:layout_height="@dimen/common_size_55"
-                android:layout_marginLeft="@dimen/common_size_30"
-                android:layout_toRightOf="@+id/btnPreviousLayout"
-                android:background="@drawable/raised_button"
                 android:gravity="center"
-                card_view:cardCornerRadius="@dimen/common_size_6"
-                card_view:cardElevation="@dimen/common_size_3"
-                card_view:cardUseCompatPadding="true">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:background="@drawable/raised_button">
+                card_view:cardCornerRadius="@dimen/common_size_3"
+                card_view:cardPreventCornerOverlap="false">
 
                     <ImageView
                         android:id="@+id/btnNext"
-                        android:layout_width="@dimen/common_size_50"
-                        android:layout_height="@dimen/common_size_50"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/ic_keyboard_arrow_right_black_24dp">
-
+                        android:background="@drawable/raised_button"
+                        android:clickable="false"
+                        android:src="@drawable/ic_keyboard_arrow_right_black_24dp">
 
                     </ImageView>
-                </RelativeLayout>
 
             </android.support.v7.widget.CardView>
 
