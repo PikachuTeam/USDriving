@@ -14,6 +14,8 @@ import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.entity.Card;
+import com.essential.usdriving.ui.test_topic.TestTopic_StudyAllInOnePage_Fragment;
+import com.essential.usdriving.ui.widget.ZoomDialog;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,7 @@ public class TestCardFragment extends BaseFragment {
     private CardView cardPrevious;
     private CardView cardNext;
     private ProgressBar progressBar;
-    private ImageView imageQuestion;
+    private ImageView imageQuestion, imageZoom;
     private int type;
 
     @Override
@@ -90,6 +92,7 @@ public class TestCardFragment extends BaseFragment {
         tvNumber = (TextView) rootView.findViewById(R.id.tv_Number);
         cardPrevious = (CardView) rootView.findViewById(R.id.btnPreviousLayout);
         cardNext = (CardView) rootView.findViewById(R.id.btnNextLayout);
+        imageZoom=(ImageView) rootView.findViewById(R.id.buttonZoomIn);
     }
 
     private void loadData() {
@@ -133,14 +136,38 @@ public class TestCardFragment extends BaseFragment {
                 }
             }
         });
+
+        imageZoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
+                ZoomDialog dialogFragment = new ZoomDialog();
+                dialogFragment.setArguments(bundle);
+                dialogFragment.show(getBaseActivity().getSupportFragmentManager(),"");
+            }
+        });
+
+        imageQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
+                ZoomDialog dialogFragment = new ZoomDialog();
+                dialogFragment.setArguments(bundle);
+                dialogFragment.show(getBaseActivity().getSupportFragmentManager(),"");
+            }
+        });
     }
 
     private void setData(int position) {
-        if (imageQuestion != null) {
+        if (listCard.get(position).image != null) {
             imageQuestion.setVisibility(View.VISIBLE);
             imageQuestion.setImageBitmap(listCard.get(currentQuesIndex).image);
+            imageZoom.setVisibility(View.VISIBLE);
         } else {
             imageQuestion.setVisibility(View.GONE);
+            imageZoom.setVisibility(View.GONE);
         }
         tvQuestion.setText(listCard.get(position).getCardTerm());
         tvAnswer.setText(listCard.get(position).getCardDefinition());

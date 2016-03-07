@@ -25,6 +25,7 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
     ArrayList<TestTopicListItem> list_Topic;
     TestTopicListAdapter adapter;
     public static final String KEY_TESTTOPIC_1 = "Name",KEY_TESTTOPIC_2="Id";
+    private boolean close=true;
 
     @Override
     protected String setTitle() {
@@ -64,13 +65,16 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         if (list_Topic.get(position).isClose()) {
             list_Topic.get(position).setClose(false);
-            for (TestTopicListItem n : list_Topic) {
-             if(!n.isClose()){
-
+/*
+            for (int i=0;i<list_Topic.size();i++) {
+             if(i!=position){
+                 list_Topic.get(position).setClose(true);
              }
             }
+*/
             adapter.notifyDataSetChanged();
 
         } else {
@@ -140,8 +144,14 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
             mViewHolder.layoutButton.setVisibility(View.GONE);
             if (topic_List.get(position).isClose()) {
                 mViewHolder.layoutButton.setVisibility(View.GONE);
+
             } else {
                 mViewHolder.layoutButton.setVisibility(View.VISIBLE);
+                for (int i=0;i<list_Topic.size();i++) {
+                    if(i!=position){
+                        list_Topic.get(position).setClose(true);
+                    }
+                }
             }
 
             mViewHolder.tvStudyAll.setOnClickListener(new View.OnClickListener() {
