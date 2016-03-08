@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/questionImage"
-        android:layout_width="@dimen/size_150"
-        android:layout_height="@dimen/written_test_page_item_image_size"
-        android:visibility="visible" />
-
     <TextView
         android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_7"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:textColor="@color/black"
+        android:text="aa"
 
         />
-</LinearLayout>
+    <ImageView
+        android:id="@+id/questionImage"
+        android:layout_width="@dimen/size_150"
+        android:layout_height="@dimen/written_test_page_item_image_size"
+        android:visibility="visible"
+        android:layout_below="@+id/tvQuestion"
+        />
+
+
+    <ImageView
+        android:id="@+id/buttonZoomIn"
+        android:layout_width="@dimen/common_size_30"
+        android:layout_height="@dimen/common_size_30"
+        android:layout_toRightOf="@id/questionImage"
+        android:clickable="true"
+        android:src="@drawable/ic_zoom_in_normal"
+        android:layout_below="@+id/tvQuestion"
+        />
+</RelativeLayout>

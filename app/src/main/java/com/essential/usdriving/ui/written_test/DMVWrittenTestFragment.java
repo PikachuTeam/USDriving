@@ -300,11 +300,24 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             final Question ques = data.get(position);
             final ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
+            ImageView imgZoom= (ImageView) view.findViewById(R.id.buttonZoomIn);
             tvQuestion.setText(ques.question);
             if (ques.image != null) {
                 questionImage.setVisibility(View.VISIBLE);
+                imgZoom.setVisibility(View.VISIBLE);
                 questionImage.setImageBitmap(ques.image);
                 questionImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable(KEY_DIALOG, data.get(position).image);
+                        QuestionDialogFragment dialogFragment = new QuestionDialogFragment();
+                        dialogFragment.setArguments(bundle);
+                        dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
+                    }
+
+                });
+                imgZoom.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
@@ -317,6 +330,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 });
             } else {
                 questionImage.setVisibility(View.GONE);
+                imgZoom.setVisibility(View.GONE);
             }
             container.addView(view);
             return view;

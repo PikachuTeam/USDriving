@@ -27,7 +27,7 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
                 getBaseActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 if (enableBackButton()) {
 
-                    getBaseActivity().getToolbar().setNavigationIcon(R.drawable.ic_back);
+                    getBaseActivity().getToolbar().setNavigationIcon(R.drawable.ic_arrow_back_24dp);
                 } else {
                     getBaseActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 }

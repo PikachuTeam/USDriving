@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/margin_15"
-            android:text="Question 3"
+            android:text="@string/test_card_question"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_5" />
         <Button

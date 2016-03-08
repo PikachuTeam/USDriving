@@ -68,13 +68,6 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
 
         if (list_Topic.get(position).isClose()) {
             list_Topic.get(position).setClose(false);
-/*
-            for (int i=0;i<list_Topic.size();i++) {
-             if(i!=position){
-                 list_Topic.get(position).setClose(true);
-             }
-            }
-*/
             adapter.notifyDataSetChanged();
 
         } else {

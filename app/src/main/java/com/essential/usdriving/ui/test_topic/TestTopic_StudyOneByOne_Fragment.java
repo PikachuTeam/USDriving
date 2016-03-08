@@ -3,7 +3,10 @@ package com.essential.usdriving.ui.test_topic;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,7 +34,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
     private CardView cardPrevious;
     private CardView cardNext;
     private ProgressBar progressBar;
-    private ImageView imageQuestion, imageZoom;
+    private ImageView imageQuestion, imageZoom, btnPrevious, btnNext;
     private int type;
 
     @Override
@@ -91,6 +94,8 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
         imageQuestion = (ImageView) rootView.findViewById(R.id.image_question_test_topic);
         imageZoom = (ImageView) rootView.findViewById(R.id.buttonZoomIn);
         imageZoom.setVisibility(View.GONE);
+        btnPrevious=(ImageView) rootView.findViewById(R.id.btnPrevious);
+        btnNext = (ImageView) rootView.findViewById(R.id.btnNext);
     }
 
     private void loadData() {
@@ -110,6 +115,17 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
                     currentQuesIndex = (int) tmp;
                     progressBar.setProgress(currentQuesIndex + 1);
                     SetData(currentQuesIndex);
+                    if (currentQuesIndex == 0) {
+                        disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                    } else {
+                        enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                    }
+                    if (currentQuesIndex == list.size() - 1) {
+                        disableButton(cardNext, btnNext, R.drawable.ic_right);
+                    } else {
+                        enableButton(cardNext, btnNext, R.drawable.ic_right);
+                    }
+
                 }
                 return false;
             }
@@ -117,19 +133,35 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
         cardPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (currentQuesIndex == list.size() - 1) {
+                    enableButton(cardNext,btnNext, R.drawable.ic_right);
+                }
                 if (currentQuesIndex > 0) {
                     computeSize(1);
+                    enableButton(cardPrevious,btnPrevious, R.drawable.ic_left);
+
 
                 } else {
+                    disableButton(cardPrevious,btnPrevious, R.drawable.ic_left);
                 }
             }
+
+
         });
         cardNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (currentQuesIndex == 0) {
+                enableButton(cardPrevious,btnPrevious, R.drawable.ic_left);
+
+            }
                 if (currentQuesIndex < list.size() - 1) {
                     computeSize(2);
+                    enableButton(cardNext,btnNext, R.drawable.ic_right);
+
                 } else {
+                    disableButton(cardNext,btnNext, R.drawable.ic_right);
 
                 }
             }
@@ -157,7 +189,19 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
         });
     }
 
+    private void enableButton(CardView cv,ImageView button, int image) {
+        cv.setEnabled(true);
+        button.setEnabled(true);
+        button.setImageResource(image);
+        button.setColorFilter(ContextCompat.getColor(getActivity(), R.color.enable_button), PorterDuff.Mode.SRC_ATOP);
+    }
 
+    private void disableButton(CardView cv, ImageView button, int image) {
+        cv.setEnabled(false);
+        button.setEnabled(false);
+        button.setImageResource(image);
+        button.setColorFilter(ContextCompat.getColor(getActivity(), R.color.disable_button), PorterDuff.Mode.SRC_ATOP);
+    }
     private void computeSize(int id) {
         //viewOrange.setLayoutParams(new RelativeLayout.LayoutParams(viewWhite.getMeasuredWidth() * position / size,
         //viewWhite.getMeasuredHeight()));

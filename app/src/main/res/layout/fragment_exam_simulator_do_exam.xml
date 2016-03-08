@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<tatteam.com.app_common.ui.drawable.FractionFrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<tatteam.com.app_common.ui.drawable.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -69,30 +68,83 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/margin_15"
-                android:text="Question 3"
+                android:text="@string/test_card_question"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_5" />
 
-            <include
-                layout="@layout/item_clock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/margin_4"
-                android:layout_marginTop="@dimen/margin_1" />
+
         </RelativeLayout>
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_150">
+            android:layout_height="wrap_content">
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewPager"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </RelativeLayout>
+                android:layout_height="@dimen/size_150">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_size_25"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/transparent"
+                    android:orientation="horizontal"
+                    android:id="@+id/layout_clock"
+                    >
+
+                    <TextView
+                        android:id="@+id/minute_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:textColor="@color/exam_simulator_color_1"
+                        android:textSize="@dimen/text_size_6" />
+
+
+                    <TextView
+                        android:id="@+id/minute_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/exam_simulator_color_1"
+                        android:textSize="@dimen/text_size_6" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":"
+                        android:textColor="@color/exam_simulator_color_1"
+                        android:textSize="@dimen/text_size_6" />
+
+
+                    <TextView
+                        android:id="@+id/second_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/exam_simulator_color_1"
+                        android:textSize="@dimen/text_size_6" />
+
+                    <TextView
+                        android:id="@+id/second_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/exam_simulator_color_1"
+                        android:textSize="@dimen/text_size_6" />
+
+
+                </LinearLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/layout_clock" />
+            </RelativeLayout>
+        </ScrollView>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -118,8 +170,7 @@
                 android:id="@+id/layoutAnswerChoiceContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-            </LinearLayout>
+                android:orientation="vertical"></LinearLayout>
         </ScrollView>
 
         <View
