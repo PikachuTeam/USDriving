@@ -2,7 +2,9 @@ package com.essential.usdriving.ui.learning_card;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,7 +30,7 @@ public class TestCardFragment extends BaseFragment {
     private CardView cardPrevious;
     private CardView cardNext;
     private ProgressBar progressBar;
-    private ImageView imageQuestion, imageZoom;
+    private ImageView imageQuestion, imageZoom, btnPrevious, btnNext;
     private int type;
 
     @Override
@@ -92,7 +94,9 @@ public class TestCardFragment extends BaseFragment {
         tvNumber = (TextView) rootView.findViewById(R.id.tv_Number);
         cardPrevious = (CardView) rootView.findViewById(R.id.btnPreviousLayout);
         cardNext = (CardView) rootView.findViewById(R.id.btnNextLayout);
-        imageZoom=(ImageView) rootView.findViewById(R.id.buttonZoomIn);
+        imageZoom = (ImageView) rootView.findViewById(R.id.buttonZoomIn);
+        btnNext = (ImageView) rootView.findViewById(R.id.btnNext);
+        btnPrevious = (ImageView) rootView.findViewById(R.id.btnPrevious);
     }
 
     private void loadData() {
@@ -113,6 +117,17 @@ public class TestCardFragment extends BaseFragment {
                     currentQuesIndex = (int) tmp;
 
                     setData(currentQuesIndex);
+                    if (currentQuesIndex == 0) {
+                        disableButton(cardPrevious,btnPrevious, R.drawable.ic_left);
+                    } else {
+                        enableButton(cardPrevious,btnPrevious, R.drawable.ic_left);
+                    }
+                    if (currentQuesIndex == listCard.size() - 1) {
+                        disableButton(cardNext,btnNext, R.drawable.ic_right);
+                    } else {
+                        enableButton(cardNext,btnNext, R.drawable.ic_right);
+                    }
+
                 }
                 return false;
             }
@@ -120,19 +135,33 @@ public class TestCardFragment extends BaseFragment {
         cardPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (currentQuesIndex == listCard.size() - 1) {
+                    enableButton(cardNext,btnNext, R.drawable.ic_right);
+                }
                 if (currentQuesIndex > 0) {
                     computeSize(1);
+                    enableButton(cardPrevious,btnPrevious, R.drawable.ic_left);
+
 
                 } else {
+                    disableButton(cardPrevious,btnPrevious, R.drawable.ic_left);
                 }
             }
         });
         cardNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (currentQuesIndex == 0) {
+                    enableButton(cardPrevious,btnPrevious, R.drawable.ic_left);
+
+                }
                 if (currentQuesIndex < listCard.size() - 1) {
                     computeSize(2);
+                    enableButton(cardNext,btnNext, R.drawable.ic_right);
+
                 } else {
+                    disableButton(cardNext,btnNext, R.drawable.ic_right);
+
                 }
             }
         });
@@ -144,7 +173,7 @@ public class TestCardFragment extends BaseFragment {
                 bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
                 ZoomDialog dialogFragment = new ZoomDialog();
                 dialogFragment.setArguments(bundle);
-                dialogFragment.show(getBaseActivity().getSupportFragmentManager(),"");
+                dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "");
             }
         });
 
@@ -155,9 +184,23 @@ public class TestCardFragment extends BaseFragment {
                 bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
                 ZoomDialog dialogFragment = new ZoomDialog();
                 dialogFragment.setArguments(bundle);
-                dialogFragment.show(getBaseActivity().getSupportFragmentManager(),"");
+                dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "");
             }
         });
+    }
+
+    private void enableButton(CardView cv,ImageView button, int image) {
+        cv.setEnabled(true);
+        button.setEnabled(true);
+        button.setImageResource(image);
+        button.setColorFilter(ContextCompat.getColor(getActivity(), R.color.enable_button), PorterDuff.Mode.SRC_ATOP);
+    }
+
+    private void disableButton(CardView cv, ImageView button, int image) {
+        cv.setEnabled(false);
+        button.setEnabled(false);
+        button.setImageResource(image);
+        button.setColorFilter(ContextCompat.getColor(getActivity(), R.color.disable_button), PorterDuff.Mode.SRC_ATOP);
     }
 
     private void setData(int position) {

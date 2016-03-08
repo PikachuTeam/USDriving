@@ -47,4 +47,7 @@
     <color name="splash_screen">#00ABC0</color>
 
     <color name="transparent">#00ffffff</color>
+
+    <color name="disable_button">#757575</color>
+    <color name="enable_button">#FF000000</color>
 </resources>
