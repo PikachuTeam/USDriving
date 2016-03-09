@@ -12,18 +12,24 @@
         <TextView
             android:id="@+id/tvType"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/common_size_3"
+            android:layout_height="@dimen/common_size_35"
             android:background="@color/written_test_color_2"
             android:gravity="center"
             android:text="Correct Answers"
             android:textColor="@color/white"
-            android:textSize="@dimen/common_text_size_10"
+            android:textSize="@dimen/common_text_size_25"
             android:textStyle="bold" />
 
         <ListView
             android:id="@+id/dmvWrittenTestList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:scrollbarStyle="outsideInset"
+            android:padding="@dimen/common_size_5"
             ></ListView>
 
     </LinearLayout>

@@ -74,13 +74,13 @@
             />
 
         <ImageView
-            android:layout_width="@dimen/written_test_button_next_width"
-            android:layout_height="@dimen/size_1"
+            android:layout_width="@dimen/common_size_25"
+            android:layout_height="@dimen/common_size_50"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/margin_5"
-            android:background="@drawable/ic_next" />
+            android:background="@drawable/ic_right" />
     </RelativeLayout>
 
     <View
@@ -128,13 +128,13 @@
             />
 
         <ImageView
-            android:layout_width="@dimen/written_test_button_next_width"
-            android:layout_height="@dimen/size_1"
+            android:layout_width="@dimen/common_size_25"
+            android:layout_height="@dimen/common_size_50"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/margin_5"
-            android:background="@drawable/ic_next" />
+            android:background="@drawable/ic_right" />
     </RelativeLayout>
 
     <View
@@ -182,13 +182,13 @@
             />
 
         <ImageView
-            android:layout_width="@dimen/written_test_button_next_width"
-            android:layout_height="@dimen/size_1"
+            android:layout_width="@dimen/common_size_25"
+            android:layout_height="@dimen/common_size_50"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/margin_5"
-            android:background="@drawable/ic_next" />
+            android:background="@drawable/ic_right" />
     </RelativeLayout>
 
     <View

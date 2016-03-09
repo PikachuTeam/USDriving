@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.essential.usdriving.R;
@@ -29,6 +30,7 @@ public class CustomDialog extends Dialog {
     private TextView tvChoiceD;
     private TextView tvExplanation;
     private TextView tvAnswer;
+    private LinearLayout layout;
 
     private Question question;
 
@@ -58,11 +60,15 @@ public class CustomDialog extends Dialog {
         if (question.explanation == null) {
             tvExplanation.setVisibility(View.GONE);
         } else {
-            tvExplanation.setText(question.explanation);
+            tvExplanation.setText("Explanation :"+question.explanation);
         }
-
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
         tvQuestion.setText(question.question);
-
         tvChoiceA.setText("A. " + question.choiceA);
         tvChoiceB.setText("B. " + question.choiceB);
         tvChoiceC.setText("C. " + question.choiceC);
@@ -134,5 +140,6 @@ public class CustomDialog extends Dialog {
         tvChoiceD = (TextView) view.findViewById(R.id.tvChoiceD);
         tvExplanation = (TextView) view.findViewById(R.id.tvExplanation);
         tvAnswer = (TextView) view.findViewById(R.id.tvAnswer);
+        layout = (LinearLayout) view.findViewById(R.id.layout_written_dialog);
     }
 }

@@ -1,83 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/window_background"
     android:layout_margin="@dimen/common_size_10"
-    >
+    android:background="@color/transparent"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_110"
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="@dimen/size_350"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center|top"
+        android:layout_marginLeft="@dimen/common_size_5"
+        android:layout_marginRight="@dimen/common_size_5"
+        android:layout_marginTop="@dimen/common_size_1"
+        card_view:cardCornerRadius="@dimen/common_size_6"
+        card_view:cardElevation="@dimen/common_size_3"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:cardUseCompatPadding="true"
 
         >
-        <include layout="@layout/background_highlight"
-            />
 
-        <LinearLayout
-            android:id="@+id/layoutTmp"
-            android:layout_width="@dimen/size_13"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tvQuestionNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/written_test_question_no"
-                android:textSize="@dimen/text_size_10"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/imgQuestion"
-            android:layout_toRightOf="@+id/layoutTmp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:padding="@dimen/common_size_10"
-            android:layout_centerInParent="true"
+            android:layout_height="match_parent"
+
             >
 
-            <TextView
-                android:id="@+id/tvResultQuestion"
+            <LinearLayout
+                android:id="@+id/layoutTmp"
+                android:layout_width="@dimen/size_13"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvQuestionNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/written_test_question_no"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_10"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:text="Alo"
-                android:textSize="@dimen/text_size_5"
-                android:layout_marginLeft="@dimen/common_size_5"
-                android:textColor="@color/black"
-                />
+                android:layout_centerInParent="true"
+                android:layout_toLeftOf="@+id/imgQuestion"
+                android:layout_toRightOf="@+id/layoutTmp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/common_size_10">
 
-            <TextView
-                android:id="@+id/tvResultAnswer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:text="Alo"
-                android:textColor="@color/written_test_text_answer"
-                android:textSize="@dimen/text_size_3"
-                android:layout_marginLeft="@dimen/common_size_5"
-                />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tvResultQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_size_5"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="Alo"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_5" />
 
-        <ImageView
-            android:id="@+id/imgQuestion"
-            android:layout_width="@dimen/size_7"
-            android:layout_height="@dimen/size_7"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_20"
-            android:layout_marginRight="@dimen/margin_20" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/tvResultAnswer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/common_size_5"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="Alo"
+                    android:textColor="@color/written_test_text_answer"
+                    android:textSize="@dimen/text_size_3" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgQuestion"
+                android:layout_width="@dimen/size_7"
+                android:layout_height="@dimen/size_7"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_20"
+                android:layout_marginRight="@dimen/margin_20" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
 
     <View
         android:layout_width="match_parent"

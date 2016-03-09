@@ -3,12 +3,12 @@ package com.essential.usdriving.ui.written_test;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,6 +36,7 @@ public class TestDetailResultFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         getData();
     }
+
     @Override
     protected boolean enableBackButton() {
         return true;
@@ -72,10 +73,6 @@ public class TestDetailResultFragment extends BaseFragment {
         adapter = new WrittenTestResultDetailListAdapter(this.getActivity(), questions);
         listItem.setAdapter(adapter);
     }
-
-
-
-
 
 
     @Override
@@ -161,8 +158,8 @@ public class TestDetailResultFragment extends BaseFragment {
                 viewHolder.imgQuestion.setVisibility(View.GONE);
             }
 
-            viewHolder.viewHighLight.setTag(questions.get(position));
-            viewHolder.viewHighLight.setOnClickListener(new View.OnClickListener() {
+            viewHolder.cv.setTag(questions.get(position));
+            viewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Question question = (Question) v.getTag();
@@ -177,14 +174,16 @@ public class TestDetailResultFragment extends BaseFragment {
         private class ViewHolder {
             public TextView tvQuestionNo, tvResultQuestion, tvResultAnswer;
             public ImageView imgQuestion;
-            public View viewHighLight;
+            // public View viewHighLight;
+            public CardView cv;
 
             public ViewHolder(View view) {
                 tvQuestionNo = (TextView) view.findViewById(R.id.tvQuestionNo);
                 tvResultQuestion = (TextView) view.findViewById(R.id.tvResultQuestion);
                 tvResultAnswer = (TextView) view.findViewById(R.id.tvResultAnswer);
                 imgQuestion = (ImageView) view.findViewById(R.id.imgQuestion);
-                viewHighLight = view.findViewById(R.id.view_highlight);
+                // viewHighLight = view.findViewById(R.id.view_highlight);
+                cv = (CardView) view.findViewById(R.id.cardView);
             }
         }
     }
