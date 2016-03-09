@@ -165,9 +165,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         layoutAnswerChoiceContent = (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horizontalScrollView);
-        btnResult = (Button) view.findViewById(R.id.btnResult);
 
-        btnResult.setOnClickListener(this);
     }
 
     private void addQuestionList() {
@@ -197,7 +195,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         for (int i = 0; i < 4; i++) {
             addItemIntoList(ques, i);
         }
-
+/*
         if (ques.myAnswer != BaseEntity.ANSWER_NOT_CHOOSE) {
             if (ques.myAnswer == ques.correctAnswer) {
                 answerChoices.get(ques.myAnswer).setCorrectAnswer(true, ques.explanation != null);
@@ -206,7 +204,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             }
             answerChoices.get(ques.myAnswer).setActive(1);
         }
-
+*/
         for (int i = 0; i < answerChoices.size(); i++) {
             answerChoices.get(i).setOnAnswerChooseListener(this);
         }
@@ -237,7 +235,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         if (item.getAnswer() != "") {
             layoutAnswerChoiceContent.addView(item.getView());
             item.setDefault();
-            item.addLayoutTransition();
+           // item.addLayoutTransition();
             answerChoices.add(item);
         }
     }
