@@ -201,7 +201,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         PieData data = new PieData(xVals, dataSet);
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(9f);
-        data.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+        //data.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
         pieChart.setData(data);
         pieChart.invalidate();

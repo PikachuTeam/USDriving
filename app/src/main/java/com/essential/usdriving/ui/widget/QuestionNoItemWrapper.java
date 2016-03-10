@@ -36,7 +36,7 @@ public class QuestionNoItemWrapper implements View.OnClickListener {
     }
 
     public void setHighlight() {
-        textViewQuesNum.setTextColor(ContextCompat.getColor(context, R.color.written_test_text_highlight));
+        textViewQuesNum.setTextColor(ContextCompat.getColor(context, R.color.black));
     }
 
     public void setActive(boolean active) {

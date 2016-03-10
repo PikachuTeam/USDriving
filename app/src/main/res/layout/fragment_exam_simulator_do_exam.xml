@@ -73,28 +73,34 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_5" />
 
-            <include
-                layout="@layout/item_clock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/margin_4"
-                android:layout_marginTop="@dimen/margin_1" />
         </RelativeLayout>
-        -
 
-        <RelativeLayout
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_150">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_15"
+        >
+        <include
+            layout="@layout/item_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_4"
+            android:layout_marginTop="@dimen/margin_1"
+            android:layout_gravity="top|right"
+            />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_15">
+            android:layout_height="@dimen/size_170"
+            />
+    </RelativeLayout>
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </RelativeLayout>
-        -
+</ScrollView>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -108,20 +114,23 @@
                 android:layout_marginLeft="@dimen/margin_15"
                 android:text="Answer Choices"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_5" />
+                android:textSize="@dimen/text_size_5"
+                />
         </LinearLayout>
         -
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="@dimen/written_test_list_height"
-            android:background="@color/white">
+            android:background="@color/white"
+            >
 
             <LinearLayout
                 android:id="@+id/layoutAnswerChoiceContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical"
+                ></LinearLayout>
         </ScrollView>
 
         <View

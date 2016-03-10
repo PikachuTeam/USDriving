@@ -91,19 +91,19 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/margin_30"
+                android:layout_marginRight="@dimen/common_size_40"
                 android:text="@string/written_test_total_answer"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_10" />
 
             <ImageView
-                android:layout_width="@dimen/written_test_button_next_width"
-                android:layout_height="@dimen/size_1"
+                android:layout_width="@dimen/common_size_45"
+                android:layout_height="@dimen/common_size_50"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/margin_5"
-                android:background="@drawable/ic_next" />
+                android:background="@drawable/ic_right" />
         </RelativeLayout>
 
         <View
@@ -143,19 +143,19 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/margin_30"
+                android:layout_marginRight="@dimen/common_size_40"
                 android:text="@string/written_test_total_answer"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_10" />
 
             <ImageView
-                android:layout_width="@dimen/written_test_button_next_width"
-                android:layout_height="@dimen/size_1"
+                android:layout_width="@dimen/common_size_45"
+                android:layout_height="@dimen/common_size_50"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/margin_5"
-                android:background="@drawable/ic_next" />
+                android:background="@drawable/ic_right" />
         </RelativeLayout>
 
         <View
@@ -195,19 +195,19 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/margin_30"
+                android:layout_marginRight="@dimen/common_size_40"
                 android:text="@string/written_test_total_answer"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_10" />
 
             <ImageView
-                android:layout_width="@dimen/written_test_button_next_width"
-                android:layout_height="@dimen/size_1"
+                android:layout_width="@dimen/common_size_45"
+                android:layout_height="@dimen/common_size_50"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/margin_5"
-                android:background="@drawable/ic_next" />
+                android:background="@drawable/ic_right" />
         </RelativeLayout>
 
         <View

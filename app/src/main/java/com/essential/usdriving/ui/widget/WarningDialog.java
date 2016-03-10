@@ -42,8 +42,12 @@ public class WarningDialog extends Dialog {
 
         if (state == 1) {
             tvWarning.setText(this.context.getString(R.string.exam_simulator_dialog_text_1));
-        } else {
-            tvWarning.setText(this.context.getString(R.string.exam_simulator_dialog_text_2));
+        }
+//        else if(state==2) {
+//            tvWarning.setText(this.context.getString(R.string.exam_simulator_dialog_text_2));
+//        }
+        else if(state==3) {
+            tvWarning.setText(this.context.getString(R.string.exam_simulator_dialog_text_3));
         }
     }
 

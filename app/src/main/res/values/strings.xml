@@ -42,6 +42,7 @@
     <string name="exam_simulator_not_show_again">Do not show this rule again</string>
     <string name="exam_simulator_dialog_text_1">\tFinish answering all the questions?\nYou will be shown with the final result.\n\t\t\t\tProceed to end this test?</string>
     <string name="exam_simulator_dialog_text_2">If you see the answers, you will not able to redo the test. Want to continue?</string>
+    <string name="exam_simulator_dialog_text_3">You are canceling this test. Want to continue?</string>
 
 
     //Driver's Manual

@@ -1,8 +1,6 @@
 
 package com.essential.usdriving.ui.exam_simulator;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -12,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -40,15 +37,12 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     private LinearLayout layoutScrollContent;
     private ViewPager viewPager;
     private LinearLayout layoutAnswerChoiceContent;
-    private Button btnResult;
     private TextView minute1;
     private TextView minute2;
-    private TextView minute3;
-    private TextView minute4;
+
     private TextView second1;
     private TextView second2;
-    private TextView second3;
-    private TextView second4;
+
     private ArrayList<Question> questions;
     private ArrayList<AnswerChoicesItem> answerChoices;
     private ArrayList<QuestionNoItemWrapper> listItemQues;
@@ -56,10 +50,15 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     private QuestionPagerAdapter adapter;
     private CountDownTimer timer;
     private int min1, min2, sec1, sec2;
-    private WarningDialog dialog;
+    private WarningDialog dialog, warningDialog;
     private final static int INTERVAL = 1000, LIMIT_TIME = 3600000;
-    private MenuItem menuToolbar;
-    private static String KEY_EXAM_DIALOG = "key_exam";
+    private MenuItem menuToolbarResult;
+
+
+    @Override
+    protected boolean enableBackButton() {
+        return true;
+    }
 
     @Override
     protected int getLayoutResIdContentView() {
@@ -72,10 +71,32 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     }
 
     @Override
+    public void onBackPressed() {
+        timer.cancel();
+        warningDialog = new WarningDialog(getActivity(), 3);
+        warningDialog.setOnDialogItemClickListener(new WarningDialog.OnDialogItemClickListener() {
+            @Override
+            public void onDialogItemClick(int code) {
+                if (code == WarningDialog.OK) {
+                    warningDialog.dismiss();
+                    timer.cancel();
+                    ExamSimulatorStartFragment startFragment = new ExamSimulatorStartFragment();
+                    replaceFragment(startFragment, getString(R.string.title_exam_simulator));
+                    // getFragmentManager().popBackStack("", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                } else {
+                    timer.start();
+                    warningDialog.dismiss();
+                }
+            }
+        });
+        warningDialog.show();
+    }
+
+    @Override
     public void onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.Result).setVisible(true);
-        menuToolbar = menu.findItem(R.id.Result);
-        menuToolbar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        menuToolbarResult = menu.findItem(R.id.Result);
+        menuToolbarResult.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 timer.cancel();
@@ -219,12 +240,9 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         layoutAnswerChoiceContent = (LinearLayout) rootView.findViewById(R.id.layoutAnswerChoiceContent);
         minute1 = (TextView) rootView.findViewById(R.id.minute_1);
         minute2 = (TextView) rootView.findViewById(R.id.minute_2);
-        minute3 = (TextView) rootView.findViewById(R.id.minute_3);
-        minute4 = (TextView) rootView.findViewById(R.id.minute_4);
+
         second1 = (TextView) rootView.findViewById(R.id.second_1);
         second2 = (TextView) rootView.findViewById(R.id.second_2);
-        second3 = (TextView) rootView.findViewById(R.id.second_3);
-        second4 = (TextView) rootView.findViewById(R.id.second_4);
 
 
     }
@@ -333,72 +351,34 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         currentQuesIndex = 0;
     }
 
-    private void startTimer() {
+    private void makeTime() {
+        sec2--;
+        if (sec2 == -1) {
+            sec2 = 9;
+            sec1--;
+            if (sec1 == -1) {
+                sec1 = 5;
+                min2--;
+                if (min2 == -1) {
+                    min2 = 9;
+                    min1--;
+                }
+            }
+        }
+        minute1.setText("" + min1);
+        minute2.setText("" + min2);
+        second1.setText("" + sec1);
+        second2.setText("" + sec2);
+        // timeLeft++;
+    }
 
-        final float y1 = minute1.getY();
-        final float y2 = minute3.getY();
-        final float y3 = second1.getY();
-        final float y4 = second3.getY();
+    private void startTimer() {
 
         timer = new CountDownTimer(LIMIT_TIME, INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
-                if (min1 == 0 && min2 == 0 && sec1 == 0 && sec2 == 0) {
-                    this.cancel();
-                } else {
-                    if (sec2 == 0) {
-                        sec2 = 9;
-                        second3.setText("" + sec2);
-                        makeAnimation(second4, second3, y4);
-                        if (sec1 == 0) {
-                            sec1 = 5;
-                            second1.setText("" + sec1);
-                            makeAnimation(second2, second1, y3);
-                            if (min2 == 0) {
-                                min2 = 9;
-                                minute3.setText("" + min2);
-                                makeAnimation(minute4, minute3, y2);
-                                if (min1 != 0) {
-                                    min1--;
-                                    if (min1 % 2 == 0) {
-                                        minute2.setText("" + min1);
-                                        makeAnimation(minute1, minute2, y1);
-                                    } else {
-                                        minute1.setText("" + min1);
-                                        makeAnimation(minute2, minute1, y1);
-                                    }
-                                }
-                            } else {
-                                min2--;
-                                if (min2 % 2 == 0) {
-                                    minute4.setText("" + min2);
-                                    makeAnimation(minute3, minute4, y2);
-                                } else {
-                                    minute3.setText("" + min2);
-                                    makeAnimation(minute4, minute3, y2);
-                                }
-                            }
-                        } else {
-                            sec1--;
-                            if (sec1 % 2 == 0) {
-                                second2.setText("" + sec1);
-                                makeAnimation(second1, second2, y3);
-                            } else {
-                                second1.setText("" + sec1);
-                                makeAnimation(second2, second1, y3);
-                            }
-                        }
-                    } else {
-                        sec2--;
-                        if (sec2 % 2 == 0) {
-                            second4.setText("" + sec2);
-                            makeAnimation(second3, second4, y4);
-                        } else {
-                            second3.setText("" + sec2);
-                            makeAnimation(second4, second3, y4);
-                        }
-                    }
-                }
+
+                makeTime();
             }
 
             @Override
@@ -415,14 +395,6 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         timer.start();
     }
 
-    private void makeAnimation(TextView textView1, TextView textView2, float y) {
-        ObjectAnimator animator1 = ObjectAnimator.ofFloat(textView1, "y", y, y + textView1.getHeight());
-        ObjectAnimator animator2 = ObjectAnimator.ofFloat(textView2, "y", y - textView2.getHeight(), y);
-        AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.play(animator1).with(animator2);
-        animatorSet.setDuration(INTERVAL);
-        animatorSet.start();
-    }
 
     private String totalTime() {
         String time = "";
@@ -500,9 +472,11 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             Question ques = data.get(position);
             ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
+            ImageView imgZoom = (ImageView) view.findViewById(R.id.buttonZoomIn);
             tvQuestion.setText(ques.question);
             if (ques.image != null) {
                 questionImage.setVisibility(View.VISIBLE);
+                imgZoom.setVisibility(View.VISIBLE);
                 questionImage.setImageBitmap(ques.image);
                 questionImage.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -517,7 +491,18 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                 });
             } else {
                 questionImage.setVisibility(View.GONE);
+                imgZoom.setVisibility(View.GONE);
             }
+            imgZoom.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(DMVWrittenTestFragment.KEY_DIALOG, data.get(position).image);
+                    QuestionDialogFragment dialogFragment = new QuestionDialogFragment();
+                    dialogFragment.setArguments(bundle);
+                    dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
+                }
+            });
             container.addView(view);
             return view;
         }
