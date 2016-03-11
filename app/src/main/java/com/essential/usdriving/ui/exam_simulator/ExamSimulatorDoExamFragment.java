@@ -31,12 +31,12 @@ import java.util.ArrayList;
 /**
  * Created by the_e_000 on 8/14/2015.
  */
-public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPager.OnPageChangeListener, AnswerChoicesItem.OnAnswerChooseListener, QuestionNoItemWrapper.OnItemQuestionClickListener, View.OnClickListener, WarningDialog.OnDialogItemClickListener {
+public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPager.OnPageChangeListener, QuestionNoItemWrapper.OnItemQuestionClickListener, View.OnClickListener, WarningDialog.OnDialogItemClickListener {
 
     private HorizontalScrollView horizontalScrollView;
     private LinearLayout layoutScrollContent;
     private ViewPager viewPager;
-    private LinearLayout layoutAnswerChoiceContent;
+
     private TextView minute1;
     private TextView minute2;
 
@@ -146,7 +146,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
 
         loadData();
         addQuestionList();
-        showChoices(questions.get(currentQuesIndex));
+       // showChoices(questions.get(currentQuesIndex));
 
         adapter = new QuestionPagerAdapter(getActivity(), questions);
         viewPager.setAdapter(adapter);
@@ -175,13 +175,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
 
     }
 
-    @Override
-    public void onAnswerChoose(AnswerChoicesItem item) {
-        item.setActive(1);
-        setOthersToDefault(item);
-        questions.get(currentQuesIndex).myAnswer = item.getPosition();
-        listItemQues.get(currentQuesIndex).setHighlight();
-    }
+
 
     @Override
     public void onItemQuestionClick(QuestionNoItemWrapper item) {
@@ -190,7 +184,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         int index = listItemQues.indexOf(item);
         scrollToCenter(item);
         viewPager.setCurrentItem(index, true);
-        showChoices(questions.get(index));
+        //showChoices(questions.get(index));
         currentQuesIndex = index;
     }
 
@@ -204,7 +198,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     public void onPageSelected(int position) {
         setAllQuesNoItemInActive();
         listItemQues.get(position).setActive(true);
-        showChoices(questions.get(position));
+        //showChoices(questions.get(position));
         scrollToCenter(listItemQues.get(position));
         currentQuesIndex = position;
     }
@@ -237,7 +231,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         horizontalScrollView = (HorizontalScrollView) rootView.findViewById(R.id.horizontalScrollView);
         layoutScrollContent = (LinearLayout) rootView.findViewById(R.id.layoutScrollContent);
         viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        layoutAnswerChoiceContent = (LinearLayout) rootView.findViewById(R.id.layoutAnswerChoiceContent);
+     //   layoutAnswerChoiceContent = (LinearLayout) rootView.findViewById(R.id.layoutAnswerChoiceContent);
         minute1 = (TextView) rootView.findViewById(R.id.minute_1);
         minute2 = (TextView) rootView.findViewById(R.id.minute_2);
 
@@ -263,65 +257,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         }
     }
 
-    private void showChoices(Question ques) {
-        layoutAnswerChoiceContent.removeAllViews();
-        layoutAnswerChoiceContent.invalidate();
 
-        if (answerChoices != null) {
-            answerChoices.removeAll(answerChoices);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            addItemIntoList(ques, i);
-        }
-
-        if (ques.myAnswer != BaseEntity.ANSWER_NOT_CHOOSE) {
-            answerChoices.get(ques.myAnswer).setActive(1);
-        }
-
-        for (int i = 0; i < answerChoices.size(); i++) {
-            answerChoices.get(i).setOnAnswerChooseListener(this);
-        }
-    }
-
-    private void addItemIntoList(Question ques, int option) {
-        AnswerChoicesItem item = new AnswerChoicesItem(getActivity());
-        item.setPosition(option);
-        switch (option) {
-            case 0:
-                item.setAnswer(ques.choiceA);
-                break;
-            case 1:
-                item.setAnswer(ques.choiceB);
-                break;
-            case 2:
-                item.setAnswer(ques.choiceC);
-                break;
-            case 3:
-                item.setAnswer(ques.choiceD);
-                break;
-        }
-
-        if (ques.correctAnswer == option) {
-            item.setExplanation(ques.explanation);
-        }
-
-        if (item.getAnswer() != "") {
-            layoutAnswerChoiceContent.addView(item.getView());
-            item.setDefault();
-            item.addLayoutTransition();
-            answerChoices.add(item);
-        }
-    }
-
-    private void setOthersToDefault(AnswerChoicesItem item) {
-        for (int i = 0; i < answerChoices.size(); i++) {
-            if (answerChoices.get(i) != item) {
-                answerChoices.get(i).setDefault();
-                answerChoices.get(i).setActive(0);
-            }
-        }
-    }
 
     private void setAllQuesNoItemInActive() {
         for (QuestionNoItemWrapper item : listItemQues) {
@@ -451,11 +387,11 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         return tmp;
     }
 
-    private class QuestionPagerAdapter extends PagerAdapter {
+    private class QuestionPagerAdapter extends PagerAdapter implements  AnswerChoicesItem.OnAnswerChooseListener{
 
         private ArrayList<Question> data;
         private Context context;
-
+        private LinearLayout layoutAnswerChoiceContent;
         public QuestionPagerAdapter(Context context, ArrayList<Question> data) {
             this.context = context;
             this.data = data;
@@ -473,6 +409,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
             ImageView imgZoom = (ImageView) view.findViewById(R.id.buttonZoomIn);
+            layoutAnswerChoiceContent= (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
             tvQuestion.setText(ques.question);
             if (ques.image != null) {
                 questionImage.setVisibility(View.VISIBLE);
@@ -503,10 +440,76 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                     dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
                 }
             });
+            showChoices(ques);
             container.addView(view);
             return view;
         }
+        @Override
+        public void onAnswerChoose(AnswerChoicesItem item) {
+            item.setActive(1);
+            setOthersToDefault(item);
+            questions.get(currentQuesIndex).myAnswer = item.getPosition();
+            listItemQues.get(currentQuesIndex).setHighlight();
+        }
+        private void showChoices(Question ques) {
+            layoutAnswerChoiceContent.removeAllViews();
+            layoutAnswerChoiceContent.invalidate();
 
+            if (answerChoices != null) {
+                answerChoices.removeAll(answerChoices);
+            }
+
+            for (int i = 0; i < 4; i++) {
+                addItemIntoList(ques, i);
+            }
+
+            if (ques.myAnswer != BaseEntity.ANSWER_NOT_CHOOSE) {
+                answerChoices.get(ques.myAnswer).setActive(1);
+            }
+
+            for (int i = 0; i < answerChoices.size(); i++) {
+                answerChoices.get(i).setOnAnswerChooseListener(this);
+            }
+        }
+
+        private void addItemIntoList(Question ques, int option) {
+            AnswerChoicesItem item = new AnswerChoicesItem(getActivity());
+            item.setPosition(option);
+            switch (option) {
+                case 0:
+                    item.setAnswer(ques.choiceA);
+                    break;
+                case 1:
+                    item.setAnswer(ques.choiceB);
+                    break;
+                case 2:
+                    item.setAnswer(ques.choiceC);
+                    break;
+                case 3:
+                    item.setAnswer(ques.choiceD);
+                    break;
+            }
+
+            if (ques.correctAnswer == option) {
+                item.setExplanation(ques.explanation);
+            }
+
+            if (item.getAnswer() != "") {
+                layoutAnswerChoiceContent.addView(item.getView());
+                item.setDefault();
+                item.addLayoutTransition();
+                answerChoices.add(item);
+            }
+        }
+
+        private void setOthersToDefault(AnswerChoicesItem item) {
+            for (int i = 0; i < answerChoices.size(); i++) {
+                if (answerChoices.get(i) != item) {
+                    answerChoices.get(i).setDefault();
+                    answerChoices.get(i).setActive(0);
+                }
+            }
+        }
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);

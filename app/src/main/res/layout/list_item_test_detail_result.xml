@@ -43,7 +43,9 @@
                     android:text="@string/written_test_question_no"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_10"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -65,7 +67,9 @@
                     android:maxLines="2"
                     android:text="Alo"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_5" />
+                    android:textSize="@dimen/text_size_5"
+                    android:layout_gravity="center"
+                    />
 
                 <TextView
                     android:id="@+id/tvResultAnswer"

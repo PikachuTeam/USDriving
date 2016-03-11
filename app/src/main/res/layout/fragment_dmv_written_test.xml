@@ -73,7 +73,7 @@
     </LinearLayout>
    <ScrollView
        android:layout_width="match_parent"
-       android:layout_height="@dimen/size_120">
+       android:layout_height="@dimen/size_350">
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
            <android.support.v4.view.ViewPager
                android:id="@+id/viewPager"
                android:layout_width="match_parent"
-               android:layout_height="@dimen/size_150"
+               android:layout_height="@dimen/size_450"
                android:background="@color/window_background"
                android:layout_gravity="center"
                />
@@ -91,31 +91,7 @@
    </ScrollView>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_3"
-        android:background="@color/ColorPrimary">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:text="Answer Choices"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_5" />
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_200">
-
-        <LinearLayout
-            android:id="@+id/layoutAnswerChoiceContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </ScrollView>
 
 
 </LinearLayout>

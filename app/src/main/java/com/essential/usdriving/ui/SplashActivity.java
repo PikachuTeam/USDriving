@@ -8,18 +8,15 @@ import com.essential.usdriving.app.BaseActivity;
 import tatteam.com.app_common.AppCommon;
 import tatteam.com.app_common.sqlite.DatabaseLoader;
 import tatteam.com.app_common.ui.activity.BaseSplashActivity;
+import tatteam.com.app_common.ui.activity.EssentialSplashActivity;
 import tatteam.com.app_common.util.AppConstant;
 
-public class SplashActivity extends BaseSplashActivity {
+public class SplashActivity extends EssentialSplashActivity {
 
-    @Override
-    protected int getLayoutResIdContentView() {
-        return R.layout.activity_splash;
-    }
 
     @Override
     protected void onCreateContentView() {
-
+        super.onCreateContentView();
     }
 
     @Override

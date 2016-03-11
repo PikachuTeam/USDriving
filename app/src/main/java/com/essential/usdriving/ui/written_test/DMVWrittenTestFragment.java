@@ -25,9 +25,9 @@ import com.essential.usdriving.ui.widget.QuestionNoItemWrapper;
 
 import java.util.ArrayList;
 
-public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.OnPageChangeListener, AnswerChoicesItem.OnAnswerChooseListener, QuestionNoItemWrapper.OnItemQuestionClickListener, View.OnClickListener {
+public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.OnPageChangeListener, QuestionNoItemWrapper.OnItemQuestionClickListener, View.OnClickListener {
 
-    private LinearLayout layoutScrollContent, layoutAnswerChoiceContent;
+    private LinearLayout layoutScrollContent;
     private ArrayList<Question> questions;
     private ArrayList<AnswerChoicesItem> answerChoices;
     private ArrayList<QuestionNoItemWrapper> listItemQues;
@@ -87,7 +87,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         super.onActivityCreated(savedInstanceState);
         loadData(savedInstanceState);
         addQuestionList();
-        showChoices(questions.get(currentQuesIndex));
+        //showChoices(questions.get(currentQuesIndex));
 
         adapter = new QuestionPagerAdapter(getActivity(), questions);
         viewPager.setAdapter(adapter);
@@ -95,18 +95,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
     }
 
-    @Override
-    public void onAnswerChoose(AnswerChoicesItem item) {
-        item.setActive(1);
-        if (item.getPosition() == questions.get(currentQuesIndex).correctAnswer) {
-            item.setCorrectAnswer(true, questions.get(currentQuesIndex).explanation != null);
-        } else {
-            item.setCorrectAnswer(false, false);
-        }
-        setOthersToDefault(item);
-        questions.get(currentQuesIndex).myAnswer = item.getPosition();
-        listItemQues.get(currentQuesIndex).setHighlight();
-    }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -121,7 +110,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         int index = listItemQues.indexOf(item);
         scrollToCenter(item);
         viewPager.setCurrentItem(index, true);
-        showChoices(questions.get(index));
+       // showChoices(questions.get(index));
         currentQuesIndex = index;
     }
 
@@ -135,7 +124,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     public void onPageSelected(int position) {
         setAllQuesNoItemInActive();
         listItemQues.get(position).setActive(true);
-        showChoices(questions.get(position));
+       // showChoices(questions.get(position));
         scrollToCenter(listItemQues.get(position));
         currentQuesIndex = position;
     }
@@ -162,7 +151,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
     private void findViews(View view) {
         layoutScrollContent = (LinearLayout) view.findViewById(R.id.layoutScrollContent);
-        layoutAnswerChoiceContent = (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horizontalScrollView);
 
@@ -184,70 +172,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         }
     }
 
-    private void showChoices(Question ques) {
-        layoutAnswerChoiceContent.removeAllViews();
-        layoutAnswerChoiceContent.invalidate();
 
-        if (answerChoices != null) {
-            answerChoices.removeAll(answerChoices);
-        }
-
-        for (int i = 0; i < 4; i++) {
-            addItemIntoList(ques, i);
-        }
-/*
-        if (ques.myAnswer != BaseEntity.ANSWER_NOT_CHOOSE) {
-            if (ques.myAnswer == ques.correctAnswer) {
-                answerChoices.get(ques.myAnswer).setCorrectAnswer(true, ques.explanation != null);
-            } else {
-                answerChoices.get(ques.myAnswer).setCorrectAnswer(false, false);
-            }
-            answerChoices.get(ques.myAnswer).setActive(1);
-        }
-*/
-        for (int i = 0; i < answerChoices.size(); i++) {
-            answerChoices.get(i).setOnAnswerChooseListener(this);
-        }
-    }
-
-    private void addItemIntoList(Question ques, int option) {
-        AnswerChoicesItem item = new AnswerChoicesItem(getActivity());
-        item.setPosition(option);
-        switch (option) {
-            case 0:
-                item.setAnswer(ques.choiceA);
-                break;
-            case 1:
-                item.setAnswer(ques.choiceB);
-                break;
-            case 2:
-                item.setAnswer(ques.choiceC);
-                break;
-            case 3:
-                item.setAnswer(ques.choiceD);
-                break;
-        }
-
-        if (ques.correctAnswer == option) {
-            item.setExplanation(ques.explanation);
-        }
-
-        if (item.getAnswer() != "") {
-            layoutAnswerChoiceContent.addView(item.getView());
-            item.setDefault();
-           // item.addLayoutTransition();
-            answerChoices.add(item);
-        }
-    }
-
-    private void setOthersToDefault(AnswerChoicesItem item) {
-        for (int i = 0; i < answerChoices.size(); i++) {
-            if (answerChoices.get(i) != item) {
-                answerChoices.get(i).setDefault();
-                answerChoices.get(i).setActive(0);
-            }
-        }
-    }
 
     private void loadData(Bundle bundle) {
         if (bundle != null) {
@@ -277,10 +202,11 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         horizontalScrollView.smoothScrollTo(horizontalScrollView.getScrollX() + offset, 0);
     }
 
-    private class QuestionPagerAdapter extends PagerAdapter {
+    private class QuestionPagerAdapter extends PagerAdapter implements  AnswerChoicesItem.OnAnswerChooseListener {
 
         private ArrayList<Question> data;
         private Context context;
+        private  LinearLayout layoutChoice;
 
         public QuestionPagerAdapter(Context context, ArrayList<Question> data) {
             this.context = context;
@@ -299,6 +225,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             final ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
             ImageView imgZoom= (ImageView) view.findViewById(R.id.buttonZoomIn);
+             layoutChoice= (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
+
             tvQuestion.setText(ques.question);
             if (ques.image != null) {
                 questionImage.setVisibility(View.VISIBLE);
@@ -330,10 +258,85 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 questionImage.setVisibility(View.GONE);
                 imgZoom.setVisibility(View.GONE);
             }
+            showChoices(ques);
             container.addView(view);
             return view;
         }
+        private void showChoices(Question ques ) {
+            layoutChoice.removeAllViews();
+            layoutChoice.invalidate();
 
+            if (answerChoices != null) {
+                answerChoices.removeAll(answerChoices);
+            }
+
+            for (int i = 0; i < 4; i++) {
+                addItemIntoList(ques, i);
+            }
+            if (ques.myAnswer != BaseEntity.ANSWER_NOT_CHOOSE) {
+                if (ques.myAnswer == ques.correctAnswer) {
+                    answerChoices.get(ques.myAnswer).setCorrectAnswer(true, ques.explanation != null);
+                } else {
+                    answerChoices.get(ques.myAnswer).setCorrectAnswer(false, false);
+                }
+                answerChoices.get(ques.myAnswer).setActive(1);
+            }
+
+            for (int i = 0; i < answerChoices.size(); i++) {
+                answerChoices.get(i).setOnAnswerChooseListener(this);
+            }
+        }
+
+        private void addItemIntoList(Question ques, int option) {
+            AnswerChoicesItem item = new AnswerChoicesItem(getActivity());
+            item.setPosition(option);
+            switch (option) {
+                case 0:
+                    item.setAnswer(ques.choiceA);
+                    break;
+                case 1:
+                    item.setAnswer(ques.choiceB);
+                    break;
+                case 2:
+                    item.setAnswer(ques.choiceC);
+                    break;
+                case 3:
+                    item.setAnswer(ques.choiceD);
+                    break;
+            }
+
+            if (ques.correctAnswer == option) {
+                item.setExplanation(ques.explanation);
+            }
+
+            if (item.getAnswer() != "") {
+                layoutChoice.addView(item.getView());
+                item.setDefault();
+                // item.addLayoutTransition();
+                answerChoices.add(item);
+            }
+        }
+
+        private void setOthersToDefault(AnswerChoicesItem item) {
+            for (int i = 0; i < answerChoices.size(); i++) {
+                if (answerChoices.get(i) != item) {
+                    answerChoices.get(i).setDefault();
+                    answerChoices.get(i).setActive(0);
+                }
+            }
+        }
+        @Override
+        public void onAnswerChoose(AnswerChoicesItem item) {
+            item.setActive(1);
+            if (item.getPosition() == questions.get(currentQuesIndex).correctAnswer) {
+                item.setCorrectAnswer(true, questions.get(currentQuesIndex).explanation != null);
+            } else {
+                item.setCorrectAnswer(false, false);
+            }
+             setOthersToDefault(item);
+            questions.get(currentQuesIndex).myAnswer = item.getPosition();
+            listItemQues.get(currentQuesIndex).setHighlight();
+        }
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
@@ -344,4 +347,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             return view == object;
         }
     }
+
+
 }

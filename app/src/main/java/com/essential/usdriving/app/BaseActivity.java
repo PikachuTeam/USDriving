@@ -67,8 +67,7 @@ public class BaseActivity extends tatteam.com.app_common.ui.activity.BaseActivit
     public Toolbar getToolbar() {
         return toolbar;
     }
-   public MenuItem getMenuToolbar(){
-       return menuToolbar;
-   }
+
+
 
 }

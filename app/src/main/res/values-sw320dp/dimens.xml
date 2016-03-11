@@ -117,9 +117,13 @@
     <dimen name="size_180">180dp</dimen>
     <dimen name="size_190">190dp</dimen>
     <dimen name="size_200">200dp</dimen>
+    <dimen name="size_230">230dp</dimen>
 
     <dimen name="size_350">350dp</dimen>
+    <dimen name="size_370">370dp</dimen>
+    <dimen name="size_380">380dp</dimen>
     <dimen name="size_400">400dp</dimen>
+    <dimen name="size_450">450dp</dimen>
     <!--radius-->
     <dimen name="radius_1">3dp</dimen>
     <dimen name="radius_2">4dp</dimen>
