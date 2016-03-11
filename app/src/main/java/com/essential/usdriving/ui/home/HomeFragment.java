@@ -8,28 +8,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.essential.usdriving.R;
+import com.essential.usdriving.app.BaseActivity;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.entity.HomeEntity;
-import com.essential.usdriving.ui.exam_simulator.ExamSimulatorDoExamFragment;
 import com.essential.usdriving.ui.exam_simulator.ExamSimulatorStartFragment;
 import com.essential.usdriving.ui.learning_card.LearningCardFragment;
 import com.essential.usdriving.ui.test_topic.TestTopicFragment;
+import com.essential.usdriving.ui.ultility.ShareUtil;
 import com.essential.usdriving.ui.videotip.VideoTipsFragment;
 import com.essential.usdriving.ui.written_test.DMVWrittenTestFragment;
 
 import java.util.ArrayList;
 
+import tatteam.com.app_common.AppCommon;
 
-public class HomeFragment extends BaseFragment {
+
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private ListView chooseList;
     private HomeAdapter homeAdapter;
     private ArrayList<HomeEntity> listHome;
+    private CardView btnMoreApp, btnFeedBack;
 
     @Override
     protected boolean enableBackButton() {
@@ -49,20 +54,35 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
-        listHome=new ArrayList<>();
+        listHome = new ArrayList<>();
         chooseList = (ListView) rootView.findViewById(R.id.Chooselist);
+        btnMoreApp = (CardView) rootView.findViewById(R.id.cardMoreApp);
+        btnFeedBack = (CardView) rootView.findViewById(R.id.cardFeedBack);
         getItemHome(listHome);
-        homeAdapter=new HomeAdapter(getActivity(),listHome);
+        homeAdapter = new HomeAdapter(getActivity(), listHome);
         chooseList.setAdapter(homeAdapter);
-
+        btnMoreApp.setOnClickListener(this);
+        btnFeedBack.setOnClickListener(this);
     }
 
     public void getItemHome(ArrayList<HomeEntity> list) {
-        list.add(new HomeEntity(getString(R.string.title_dmv_written_test),ContextCompat.getDrawable(getActivity(), R.drawable.ic_dmv_written_test)));
-        list.add(new HomeEntity(getString(R.string.title_exam_simulator),ContextCompat.getDrawable(getActivity(),R.drawable.ic_exam_simulator) ));
-        list.add(new HomeEntity(getString(R.string.title_test_topic),ContextCompat.getDrawable(getActivity(),R.drawable.ic_dmv_test_topics )));
-        list.add(new HomeEntity(getString(R.string.title_learning_card),ContextCompat.getDrawable(getActivity(),R.drawable.ic_learning_cards) ));
-        list.add(new HomeEntity(getString(R.string.title_video_tips), ContextCompat.getDrawable(getActivity(),R.drawable.ic_driving_tips)));
+        list.add(new HomeEntity(getString(R.string.title_dmv_written_test), ContextCompat.getDrawable(getActivity(), R.drawable.ic_dmv_written_test)));
+        list.add(new HomeEntity(getString(R.string.title_exam_simulator), ContextCompat.getDrawable(getActivity(), R.drawable.ic_exam_simulator)));
+        list.add(new HomeEntity(getString(R.string.title_test_topic), ContextCompat.getDrawable(getActivity(), R.drawable.ic_dmv_test_topics)));
+        list.add(new HomeEntity(getString(R.string.title_learning_card), ContextCompat.getDrawable(getActivity(), R.drawable.ic_learning_cards)));
+        list.add(new HomeEntity(getString(R.string.title_video_tips), ContextCompat.getDrawable(getActivity(), R.drawable.ic_driving_tips)));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.cardFeedBack:
+                ShareUtil.shareToGMail(getBaseActivity(), new String[]{ShareUtil.MAIL_ADDRESS_DEFAULT}, getString(R.string.app_name), "");
+                break;
+            case R.id.cardMoreApp:
+                AppCommon.getInstance().openMoreAppDialog(getBaseActivity());
+                break;
+        }
     }
 
     private class HomeAdapter extends BaseAdapter {
@@ -112,12 +132,22 @@ public class HomeFragment extends BaseFragment {
                 @Override
                 public void onClick(View v) {
 
-                    switch (position){
-                        case 0:replaceFragment(new DMVWrittenTestFragment(),getString(R.string.written_test_result_title));break;
-                        case 1:replaceFragment(new ExamSimulatorStartFragment(),getString(R.string.written_test_result_title));break;
-                        case 2:replaceFragment(new TestTopicFragment(),getString(R.string.title_learning_card));break;
-                        case 3:replaceFragment(new LearningCardFragment(),getString(R.string.title_learning_card));break;
-                        case 4: replaceFragment(new VideoTipsFragment(),getString(R.string.title_video_tips));break;
+                    switch (position) {
+                        case 0:
+                            replaceFragment(new DMVWrittenTestFragment(), getString(R.string.written_test_result_title));
+                            break;
+                        case 1:
+                            replaceFragment(new ExamSimulatorStartFragment(), getString(R.string.written_test_result_title));
+                            break;
+                        case 2:
+                            replaceFragment(new TestTopicFragment(), getString(R.string.title_learning_card));
+                            break;
+                        case 3:
+                            replaceFragment(new LearningCardFragment(), getString(R.string.title_learning_card));
+                            break;
+                        case 4:
+                            replaceFragment(new VideoTipsFragment(), getString(R.string.title_video_tips));
+                            break;
 
                     }
 

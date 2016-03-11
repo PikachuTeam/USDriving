@@ -98,7 +98,7 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
 
     private void initChart() {
         pieChart = new PieChart(getActivity());
-        pieChart.setUsePercentValues(true);
+        //pieChart.setUsePercentValues(true);
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColorTransparent(true);
         pieChart.setHoleRadius(getResources().getDimension(R.dimen.pie_chart_hole_radius));
@@ -109,6 +109,7 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
         addData();
 
         pieChart.getLegend().setEnabled(false);
+        pieChart.getData().setDrawValues(false);
         pieChart.setDescription("");
     }
 
@@ -140,11 +141,11 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
         dataSet.setColors(colors);
 
         PieData data = new PieData(xVals, dataSet);
-        data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(9f);
-        data.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+      //  data.setValueFormatter(new PercentFormatter());
+       // data.setValueTextSize(9f);
+      //  data.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
-        pieChart.setData(data);
+       pieChart.setData(data);
         pieChart.invalidate();
     }
 
