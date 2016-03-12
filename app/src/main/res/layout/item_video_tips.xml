@@ -4,13 +4,12 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/common_size_84"
-    android:layout_marginBottom="@dimen/common_size_5"
-    android:layout_marginTop="@dimen/common_size_5"
+    android:layout_marginBottom="@dimen/common_size_13"
+    android:layout_marginTop="@dimen/common_size_13"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/common_size_5"
     app:cardElevation="@dimen/common_size_3"
     card_view:cardPreventCornerOverlap="false"
-    android:background="@drawable/raised_button"
     >
 
     <LinearLayout
@@ -40,6 +39,8 @@
             android:text="Test"
             android:textColor="@color/black"
             android:textSize="@dimen/common_size_20"
+            android:ellipsize="end"
+            android:singleLine="true"
             />
     </LinearLayout>
 

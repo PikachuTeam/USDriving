@@ -59,6 +59,8 @@ public class VideoTipsFragment extends BaseFragment {
         adapter = new VideoTipsListAdapter(getActivity(), videos);
         videoTipsList.setAdapter(adapter);
         videoTipsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
         videoTipsList.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
@@ -154,11 +156,10 @@ public class VideoTipsFragment extends BaseFragment {
             return items.size();
         }
 
-        class ViewHolder extends RecyclerView.ViewHolder {
+        class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
             private ImageView imgVideoTipsItem;
             private TextView txtVideoTipsItem;
-            private LinearLayout layout;
 
             public ViewHolder(View itemView) {
                 super(itemView);
@@ -174,6 +175,15 @@ public class VideoTipsFragment extends BaseFragment {
             public void setImage(Drawable image) {
                 imgVideoTipsItem.setImageDrawable(image);
             }
+
+            @Override
+            public void onClick(View v) {
+
+            }
+
+
+
+
         }
     }
 }

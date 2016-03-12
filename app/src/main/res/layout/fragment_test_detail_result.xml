@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/transparent"
+        android:background="@color/white"
         >
 
         <TextView
@@ -28,12 +28,10 @@
             android:layout_height="wrap_content"
             android:divider="@null"
             android:dividerHeight="0dp"
-            android:listSelector="@color/transparent"
-            android:cacheColorHint="@color/transparent"
             android:scrollbarStyle="outsideInset"
             android:scrollbarSize="@dimen/common_size_300"
             android:padding="@dimen/common_size_5"
-            android:background="@color/transparent"
+            android:background="@color/white"
             android:paddingRight="@dimen/common_size_5"
 
             ></ListView>

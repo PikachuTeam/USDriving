@@ -3,9 +3,7 @@ package com.essential.usdriving.ui.exam_simulator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -52,7 +50,8 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
 
     @Override
     public void onBackPressed() {
-       replaceFragment(new HomeFragment(),getString(R.string.topic));
+        getFragmentManager().popBackStack();
+//        replaceFragment(new HomeFragment(), getString(R.string.topic));
     }
 
     @Override

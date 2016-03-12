@@ -44,7 +44,7 @@
 
                 <LinearLayout
                     android:id="@+id/chartContainer"
-                    android:layout_width="@dimen/exam_simulator_pie_chart_width"
+                    android:layout_width="@dimen/size_350"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="@dimen/common_size_5"
