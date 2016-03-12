@@ -55,6 +55,7 @@ public class TestDetailResultFragment extends BaseFragment {
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
         findViews(rootView);
+
         switch (state) {
             case 0:
                 tvType.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.right_answer_color));
@@ -96,6 +97,8 @@ public class TestDetailResultFragment extends BaseFragment {
     private void findViews(View view) {
         tvType = (TextView) view.findViewById(R.id.tvType);
         listItem = (ListView) view.findViewById(R.id.dmvWrittenTestList);
+        listItem.setDivider(null);
+        listItem.setDividerHeight(0);
     }
 
     private static class WrittenTestResultDetailListAdapter extends BaseAdapter {

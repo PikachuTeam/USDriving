@@ -6,7 +6,6 @@
     android:layout_gravity="center"
     android:background="@color/window_background"
     android:gravity="center_horizontal"
-    android:paddingBottom="@dimen/common_size_10"
     android:paddingLeft="@dimen/common_size_30"
     android:paddingRight="@dimen/common_size_30"
     android:paddingTop="@dimen/common_size_10">
@@ -27,13 +26,17 @@
         <android.support.v7.widget.CardView
             android:id="@+id/cardFeedBack"
             android:layout_width="@dimen/size_120"
-            android:layout_height="@dimen/common_size_60"
+            android:layout_height="@dimen/common_size_70"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/Chooselist"
             card_view:cardCornerRadius="@dimen/common_size_6"
             card_view:cardElevation="@dimen/common_size_3"
             card_view:cardPreventCornerOverlap="false"
-            card_view:cardUseCompatPadding="true">
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginTop="@dimen/common_size_10"
+            android:layout_alignParentBottom="true"
+
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,6 +53,7 @@
                     android:textSize="@dimen/text_size_7"
                     android:textColor="@color/black"
                     android:gravity="center"
+
                     >
 
 
@@ -62,13 +66,15 @@
         <android.support.v7.widget.CardView
             android:id="@+id/cardMoreApp"
             android:layout_width="@dimen/size_120"
-            android:layout_height="@dimen/common_size_60"
+            android:layout_height="@dimen/common_size_70"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/Chooselist"
             card_view:cardCornerRadius="@dimen/common_size_6"
             card_view:cardElevation="@dimen/common_size_3"
             card_view:cardPreventCornerOverlap="false"
             card_view:cardUseCompatPadding="true"
+            android:layout_marginTop="@dimen/common_size_10"
+            android:layout_alignParentBottom="true"
             >
 
             <LinearLayout
@@ -85,6 +91,7 @@
                     android:textSize="@dimen/text_size_7"
                     android:textColor="@color/black"
                     android:gravity="center"
+
                     />
 
             </LinearLayout>

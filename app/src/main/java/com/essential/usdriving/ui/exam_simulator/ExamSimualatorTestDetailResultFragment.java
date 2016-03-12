@@ -3,6 +3,7 @@ package com.essential.usdriving.ui.exam_simulator;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -156,8 +157,8 @@ public class ExamSimualatorTestDetailResultFragment extends BaseFragment {
                 viewHolder.imgQuestion.setVisibility(View.GONE);
             }
 
-            viewHolder.viewHighLight.setTag(questions.get(position));
-            viewHolder.viewHighLight.setOnClickListener(new View.OnClickListener() {
+            viewHolder.cv.setTag(questions.get(position));
+            viewHolder.cv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Question question = (Question) v.getTag();
@@ -173,14 +174,17 @@ public class ExamSimualatorTestDetailResultFragment extends BaseFragment {
             public TextView tvQuestionNo, tvResultQuestion, tvResultAnswer;
             public ImageView imgQuestion;
             public View viewHighLight;
+            public CardView cv;
 
             public ViewHolder(View view) {
                 tvQuestionNo = (TextView) view.findViewById(R.id.tvQuestionNo);
                 tvResultQuestion = (TextView) view.findViewById(R.id.tvResultQuestion);
                 tvResultAnswer = (TextView) view.findViewById(R.id.tvResultAnswer);
                 imgQuestion = (ImageView) view.findViewById(R.id.imgQuestion);
-                viewHighLight = view.findViewById(R.id.view_highlight);
+                //viewHighLight = view.findViewById(R.id.view_highlight);
+                cv = (CardView) view.findViewById(R.id.cardView);
             }
+
         }
     }
 }

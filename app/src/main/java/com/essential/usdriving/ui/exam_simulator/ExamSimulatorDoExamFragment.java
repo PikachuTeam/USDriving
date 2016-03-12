@@ -1,6 +1,7 @@
 
 package com.essential.usdriving.ui.exam_simulator;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -80,9 +81,10 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                 if (code == WarningDialog.OK) {
                     warningDialog.dismiss();
                     timer.cancel();
-                    ExamSimulatorStartFragment startFragment = new ExamSimulatorStartFragment();
-                    replaceFragment(startFragment, getString(R.string.title_exam_simulator));
+//                    ExamSimulatorStartFragment startFragment = new ExamSimulatorStartFragment();
+//                    replaceFragment(startFragment, getString(R.string.title_exam_simulator));
                     // getFragmentManager().popBackStack("", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                    getFragmentManager().popBackStack();
                 } else {
                     timer.start();
                     warningDialog.dismiss();
