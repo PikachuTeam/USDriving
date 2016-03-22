@@ -14,6 +14,7 @@ import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.entity.BaseEntity;
 import com.essential.usdriving.entity.Question;
+import com.essential.usdriving.ui.home.HomeFragment;
 import com.essential.usdriving.ui.widget.WarningDialog;
 import com.essential.usdriving.ui.written_test.TestDetailResultFragment;
 import com.github.mikephil.charting.charts.PieChart;
@@ -59,6 +60,16 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     @Override
     protected int getLayoutResIdContentView() {
         return R.layout.fragment_exam_simulator_test_result;
+    }
+
+    @Override
+    protected boolean enableBackButton() {
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+          getFragmentManager().popBackStack(HomeFragment.HOME_TRANSACTION,FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     @Override

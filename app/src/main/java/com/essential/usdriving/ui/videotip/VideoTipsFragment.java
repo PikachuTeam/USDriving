@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -69,8 +70,7 @@ public class VideoTipsFragment extends BaseFragment {
                     int position = rv.getChildLayoutPosition(view);
                     if(position>=0){
                         VideoTipsListItem item = videos.get(position);
-                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.link));
-                        startActivity(browserIntent);
+
                     }
 
                 }
@@ -122,9 +122,10 @@ public class VideoTipsFragment extends BaseFragment {
         }
     }
 
-    private static class VideoTipsListAdapter extends RecyclerView.Adapter<VideoTipsListAdapter.ViewHolder> {
+    private  class VideoTipsListAdapter extends RecyclerView.Adapter<VideoTipsListAdapter.ViewHolder> implements View.OnClickListener {
         private LayoutInflater inflater;
         private ArrayList<VideoTipsListItem> items;
+        private VideoTipsListItem item;
 
         public VideoTipsListAdapter(Context context, ArrayList<VideoTipsListItem> items) {
             inflater = LayoutInflater.from(context);
@@ -140,10 +141,10 @@ public class VideoTipsFragment extends BaseFragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            VideoTipsListItem item = items.get(position);
+             item = items.get(position);
             holder.setText(item.sectionTitle);
             holder.setImage(item.image);
-
+            holder.cv.setOnClickListener(this);
         }
 
         @Override
@@ -156,16 +157,25 @@ public class VideoTipsFragment extends BaseFragment {
             return items.size();
         }
 
+        @Override
+        public void onClick(View v) {
+            if(v.getId()==R.id.cardVideoTip){
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.link));
+                startActivity(browserIntent);
+            }
+        }
+
         class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
             private ImageView imgVideoTipsItem;
             private TextView txtVideoTipsItem;
+            private CardView cv;
 
             public ViewHolder(View itemView) {
                 super(itemView);
                 imgVideoTipsItem = (ImageView) itemView.findViewById(R.id.imgVideoTipsItem);
                 txtVideoTipsItem = (TextView) itemView.findViewById(R.id.txtVideoTipsItem);
-
+                  cv= (CardView) itemView.findViewById(R.id.cardVideoTip);
             }
 
             public void setText(String text) {

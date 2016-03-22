@@ -10,6 +10,7 @@
     app:cardCornerRadius="@dimen/common_size_5"
     app:cardElevation="@dimen/common_size_3"
     card_view:cardPreventCornerOverlap="false"
+    android:id="@+id/cardVideoTip"
     >
 
     <LinearLayout

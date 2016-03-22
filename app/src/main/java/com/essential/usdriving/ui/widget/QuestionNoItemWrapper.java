@@ -18,6 +18,7 @@ public class QuestionNoItemWrapper implements View.OnClickListener {
     private TextView textViewQuesNum;
     private View bottomLine;
     private OnItemQuestionClickListener listener;
+    public boolean isHighlight;
 
     public QuestionNoItemWrapper(Context context) {
         this.context = context;
@@ -36,6 +37,7 @@ public class QuestionNoItemWrapper implements View.OnClickListener {
     }
 
     public void setHighlight() {
+        isHighlight=true;
         textViewQuesNum.setTextColor(ContextCompat.getColor(context, R.color.black));
     }
 

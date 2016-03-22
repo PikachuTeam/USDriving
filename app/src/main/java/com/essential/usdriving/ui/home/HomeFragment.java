@@ -35,6 +35,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private HomeAdapter homeAdapter;
     private ArrayList<HomeEntity> listHome;
     private CardView btnMoreApp, btnFeedBack;
+    public static String HOME_TRANSACTION="home transaction";
 //aa
     @Override
     protected boolean enableBackButton() {
@@ -137,7 +138,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                             replaceFragment(new DMVWrittenTestFragment(), getString(R.string.written_test_result_title));
                             break;
                         case 1:
-                            replaceFragment(new ExamSimulatorStartFragment(), getString(R.string.written_test_result_title));
+                            replaceFragment(new ExamSimulatorStartFragment(), HOME_TRANSACTION);
                             break;
                         case 2:
                             replaceFragment(new TestTopicFragment(), getString(R.string.title_learning_card));

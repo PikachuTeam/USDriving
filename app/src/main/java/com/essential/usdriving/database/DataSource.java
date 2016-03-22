@@ -17,6 +17,7 @@ import tatteam.com.app_common.sqlite.BaseDataSource;
 
 
 public class DataSource  extends BaseDataSource{
+    public final static int ANSWER_A = 0, ANSWER_B = 1, ANSWER_C = 2, ANSWER_D = 3, ANSWER_NOT_CHOSEN = -1;
     private static DataSource instance;
     private Context context;
 
