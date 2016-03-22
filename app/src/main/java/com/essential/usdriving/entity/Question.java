@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.essential.usdriving.database.DataSource;
+
 /**
  * Created by the_e_000 on 8/5/2015.
  */
@@ -12,7 +14,7 @@ public class Question implements Parcelable {
     public String question, choiceA, choiceB, choiceC, choiceD;
     public String explanation;
     public Bitmap image;
-    public int myAnswer = BaseEntity.ANSWER_NOT_CHOOSE;
+    public int myAnswer = DataSource.ANSWER_NOT_CHOSEN;
     public int correctAnswer;
 
     public Question() {

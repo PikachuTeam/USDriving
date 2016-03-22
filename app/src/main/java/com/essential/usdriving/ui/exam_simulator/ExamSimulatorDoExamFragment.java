@@ -26,13 +26,14 @@ import com.essential.usdriving.ui.widget.QuestionDialogFragment;
 import com.essential.usdriving.ui.widget.QuestionNoItemWrapper;
 import com.essential.usdriving.ui.widget.WarningDialog;
 import com.essential.usdriving.ui.written_test.DMVWrittenTestFragment;
+import com.essential.usdriving.ui.written_test.OnQuestionPagerClickListener;
 
 import java.util.ArrayList;
 
 /**
  * Created by the_e_000 on 8/14/2015.
  */
-public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPager.OnPageChangeListener, QuestionNoItemWrapper.OnItemQuestionClickListener, View.OnClickListener, WarningDialog.OnDialogItemClickListener {
+public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPager.OnPageChangeListener, QuestionNoItemWrapper.OnItemQuestionClickListener, View.OnClickListener, WarningDialog.OnDialogItemClickListener, OnQuestionPagerClickListener {
 
     private HorizontalScrollView horizontalScrollView;
     private LinearLayout layoutScrollContent;
@@ -81,9 +82,6 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                 if (code == WarningDialog.OK) {
                     warningDialog.dismiss();
                     timer.cancel();
-//                    ExamSimulatorStartFragment startFragment = new ExamSimulatorStartFragment();
-//                    replaceFragment(startFragment, getString(R.string.title_exam_simulator));
-                    // getFragmentManager().popBackStack("", FragmentManager.POP_BACK_STACK_INCLUSIVE);
                     getFragmentManager().popBackStack();
                 } else {
                     timer.start();
@@ -148,9 +146,8 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
 
         loadData();
         addQuestionList();
-       // showChoices(questions.get(currentQuesIndex));
-
         adapter = new QuestionPagerAdapter(getActivity(), questions);
+        adapter.setOnQuestionPagerClickListener(this);
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(this);
     }
@@ -389,11 +386,40 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         return tmp;
     }
 
+    @Override
+    public void OnPagerItemClick(AnswerChoicesItem item) {
+        if (questions.get(currentQuesIndex).myAnswer == DataSource.ANSWER_NOT_CHOSEN) {
+            questions.get(currentQuesIndex).myAnswer = item.getIndex();
+            QuestionNoItemWrapper wrapper = listItemQues.get(currentQuesIndex);
+            if (!wrapper.isHighlight) {
+                wrapper.setHighlight();
+                horizontalScrollView.invalidate();
+            }
+            if (currentQuesIndex < 29) {
+                currentQuesIndex++;
+                viewPager.setCurrentItem(currentQuesIndex, true);
+                scrollToCenter(wrapper);
+            }
+
+        } else {
+            QuestionNoItemWrapper wrapper = listItemQues.get(currentQuesIndex);
+            if (!wrapper.isHighlight) {
+                wrapper.setHighlight();
+                horizontalScrollView.invalidate();
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
     private class QuestionPagerAdapter extends PagerAdapter implements  AnswerChoicesItem.OnAnswerChooseListener{
 
         private ArrayList<Question> data;
         private Context context;
-        private LinearLayout layoutAnswerChoiceContent;
+        private OnQuestionPagerClickListener listener;
+
+        public void setOnQuestionPagerClickListener(OnQuestionPagerClickListener listener) {
+            this.listener = listener;
+        }
         public QuestionPagerAdapter(Context context, ArrayList<Question> data) {
             this.context = context;
             this.data = data;
@@ -411,7 +437,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
             ImageView imgZoom = (ImageView) view.findViewById(R.id.buttonZoomIn);
-            layoutAnswerChoiceContent= (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
+            LinearLayout layoutAnswerChoiceContent= (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
             tvQuestion.setText(ques.question);
             if (ques.image != null) {
                 questionImage.setVisibility(View.VISIBLE);
@@ -442,16 +468,65 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                     dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
                 }
             });
-
+            ArrayList<AnswerChoicesItem> answerChoicesItems = makeChoices(ques);
+            for (int i = 0; i < answerChoicesItems.size(); i++) {
+                layoutAnswerChoiceContent.addView(answerChoicesItems.get(i).getView());
+                answerChoicesItems.get(i).setOnAnswerChooseListener(this);
+            }
+            layoutAnswerChoiceContent.invalidate();
             container.addView(view);
             return view;
         }
+        public ArrayList<AnswerChoicesItem> makeChoices(Question question) {
+            ArrayList<AnswerChoicesItem> arrayList = new ArrayList<>();
+            if (question.choiceA != null) {
+                AnswerChoicesItem answerChoicesItemA = new AnswerChoicesItem(context, DataSource.ANSWER_A);
+                answerChoicesItemA.setAnswer(question.choiceA);
+                arrayList.add(answerChoicesItemA);
+            }
+            if (question.choiceB != null) {
+                AnswerChoicesItem answerChoicesItemB = new AnswerChoicesItem(context, DataSource.ANSWER_B);
+                answerChoicesItemB.setAnswer(question.choiceB);
+                arrayList.add(answerChoicesItemB);
+            }
+            if (question.choiceC != null) {
+                AnswerChoicesItem answerChoicesItemC = new AnswerChoicesItem(context, DataSource.ANSWER_C);
+                answerChoicesItemC.setAnswer(question.choiceC);
+                arrayList.add(answerChoicesItemC);
+            }
+            if (question.choiceD != null) {
+                AnswerChoicesItem answerChoicesItemD = new AnswerChoicesItem(context, DataSource.ANSWER_D);
+                answerChoicesItemD.setAnswer(question.choiceD);
+                arrayList.add(answerChoicesItemD);
+            }
+            resetAllChoices(arrayList);
+            switch (question.myAnswer) {
+                case DataSource.ANSWER_A:
+                    arrayList.get(0).setActive(true);
+                    break;
+                case DataSource.ANSWER_B:
+                    arrayList.get(1).setActive(true);
+                    break;
+                case DataSource.ANSWER_C:
+                    arrayList.get(2).setActive(true);
+                    break;
+                case DataSource.ANSWER_D:
+                    arrayList.get(3).setActive(true);
+                    break;
+            }
+            return arrayList;
+        }
+
+        public void resetAllChoices(ArrayList<AnswerChoicesItem> list) {
+            for (int i = 0; i < list.size(); i++) {
+                list.get(i).setActive(false);
+            }
+        }
         @Override
         public void onAnswerChoose(AnswerChoicesItem item) {
-            item.setActive(true);
-
-            questions.get(currentQuesIndex).myAnswer = item.getPosition();
-            listItemQues.get(currentQuesIndex).setHighlight();
+            if (listener != null) {
+                listener.OnPagerItemClick(item);
+            }
         }
 
         @Override

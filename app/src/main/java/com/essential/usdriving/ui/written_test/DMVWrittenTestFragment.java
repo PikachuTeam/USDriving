@@ -206,7 +206,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
     @Override
     public void OnPagerItemClick(AnswerChoicesItem item) {
-        if (questions.get(currentQuesIndex).myAnswer != DataSource.ANSWER_NOT_CHOSEN) {
+        if (questions.get(currentQuesIndex).myAnswer == DataSource.ANSWER_NOT_CHOSEN) {
             questions.get(currentQuesIndex).myAnswer = item.getIndex();
             QuestionNoItemWrapper wrapper = listItemQues.get(currentQuesIndex);
             if (!wrapper.isHighlight) {
@@ -252,12 +252,11 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             View view = View.inflate(this.context, R.layout.written_test_page_item, null);
-            final Question ques = data.get(position);
-            final ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
+             Question ques = data.get(position);
+             ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
             ImageView imgZoom = (ImageView) view.findViewById(R.id.buttonZoomIn);
             LinearLayout layoutChoice = (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
-
             tvQuestion.setText(ques.question);
             if (ques.image != null) {
                 questionImage.setVisibility(View.VISIBLE);
