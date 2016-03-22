@@ -83,7 +83,7 @@ public class TestDetailResultFragment extends BaseFragment {
 
     @Override
     protected String setTitle() {
-        return getString(R.string.title_activity_dmv_written_test);
+        return getString(R.string.detail);
     }
 
     private void getData() {

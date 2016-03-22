@@ -76,7 +76,7 @@ public class ExamSimualatorTestDetailResultFragment extends BaseFragment {
 
     @Override
     protected String setTitle() {
-        return getString(R.string.title_exam_simulator);
+        return getString(R.string.detail);
     }
 
     @Override
@@ -173,7 +173,7 @@ public class ExamSimualatorTestDetailResultFragment extends BaseFragment {
         private class ViewHolder {
             public TextView tvQuestionNo, tvResultQuestion, tvResultAnswer;
             public ImageView imgQuestion;
-            public View viewHighLight;
+
             public CardView cv;
 
             public ViewHolder(View view) {
@@ -181,7 +181,6 @@ public class ExamSimualatorTestDetailResultFragment extends BaseFragment {
                 tvResultQuestion = (TextView) view.findViewById(R.id.tvResultQuestion);
                 tvResultAnswer = (TextView) view.findViewById(R.id.tvResultAnswer);
                 imgQuestion = (ImageView) view.findViewById(R.id.imgQuestion);
-                //viewHighLight = view.findViewById(R.id.view_highlight);
                 cv = (CardView) view.findViewById(R.id.cardView);
             }
 
