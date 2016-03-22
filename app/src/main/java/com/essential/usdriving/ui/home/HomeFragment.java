@@ -35,7 +35,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private HomeAdapter homeAdapter;
     private ArrayList<HomeEntity> listHome;
     private CardView btnMoreApp, btnFeedBack;
-
+//aa
     @Override
     protected boolean enableBackButton() {
         return false;
