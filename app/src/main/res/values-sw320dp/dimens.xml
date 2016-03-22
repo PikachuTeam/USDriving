@@ -111,6 +111,8 @@
     <dimen name="size_17">100dp</dimen>
     <dimen name="size_110">110dp</dimen>
     <dimen name="size_120">120dp</dimen>
+    <dimen name="size_135">135dp</dimen>
+    <dimen name="size_140">140dp</dimen>
     <dimen name="size_150">150dp</dimen>
     <dimen name="size_160">160dp</dimen>
     <dimen name="size_170">170dp</dimen>

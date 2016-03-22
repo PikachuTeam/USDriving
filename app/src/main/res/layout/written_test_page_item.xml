@@ -1,86 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginTop="@dimen/common_size_5"
-    android:layout_marginBottom="@dimen/common_size_5"
-    >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:minHeight="@dimen/size_150"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_7"
-            android:textColor="@color/black"
-            android:text="aa"
-            android:textSize="@dimen/text_size_6"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/common_size_20"
-            />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/common_size_20"
-            >
-
-            <ImageView
-                android:id="@+id/questionImage"
-                android:layout_width="@dimen/size_150"
-                android:layout_height="@dimen/written_test_page_item_image_size"
-                android:visibility="visible"
-                android:layout_centerInParent="true"
-                />
-
-
-            <ImageView
-                android:id="@+id/buttonZoomIn"
-                android:layout_width="@dimen/common_size_30"
-                android:layout_height="@dimen/common_size_30"
-                android:layout_toRightOf="@id/questionImage"
-                android:clickable="true"
-                android:src="@drawable/ic_zoom_in_normal"
-                android:layout_marginLeft="@dimen/common_size_5"
-
-                />
-        </RelativeLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_3"
-        android:background="@color/ColorPrimary"
-        android:orientation="horizontal"
->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Answer Choices"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_5"
-            android:layout_below="@+id/questionImage"
-            android:id="@+id/tv_AnswerChoice"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/common_size_10"
-            />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/layoutAnswerChoiceContent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/tv_AnswerChoice"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center_vertical"
-        ></LinearLayout>
+        android:layout_marginTop="@dimen/common_size_5"
+        android:layout_marginBottom="@dimen/common_size_5"
+        >
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="@dimen/size_140"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_7"
+                android:textColor="@color/black"
+                android:text="aa"
+                android:textSize="@dimen/text_size_6"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/common_size_20"
+                />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_size_20"
+                >
+
+                <ImageView
+                    android:id="@+id/questionImage"
+                    android:layout_width="@dimen/size_150"
+                    android:layout_height="@dimen/written_test_page_item_image_size"
+                    android:visibility="visible"
+                    android:layout_centerInParent="true"
+                    />
+
+
+                <ImageView
+                    android:id="@+id/buttonZoomIn"
+                    android:layout_width="@dimen/common_size_30"
+                    android:layout_height="@dimen/common_size_30"
+                    android:layout_toRightOf="@id/questionImage"
+                    android:clickable="true"
+                    android:src="@drawable/ic_zoom_in_normal"
+                    android:layout_marginLeft="@dimen/common_size_5"
+
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_3"
+            android:background="@color/ColorPrimary"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Answer Choices"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_5"
+                android:layout_below="@+id/questionImage"
+                android:id="@+id/tv_AnswerChoice"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/common_size_10"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutAnswerChoiceContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/tv_AnswerChoice"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            ></LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

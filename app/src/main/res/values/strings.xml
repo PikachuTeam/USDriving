@@ -11,7 +11,7 @@
     <string name="title_activity_main">US DRIVING</string>
     <string name="title_activity_video_tips">DRIVING TIPS</string>
     <string name="banner_ad_unit_id">ca-app-pub-1669381788971337/1485297808</string>
-
+    <string name="detail">Detail</string>
     <string name="title_dmv_written_test">DMV Written test</string>
     <string name="title_test_topic">Test topic</string>
     <string name="title_exam_simulator">Exam simulator</string>
