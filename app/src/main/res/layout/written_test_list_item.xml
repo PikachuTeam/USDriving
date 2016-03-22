@@ -1,133 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/layoutChoiceContent"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_5"
-        android:layout_marginTop="@dimen/margin_5"
-        android:background="@drawable/written_test_stroke_line"
-        android:clickable="true"
-        android:orientation="vertical">
+        android:layout_marginBottom="@dimen/common_size_3"
+        android:layout_marginLeft="@dimen/common_size_8"
+        android:layout_marginRight="@dimen/common_size_8"
+        android:layout_marginTop="@dimen/common_size_3"
+        android:minHeight="@dimen/common_size_60"
+        app:cardCornerRadius="@dimen/common_size_3"
+        app:cardPreventCornerOverlap="false">
 
         <RelativeLayout
-            android:id="@+id/layoutChoice"
-            android:layout_width="@dimen/written_test_list_item_width"
-            android:layout_height="@dimen/common_size_45"
-            android:clickable="true">
-
-            <include
-                layout="@layout/background_highlight"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/common_size_50"
-
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/btnChoose"
-                    android:layout_width="@dimen/common_size_40"
-                    android:layout_height="@dimen/common_size_50"
-                    android:background="@color/written_test_color_1"
-                    android:clickable="true"
-                    android:gravity="center">
-
-                    <LinearLayout
-                        android:layout_width="@dimen/size_3"
-                        android:layout_height="@dimen/size_3"
-                        android:background="@drawable/bg_radio_button"
-                        android:gravity="center">
-
-                        <View
-                            android:id="@+id/btnActive"
-                            android:layout_width="@dimen/size_1"
-                            android:layout_height="@dimen/size_1"
-                            android:alpha="0"
-                            android:background="@drawable/bg_radio_button_active" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/tvAnswer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|right"
-                        android:layout_margin="@dimen/common_size_5"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/common_text_size_13" />
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutCorrectAnswer"
-            android:layout_width="@dimen/written_test_list_item_width"
+            android:id="@+id/choiceLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/layoutChoice"
-            android:background="@drawable/bg_right_answer"
-            android:orientation="vertical">
+            android:background="@drawable/raised_button"
+            android:clickable="true"
+            android:minHeight="@dimen/common_size_60">
 
-            <LinearLayout
-                android:layout_width="@dimen/written_test_list_item_width"
-                android:layout_height="@dimen/size_3"
-                android:background="@color/right_answer_color"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_15"
-                    android:text="@string/correct_answer"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_4"
-                    android:textStyle="bold|italic" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutExplanation"
-                android:layout_width="@dimen/written_test_list_item_width"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvExplanation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/common_size_5"
-                    android:layout_marginLeft="@dimen/margin_15"
-                    android:layout_marginRight="@dimen/margin_5"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:text="Explain:"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_3" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutWrongAnswer"
-            android:layout_width="@dimen/written_test_list_item_width"
-            android:layout_height="@dimen/size_3"
-            android:layout_below="@+id/layoutChoice"
-            android:background="@color/wrong_answer_color"
-            android:gravity="center_vertical">
-
-            <TextView
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_15"
-                android:text="@string/wrong_answer"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_4"
-                android:textStyle="bold|italic" />
-        </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+                android:layout_centerVertical="true"
+                app:buttonTint="@color/orange"/>
+
+            <TextView
+                android:id="@+id/textViewAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/checkBox"
+                android:gravity="center_vertical|left"
+                android:paddingBottom="@dimen/common_size_5"
+                android:paddingLeft="@dimen/common_size_10"
+                android:paddingTop="@dimen/common_size_5"
+                android:text="test"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_18" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

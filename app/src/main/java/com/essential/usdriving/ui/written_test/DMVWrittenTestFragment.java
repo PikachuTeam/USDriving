@@ -25,7 +25,7 @@ import com.essential.usdriving.ui.widget.QuestionNoItemWrapper;
 
 import java.util.ArrayList;
 
-public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.OnPageChangeListener, QuestionNoItemWrapper.OnItemQuestionClickListener, View.OnClickListener {
+public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.OnPageChangeListener, QuestionNoItemWrapper.OnItemQuestionClickListener, View.OnClickListener, OnQuestionPagerClickListener {
 
     private LinearLayout layoutScrollContent;
     private ArrayList<Question> questions;
@@ -38,6 +38,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     private QuestionPagerAdapter adapter;
     public static String KEY_DIALOG = "key_dialog";
     private MenuItem menuToolbar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +53,11 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     @Override
     public void defineButtonResult() {
     }
+
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.Result).setVisible(true);
-        menuToolbar=menu.findItem(R.id.Result);
+        menuToolbar = menu.findItem(R.id.Result);
         menuToolbar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -71,6 +73,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
 
     }
+
     @Override
     protected int getLayoutResIdContentView() {
         return R.layout.fragment_dmv_written_test;
@@ -90,11 +93,11 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         //showChoices(questions.get(currentQuesIndex));
 
         adapter = new QuestionPagerAdapter(getActivity(), questions);
+        adapter.setOnQuestionPagerClickListener(this);
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(this);
 
     }
-
 
 
     @Override
@@ -110,7 +113,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         int index = listItemQues.indexOf(item);
         scrollToCenter(item);
         viewPager.setCurrentItem(index, true);
-       // showChoices(questions.get(index));
+
         currentQuesIndex = index;
     }
 
@@ -124,7 +127,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     public void onPageSelected(int position) {
         setAllQuesNoItemInActive();
         listItemQues.get(position).setActive(true);
-       // showChoices(questions.get(position));
+        // showChoices(questions.get(position));
         scrollToCenter(listItemQues.get(position));
         currentQuesIndex = position;
     }
@@ -173,7 +176,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     }
 
 
-
     private void loadData(Bundle bundle) {
         if (bundle != null) {
             questions = bundle.getParcelableArrayList("Questions");
@@ -202,11 +204,40 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         horizontalScrollView.smoothScrollTo(horizontalScrollView.getScrollX() + offset, 0);
     }
 
-    private class QuestionPagerAdapter extends PagerAdapter implements  AnswerChoicesItem.OnAnswerChooseListener {
+    @Override
+    public void OnPagerItemClick(AnswerChoicesItem item) {
+        if (questions.get(currentQuesIndex).myAnswer != DataSource.ANSWER_NOT_CHOSEN) {
+            questions.get(currentQuesIndex).myAnswer = item.getIndex();
+            QuestionNoItemWrapper wrapper = listItemQues.get(currentQuesIndex);
+            if (!wrapper.isHighlight) {
+                wrapper.setHighlight();
+                horizontalScrollView.invalidate();
+            }
+            if (currentQuesIndex < 29) {
+                currentQuesIndex++;
+                viewPager.setCurrentItem(currentQuesIndex, true);
+                scrollToCenter(wrapper);
+            }
+
+        } else {
+            QuestionNoItemWrapper wrapper = listItemQues.get(currentQuesIndex);
+            if (!wrapper.isHighlight) {
+                wrapper.setHighlight();
+                horizontalScrollView.invalidate();
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    private class QuestionPagerAdapter extends PagerAdapter implements AnswerChoicesItem.OnAnswerChooseListener {
 
         private ArrayList<Question> data;
         private Context context;
-        private  LinearLayout layoutChoice;
+        private OnQuestionPagerClickListener listener;
+
+        public void setOnQuestionPagerClickListener(OnQuestionPagerClickListener listener) {
+            this.listener = listener;
+        }
 
         public QuestionPagerAdapter(Context context, ArrayList<Question> data) {
             this.context = context;
@@ -224,8 +255,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             final Question ques = data.get(position);
             final ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
-            ImageView imgZoom= (ImageView) view.findViewById(R.id.buttonZoomIn);
-             layoutChoice= (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
+            ImageView imgZoom = (ImageView) view.findViewById(R.id.buttonZoomIn);
+            LinearLayout layoutChoice = (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
 
             tvQuestion.setText(ques.question);
             if (ques.image != null) {
@@ -247,7 +278,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                     @Override
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
-                        bundle.putParcelable(KEY_DIALOG,data.get(position).image );
+                        bundle.putParcelable(KEY_DIALOG, data.get(position).image);
                         QuestionDialogFragment dialogFragment = new QuestionDialogFragment();
                         dialogFragment.setArguments(bundle);
                         dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
@@ -258,85 +289,74 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 questionImage.setVisibility(View.GONE);
                 imgZoom.setVisibility(View.GONE);
             }
-            showChoices(ques);
+            ArrayList<AnswerChoicesItem> arrayList= makeChoices(ques);
+            for(int i=0;i<arrayList.size();i++){
+                layoutChoice.addView(arrayList.get(i).getView());
+                arrayList.get(i).setOnAnswerChooseListener(this);
+            }
+            layoutChoice.invalidate();
             container.addView(view);
             return view;
         }
-        private void showChoices(Question ques ) {
-            layoutChoice.removeAllViews();
-            layoutChoice.invalidate();
 
-            if (answerChoices != null) {
-                answerChoices.removeAll(answerChoices);
+        public ArrayList<AnswerChoicesItem> makeChoices(Question question) {
+            ArrayList<AnswerChoicesItem> arrayList = new ArrayList<>();
+            if (question.choiceA != null) {
+                AnswerChoicesItem answerChoicesItemA = new AnswerChoicesItem(context, DataSource.ANSWER_A);
+                answerChoicesItemA.setAnswer(question.choiceA);
+                arrayList.add(answerChoicesItemA);
             }
+            if (question.choiceB != null) {
+                AnswerChoicesItem answerChoicesItemB = new AnswerChoicesItem(context, DataSource.ANSWER_B);
+                answerChoicesItemB.setAnswer(question.choiceB);
+                arrayList.add(answerChoicesItemB);
+            }
+            if (question.choiceC != null) {
+                AnswerChoicesItem answerChoicesItemC = new AnswerChoicesItem(context, DataSource.ANSWER_C);
+                answerChoicesItemC.setAnswer(question.choiceC);
+                arrayList.add(answerChoicesItemC);
+            }
+            if (question.choiceD != null) {
+                AnswerChoicesItem answerChoicesItemD = new AnswerChoicesItem(context, DataSource.ANSWER_D);
+                answerChoicesItemD.setAnswer(question.choiceD);
+                arrayList.add(answerChoicesItemD);
+            }
+            resetAllChoices(arrayList);
+            switch (question.myAnswer) {
+                case DataSource.ANSWER_A:
+                    arrayList.get(0).setActive(true);
+                    break;
+                case DataSource.ANSWER_B:
+                    arrayList.get(1).setActive(true);
+                    break;
+                case DataSource.ANSWER_C:
+                    arrayList.get(2).setActive(true);
+                    break;
+                case DataSource.ANSWER_D:
+                    arrayList.get(3).setActive(true);
+                    break;
+            }
+            return arrayList;
+        }
 
-            for (int i = 0; i < 4; i++) {
-                addItemIntoList(ques, i);
-            }
-            if (ques.myAnswer != BaseEntity.ANSWER_NOT_CHOOSE) {
-                if (ques.myAnswer == ques.correctAnswer) {
-                    answerChoices.get(ques.myAnswer).setCorrectAnswer(true, ques.explanation != null);
-                } else {
-                    answerChoices.get(ques.myAnswer).setCorrectAnswer(false, false);
-                }
-                answerChoices.get(ques.myAnswer).setActive(1);
-            }
-
-            for (int i = 0; i < answerChoices.size(); i++) {
-                answerChoices.get(i).setOnAnswerChooseListener(this);
+        public void resetAllChoices(ArrayList<AnswerChoicesItem> list) {
+            for (int i = 0; i < list.size(); i++) {
+                list.get(i).setActive(false);
             }
         }
 
-        private void addItemIntoList(Question ques, int option) {
-            AnswerChoicesItem item = new AnswerChoicesItem(getActivity());
-            item.setPosition(option);
-            switch (option) {
-                case 0:
-                    item.setAnswer(ques.choiceA);
-                    break;
-                case 1:
-                    item.setAnswer(ques.choiceB);
-                    break;
-                case 2:
-                    item.setAnswer(ques.choiceC);
-                    break;
-                case 3:
-                    item.setAnswer(ques.choiceD);
-                    break;
-            }
-
-            if (ques.correctAnswer == option) {
-                item.setExplanation(ques.explanation);
-            }
-
-            if (item.getAnswer() != "") {
-                layoutChoice.addView(item.getView());
-                item.setDefault();
-                // item.addLayoutTransition();
-                answerChoices.add(item);
-            }
-        }
-
-        private void setOthersToDefault(AnswerChoicesItem item) {
-            for (int i = 0; i < answerChoices.size(); i++) {
-                if (answerChoices.get(i) != item) {
-                    answerChoices.get(i).setDefault();
-                    answerChoices.get(i).setActive(0);
-                }
-            }
-        }
         @Override
         public void onAnswerChoose(AnswerChoicesItem item) {
-            item.setActive(1);
-            if (item.getPosition() == questions.get(currentQuesIndex).correctAnswer) {
-                item.setCorrectAnswer(true, questions.get(currentQuesIndex).explanation != null);
-            } else {
-                item.setCorrectAnswer(false, false);
+            if (listener != null) {
+                listener.OnPagerItemClick(item);
             }
-             setOthersToDefault(item);
-            questions.get(currentQuesIndex).myAnswer = item.getPosition();
-            listItemQues.get(currentQuesIndex).setHighlight();
         }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
+        }
+
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);

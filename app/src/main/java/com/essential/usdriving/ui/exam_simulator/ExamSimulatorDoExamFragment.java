@@ -442,76 +442,18 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                     dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
                 }
             });
-            showChoices(ques);
+
             container.addView(view);
             return view;
         }
         @Override
         public void onAnswerChoose(AnswerChoicesItem item) {
-            item.setActive(1);
-            setOthersToDefault(item);
+            item.setActive(true);
+
             questions.get(currentQuesIndex).myAnswer = item.getPosition();
             listItemQues.get(currentQuesIndex).setHighlight();
         }
-        private void showChoices(Question ques) {
-            layoutAnswerChoiceContent.removeAllViews();
-            layoutAnswerChoiceContent.invalidate();
 
-            if (answerChoices != null) {
-                answerChoices.removeAll(answerChoices);
-            }
-
-            for (int i = 0; i < 4; i++) {
-                addItemIntoList(ques, i);
-            }
-
-            if (ques.myAnswer != BaseEntity.ANSWER_NOT_CHOOSE) {
-                answerChoices.get(ques.myAnswer).setActive(1);
-            }
-
-            for (int i = 0; i < answerChoices.size(); i++) {
-                answerChoices.get(i).setOnAnswerChooseListener(this);
-            }
-        }
-
-        private void addItemIntoList(Question ques, int option) {
-            AnswerChoicesItem item = new AnswerChoicesItem(getActivity());
-            item.setPosition(option);
-            switch (option) {
-                case 0:
-                    item.setAnswer(ques.choiceA);
-                    break;
-                case 1:
-                    item.setAnswer(ques.choiceB);
-                    break;
-                case 2:
-                    item.setAnswer(ques.choiceC);
-                    break;
-                case 3:
-                    item.setAnswer(ques.choiceD);
-                    break;
-            }
-
-            if (ques.correctAnswer == option) {
-                item.setExplanation(ques.explanation);
-            }
-
-            if (item.getAnswer() != "") {
-                layoutAnswerChoiceContent.addView(item.getView());
-                item.setDefault();
-                item.addLayoutTransition();
-                answerChoices.add(item);
-            }
-        }
-
-        private void setOthersToDefault(AnswerChoicesItem item) {
-            for (int i = 0; i < answerChoices.size(); i++) {
-                if (answerChoices.get(i) != item) {
-                    answerChoices.get(i).setDefault();
-                    answerChoices.get(i).setActive(0);
-                }
-            }
-        }
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
