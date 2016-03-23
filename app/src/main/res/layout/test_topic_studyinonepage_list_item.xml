@@ -4,7 +4,7 @@
     android:id="@+id/layout_QuestionActivity"
     android:layout_width="match_parent"
     android:layout_height="@dimen/common_size_80"
-    android:background="@color/white">
+    android:background="@color/window_background2">
     <android.support.v7.widget.CardView
         android:id="@+id/cv"
         android:layout_width="match_parent"

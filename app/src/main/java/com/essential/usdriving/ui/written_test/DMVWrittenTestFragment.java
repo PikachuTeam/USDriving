@@ -29,7 +29,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
     private LinearLayout layoutScrollContent;
     private ArrayList<Question> questions;
-    private ArrayList<AnswerChoicesItem> answerChoices;
     private ArrayList<QuestionNoItemWrapper> listItemQues;
     private ViewPager viewPager;
     private HorizontalScrollView horizontalScrollView;
@@ -90,8 +89,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         super.onActivityCreated(savedInstanceState);
         loadData(savedInstanceState);
         addQuestionList();
-        //showChoices(questions.get(currentQuesIndex));
-
         adapter = new QuestionPagerAdapter(getActivity(), questions);
         adapter.setOnQuestionPagerClickListener(this);
         viewPager.setAdapter(adapter);
@@ -127,7 +124,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     public void onPageSelected(int position) {
         setAllQuesNoItemInActive();
         listItemQues.get(position).setActive(true);
-        // showChoices(questions.get(position));
         scrollToCenter(listItemQues.get(position));
         currentQuesIndex = position;
     }
@@ -185,7 +181,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             }
         }
         listItemQues = new ArrayList<>();
-        answerChoices = new ArrayList<>();
         currentQuesIndex = 0;
     }
 
