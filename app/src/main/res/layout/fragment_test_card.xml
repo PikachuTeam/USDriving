@@ -12,7 +12,10 @@
         android:orientation="vertical">
   <ScrollView
       android:layout_width="match_parent"
-      android:layout_height="@dimen/size_350">
+      android:layout_height="@dimen/size_350"
+      android:scrollbarStyle="outsideInset"
+      android:padding="@dimen/common_size_1"
+      >
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"

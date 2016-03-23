@@ -3,7 +3,6 @@ package com.essential.usdriving.ui.exam_simulator;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -51,12 +50,12 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     private int button = 0;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getData();
     }
+
     @Override
     protected int getLayoutResIdContentView() {
         return R.layout.fragment_exam_simulator_test_result;
@@ -69,7 +68,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
 
     @Override
     public void onBackPressed() {
-          getFragmentManager().popBackStack(HomeFragment.HOME_TRANSACTION,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        getFragmentManager().popBackStack(HomeFragment.HOME_TRANSACTION, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     @Override
@@ -113,9 +112,6 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     }
 
 
-
-
-
     @Override
     public void onClick(View v) {
         if (v == btnNewTest) {
@@ -148,7 +144,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
             }
             bundle.putParcelableArrayList("Questions", tmp);
             fragment.setArguments(bundle);
-            replaceFragment(fragment,getString(R.string.title_exam_simulator));
+            replaceFragment(fragment, getString(R.string.title_exam_simulator));
             state = 1;
         } else {
             dialog.dismiss();
@@ -242,72 +238,48 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         rootView.findViewById(R.id.btnCorrectAnswer).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (button == 0) {
-                    if (dialog == null) {
-                        dialog = new WarningDialog(getActivity(), 2);
-                        dialog.setOnDialogItemClickListener(ExamSimulatorTestResultFragment.this);
-                    }
-                    dialog.show();
-                    button = 1;
-                } else {
-                    ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
-                    Bundle bundle = new Bundle();
-                    ArrayList<Question> tmp;
-                    tmp = getCorrectAnswers();
-                    bundle.putParcelableArrayList("Questions", tmp);
-                    bundle.putInt("State", 0);
-                    fragment.setArguments(bundle);
-                    replaceFragment(fragment,getString(R.string.title_exam_simulator));
-                    state = 1;
-                }
+
+                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
+                Bundle bundle = new Bundle();
+                ArrayList<Question> tmp;
+                tmp = getCorrectAnswers();
+                bundle.putParcelableArrayList("Questions", tmp);
+                bundle.putInt("State", 0);
+                fragment.setArguments(bundle);
+                replaceFragment(fragment, getString(R.string.title_exam_simulator));
+                state = 1;
             }
         });
 
         rootView.findViewById(R.id.btnWrongAnswer).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (button == 0) {
-                    if (dialog == null) {
-                        dialog = new WarningDialog(getActivity(), 2);
-                        dialog.setOnDialogItemClickListener(ExamSimulatorTestResultFragment.this);
-                    }
-                    dialog.show();
-                    button = 2;
-                } else {
-                    ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
-                    Bundle bundle = new Bundle();
-                    ArrayList<Question> tmp;
-                    tmp = getWrongAnswers();
-                    bundle.putParcelableArrayList("Questions", tmp);
-                    bundle.putInt("State", 1);
-                    fragment.setArguments(bundle);
-                    replaceFragment(fragment,getString(R.string.title_exam_simulator));
-                    state = 1;
-                }
+
+                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
+                Bundle bundle = new Bundle();
+                ArrayList<Question> tmp;
+                tmp = getWrongAnswers();
+                bundle.putParcelableArrayList("Questions", tmp);
+                bundle.putInt("State", 1);
+                fragment.setArguments(bundle);
+                replaceFragment(fragment, getString(R.string.title_exam_simulator));
+                state = 1;
             }
         });
 
         rootView.findViewById(R.id.btnNotAnswered).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (button == 0) {
-                    if (dialog == null) {
-                        dialog = new WarningDialog(getActivity(), 2);
-                        dialog.setOnDialogItemClickListener(ExamSimulatorTestResultFragment.this);
-                    }
-                    dialog.show();
-                    button = 3;
-                } else {
-                    ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
-                    Bundle bundle = new Bundle();
-                    ArrayList<Question> tmp;
-                    tmp = getNotAnsweredQuestions();
-                    bundle.putParcelableArrayList("Questions", tmp);
-                    bundle.putInt("State", 2);
-                    fragment.setArguments(bundle);
-                    replaceFragment(fragment,getString(R.string.title_exam_simulator));
-                    state = 1;
-                }
+
+                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
+                Bundle bundle = new Bundle();
+                ArrayList<Question> tmp;
+                tmp = getNotAnsweredQuestions();
+                bundle.putParcelableArrayList("Questions", tmp);
+                bundle.putInt("State", 2);
+                fragment.setArguments(bundle);
+                replaceFragment(fragment, getString(R.string.title_exam_simulator));
+                state = 1;
             }
         });
     }

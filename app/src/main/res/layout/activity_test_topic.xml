@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<tatteam.com.app_common.ui.drawable.FractionFrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/common_size_10"
-    android:paddingLeft="@dimen/common_size_30"
-    android:paddingRight="@dimen/common_size_30"
     android:paddingTop="@dimen/common_size_10"
     android:background="@color/transparent"
     >
@@ -22,6 +20,9 @@
         android:dividerHeight="0dp"
         android:listSelector="@android:color/transparent"
         android:cacheColorHint="@android:color/transparent"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/common_size_23"
+        android:layout_marginRight="@dimen/common_size_15"
         />
-</tatteam.com.app_common.ui.drawable.FractionFrameLayout>
+</RelativeLayout>
 

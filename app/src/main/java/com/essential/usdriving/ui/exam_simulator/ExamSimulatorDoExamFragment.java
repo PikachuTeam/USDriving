@@ -183,7 +183,6 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         int index = listItemQues.indexOf(item);
         scrollToCenter(item);
         viewPager.setCurrentItem(index, true);
-        //showChoices(questions.get(index));
         currentQuesIndex = index;
     }
 
@@ -468,10 +467,10 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                     dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
                 }
             });
-            ArrayList<AnswerChoicesItem> answerChoicesItems = makeChoices(ques);
-            for (int i = 0; i < answerChoicesItems.size(); i++) {
-                layoutAnswerChoiceContent.addView(answerChoicesItems.get(i).getView());
-                answerChoicesItems.get(i).setOnAnswerChooseListener(this);
+            ArrayList<AnswerChoicesItem> arrayList= makeChoices(ques);
+            for(int i=0;i<arrayList.size();i++){
+                layoutAnswerChoiceContent.addView(arrayList.get(i).getView());
+                arrayList.get(i).setOnAnswerChooseListener(this);
             }
             layoutAnswerChoiceContent.invalidate();
             container.addView(view);
@@ -528,7 +527,10 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                 listener.OnPagerItemClick(item);
             }
         }
-
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
+        }
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);
