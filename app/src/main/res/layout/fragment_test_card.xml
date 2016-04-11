@@ -23,7 +23,7 @@
           <android.support.v7.widget.CardView
               android:id="@+id/card_question"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/size_170"
+              android:layout_height="wrap_content"
               android:layout_marginLeft="@dimen/common_size_5"
               android:layout_marginRight="@dimen/common_size_5"
               android:layout_marginTop="@dimen/common_size_7"
@@ -110,36 +110,43 @@
           <android.support.v7.widget.CardView
               android:id="@+id/card_explanation"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/size_200"
+              android:layout_height="wrap_content"
               android:layout_marginLeft="@dimen/common_size_5"
               android:layout_marginRight="@dimen/common_size_5"
               card_view:cardCornerRadius="@dimen/common_size_6"
               card_view:cardElevation="@dimen/common_size_3"
               card_view:cardUseCompatPadding="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/tvAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/common_size_5"
+                    android:text="@string/test_card_answer"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_text_size_17"
+                    android:textStyle="bold"
 
-              <TextView
-                  android:id="@+id/tvAnswer"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_margin="@dimen/common_size_5"
-                  android:text="@string/test_card_answer"
-                  android:textColor="@color/black"
-                  android:textSize="@dimen/common_text_size_17"
-                  android:textStyle="bold"
-
-                  />
+                    />
 
 
-              <TextView
-                  android:id="@+id/definition"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_centerInParent="true"
-                  android:layout_gravity="center"
-                  android:gravity="center"
-                  android:text="123"
-                  android:textColor="@color/black"
-                  android:textSize="@dimen/common_text_size_17" />
+                <TextView
+                    android:id="@+id/definition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="123"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_text_size_17" />
+
+            </LinearLayout>
+
 
 
           </android.support.v7.widget.CardView>
