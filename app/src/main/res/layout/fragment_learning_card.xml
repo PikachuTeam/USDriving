@@ -4,20 +4,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:paddingLeft="@dimen/common_size_30"
-        android:paddingRight="@dimen/common_size_30"
+        android:paddingLeft="@dimen/common_size_10"
         android:paddingTop="@dimen/common_size_10"
-        android:paddingBottom="@dimen/common_size_10"
         >
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/lvcard"
             android:divider="@null"
             android:dividerHeight="0dp"
             android:verticalScrollbarPosition="right"
             android:scrollbarStyle="outsideInset"
-            android:paddingRight="@dimen/common_size_5"
+            android:paddingRight="@dimen/common_size_15"
+
             >
 
         </ListView>

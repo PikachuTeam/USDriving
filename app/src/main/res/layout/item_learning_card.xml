@@ -12,6 +12,7 @@
         card_view:cardCornerRadius="@dimen/common_size_6"
         card_view:cardElevation="@dimen/common_size_3"
         card_view:cardUseCompatPadding="true"
+        android:layout_marginLeft="@dimen/common_size_8"
         >
 
 
