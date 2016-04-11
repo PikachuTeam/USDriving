@@ -45,7 +45,7 @@ public class TestTopic_StudyAllInOnePage_Fragment extends BaseFragment {
     }
     @Override
     protected int getLayoutResIdContentView() {
-        return R.layout.activity_test_topic_study_all_in_one_page_;
+        return R.layout.fragment_test_topic_study_all_in_one_page_;
     }
 
     @Override

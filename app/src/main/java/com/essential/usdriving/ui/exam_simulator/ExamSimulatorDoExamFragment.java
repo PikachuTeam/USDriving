@@ -160,7 +160,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
 
     @Override
     protected String setTitle() {
-        return getString(R.string.title_activity_exam_simulator);
+        return getString(R.string.title_exam_simulator);
     }
 
 

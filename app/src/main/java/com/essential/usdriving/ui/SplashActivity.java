@@ -2,12 +2,10 @@ package com.essential.usdriving.ui;
 
 import android.content.Intent;
 
-import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseActivity;
 
 import tatteam.com.app_common.AppCommon;
 import tatteam.com.app_common.sqlite.DatabaseLoader;
-import tatteam.com.app_common.ui.activity.BaseSplashActivity;
 import tatteam.com.app_common.ui.activity.EssentialSplashActivity;
 import tatteam.com.app_common.util.AppConstant;
 

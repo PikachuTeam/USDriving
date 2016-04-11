@@ -1,6 +1,7 @@
 package com.essential.usdriving.app;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +23,12 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
         if (enableToolbar()) {
             getBaseActivity().getToolbar().setVisibility(View.VISIBLE);
             getBaseActivity().getSupportActionBar().setTitle(setTitle());
-            getBaseActivity().getToolbar().setTitleTextColor(getResources().getColor(R.color.white));
+            getBaseActivity().getToolbar().setTitleTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+            if (enableFloatingActionButton()) {
+                getBaseActivity().getFloatingActionButton().setVisibility(View.VISIBLE);
+            } else {
+                getBaseActivity().getFloatingActionButton().setVisibility(View.GONE);
+            }
             if (enableIndicator()) {
                 getBaseActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 if (enableBackButton()) {
@@ -31,7 +37,6 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
                 } else {
                     getBaseActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 }
-
             }
         } else {
             getBaseActivity().getToolbar().setVisibility(View.GONE);
@@ -65,12 +70,6 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
         return 0;
     }
 
-    @Override
-    protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
-
-    }
-
-
     protected String setTitle() {
         return getString(R.string.app_name);
     }
@@ -94,6 +93,10 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
     public BaseActivity getBaseActivity() {
 
         return (BaseActivity) getActivity();
+    }
+
+    protected boolean enableFloatingActionButton() {
+        return false;
     }
 
     public abstract void defineButtonResult();

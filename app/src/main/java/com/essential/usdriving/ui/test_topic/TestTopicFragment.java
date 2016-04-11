@@ -50,7 +50,7 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
 
     @Override
     protected int getLayoutResIdContentView() {
-        return R.layout.activity_test_topic;
+        return R.layout.fragment_test_topic;
     }
 
     @Override
