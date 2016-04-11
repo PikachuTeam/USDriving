@@ -2,27 +2,16 @@
 <tatteam.com.app_common.ui.drawable.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transparent"
-        android:layout_marginLeft="@dimen/common_size_10"
-        android:layout_marginRight="@dimen/common_size_10"
-        android:layout_marginTop="@dimen/common_size_20"
-        android:layout_marginBottom="@dimen/common_size_30"
-        >
+        android:background="@color/transparent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/videoTipsList"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-        <!--<ListView-->
-        <!--android:id="@+id/videoTipsList"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:divider="@color/white"-->
-        <!--android:dividerHeight="0dp" />-->
     </LinearLayout>
 </tatteam.com.app_common.ui.drawable.FractionFrameLayout>
 

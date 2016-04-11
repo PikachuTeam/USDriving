@@ -56,7 +56,7 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
 
     @Override
     protected String setTitle() {
-        return getString(R.string.title_activity_exam_simulator);
+        return getString(R.string.title_exam_simulator);
     }
 
     @Override

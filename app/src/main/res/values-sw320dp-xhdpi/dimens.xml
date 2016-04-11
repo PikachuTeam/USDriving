@@ -183,4 +183,5 @@
     <dimen name="pie_chart_hole_radius">20dp</dimen>
 
     <dimen name="toolbar_elevation">5dp</dimen>
+    <dimen name="home_list_image_item_size">60dp</dimen>
 </resources>
