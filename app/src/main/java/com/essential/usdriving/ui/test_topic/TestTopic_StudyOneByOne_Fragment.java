@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
@@ -49,7 +48,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment {
 
     @Override
     protected int getLayoutResIdContentView() {
-        return R.layout.fragment_test_topic__study_one_by_one_;
+        return R.layout.fragment_test_topic_study_one_by_one_;
     }
 
     @Override

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:weightSum="5.1">
+
+    <LinearLayout
+        android:id="@+id/itemWrittenTest"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/raised_button_without_corner"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/home_list_image_item_size"
+            android:layout_height="@dimen/home_list_image_item_size"
+            android:layout_marginLeft="@dimen/common_size_80"
+            android:src="@drawable/ic_dmv_written_test" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_size_15"
+            android:text="@string/title_dmv_written_test"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_size_20" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/common_size_10"
+        android:layout_marginRight="@dimen/common_size_10"
+        android:layout_weight="0.02"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/itemExamSimulator"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/raised_button_without_corner"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/home_list_image_item_size"
+            android:layout_height="@dimen/home_list_image_item_size"
+            android:layout_marginLeft="@dimen/common_size_80"
+            android:src="@drawable/ic_exam_simulator" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_size_15"
+            android:text="@string/title_exam_simulator"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_size_20" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/common_size_10"
+        android:layout_marginRight="@dimen/common_size_10"
+        android:layout_weight="0.02"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/itemTestTopic"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/raised_button_without_corner"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/home_list_image_item_size"
+            android:layout_height="@dimen/home_list_image_item_size"
+            android:layout_marginLeft="@dimen/common_size_80"
+            android:src="@drawable/ic_dmv_test_topics" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/common_size_15"
+            android:text="@string/title_test_topic"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_size_20" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/common_size_10"
+        android:layout_marginRight="@dimen/common_size_10"
+        android:layout_weight="0.02"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/itemLearningCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/raised_button_without_corner"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/home_list_image_item_size"
+            android:layout_height="@dimen/home_list_image_item_size"
+            android:layout_marginLeft="@dimen/common_size_80"
+            android:src="@drawable/ic_learning_cards" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/common_size_15"
+            android:text="@string/title_learning_card"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_size_20" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/common_size_10"
+        android:layout_marginRight="@dimen/common_size_10"
+        android:layout_weight="0.02"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/itemVideoTips"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/raised_button_without_corner"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/home_list_image_item_size"
+            android:layout_height="@dimen/home_list_image_item_size"
+            android:layout_marginLeft="@dimen/common_size_80"
+            android:src="@drawable/ic_driving_tips" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/common_size_15"
+            android:text="@string/title_video_tips"
+            android:textColor="@color/black"
+            android:textSize="@dimen/common_text_size_20" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/common_size_10"
+        android:layout_marginRight="@dimen/common_size_10"
+        android:layout_weight="0.02"
+        android:background="@color/black" />
+</LinearLayout>

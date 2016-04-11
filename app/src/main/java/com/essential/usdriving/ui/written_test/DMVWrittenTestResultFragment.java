@@ -74,7 +74,7 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
 
     @Override
     protected String setTitle() {
-        return getString(R.string.title_activity_dmv_written_test);
+        return getString(R.string.title_dmv_written_test);
     }
 
 
