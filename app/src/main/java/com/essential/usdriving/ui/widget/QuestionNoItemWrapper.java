@@ -29,7 +29,7 @@ public class QuestionNoItemWrapper implements View.OnClickListener {
     private void findViews() {
         textViewQuesNum = (TextView) view.findViewById(R.id.questionNumber);
         bottomLine = view.findViewById(R.id.bottom_line);
-        view.findViewById(R.id.view_highlight).setOnClickListener(this);
+//        view.findViewById(R.id.view_highlight).setOnClickListener(this);
     }
 
     public void setOnItemQuestionClickListener(OnItemQuestionClickListener listener) {

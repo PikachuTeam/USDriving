@@ -63,8 +63,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_6">
 
-            <include layout="@layout/background_highlight" />
-
             <ImageView
                 android:id="@+id/imgCorrectAnswer"
                 android:layout_width="@dimen/size_6"
@@ -116,8 +114,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_6">
 
-            <include layout="@layout/background_highlight" />
-
             <ImageView
                 android:id="@+id/imgWrongAnswer"
                 android:layout_width="@dimen/size_6"
@@ -167,8 +163,6 @@
             android:id="@+id/btnNotAnswered"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_6">
-
-            <include layout="@layout/background_highlight" />
 
             <ImageView
                 android:id="@+id/imgNotAnswered"

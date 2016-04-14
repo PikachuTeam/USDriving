@@ -155,47 +155,47 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
         tvNotAnswered = (TextView) view.findViewById(R.id.tvNotAnswered);
         chartContainer = (LinearLayout) view.findViewById(R.id.chartContainer);
 
-        view.findViewById(R.id.btnCorrectAnswer).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TestDetailResultFragment fragment = new TestDetailResultFragment();
-                Bundle bundle = new Bundle();
-                ArrayList<Question> tmp;
-                tmp = getCorrectAnswers();
-                bundle.putParcelableArrayList("Questions", tmp);
-                bundle.putInt("State", 0);
-                fragment.setArguments(bundle);
-                replaceFragment(fragment, getString(R.string.written_test_result_title));
-            }
-        });
-
-        view.findViewById(R.id.btnWrongAnswer).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TestDetailResultFragment fragment = new TestDetailResultFragment();
-                Bundle bundle = new Bundle();
-                ArrayList<Question> tmp;
-                tmp = getWrongAnswers();
-                bundle.putParcelableArrayList("Questions", tmp);
-                bundle.putInt("State", 1);
-                fragment.setArguments(bundle);
-                replaceFragment(fragment, getString(R.string.written_test_result_title));
-            }
-        });
-
-        view.findViewById(R.id.btnNotAnswered).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TestDetailResultFragment fragment = new TestDetailResultFragment();
-                Bundle bundle = new Bundle();
-                ArrayList<Question> tmp;
-                tmp = getNotAnsweredQuestions();
-                bundle.putParcelableArrayList("Questions", tmp);
-                bundle.putInt("State", 2);
-                fragment.setArguments(bundle);
-                replaceFragment(fragment, getString(R.string.written_test_result_title));
-            }
-        });
+//        view.findViewById(R.id.btnCorrectAnswer).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TestDetailResultFragment fragment = new TestDetailResultFragment();
+//                Bundle bundle = new Bundle();
+//                ArrayList<Question> tmp;
+//                tmp = getCorrectAnswers();
+//                bundle.putParcelableArrayList("Questions", tmp);
+//                bundle.putInt("State", 0);
+//                fragment.setArguments(bundle);
+//                replaceFragment(fragment, getString(R.string.written_test_result_title));
+//            }
+//        });
+//
+//        view.findViewById(R.id.btnWrongAnswer).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TestDetailResultFragment fragment = new TestDetailResultFragment();
+//                Bundle bundle = new Bundle();
+//                ArrayList<Question> tmp;
+//                tmp = getWrongAnswers();
+//                bundle.putParcelableArrayList("Questions", tmp);
+//                bundle.putInt("State", 1);
+//                fragment.setArguments(bundle);
+//                replaceFragment(fragment, getString(R.string.written_test_result_title));
+//            }
+//        });
+//
+//        view.findViewById(R.id.btnNotAnswered).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TestDetailResultFragment fragment = new TestDetailResultFragment();
+//                Bundle bundle = new Bundle();
+//                ArrayList<Question> tmp;
+//                tmp = getNotAnsweredQuestions();
+//                bundle.putParcelableArrayList("Questions", tmp);
+//                bundle.putInt("State", 2);
+//                fragment.setArguments(bundle);
+//                replaceFragment(fragment, getString(R.string.written_test_result_title));
+//            }
+//        });
     }
 
     private int totalCorrectAnswer() {

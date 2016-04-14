@@ -1,26 +1,20 @@
+<tatteam.com.app_common.ui.drawable.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/common_size_10"
+    android:paddingTop="@dimen/common_size_10">
 
-    <tatteam.com.app_common.ui.drawable.FractionFrameLayout
-        android:id="@+id/main_content"
+    <ListView
+        android:id="@+id/lvcard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:paddingLeft="@dimen/common_size_10"
-        android:paddingTop="@dimen/common_size_10"
-        >
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/lvcard"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:verticalScrollbarPosition="right"
-            android:scrollbarStyle="outsideInset"
-            android:paddingRight="@dimen/common_size_15"
-
-            >
-
-        </ListView>
-    </tatteam.com.app_common.ui.drawable.FractionFrameLayout>
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingRight="@dimen/common_size_15"
+        android:scrollbarStyle="outsideInset"
+        android:verticalScrollbarPosition="right" />
+</tatteam.com.app_common.ui.drawable.FractionFrameLayout>
 
 
 

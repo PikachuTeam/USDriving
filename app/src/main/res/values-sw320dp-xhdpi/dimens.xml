@@ -184,4 +184,9 @@
 
     <dimen name="toolbar_elevation">5dp</dimen>
     <dimen name="home_list_image_item_size">60dp</dimen>
+
+    <dimen name="progress_bar_height">8dp</dimen>
+    <dimen name="progress_area_height">55dp</dimen>
+    <dimen name="progress_indicator_width">29dp</dimen>
+    <dimen name="progress_bar_container_height">20dp</dimen>
 </resources>
