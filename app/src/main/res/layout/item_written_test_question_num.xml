@@ -10,8 +10,6 @@
         android:background="@color/white"
         android:clickable="true">
 
-        <include layout="@layout/background_highlight" />
-
         <View
             android:id="@+id/bottom_line"
             android:layout_width="match_parent"
@@ -41,8 +39,5 @@
             android:text="1"
             android:textColor="@color/written_test_color_2"
             android:textSize="@dimen/text_size_5" />
-
-
     </RelativeLayout>
-
 </RelativeLayout>
