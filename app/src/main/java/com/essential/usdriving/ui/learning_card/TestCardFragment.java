@@ -20,7 +20,7 @@ import com.essential.usdriving.ui.widget.ZoomDialog;
 
 import java.util.ArrayList;
 
-public class TestCardFragment extends BaseFragment {
+public class TestCardFragment extends BaseFragment implements View.OnClickListener {
 
     ArrayList<Card> listCard;
     private int currentQuesIndex = 0;
@@ -32,7 +32,7 @@ public class TestCardFragment extends BaseFragment {
     private EssentialProgressBar mEssentialProgressBar;
 
     private int type;
-    private int STAT_ID=0,PREVIOUS_ID=1,NEXT_ID=2;
+    private int STAT_ID = 0, PREVIOUS_ID = 1, NEXT_ID = 2;
     private final static String PREF_POSITION = "Position";
 
     @Override
@@ -105,61 +105,11 @@ public class TestCardFragment extends BaseFragment {
         listCard = DataSource.getInstance().getCard(getTopic);
         computeSize(STAT_ID);
         mEssentialProgressBar.setMaxProgress(listCard.size());
-        cardPrevious.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuesIndex == listCard.size() - 1) {
-                    enableButton(cardNext, btnNext, R.drawable.ic_right);
-                }
-                if (currentQuesIndex > 0) {
-                    computeSize(PREVIOUS_ID);
-                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+        cardPrevious.setOnClickListener(this);
+        cardNext.setOnClickListener(this);
+        imageQuestion.setOnClickListener(this);
+        imageZoom.setOnClickListener(this);
 
-
-                } else {
-                    disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
-                }
-            }
-        });
-        cardNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuesIndex == 0) {
-                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
-
-                }
-                if (currentQuesIndex < listCard.size() - 1) {
-                    computeSize(NEXT_ID);
-                    enableButton(cardNext, btnNext, R.drawable.ic_right);
-
-                } else {
-                    disableButton(cardNext, btnNext, R.drawable.ic_right);
-
-                }
-            }
-        });
-
-        imageZoom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
-                ZoomDialog dialogFragment = new ZoomDialog();
-                dialogFragment.setArguments(bundle);
-                dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "");
-            }
-        });
-
-        imageQuestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
-                ZoomDialog dialogFragment = new ZoomDialog();
-                dialogFragment.setArguments(bundle);
-                dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "");
-            }
-        });
     }
 
     private void enableButton(CardView cv, ImageView button, int image) {
@@ -249,4 +199,42 @@ public class TestCardFragment extends BaseFragment {
             }
         }
     };
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnNextLayout:
+                if (currentQuesIndex == 0) {
+                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+
+                }
+                if (currentQuesIndex < listCard.size() - 1) {
+                    computeSize(NEXT_ID);
+                    enableButton(cardNext, btnNext, R.drawable.ic_right);
+                }else{
+                    disableButton(cardNext, btnNext, R.drawable.ic_right);
+                }
+                break;
+            case R.id.btnPreviousLayout:
+                if (currentQuesIndex == listCard.size() - 1) {
+                    enableButton(cardNext, btnNext, R.drawable.ic_right);
+                }
+                if (currentQuesIndex > 0) {
+                    computeSize(PREVIOUS_ID);
+                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                } else {
+                    disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                }
+                break;
+            case R.id.buttonZoomIn:
+            case R.id.image_question_card:
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
+                ZoomDialog dialogFragment = new ZoomDialog();
+                dialogFragment.setArguments(bundle);
+                dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "");
+                break;
+
+        }
+    }
 }
