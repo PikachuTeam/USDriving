@@ -1,19 +1,14 @@
 package com.essential.usdriving.ui.learning_card;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
@@ -37,7 +32,7 @@ public class TestCardFragment extends BaseFragment {
     private EssentialProgressBar mEssentialProgressBar;
 
     private int type;
-
+    private int STAT_ID=0,PREVIOUS_ID=1,NEXT_ID=2;
     private final static String PREF_POSITION = "Position";
 
     @Override
@@ -108,6 +103,7 @@ public class TestCardFragment extends BaseFragment {
         getTopic = bundle.getString(LearningCardFragment.KEY_CARD);
         type = bundle.getInt(LearningCardFragment.KEY_CARD_TOPIC);
         listCard = DataSource.getInstance().getCard(getTopic);
+        computeSize(STAT_ID);
         mEssentialProgressBar.setMaxProgress(listCard.size());
         cardPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +112,7 @@ public class TestCardFragment extends BaseFragment {
                     enableButton(cardNext, btnNext, R.drawable.ic_right);
                 }
                 if (currentQuesIndex > 0) {
-                    computeSize(1);
+                    computeSize(PREVIOUS_ID);
                     enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
 
 
@@ -133,7 +129,7 @@ public class TestCardFragment extends BaseFragment {
 
                 }
                 if (currentQuesIndex < listCard.size() - 1) {
-                    computeSize(2);
+                    computeSize(NEXT_ID);
                     enableButton(cardNext, btnNext, R.drawable.ic_right);
 
                 } else {
@@ -195,6 +191,8 @@ public class TestCardFragment extends BaseFragment {
 
     private void computeSize(int id) {
         switch (id) {
+            case 0:
+                break;
             case 1:
                 currentQuesIndex = currentQuesIndex - 1;
                 break;
@@ -203,6 +201,10 @@ public class TestCardFragment extends BaseFragment {
                 break;
         }
         setData(currentQuesIndex);
+        float ratio = (float) currentQuesIndex / listCard.size();
+        int tmp = (int) (ratio * mEssentialProgressBar.getmProgressBar().getMax());
+        mEssentialProgressBar.setProgress(tmp);
+        mEssentialProgressBar.updateLayout(tmp);
     }
 
     @Override
@@ -235,6 +237,16 @@ public class TestCardFragment extends BaseFragment {
         public void onSeekTo(int progress) {
             currentQuesIndex = progress;
             setData(progress);
+            if (currentQuesIndex == 0) {
+                disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+            } else {
+                enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+            }
+            if (currentQuesIndex == listCard.size() - 1) {
+                disableButton(cardNext, btnNext, R.drawable.ic_right);
+            } else {
+                enableButton(cardNext, btnNext, R.drawable.ic_right);
+            }
         }
     };
 }

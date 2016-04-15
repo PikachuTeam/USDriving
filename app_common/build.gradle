@@ -27,4 +27,5 @@ dependencies {
     compile 'com.github.hotchemi:android-rate:0.5.3'
     compile 'com.koushikdutta.ion:ion:2.1.6'
     compile 'com.google.android.gms:play-services-ads:8.1.0'
+    testCompile 'junit:junit:4.12'
 }
