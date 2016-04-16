@@ -15,7 +15,6 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -104,6 +103,7 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setRotationEnabled(false);
         pieChart.setTouchEnabled(false);
+        pieChart.setClickable(false);
 
         addData();
 

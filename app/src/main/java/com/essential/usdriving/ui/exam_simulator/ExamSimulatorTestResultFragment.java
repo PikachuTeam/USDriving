@@ -163,6 +163,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setRotationEnabled(false);
         pieChart.setTouchEnabled(false);
+        pieChart.setClickable(false);
 
         addData();
 
