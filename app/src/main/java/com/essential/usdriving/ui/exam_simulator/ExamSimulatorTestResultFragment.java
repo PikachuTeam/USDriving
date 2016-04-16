@@ -38,8 +38,6 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     private TextView btnNewTest;
     private ArrayList<Question> questions;
     private int state = 0;
-    private String totalTime;
-    private TextView tvTotalTime;
     private WarningDialog dialog;
     private PieChart pieChart;
     private int totalCorrectAnswer;
@@ -73,7 +71,6 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
         findViews(rootView);
-        tvTotalTime.setText(totalTime);
 
         init();
         chartContainer.addView(pieChart);
@@ -213,7 +210,6 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             questions = bundle.getParcelableArrayList("Questions");
-            totalTime = bundle.getString("Total Time");
         }
     }
 
@@ -224,7 +220,6 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         tvNotAnswered = (TextView) rootView.findViewById(R.id.tvNotAnswered);
         btnNewTest = (TextView) rootView.findViewById(R.id.btnNewTest);
 
-        tvTotalTime = (TextView) rootView.findViewById(R.id.tvTotalTime);
         chartContainer = (LinearLayout) rootView.findViewById(R.id.chartContainer);
 
         btnNewTest.setOnClickListener(this);

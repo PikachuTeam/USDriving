@@ -55,7 +55,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     private WarningDialog dialog, warningDialog;
     private final static int INTERVAL = 1000, LIMIT_TIME = 3600000;
     private MenuItem menuToolbarResult;
-
+    private int timeLeft;
 
     @Override
     protected boolean enableBackButton() {
@@ -70,6 +70,12 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        timeLeft = 0;
     }
 
     @Override
@@ -108,9 +114,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                             dialog.dismiss();
                             ExamSimulatorTestResultFragment fragment = new ExamSimulatorTestResultFragment();
                             Bundle bundle = new Bundle();
-                            String time = totalTime();
                             bundle.putParcelableArrayList("Questions", questions);
-                            bundle.putString("Total Time", time);
                             timer.cancel();
                             fragment.setArguments(bundle);
                             replaceFragment(fragment, getString(R.string.title_exam_simulator));
@@ -136,7 +140,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         min2 = 0;
         sec1 = 0;
         sec2 = 0;
-        startTimer();
+//        startTimer();
         setHasOptionsMenu(true);
     }
 
@@ -149,7 +153,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         adapter = new QuestionPagerAdapter(getActivity(), questions);
         adapter.setOnQuestionPagerClickListener(this);
         viewPager.setAdapter(adapter);
-        viewPager.setOnPageChangeListener(this);
+        viewPager.addOnPageChangeListener(this);
     }
 
     @Override
@@ -173,7 +177,6 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     public void defineButtonResult() {
 
     }
-
 
 
     @Override
@@ -206,21 +209,18 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
 
     }
 
-
     @Override
     public void onDialogItemClick(int code) {
         if (code == WarningDialog.OK) {
             dialog.dismiss();
             ExamSimulatorTestResultFragment fragment = new ExamSimulatorTestResultFragment();
             Bundle bundle = new Bundle();
-            String time = totalTime();
             bundle.putParcelableArrayList("Questions", questions);
-            bundle.putString("Total Time", time);
             timer.cancel();
             fragment.setArguments(bundle);
             replaceFragment(fragment, getString(R.string.title_exam_simulator));
         } else {
-            timer.start();
+            startTimer();
             dialog.dismiss();
         }
     }
@@ -229,7 +229,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         horizontalScrollView = (HorizontalScrollView) rootView.findViewById(R.id.horizontalScrollView);
         layoutScrollContent = (LinearLayout) rootView.findViewById(R.id.layoutScrollContent);
         viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-     //   layoutAnswerChoiceContent = (LinearLayout) rootView.findViewById(R.id.layoutAnswerChoiceContent);
+        //   layoutAnswerChoiceContent = (LinearLayout) rootView.findViewById(R.id.layoutAnswerChoiceContent);
         minute1 = (TextView) rootView.findViewById(R.id.minute_1);
         minute2 = (TextView) rootView.findViewById(R.id.minute_2);
 
@@ -255,7 +255,11 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         }
     }
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
 
     private void setAllQuesNoItemInActive() {
         for (QuestionNoItemWrapper item : listItemQues) {
@@ -303,15 +307,19 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         minute2.setText("" + min2);
         second1.setText("" + sec1);
         second2.setText("" + sec2);
-        // timeLeft++;
+        timeLeft++;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        startTimer();
     }
 
     private void startTimer() {
-
-        timer = new CountDownTimer(LIMIT_TIME, INTERVAL) {
+        timer = new CountDownTimer(LIMIT_TIME - INTERVAL * timeLeft, INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
-
                 makeTime();
             }
 
@@ -319,70 +327,12 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             public void onFinish() {
                 ExamSimulatorTestResultFragment fragment = new ExamSimulatorTestResultFragment();
                 Bundle bundle = new Bundle();
-                String time = totalTime();
                 bundle.putParcelableArrayList("Questions", questions);
-                bundle.putString("Total Time", time);
                 fragment.setArguments(bundle);
                 replaceFragment(fragment, getString(R.string.title_exam_simulator));
             }
         };
         timer.start();
-    }
-
-
-    private String totalTime() {
-        String time = "";
-
-        int tmp1, tmp2;
-        tmp1 = 10 - sec2;
-        if (sec2 > 0) {
-            tmp2 = 1;
-        } else {
-            tmp2 = 0;
-        }
-        if (tmp1 == 10) {
-            tmp1 = 0;
-        }
-        time += "" + tmp1;
-
-        tmp1 = 6 - sec1 - tmp2;
-        if (sec1 > 0) {
-            tmp2 = 1;
-        } else {
-            tmp2 = 0;
-        }
-        if (tmp1 == 6) {
-            tmp1 = 0;
-        }
-        time += "" + tmp1;
-
-        time += ":";
-
-        tmp1 = 10 - min2 - tmp2;
-        if (min2 > 0) {
-            tmp2 = 1;
-        } else {
-            tmp2 = 0;
-        }
-        if (tmp1 == 10) {
-            tmp1 = 0;
-        }
-        time += "" + tmp1;
-
-        tmp1 = 6 - min1 - tmp2;
-        time += "" + tmp1;
-
-        time = revertString(time);
-
-        return time;
-    }
-
-    private String revertString(String str) {
-        String tmp = "";
-        for (int i = str.length() - 1; i >= 0; i--) {
-            tmp += str.charAt(i);
-        }
-        return tmp;
     }
 
     @Override
@@ -411,7 +361,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         adapter.notifyDataSetChanged();
     }
 
-    private class QuestionPagerAdapter extends PagerAdapter implements  AnswerChoicesItem.OnAnswerChooseListener{
+    private class QuestionPagerAdapter extends PagerAdapter implements AnswerChoicesItem.OnAnswerChooseListener {
 
         private ArrayList<Question> data;
         private Context context;
@@ -420,6 +370,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         public void setOnQuestionPagerClickListener(OnQuestionPagerClickListener listener) {
             this.listener = listener;
         }
+
         public QuestionPagerAdapter(Context context, ArrayList<Question> data) {
             this.context = context;
             this.data = data;
@@ -437,7 +388,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
             ImageView imgZoom = (ImageView) view.findViewById(R.id.buttonZoomIn);
-            LinearLayout layoutAnswerChoiceContent= (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
+            LinearLayout layoutAnswerChoiceContent = (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
             tvQuestion.setText(ques.question);
             if (ques.image != null) {
                 questionImage.setVisibility(View.VISIBLE);
@@ -468,8 +419,8 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                     dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "Question");
                 }
             });
-            ArrayList<AnswerChoicesItem> arrayList= makeChoices(ques);
-            for(int i=0;i<arrayList.size();i++){
+            ArrayList<AnswerChoicesItem> arrayList = makeChoices(ques);
+            for (int i = 0; i < arrayList.size(); i++) {
                 layoutAnswerChoiceContent.addView(arrayList.get(i).getView());
                 arrayList.get(i).setOnAnswerChooseListener(this);
             }
@@ -477,6 +428,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             container.addView(view);
             return view;
         }
+
         public ArrayList<AnswerChoicesItem> makeChoices(Question question) {
             ArrayList<AnswerChoicesItem> arrayList = new ArrayList<>();
             if (question.choiceA != null) {
@@ -500,7 +452,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                 arrayList.add(answerChoicesItemD);
             }
             resetAllChoices(arrayList);
-            if(question.myAnswer!=DataSource.ANSWER_NOT_CHOSEN){
+            if (question.myAnswer != DataSource.ANSWER_NOT_CHOSEN) {
                 arrayList.get(question.myAnswer).setActive(true);
             }
             return arrayList;
@@ -511,16 +463,19 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                 list.get(i).setActive(false);
             }
         }
+
         @Override
         public void onAnswerChoose(AnswerChoicesItem item) {
             if (listener != null) {
                 listener.OnPagerItemClick(item);
             }
         }
+
         @Override
         public int getItemPosition(Object object) {
             return POSITION_NONE;
         }
+
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView((View) object);

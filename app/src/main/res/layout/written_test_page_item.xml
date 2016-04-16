@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/common_size_5"
         android:layout_marginTop="@dimen/common_size_5"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/layout_questionNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="@dimen/size_135"
-            android:orientation="vertical"
-            android:id="@+id/layout_questionNumber"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvQuestion"
@@ -33,11 +30,10 @@
                 android:textSize="@dimen/text_size_6" />
 
             <RelativeLayout
+                android:id="@+id/layout_questionPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/common_size_20"
-                android:id="@+id/layout_questionPage"
-                >
+                android:layout_marginBottom="@dimen/common_size_20">
 
                 <ImageView
                     android:id="@+id/questionImage"
@@ -62,13 +58,12 @@
 
 
         <LinearLayout
+            android:id="@+id/layout_questionText"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_3"
-            android:background="@color/ColorPrimary"
-            android:orientation="horizontal"
             android:layout_below="@id/layout_questionNumber"
-            android:id="@+id/layout_questionText"
-            >
+            android:background="@color/ColorPrimary"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_AnswerChoice"
@@ -80,8 +75,7 @@
                 android:layout_marginLeft="@dimen/common_size_10"
                 android:text="Answer Choices"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_5"
-                />
+                android:textSize="@dimen/text_size_5" />
         </LinearLayout>
 
 
@@ -89,11 +83,10 @@
             android:id="@+id/layoutAnswerChoiceContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/layout_questionText"
             android:layout_alignParentBottom="true"
+            android:layout_below="@id/layout_questionText"
             android:background="@color/window_background2"
-            android:orientation="vertical"
-            />
+            android:orientation="vertical" />
 
     </RelativeLayout>
 </ScrollView>

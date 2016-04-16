@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<tatteam.com.app_common.ui.drawable.FractionFrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<tatteam.com.app_common.ui.drawable.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/white"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvType"
@@ -26,15 +25,9 @@
             android:id="@+id/dmvWrittenTestList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:divider="@null"
             android:dividerHeight="0dp"
-            android:scrollbarStyle="outsideInset"
-            android:scrollbarSize="@dimen/common_size_300"
-            android:padding="@dimen/common_size_5"
-            android:background="@color/white"
-            android:paddingRight="@dimen/common_size_5"
-
-            ></ListView>
-
+            android:scrollbarSize="@dimen/common_size_300"/>
     </LinearLayout>
 </tatteam.com.app_common.ui.drawable.FractionFrameLayout>
