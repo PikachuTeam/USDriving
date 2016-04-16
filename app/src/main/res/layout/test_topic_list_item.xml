@@ -4,36 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_test_topic_item"
-    android:orientation="vertical"
-
-    >
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="@dimen/common_size_300"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center|top"
-        android:layout_marginLeft="@dimen/common_size_5"
-        android:layout_marginRight="@dimen/common_size_5"
+        android:layout_marginLeft="@dimen/common_size_7"
+        android:layout_marginRight="@dimen/common_size_7"
         android:layout_marginTop="@dimen/common_size_1"
-        card_view:cardCornerRadius="@dimen/common_size_6"
+        card_view:cardCornerRadius="@dimen/common_size_3"
         card_view:cardElevation="@dimen/common_size_3"
         card_view:cardPreventCornerOverlap="false"
         card_view:cardUseCompatPadding="true">
 
         <RelativeLayout
-            android:id="@+id/layout_testopic"
+            android:id="@+id/layout_test_topic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/test_topic_list_item_height"
             android:background="@drawable/raised_button">
 
             <TextView
                 android:id="@+id/tv_Id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/common_size_15"
-                android:layout_marginTop="@dimen/common_size_10"
                 android:text="01"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_15"
@@ -41,10 +39,10 @@
 
             <LinearLayout
                 android:id="@+id/layout_Topic"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/common_size_10"
-                android:layout_marginTop="@dimen/common_size_10"
                 android:layout_toRightOf="@+id/tv_Id"
                 android:orientation="vertical">
 
@@ -59,26 +57,22 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_size_5">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/number_of_question"
-                        android:textSize="@dimen/text_size_5"
-
-                        />
+                        android:textSize="@dimen/text_size_5" />
 
                     <TextView
                         android:id="@+id/tv_NumberOfQuestions"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="19"
-                        android:textSize="@dimen/text_size_5"
-
-                        />
+                        android:textSize="@dimen/text_size_5" />
                 </LinearLayout>
-
             </LinearLayout>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -88,64 +82,56 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_size_70"
         android:layout_below="@+id/layout_Topic"
-        android:orientation="horizontal"
         android:gravity="center"
-        >
+        android:orientation="horizontal">
 
         <android.support.v7.widget.CardView
             android:id="@+id/cardViewOneByOne"
-            android:layout_width="@dimen/size_150"
+            android:layout_width="0dp"
             android:layout_height="@dimen/common_size_70"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/common_size_5"
+            android:layout_marginLeft="@dimen/common_size_7"
             android:layout_marginTop="@dimen/common_size_1"
-            card_view:cardCornerRadius="@dimen/common_size_6"
+            android:layout_weight="1"
+            card_view:cardCornerRadius="@dimen/common_size_3"
             card_view:cardElevation="@dimen/common_size_3"
             card_view:cardPreventCornerOverlap="false"
-            card_view:cardUseCompatPadding="true"
-            >
+            card_view:cardUseCompatPadding="true">
 
             <TextView
                 android:id="@+id/tvPracticeOne"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/raised_button"
                 android:gravity="center"
                 android:text="@string/text_study_one"
                 android:textColor="@color/ColorPrimaryDark"
-                android:textSize="@dimen/text_size_7"
-
-                />
+                android:textSize="@dimen/text_size_6" />
         </android.support.v7.widget.CardView>
-
 
         <android.support.v7.widget.CardView
             android:id="@+id/cardViewAllinOne"
-            android:layout_width="@dimen/size_150"
+            android:layout_width="0dp"
             android:layout_height="@dimen/common_size_70"
             android:layout_centerHorizontal="true"
-            android:layout_marginRight="@dimen/common_size_5"
+            android:layout_marginRight="@dimen/common_size_7"
             android:layout_marginTop="@dimen/common_size_1"
-            card_view:cardCornerRadius="@dimen/common_size_6"
+            android:layout_weight="1"
+            card_view:cardCornerRadius="@dimen/common_size_3"
             card_view:cardElevation="@dimen/common_size_3"
             card_view:cardPreventCornerOverlap="false"
-            card_view:cardUseCompatPadding="true"
-            >
+            card_view:cardUseCompatPadding="true">
 
             <TextView
                 android:id="@+id/tvStudyAll"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/raised_button"
                 android:gravity="center"
                 android:text="@string/text_study_all"
                 android:textColor="@color/ColorPrimaryDark"
-                android:textSize="@dimen/text_size_7" />
-
+                android:textSize="@dimen/text_size_6" />
         </android.support.v7.widget.CardView>
-
-
     </LinearLayout>
-
 </LinearLayout>
