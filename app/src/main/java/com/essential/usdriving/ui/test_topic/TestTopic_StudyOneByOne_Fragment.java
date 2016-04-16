@@ -23,18 +23,17 @@ import java.util.ArrayList;
 
 public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements View.OnClickListener {
 
-
     ArrayList<Question> list;
     private int currentQuesIndex = 0;
-    private TextView tvChoiceA, tvChoiceB, tvChoiceC, tvChoiceD, tvExplanation, tvNumber, tvQuestion;
+    private TextView tvChoiceA, tvChoiceB, tvChoiceC, tvChoiceD, tvExplanation, tvQuestion;
     private String getTopic;
-    private ColorStateList oldColors;
     private CardView cardPrevious;
     private CardView cardNext;
     private ImageView imageQuestion, imageZoom, btnPrevious, btnNext;
     private int type;
     private EssentialProgressBar mEssentialProgressBar;
     private int START_ID = 0, PREVIOUS_ID = 1, NEXT_ID = 2;
+    private final static String PREF_POSITION = "Position";
 
     @Override
     protected boolean enableBackButton() {
@@ -54,22 +53,16 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
         findViews(rootView);
-        oldColors = tvNumber.getTextColors();
         loadData();
         currentQuesIndex = loadState();
         if (currentQuesIndex == 0) {
-            SetData(0);
-        } else {
-            SetData(currentQuesIndex);
+            disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
         }
-
-
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
+        if (currentQuesIndex == list.size() - 1) {
+            disableButton(cardNext, btnNext, R.drawable.ic_right);
+        }
+        setData(currentQuesIndex);
+        mEssentialProgressBar.setProgress(currentQuesIndex);
     }
 
     @Override
@@ -85,7 +78,6 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
         tvChoiceC = (TextView) rootView.findViewById(R.id.tvChoiceC);
         tvChoiceD = (TextView) rootView.findViewById(R.id.tvChoiceD);
         tvExplanation = (TextView) rootView.findViewById(R.id.tvExplanation);
-        tvNumber = (TextView) rootView.findViewById(R.id.tv_Number);
         tvQuestion = (TextView) rootView.findViewById(R.id.tvQuestionPage);
         imageQuestion = (ImageView) rootView.findViewById(R.id.image_question_test_topic);
         imageZoom = (ImageView) rootView.findViewById(R.id.buttonZoomIn);
@@ -136,15 +128,11 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
                 currentQuesIndex = currentQuesIndex + 1;
                 break;
         }
-        SetData(currentQuesIndex);
-        float ratio = (float) currentQuesIndex / list.size();
-        int tmp = (int) (ratio * mEssentialProgressBar.getmProgressBar().getMax());
-        mEssentialProgressBar.setProgress(tmp);
-        mEssentialProgressBar.updateLayout(tmp);
-
+        setData(currentQuesIndex);
+        mEssentialProgressBar.setProgress(currentQuesIndex);
     }
 
-    public void SetData(int position) {
+    public void setData(int position) {
         if (list.get(position).image != null) {
             imageQuestion.setVisibility(View.VISIBLE);
             imageQuestion.setImageBitmap(list.get(currentQuesIndex).image);
@@ -153,7 +141,6 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
             imageQuestion.setVisibility(View.GONE);
             imageZoom.setVisibility(View.GONE);
         }
-        tvNumber.setText("  " + (currentQuesIndex + 1) + "  of  " + list.size());
         tvQuestion.setText("" + list.get(currentQuesIndex).question);
         if (list.get(position).choiceD == null) {
             tvChoiceD.setVisibility(View.GONE);
@@ -173,29 +160,28 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
 
         switch (list.get(position).correctAnswer) {
             case 0:
-                tvChoiceA.setTextColor(getResources().getColor(R.color.right_answer_color));
-                tvChoiceB.setTextColor(oldColors);
-                tvChoiceC.setTextColor(oldColors);
-                tvChoiceD.setTextColor(oldColors);
+                tvChoiceA.setTextColor(ContextCompat.getColor(getActivity(), R.color.right_answer_color));
+                tvChoiceB.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                tvChoiceC.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                tvChoiceD.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
                 break;
             case 1:
-                tvChoiceB.setTextColor(getResources().getColor(R.color.right_answer_color));
-                tvChoiceA.setTextColor(oldColors);
-                tvChoiceC.setTextColor(oldColors);
-                tvChoiceD.setTextColor(oldColors);
-
+                tvChoiceB.setTextColor(ContextCompat.getColor(getActivity(), R.color.right_answer_color));
+                tvChoiceA.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                tvChoiceC.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                tvChoiceD.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
                 break;
             case 2:
-                tvChoiceC.setTextColor(getResources().getColor(R.color.right_answer_color));
-                tvChoiceA.setTextColor(oldColors);
-                tvChoiceB.setTextColor(oldColors);
-                tvChoiceD.setTextColor(oldColors);
+                tvChoiceC.setTextColor(ContextCompat.getColor(getActivity(), R.color.right_answer_color));
+                tvChoiceA.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                tvChoiceB.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                tvChoiceD.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
                 break;
             case 3:
-                tvChoiceD.setTextColor(getResources().getColor(R.color.right_answer_color));
-                tvChoiceA.setTextColor(oldColors);
-                tvChoiceC.setTextColor(oldColors);
-                tvChoiceB.setTextColor(oldColors);
+                tvChoiceD.setTextColor(ContextCompat.getColor(getActivity(), R.color.right_answer_color));
+                tvChoiceA.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                tvChoiceC.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+                tvChoiceB.setTextColor(ContextCompat.getColor(getActivity(), R.color.black));
                 break;
         }
     }
@@ -215,92 +201,19 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
     private void saveState() {
         SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        switch (type) {
-            case 1:
-                editor.putInt(getString(R.string.position_1), currentQuesIndex);
-                break;
-            case 2:
-                editor.putInt(getString(R.string.position_2), currentQuesIndex);
-                break;
-            case 3:
-                editor.putInt(getString(R.string.position_3), currentQuesIndex);
-                break;
-            case 4:
-                editor.putInt(getString(R.string.position_4), currentQuesIndex);
-                break;
-            case 5:
-                editor.putInt(getString(R.string.position_5), currentQuesIndex);
-                break;
-            case 6:
-                editor.putInt(getString(R.string.position_6), currentQuesIndex);
-                break;
-            case 7:
-                editor.putInt(getString(R.string.position_7), currentQuesIndex);
-                break;
-            case 8:
-                editor.putInt(getString(R.string.position_8), currentQuesIndex);
-                break;
-            case 9:
-                editor.putInt(getString(R.string.position_9), currentQuesIndex);
-                break;
-            case 10:
-                editor.putInt(getString(R.string.position_10), currentQuesIndex);
-                break;
-            case 11:
-                editor.putInt(getString(R.string.position_11), currentQuesIndex);
-                break;
-        }
+        editor.putInt(PREF_POSITION + " " + type, currentQuesIndex);
         editor.commit();
-
     }
 
     private int loadState() {
         SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        switch (type) {
-            case 1:
-                return sharedPreferences.getInt(getString(R.string.position_1), 0);
-
-            case 2:
-                return sharedPreferences.getInt(getString(R.string.position_2), 0);
-
-            case 3:
-                return sharedPreferences.getInt(getString(R.string.position_3), 0);
-
-            case 4:
-                return sharedPreferences.getInt(getString(R.string.position_4), 0);
-
-            case 5:
-                return sharedPreferences.getInt(getString(R.string.position_5), 0);
-
-            case 6:
-                return sharedPreferences.getInt(getString(R.string.position_6), 0);
-
-            case 7:
-                return sharedPreferences.getInt(getString(R.string.position_7), 0);
-
-            case 8:
-                return sharedPreferences.getInt(getString(R.string.position_8), 0);
-
-            case 9:
-                return sharedPreferences.getInt(getString(R.string.position_9), 0);
-
-            case 10:
-                return sharedPreferences.getInt(getString(R.string.position_10), 0);
-
-            case 11:
-                return sharedPreferences.getInt(getString(R.string.position_11), 0);
-
-            default:
-                return 0;
-        }
-
-
+        return sharedPreferences.getInt(PREF_POSITION + " " + type, 0);
     }
 
     private EssentialProgressBar.OnProgressBarInteractListener interactListener = new EssentialProgressBar.OnProgressBarInteractListener() {
         @Override
         public void onSeekTo(int progress) {
-            SetData(progress);
+            setData(progress);
             currentQuesIndex = progress;
             if (currentQuesIndex == 0) {
                 disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
@@ -320,26 +233,33 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnNextLayout:
-                if (currentQuesIndex == 0) {
-                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
-
-                }
                 if (currentQuesIndex < list.size() - 1) {
                     computeSize(NEXT_ID);
-                    enableButton(cardNext, btnNext, R.drawable.ic_right);
-                }else{
-                    disableButton(cardNext, btnNext, R.drawable.ic_right);
+                    if (currentQuesIndex == 1) {
+                        enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                    }
+                    if (currentQuesIndex < list.size() - 1) {
+                        if (!cardNext.isEnabled()) {
+                            enableButton(cardNext, btnNext, R.drawable.ic_right);
+                        }
+                    } else {
+                        disableButton(cardNext, btnNext, R.drawable.ic_right);
+                    }
                 }
                 break;
             case R.id.btnPreviousLayout:
-                if (currentQuesIndex == list.size() - 1) {
-                    enableButton(cardNext, btnNext, R.drawable.ic_right);
-                }
                 if (currentQuesIndex > 0) {
                     computeSize(PREVIOUS_ID);
-                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
-                } else {
-                    disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                    if (currentQuesIndex == list.size() - 2) {
+                        enableButton(cardNext, btnNext, R.drawable.ic_right);
+                    }
+                    if (currentQuesIndex > 0) {
+                        if (!cardPrevious.isEnabled()) {
+                            enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                        }
+                    } else {
+                        disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                    }
                 }
                 break;
             case R.id.buttonZoomIn:
@@ -350,7 +270,6 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
                 dialogFragment.setArguments(bundle);
                 dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "");
                 break;
-
         }
     }
 }

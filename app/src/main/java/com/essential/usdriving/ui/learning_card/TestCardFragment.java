@@ -142,10 +142,7 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
                 break;
         }
         setData(currentQuesIndex);
-        float ratio = (float) currentQuesIndex / listCard.size();
-        int tmp = (int) (ratio * mEssentialProgressBar.getmProgressBar().getMax());
-        mEssentialProgressBar.setProgress(tmp);
-        mEssentialProgressBar.updateLayout(tmp);
+        mEssentialProgressBar.setProgress(currentQuesIndex);
     }
 
     @Override

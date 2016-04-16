@@ -81,21 +81,10 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
-                <TextView
-                    android:id="@+id/tv_Number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_size_5"
-                    android:text="1 of "
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/common_text_size_15" />
-
-
                 <com.essential.usdriving.ui.widget.EssentialProgressBar
                     android:id="@+id/essential_progress_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/card_explanation"
@@ -170,10 +159,8 @@
                             android:textStyle="italic" />
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
-
             </LinearLayout>
         </ScrollView>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -189,7 +176,6 @@
                 card_view:cardCornerRadius="@dimen/common_size_3"
                 card_view:cardPreventCornerOverlap="false">
 
-
                 <ImageView
                     android:id="@+id/btnPrevious"
                     android:layout_width="match_parent"
@@ -198,8 +184,6 @@
                     android:background="@drawable/raised_button"
                     android:clickable="false"
                     android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
-
-
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -218,14 +202,8 @@
                     android:background="@drawable/raised_button"
                     android:clickable="false"
                     android:src="@drawable/ic_keyboard_arrow_right_black_24dp"></ImageView>
-
             </android.support.v7.widget.CardView>
-
-
-            />
         </LinearLayout>
-
-
     </LinearLayout>
 </tatteam.com.app_common.ui.drawable.FractionFrameLayout>
 
