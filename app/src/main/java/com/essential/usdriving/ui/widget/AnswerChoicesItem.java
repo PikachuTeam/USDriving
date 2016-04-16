@@ -33,7 +33,9 @@ public class AnswerChoicesItem implements View.OnClickListener {
     public void setOnAnswerChooseListener(OnAnswerChooseListener listener) {
         this.listener = listener;
     }
-
+    public OnAnswerChooseListener getListener(){
+        return  listener;
+    }
     public View getView() {
         return this.view;
     }
