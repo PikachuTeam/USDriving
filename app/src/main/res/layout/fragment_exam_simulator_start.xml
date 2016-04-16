@@ -51,6 +51,7 @@
                 android:textSize="@dimen/text_size_6"
                 android:textColor="@color/black"
                 android:gravity="center"
+                android:background="@drawable/raised_button"
                />
         </android.support.v7.widget.CardView>
         <!--<Button-->
