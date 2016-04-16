@@ -191,5 +191,5 @@
     <dimen name="progress_bar_container_height">20dp</dimen>
 
     <dimen name="test_topic_list_item_height">70dp</dimen>
-    <dimen name="learning_card_min_height">140dp</dimen>
+    <dimen name="learning_card_min_height">120dp</dimen>
 </resources>

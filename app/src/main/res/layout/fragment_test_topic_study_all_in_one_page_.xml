@@ -2,8 +2,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/window_background2"
-    android:paddingTop="@dimen/common_size_10">
+    android:background="@color/window_background2">
 
     <ListView
         android:id="@+id/lv_StudyInOnePage"
@@ -11,8 +10,7 @@
         android:layout_height="match_parent"
         android:background="@color/window_background2"
         android:divider="@null"
-        android:dividerHeight="0dp"
-        android:scrollbarStyle="outsideInset" />
+        android:dividerHeight="0dp" />
 </RelativeLayout>
 
 

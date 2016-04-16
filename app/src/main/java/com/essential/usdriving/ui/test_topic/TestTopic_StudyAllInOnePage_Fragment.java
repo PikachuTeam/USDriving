@@ -103,7 +103,7 @@ public class TestTopic_StudyAllInOnePage_Fragment extends BaseFragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             MyViewHolder mViewHolder;
             if(convertView == null){
-                convertView = inflater.inflate(R.layout.test_topic_studyinonepage_list_item,null);
+                convertView = inflater.inflate(R.layout.test_topic_study_in_one_page_list_item,null);
                 mViewHolder = new MyViewHolder();
                 convertView.setTag(mViewHolder);
             }
