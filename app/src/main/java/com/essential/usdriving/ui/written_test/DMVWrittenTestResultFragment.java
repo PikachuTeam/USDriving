@@ -98,13 +98,12 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
 
     private void initChart() {
         pieChart = new PieChart(getActivity());
-        //pieChart.setUsePercentValues(true);
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColorTransparent(true);
         pieChart.setHoleRadius(getResources().getDimension(R.dimen.pie_chart_hole_radius));
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setRotationEnabled(false);
-        pieChart.setClickable(false);
+        pieChart.setTouchEnabled(false);
 
         addData();
 

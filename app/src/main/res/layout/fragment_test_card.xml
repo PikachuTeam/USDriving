@@ -32,7 +32,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minHeight="@dimen/learning_card_min_height"
                         android:orientation="vertical">
 
                         <TextView
@@ -44,35 +43,42 @@
                             android:textSize="@dimen/common_text_size_17"
                             android:textStyle="bold" />
 
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/common_size_5">
-
-                            <ImageView
-                                android:id="@+id/image_question_card"
-                                android:layout_width="@dimen/common_size_70"
-                                android:layout_height="@dimen/common_size_70"
-                                android:layout_centerHorizontal="true"
-                                android:clickable="true" />
-
-                            <ImageView
-                                android:id="@+id/buttonZoomIn"
-                                android:layout_width="@dimen/common_size_30"
-                                android:layout_height="@dimen/common_size_30"
-                                android:layout_toRightOf="@id/image_question_card"
-                                android:clickable="true"
-                                android:src="@drawable/ic_zoom_in_normal" />
-                        </RelativeLayout>
-
-                        <TextView
-                            android:id="@+id/tvQuestionPage"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
                             android:gravity="center"
-                            android:padding="@dimen/common_size_5"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_6" />
+                            android:minHeight="@dimen/learning_card_min_height"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:id="@+id/image_question_card"
+                                    android:layout_width="@dimen/common_size_70"
+                                    android:layout_height="@dimen/common_size_70"
+                                    android:layout_centerHorizontal="true"
+                                    android:clickable="true" />
+
+                                <ImageView
+                                    android:id="@+id/buttonZoomIn"
+                                    android:layout_width="@dimen/common_size_30"
+                                    android:layout_height="@dimen/common_size_30"
+                                    android:layout_toRightOf="@id/image_question_card"
+                                    android:clickable="true"
+                                    android:src="@drawable/ic_zoom_in_normal" />
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/tvQuestionPage"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:padding="@dimen/common_size_5"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_6" />
+                        </LinearLayout>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
@@ -93,9 +99,10 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minHeight="@dimen/learning_card_min_height">
+                        android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/text_answer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/common_size_5"
@@ -104,16 +111,23 @@
                             android:textSize="@dimen/common_text_size_17"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/definition"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_centerInParent="true"
-                            android:gravity="center"
-                            android:padding="@dimen/common_size_5"
-                            android:text="123"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_6" />
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text_answer"
+                            android:minHeight="@dimen/learning_card_min_height">
+
+                            <TextView
+                                android:id="@+id/definition"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_below="@+id/text_answer"
+                                android:gravity="center"
+                                android:padding="@dimen/common_size_5"
+                                android:text="ABC"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size_6" />
+                        </LinearLayout>
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
             </LinearLayout>

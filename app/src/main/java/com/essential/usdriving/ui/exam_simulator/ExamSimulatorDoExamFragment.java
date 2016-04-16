@@ -21,6 +21,7 @@ import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.entity.BaseEntity;
 import com.essential.usdriving.entity.Question;
+import com.essential.usdriving.ui.home.HomeFragment;
 import com.essential.usdriving.ui.widget.AnswerChoicesItem;
 import com.essential.usdriving.ui.widget.QuestionDialogFragment;
 import com.essential.usdriving.ui.widget.QuestionNoItemWrapper;
@@ -88,7 +89,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                 if (code == WarningDialog.OK) {
                     warningDialog.dismiss();
                     timer.cancel();
-                    getFragmentManager().popBackStack();
+                    getFragmentManager().popBackStack(HomeFragment.HOME_TRANSACTION, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 } else {
                     timer.start();
                     warningDialog.dismiss();
@@ -140,7 +141,6 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         min2 = 0;
         sec1 = 0;
         sec2 = 0;
-//        startTimer();
         setHasOptionsMenu(true);
     }
 
