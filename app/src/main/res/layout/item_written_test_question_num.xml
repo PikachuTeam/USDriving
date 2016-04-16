@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
     <RelativeLayout
         android:id="@+id/layoutItemQuesWrapper"
@@ -15,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/white" />
+            android:background="@color/black"
+            android:visibility="gone"
+            />
 
         <View
             android:layout_width="0.5dp"
@@ -40,4 +44,5 @@
             android:textColor="@color/written_test_color_2"
             android:textSize="@dimen/text_size_5" />
     </RelativeLayout>
-</RelativeLayout>
+
+</LinearLayout>
