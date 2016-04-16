@@ -1,21 +1,14 @@
 package com.essential.usdriving.app;
 
-import android.content.Context;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.ui.home.HomeFragment;
-import com.essential.usdriving.ui.home.HomeFragment2;
 
 import tatteam.com.app_common.AppCommon;
 import tatteam.com.app_common.ads.AdsSmallBannerHandler;
@@ -36,7 +29,6 @@ public class BaseActivity extends tatteam.com.app_common.ui.activity.BaseActivit
 
     @Override
     protected void onCreateContentView() {
-//
         adsContainer = (FrameLayout) findViewById(R.id.adsContainer);
         adsSmallBannerHandler = new AdsSmallBannerHandler(this, adsContainer, AppConstant.AdsType.SMALL_BANNER_TEST);
         adsSmallBannerHandler.setup();
@@ -53,7 +45,7 @@ public class BaseActivity extends tatteam.com.app_common.ui.activity.BaseActivit
 
     @Override
     protected BaseFragment getFragmentContent() {
-        return new HomeFragment2();
+        return new HomeFragment();
     }
 
     public void setUpToolbar() {

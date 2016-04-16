@@ -141,11 +141,11 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
         dataSet.setColors(colors);
 
         PieData data = new PieData(xVals, dataSet);
-      //  data.setValueFormatter(new PercentFormatter());
-       // data.setValueTextSize(9f);
-      //  data.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
+        //  data.setValueFormatter(new PercentFormatter());
+        // data.setValueTextSize(9f);
+        //  data.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
 
-       pieChart.setData(data);
+        pieChart.setData(data);
         pieChart.invalidate();
     }
 
