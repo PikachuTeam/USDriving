@@ -1,19 +1,14 @@
 package com.essential.usdriving.ui.learning_card;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
@@ -25,7 +20,7 @@ import com.essential.usdriving.ui.widget.ZoomDialog;
 
 import java.util.ArrayList;
 
-public class TestCardFragment extends BaseFragment {
+public class TestCardFragment extends BaseFragment implements View.OnClickListener {
 
     ArrayList<Card> listCard;
     private int currentQuesIndex = 0;
@@ -37,7 +32,7 @@ public class TestCardFragment extends BaseFragment {
     private EssentialProgressBar mEssentialProgressBar;
 
     private int type;
-
+    private int STAT_ID = 0, PREVIOUS_ID = 1, NEXT_ID = 2;
     private final static String PREF_POSITION = "Position";
 
     @Override
@@ -108,62 +103,13 @@ public class TestCardFragment extends BaseFragment {
         getTopic = bundle.getString(LearningCardFragment.KEY_CARD);
         type = bundle.getInt(LearningCardFragment.KEY_CARD_TOPIC);
         listCard = DataSource.getInstance().getCard(getTopic);
+        computeSize(STAT_ID);
         mEssentialProgressBar.setMaxProgress(listCard.size());
-        cardPrevious.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuesIndex == listCard.size() - 1) {
-                    enableButton(cardNext, btnNext, R.drawable.ic_right);
-                }
-                if (currentQuesIndex > 0) {
-                    computeSize(1);
-                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+        cardPrevious.setOnClickListener(this);
+        cardNext.setOnClickListener(this);
+        imageQuestion.setOnClickListener(this);
+        imageZoom.setOnClickListener(this);
 
-
-                } else {
-                    disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
-                }
-            }
-        });
-        cardNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuesIndex == 0) {
-                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
-
-                }
-                if (currentQuesIndex < listCard.size() - 1) {
-                    computeSize(2);
-                    enableButton(cardNext, btnNext, R.drawable.ic_right);
-
-                } else {
-                    disableButton(cardNext, btnNext, R.drawable.ic_right);
-
-                }
-            }
-        });
-
-        imageZoom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
-                ZoomDialog dialogFragment = new ZoomDialog();
-                dialogFragment.setArguments(bundle);
-                dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "");
-            }
-        });
-
-        imageQuestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
-                ZoomDialog dialogFragment = new ZoomDialog();
-                dialogFragment.setArguments(bundle);
-                dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "");
-            }
-        });
     }
 
     private void enableButton(CardView cv, ImageView button, int image) {
@@ -195,6 +141,8 @@ public class TestCardFragment extends BaseFragment {
 
     private void computeSize(int id) {
         switch (id) {
+            case 0:
+                break;
             case 1:
                 currentQuesIndex = currentQuesIndex - 1;
                 break;
@@ -203,6 +151,10 @@ public class TestCardFragment extends BaseFragment {
                 break;
         }
         setData(currentQuesIndex);
+        float ratio = (float) currentQuesIndex / listCard.size();
+        int tmp = (int) (ratio * mEssentialProgressBar.getmProgressBar().getMax());
+        mEssentialProgressBar.setProgress(tmp);
+        mEssentialProgressBar.updateLayout(tmp);
     }
 
     @Override
@@ -235,6 +187,54 @@ public class TestCardFragment extends BaseFragment {
         public void onSeekTo(int progress) {
             currentQuesIndex = progress;
             setData(progress);
+            if (currentQuesIndex == 0) {
+                disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+            } else {
+                enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+            }
+            if (currentQuesIndex == listCard.size() - 1) {
+                disableButton(cardNext, btnNext, R.drawable.ic_right);
+            } else {
+                enableButton(cardNext, btnNext, R.drawable.ic_right);
+            }
         }
     };
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnNextLayout:
+                if (currentQuesIndex == 0) {
+                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+
+                }
+                if (currentQuesIndex < listCard.size() - 1) {
+                    computeSize(NEXT_ID);
+                    enableButton(cardNext, btnNext, R.drawable.ic_right);
+                }else{
+                    disableButton(cardNext, btnNext, R.drawable.ic_right);
+                }
+                break;
+            case R.id.btnPreviousLayout:
+                if (currentQuesIndex == listCard.size() - 1) {
+                    enableButton(cardNext, btnNext, R.drawable.ic_right);
+                }
+                if (currentQuesIndex > 0) {
+                    computeSize(PREVIOUS_ID);
+                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                } else {
+                    disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                }
+                break;
+            case R.id.buttonZoomIn:
+            case R.id.image_question_card:
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(TestTopic_StudyAllInOnePage_Fragment.KEY_DIALOG, listCard.get(currentQuesIndex).image);
+                ZoomDialog dialogFragment = new ZoomDialog();
+                dialogFragment.setArguments(bundle);
+                dialogFragment.show(getBaseActivity().getSupportFragmentManager(), "");
+                break;
+
+        }
+    }
 }

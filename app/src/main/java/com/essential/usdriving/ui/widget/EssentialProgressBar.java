@@ -2,7 +2,6 @@ package com.essential.usdriving.ui.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -37,8 +36,8 @@ public class EssentialProgressBar extends RelativeLayout {
 
         mIsFirst = true;
 
-        mProgressBar.getViewTreeObserver().addOnGlobalLayoutListener(mProgressBarGlobalLayoutListener);
-        mProgressBar.setOnTouchListener(mProgressBarTouchListener);
+        getmProgressBar().getViewTreeObserver().addOnGlobalLayoutListener(mProgressBarGlobalLayoutListener);
+        getmProgressBar().setOnTouchListener(mProgressBarTouchListener);
         mThumb.setOnTouchListener(mThumbMoveListener);
     }
 
@@ -51,18 +50,18 @@ public class EssentialProgressBar extends RelativeLayout {
 
         mIsFirst = true;
 
-        mProgressBar.getViewTreeObserver().addOnGlobalLayoutListener(mProgressBarGlobalLayoutListener);
-        mProgressBar.setOnTouchListener(mProgressBarTouchListener);
+        getmProgressBar().getViewTreeObserver().addOnGlobalLayoutListener(mProgressBarGlobalLayoutListener);
+        getmProgressBar().setOnTouchListener(mProgressBarTouchListener);
         mThumb.setOnTouchListener(mThumbMoveListener);
     }
 
     public void setMaxProgress(int value) {
-        mProgressBar.setMax(value);
+        getmProgressBar().setMax(value);
     }
 
     public void setProgress(int progress) {
         mProgress = progress;
-        mProgressBar.setProgress(progress + 1);
+        getmProgressBar().setProgress(progress + 1);
     }
 
     public void reset() {
@@ -73,7 +72,7 @@ public class EssentialProgressBar extends RelativeLayout {
         mOnProgressBarInteractListener = onProgressBarInteractListener;
     }
 
-    private void updateLayout(int progress) {
+    public void updateLayout(int progress) {
         mTextProgress.setText("" + (progress + 1));
         float thumbX = mProgressBarContainer.getX() + mRatio * (progress + 1) - mThumb.getWidth() / 2;
         mThumb.setX(thumbX);
@@ -91,8 +90,8 @@ public class EssentialProgressBar extends RelativeLayout {
         public void onGlobalLayout() {
             if (mIsFirst) {
                 mIsFirst = false;
-                if (mProgressBar.getMax() != 0) {
-                    mRatio = (float) mProgressBar.getWidth() / mProgressBar.getMax();
+                if (getmProgressBar().getMax() != 0) {
+                    mRatio = (float) getmProgressBar().getWidth() / getmProgressBar().getMax();
                 }
             }
             updateLayout(mProgress);
@@ -104,8 +103,8 @@ public class EssentialProgressBar extends RelativeLayout {
         public boolean onTouch(View v, MotionEvent event) {
             if (mOnProgressBarInteractListener != null) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    float ratio = event.getX() / mProgressBar.getWidth();
-                    setProgress((int) (ratio * mProgressBar.getMax()));
+                    float ratio = event.getX() / getmProgressBar().getWidth();
+                    setProgress((int) (ratio * getmProgressBar().getMax()));
                     mOnProgressBarInteractListener.onSeekTo(mProgress);
                 }
             }
@@ -118,9 +117,9 @@ public class EssentialProgressBar extends RelativeLayout {
         public boolean onTouch(View v, MotionEvent event) {
             if (mOnProgressBarInteractListener != null) {
                 if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    float ratio = (event.getRawX() - mProgressBarContainer.getX()) / mProgressBar.getWidth();
-                    int tmp = (int) (ratio * mProgressBar.getMax());
-                    if (tmp >= 0 && tmp < mProgressBar.getMax()) {
+                    float ratio = (event.getRawX() - mProgressBarContainer.getX()) / getmProgressBar().getWidth();
+                    int tmp = (int) (ratio * getmProgressBar().getMax());
+                    if (tmp >= 0 && tmp < getmProgressBar().getMax()) {
                         setProgress(tmp);
                         mOnProgressBarInteractListener.onSeekTo(mProgress);
                     }
@@ -129,6 +128,10 @@ public class EssentialProgressBar extends RelativeLayout {
             return false;
         }
     };
+
+    public ProgressBar getmProgressBar() {
+        return mProgressBar;
+    }
 
     public interface OnProgressBarInteractListener {
         void onSeekTo(int progress);
