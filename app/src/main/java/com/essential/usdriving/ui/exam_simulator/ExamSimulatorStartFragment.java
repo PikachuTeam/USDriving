@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
@@ -20,7 +21,7 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
     public final static String TAG = "Start Fragment";
 
     private LinearLayout layoutRule;
-    private ImageView btnStart;
+    private TextView btnStart;
     private LinearLayout layoutNotShowAgain;
     private LinearLayout checkboxNotShowAgain;
     private ImageView imgTick;
@@ -83,7 +84,7 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
 
     private void findViews(View rootView) {
         layoutRule = (LinearLayout) rootView.findViewById(R.id.layoutRule);
-        btnStart = (ImageView) rootView.findViewById(R.id.btnStart);
+        btnStart = (TextView) rootView.findViewById(R.id.btnStart);
         layoutNotShowAgain = (LinearLayout) rootView.findViewById(R.id.layoutNotShowAgain);
         checkboxNotShowAgain = (LinearLayout) rootView.findViewById(R.id.checkboxNotShowAgain);
         imgTick = (ImageView) rootView.findViewById(R.id.imgTick);
