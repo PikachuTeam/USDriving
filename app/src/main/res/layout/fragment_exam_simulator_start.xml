@@ -48,21 +48,21 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:background="@drawable/raised_button"
+                android:background="@color/ColorPrimary"
                 android:gravity="center"
                 android:text="@string/start"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_6"
                 android:textStyle="bold" />
         </android.support.v7.widget.CardView>
 
         <LinearLayout
             android:id="@+id/layoutNotShowAgain"
-            android:layout_width="290dp"
+            android:layout_width="@dimen/common_size_300"
             android:layout_height="@dimen/size_3"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_20"
-            android:gravity="center_vertical"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <include
@@ -70,8 +70,10 @@
                 layout="@layout/item_check_box" />
 
             <TextView
+                android:id="@+id/text_doNotShow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/margin_10"
                 android:text="@string/exam_simulator_not_show_again"
                 android:textSize="@dimen/text_size_4" />
