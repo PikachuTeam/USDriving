@@ -37,7 +37,9 @@
     <RelativeLayout
         android:id="@+id/btnCorrectAnswer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_size_35">
+        android:layout_height="@dimen/common_size_35"
+        android:background="@drawable/raised_button"
+        >
 
         <ImageView
             android:id="@+id/imgCorrectAnswer"
@@ -89,7 +91,9 @@
     <RelativeLayout
         android:id="@+id/btnWrongAnswer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_size_35">
+        android:layout_height="@dimen/common_size_35"
+        android:background="@drawable/raised_button"
+        >
 
         <ImageView
             android:id="@+id/imgWrongAnswer"
@@ -141,7 +145,9 @@
     <RelativeLayout
         android:id="@+id/btnNotAnswered"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_size_35">
+        android:layout_height="@dimen/common_size_35"
+        android:background="@drawable/raised_button"
+        >
 
         <ImageView
             android:id="@+id/imgNotAnswered"
