@@ -32,7 +32,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     private ArrayList<QuestionNoItemWrapper> listItemQues;
     private ViewPager viewPager;
     private HorizontalScrollView horizontalScrollView;
-    private Button btnResult;
     private int currentQuesIndex;
     private QuestionPagerAdapter adapter;
     public static String KEY_DIALOG = "key_dialog";
@@ -322,6 +321,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                     break;
                 case DataSource.ANSWER_B:
                     arrayList.get(1).setActive(true);
+
                     break;
                 case DataSource.ANSWER_C:
                     arrayList.get(2).setActive(true);
@@ -335,7 +335,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
         public void resetAllChoices(ArrayList<AnswerChoicesItem> list) {
             for (int i = 0; i < list.size(); i++) {
-                list.get(i).setActive(false);
+                    list.get(i).setActive(false);
             }
         }
 
