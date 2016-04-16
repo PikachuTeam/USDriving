@@ -35,8 +35,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     private TextView tvWrongAnswer;
     private TextView tvNotAnswered;
     private LinearLayout chartContainer;
-    private Button btnNewTest;
-    private Button btnRedo;
+    private TextView btnNewTest;
     private ArrayList<Question> questions;
     private int state = 0;
     private String totalTime;
@@ -80,11 +79,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         chartContainer.addView(pieChart);
         pieChart.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-        if (state == 1) {
-            btnRedo.setEnabled(false);
-        } else {
-            btnRedo.setEnabled(true);
-        }
+
 
         if (totalCorrectAnswer >= 21) {
             tvState.setText(getString(R.string.pass_exam));
@@ -227,61 +222,61 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         tvCorrectAnswer = (TextView) rootView.findViewById(R.id.tvCorrectAnswer);
         tvWrongAnswer = (TextView) rootView.findViewById(R.id.tvWrongAnswer);
         tvNotAnswered = (TextView) rootView.findViewById(R.id.tvNotAnswered);
-        btnNewTest = (Button) rootView.findViewById(R.id.btnNewTest);
-        btnRedo = (Button) rootView.findViewById(R.id.btnRedo);
+        btnNewTest = (TextView) rootView.findViewById(R.id.btnNewTest);
+
         tvTotalTime = (TextView) rootView.findViewById(R.id.tvTotalTime);
         chartContainer = (LinearLayout) rootView.findViewById(R.id.chartContainer);
 
         btnNewTest.setOnClickListener(this);
-        btnRedo.setOnClickListener(this);
 
-//        rootView.findViewById(R.id.btnCorrectAnswer).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
-//                Bundle bundle = new Bundle();
-//                ArrayList<Question> tmp;
-//                tmp = getCorrectAnswers();
-//                bundle.putParcelableArrayList("Questions", tmp);
-//                bundle.putInt("State", 0);
-//                fragment.setArguments(bundle);
-//                replaceFragment(fragment, getString(R.string.title_exam_simulator));
-//                state = 1;
-//            }
-//        });
-//
-//        rootView.findViewById(R.id.btnWrongAnswer).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
-//                Bundle bundle = new Bundle();
-//                ArrayList<Question> tmp;
-//                tmp = getWrongAnswers();
-//                bundle.putParcelableArrayList("Questions", tmp);
-//                bundle.putInt("State", 1);
-//                fragment.setArguments(bundle);
-//                replaceFragment(fragment, getString(R.string.title_exam_simulator));
-//                state = 1;
-//            }
-//        });
-//
-//        rootView.findViewById(R.id.btnNotAnswered).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
-//                Bundle bundle = new Bundle();
-//                ArrayList<Question> tmp;
-//                tmp = getNotAnsweredQuestions();
-//                bundle.putParcelableArrayList("Questions", tmp);
-//                bundle.putInt("State", 2);
-//                fragment.setArguments(bundle);
-//                replaceFragment(fragment, getString(R.string.title_exam_simulator));
-//                state = 1;
-//            }
-//        });
+
+        rootView.findViewById(R.id.btnCorrectAnswer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
+                Bundle bundle = new Bundle();
+                ArrayList<Question> tmp;
+                tmp = getCorrectAnswers();
+                bundle.putParcelableArrayList("Questions", tmp);
+                bundle.putInt("State", 0);
+                fragment.setArguments(bundle);
+                replaceFragment(fragment, getString(R.string.title_exam_simulator));
+                state = 1;
+            }
+        });
+
+        rootView.findViewById(R.id.btnWrongAnswer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
+                Bundle bundle = new Bundle();
+                ArrayList<Question> tmp;
+                tmp = getWrongAnswers();
+                bundle.putParcelableArrayList("Questions", tmp);
+                bundle.putInt("State", 1);
+                fragment.setArguments(bundle);
+                replaceFragment(fragment, getString(R.string.title_exam_simulator));
+                state = 1;
+            }
+        });
+
+        rootView.findViewById(R.id.btnNotAnswered).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
+                Bundle bundle = new Bundle();
+                ArrayList<Question> tmp;
+                tmp = getNotAnsweredQuestions();
+                bundle.putParcelableArrayList("Questions", tmp);
+                bundle.putInt("State", 2);
+                fragment.setArguments(bundle);
+                replaceFragment(fragment, getString(R.string.title_exam_simulator));
+                state = 1;
+            }
+        });
     }
 
     private int totalCorrectAnswer() {
