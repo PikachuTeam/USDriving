@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tatteam.com.app_common.ui.drawable.FractionFrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<tatteam.com.app_common.ui.drawable.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">-
+    android:layout_height="match_parent">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -34,7 +32,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:background="@color/written_test_color_2" />-
+                android:background="@color/written_test_color_2" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
@@ -56,7 +54,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/written_test_color_2" />-
+            android:background="@color/written_test_color_2" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -73,35 +71,24 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_5" />
 
+            <include
+                layout="@layout/item_clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_8" />
         </RelativeLayout>
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/size_350">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_15"
-        >
-        <include
-            layout="@layout/item_clock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/margin_4"
-            android:layout_marginTop="@dimen/margin_1"
-            android:layout_gravity="top|right"
-            />
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_450"
-            />
-    </RelativeLayout>
+            android:layout_height="match_parent">
 
-</ScrollView>
-
-
-
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
     </LinearLayout>
 </tatteam.com.app_common.ui.drawable.FractionFrameLayout>
