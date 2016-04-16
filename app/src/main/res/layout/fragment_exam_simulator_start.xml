@@ -16,7 +16,9 @@
             android:layout_height="@dimen/exam_simulator_layout_rule_height"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_20"
-            android:background="@drawable/bg_layout_rule">
+            android:background="@color/window_background2"
+            android:padding="@dimen/common_size_4"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,17 +56,6 @@
                 android:background="@drawable/raised_button"
                />
         </android.support.v7.widget.CardView>
-        <!--<Button-->
-            <!--android:id="@+id/btnStart"-->
-            <!--android:layout_width="@dimen/exam_simulator_button_width"-->
-            <!--android:layout_height="@dimen/size_5"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_marginTop="@dimen/margin_20"-->
-            <!--android:background="@drawable/bg_exam_simulator_button"-->
-            <!--android:text="Start"-->
-            <!--android:textColor="@color/white"-->
-            <!--android:textSize="@dimen/text_size_6"-->
-            <!--android:textStyle="bold" />-->
 
         <LinearLayout
             android:id="@+id/layoutNotShowAgain"
