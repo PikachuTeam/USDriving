@@ -216,10 +216,10 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:background="@drawable/raised_button"
+                android:background="@color/ColorPrimary"
                 android:gravity="center"
                 android:text="@string/new_test"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_6"
                 android:textStyle="bold" />
         </android.support.v7.widget.CardView>
