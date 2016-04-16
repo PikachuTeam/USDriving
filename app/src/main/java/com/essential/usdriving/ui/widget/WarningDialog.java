@@ -46,7 +46,7 @@ public class WarningDialog extends Dialog {
 //        else if(state==2) {
 //            tvWarning.setText(this.context.getString(R.string.exam_simulator_dialog_text_2));
 //        }
-        else if(state==3) {
+        else if (state == 3) {
             tvWarning.setText(this.context.getString(R.string.exam_simulator_dialog_text_3));
         }
     }
@@ -58,7 +58,7 @@ public class WarningDialog extends Dialog {
     private void findViews() {
         tvWarning = (TextView) findViewById(R.id.tvWarning);
 
-        findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null) {
@@ -67,7 +67,7 @@ public class WarningDialog extends Dialog {
             }
         });
 
-        findViewById(R.id.btnOk).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null) {
