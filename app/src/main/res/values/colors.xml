@@ -16,6 +16,8 @@
     <color name="orange">#EF6C00</color>
     <color name="written_test_color_1">#BDBDBD</color>
     <color name="written_test_color_2">#ba7503</color>
+    <color name="written_test_color_4">#704702</color>
+
     <color name="written_test_button_shadow">#757575</color>
     <color name="written_test_color_3">#FAFAFA</color>
     <color name="written_test_text_answer">#757575</color>
