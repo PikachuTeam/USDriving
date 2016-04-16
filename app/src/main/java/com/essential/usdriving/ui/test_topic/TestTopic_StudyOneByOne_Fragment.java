@@ -2,7 +2,6 @@ package com.essential.usdriving.ui.test_topic;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -47,7 +46,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
 
     @Override
     protected int getLayoutResIdContentView() {
-        return R.layout.fragment_test_topic_study_one_by_one_;
+        return R.layout.fragment_test_topic_study_one_by_one;
     }
 
     @Override
