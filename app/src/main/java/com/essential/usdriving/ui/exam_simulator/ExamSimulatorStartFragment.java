@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
-import com.essential.usdriving.ui.home.HomeFragment;
 
 /**
  * Created by the_e_000 on 8/14/2015.
@@ -51,7 +50,6 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
     @Override
     public void onBackPressed() {
         getFragmentManager().popBackStack();
-//        replaceFragment(new HomeFragment(), getString(R.string.topic));
     }
 
     @Override
