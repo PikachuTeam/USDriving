@@ -18,8 +18,6 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/ads_container"
         android:layout_below="@+id/toolbar" />
-
-
 </RelativeLayout>
 
 

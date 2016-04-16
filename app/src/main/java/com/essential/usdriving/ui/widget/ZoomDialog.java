@@ -39,9 +39,6 @@ public class ZoomDialog extends android.support.v4.app.DialogFragment {
 
 
     private void findViewDialogId(View rootview) {
-
         imageZoom = (ImageView) rootview.findViewById(R.id.image_question_dialog);
-
-
     }
 }

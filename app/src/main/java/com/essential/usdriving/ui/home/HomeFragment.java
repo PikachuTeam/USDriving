@@ -62,7 +62,7 @@ public class HomeFragment extends BaseFragment {
             } else if (v == itemExamSimulator) {
                 replaceFragment(new ExamSimulatorStartFragment(), HOME_TRANSACTION);
             } else if (v == itemTestTopic) {
-                replaceFragment(new TestTopicFragment(), getString(R.string.title_learning_card));
+                replaceFragment(new TestTopicFragment(), getString(R.string.title_test_topic));
             } else if (v == itemLearningCard) {
                 replaceFragment(new LearningCardFragment(), getString(R.string.title_learning_card));
             } else if (v == itemVideoTips) {
