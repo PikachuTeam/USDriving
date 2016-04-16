@@ -2,8 +2,10 @@ package com.essential.usdriving.ui.written_test;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.util.DebugUtils;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -286,7 +288,21 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             for(int i=0;i<arrayList.size();i++){
                 layoutChoice.addView(arrayList.get(i).getView());
                 arrayList.get(i).setOnAnswerChooseListener(this);
+
+//                for(int j=0;i<arrayList.size();i++){
+//                    if( j!=i){
+//                        layoutChoice.addView(arrayList.get(i).getView());
+//                        arrayList.get(i).setOnAnswerChooseListener(this);
+//                    }
+//                }
+
             }
+//            for(int i=0;i<arrayList.size();i++){
+//                if( arrayList.get(i).getListener()!=null){
+//                    arrayList.get(i).setOnAnswerChooseListener(this);
+//                }
+//
+//            }
             layoutChoice.invalidate();
             container.addView(view);
             return view;
@@ -341,9 +357,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
         @Override
         public void onAnswerChoose(AnswerChoicesItem item) {
-            if (listener != null) {
                 listener.OnPagerItemClick(item);
-            }
+
         }
 
         @Override
