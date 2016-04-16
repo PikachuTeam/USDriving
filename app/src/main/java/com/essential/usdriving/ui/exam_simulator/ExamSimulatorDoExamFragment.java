@@ -401,6 +401,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             }
 
         } else {
+            questions.get(currentQuesIndex).myAnswer = item.getIndex();
             QuestionNoItemWrapper wrapper = listItemQues.get(currentQuesIndex);
             if (!wrapper.isHighlight) {
                 wrapper.setHighlight();
@@ -499,19 +500,8 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
                 arrayList.add(answerChoicesItemD);
             }
             resetAllChoices(arrayList);
-            switch (question.myAnswer) {
-                case DataSource.ANSWER_A:
-                    arrayList.get(0).setActive(true);
-                    break;
-                case DataSource.ANSWER_B:
-                    arrayList.get(1).setActive(true);
-                    break;
-                case DataSource.ANSWER_C:
-                    arrayList.get(2).setActive(true);
-                    break;
-                case DataSource.ANSWER_D:
-                    arrayList.get(3).setActive(true);
-                    break;
+            if(question.myAnswer!=DataSource.ANSWER_NOT_CHOSEN){
+                arrayList.get(question.myAnswer).setActive(true);
             }
             return arrayList;
         }
