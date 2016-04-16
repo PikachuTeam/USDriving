@@ -55,7 +55,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     private WarningDialog dialog, warningDialog;
     private final static int INTERVAL = 1000, LIMIT_TIME = 3600000;
     private MenuItem menuToolbarResult;
-
+    private int timeLeft;
 
     @Override
     protected boolean enableBackButton() {
@@ -70,6 +70,12 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        timeLeft = 0;
     }
 
     @Override
@@ -134,7 +140,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         min2 = 0;
         sec1 = 0;
         sec2 = 0;
-        startTimer();
+//        startTimer();
         setHasOptionsMenu(true);
     }
 
@@ -147,7 +153,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         adapter = new QuestionPagerAdapter(getActivity(), questions);
         adapter.setOnQuestionPagerClickListener(this);
         viewPager.setAdapter(adapter);
-        viewPager.setOnPageChangeListener(this);
+        viewPager.addOnPageChangeListener(this);
     }
 
     @Override
@@ -203,7 +209,6 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
 
     }
 
-
     @Override
     public void onDialogItemClick(int code) {
         if (code == WarningDialog.OK) {
@@ -215,7 +220,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             fragment.setArguments(bundle);
             replaceFragment(fragment, getString(R.string.title_exam_simulator));
         } else {
-            timer.start();
+            startTimer();
             dialog.dismiss();
         }
     }
@@ -250,6 +255,11 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
 
     private void setAllQuesNoItemInActive() {
         for (QuestionNoItemWrapper item : listItemQues) {
@@ -297,15 +307,19 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         minute2.setText("" + min2);
         second1.setText("" + sec1);
         second2.setText("" + sec2);
-        // timeLeft++;
+        timeLeft++;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        startTimer();
     }
 
     private void startTimer() {
-
-        timer = new CountDownTimer(LIMIT_TIME, INTERVAL) {
+        timer = new CountDownTimer(LIMIT_TIME - INTERVAL * timeLeft, INTERVAL) {
             @Override
             public void onTick(long millisUntilFinished) {
-
                 makeTime();
             }
 
@@ -319,14 +333,6 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             }
         };
         timer.start();
-    }
-
-    private String revertString(String str) {
-        String tmp = "";
-        for (int i = str.length() - 1; i >= 0; i--) {
-            tmp += str.charAt(i);
-        }
-        return tmp;
     }
 
     @Override
