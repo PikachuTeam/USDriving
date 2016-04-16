@@ -1,66 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dialog_width"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/common_size_5">
 
-    <LinearLayout
-        android:layout_width="@dimen/dialog_width"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/common_size_5"
+        android:paddingLeft="@dimen/common_size_5"
+        android:paddingTop="@dimen/common_size_5"
+        android:text="Finish answering"
+        android:textAllCaps="true"
+        android:textColor="@color/exam_simulator_stroke_line"
+        android:textSize="@dimen/common_text_size_20"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvWarning"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:padding="@dimen/common_size_10"
+        android:text="@string/exam_simulator_dialog_text_1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/common_text_size_18" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/common_size_5"
-            android:paddingLeft="@dimen/common_size_5"
-            android:paddingTop="@dimen/common_size_5"
-            android:text="Finish answering"
+            android:id="@+id/button_ok"
+            android:layout_width="@dimen/common_size_80"
+            android:layout_height="@dimen/common_size_40"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/common_size_5"
+            android:background="@drawable/flat_button"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/ok"
             android:textAllCaps="true"
             android:textColor="@color/exam_simulator_stroke_line"
-            android:textSize="@dimen/common_text_size_20"
-            android:textStyle="bold" />
+            android:textSize="@dimen/text_size_6" />
 
         <TextView
-            android:id="@+id/tvWarning"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/button_cancel"
+            android:layout_width="@dimen/common_size_80"
+            android:layout_height="@dimen/common_size_40"
+            android:layout_toLeftOf="@+id/button_ok"
+            android:background="@drawable/flat_button"
+            android:clickable="true"
             android:gravity="center"
-            android:padding="@dimen/common_size_10"
-            android:text="@string/exam_simulator_dialog_text_1"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_3" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/button_ok"
-                android:layout_width="@dimen/common_size_80"
-                android:layout_height="@dimen/common_size_40"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="@dimen/common_size_3"
-                android:layout_marginRight="@dimen/common_size_3"
-                android:gravity="center"
-                android:text="@string/ok"
-                android:textAllCaps="true"
-                android:textColor="@color/exam_simulator_stroke_line"
-                android:textSize="@dimen/text_size_6" />
-
-            <TextView
-                android:id="@+id/button_cancel"
-                android:layout_width="@dimen/common_size_80"
-                android:layout_height="@dimen/common_size_40"
-                android:layout_marginBottom="@dimen/common_size_3"
-                android:layout_toLeftOf="@+id/button_ok"
-                android:gravity="center"
-                android:text="@string/cancel"
-                android:textAllCaps="true"
-                android:textColor="@color/exam_simulator_stroke_line"
-                android:textSize="@dimen/text_size_6" />
-        </RelativeLayout>
-    </LinearLayout>
+            android:text="@string/cancel"
+            android:textAllCaps="true"
+            android:textColor="@color/exam_simulator_stroke_line"
+            android:textSize="@dimen/text_size_6" />
+    </RelativeLayout>
 </LinearLayout>
