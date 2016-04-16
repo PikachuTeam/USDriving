@@ -1,10 +1,12 @@
 package com.essential.usdriving.ui.widget;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ public class EssentialProgressBar extends RelativeLayout {
     private RelativeLayout mProgressBarContainer;
     private TextView mTextProgress;
     private ProgressBar mProgressBar;
+    private ImageView imageThumb;
 
     private OnProgressBarInteractListener mOnProgressBarInteractListener;
 
@@ -83,6 +86,9 @@ public class EssentialProgressBar extends RelativeLayout {
         mTextProgress = (TextView) findViewById(R.id.text_progress);
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
         mProgressBarContainer = (RelativeLayout) findViewById(R.id.progress_bar_container);
+        imageThumb = (ImageView) findViewById(R.id.image_thumb);
+
+        imageThumb.setColorFilter(ContextCompat.getColor(getContext(), R.color.essential_progress_bar_color));
     }
 
     private ViewTreeObserver.OnGlobalLayoutListener mProgressBarGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {

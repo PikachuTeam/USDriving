@@ -15,6 +15,7 @@
             android:clickable="true">
 
             <ImageView
+                android:id="@+id/image_thumb"
                 android:layout_width="@dimen/progress_indicator_width"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_indicator" />
@@ -27,7 +28,8 @@
                 android:paddingBottom="@dimen/common_size_7"
                 android:text="174"
                 android:textColor="@color/essential_progress_bar_text_color"
-                android:textSize="@dimen/common_size_12" />
+                android:textSize="@dimen/common_size_12"
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <RelativeLayout

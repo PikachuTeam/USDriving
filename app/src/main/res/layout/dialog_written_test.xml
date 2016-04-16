@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_written_dialog"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/layout_written_dialog"
     android:layout_gravity="center"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="@dimen/dialog_width"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,6 +18,7 @@
             android:layout_marginRight="@dimen/margin_15"
             android:layout_marginTop="@dimen/margin_15"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/tvQuestionBold"
                 android:layout_width="match_parent"
@@ -28,10 +26,10 @@
                 android:layout_marginBottom="@dimen/margin_5"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="@string/test_card_question"
-                android:textSize="@dimen/text_size_6"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                />
+                android:textSize="@dimen/text_size_6"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tvQuestion"
                 android:layout_width="match_parent"
@@ -40,9 +38,9 @@
                 android:layout_marginTop="@dimen/margin_5"
                 android:gravity="center_horizontal"
                 android:text="Question"
-                android:textSize="@dimen/text_size_6"
                 android:textColor="@color/black"
-                />
+                android:textSize="@dimen/text_size_6" />
+
             <ImageView
                 android:id="@+id/imgQuestion"
                 android:layout_width="@dimen/size_7"
@@ -59,25 +57,25 @@
             android:layout_marginLeft="@dimen/margin_10"
             android:layout_marginRight="@dimen/margin_10"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/tvAnswerBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="@string/test_card_answer"
-                android:textSize="@dimen/text_size_6"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                />
+                android:textSize="@dimen/text_size_6"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tvChoiceA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="@string/choice_a"
-                android:textSize="@dimen/common_size_13"
                 android:textColor="@color/black"
-                />
+                android:textSize="@dimen/common_size_13" />
 
             <TextView
                 android:id="@+id/tvChoiceB"
@@ -85,9 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="@string/choice_b"
-                android:textSize="@dimen/common_size_13"
                 android:textColor="@color/black"
-                />
+                android:textSize="@dimen/common_size_13" />
 
             <TextView
                 android:id="@+id/tvChoiceC"
@@ -95,9 +92,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="@string/choice_c"
-                android:textSize="@dimen/common_size_13"
                 android:textColor="@color/black"
-                />
+                android:textSize="@dimen/common_size_13" />
 
             <TextView
                 android:id="@+id/tvChoiceD"
@@ -105,9 +101,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="@string/choice_d"
-                android:textSize="@dimen/common_size_13"
                 android:textColor="@color/black"
-                />
+                android:textSize="@dimen/common_size_13" />
 
         </LinearLayout>
 
@@ -121,10 +116,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="Your answer: "
-                android:textSize="@dimen/common_size_13"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                />
+                android:textSize="@dimen/common_size_13"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvAnswer"
@@ -132,10 +126,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="Alo"
-                android:textSize="@dimen/common_size_13"
                 android:textColor="@color/black"
-                />
-
+                android:textSize="@dimen/common_size_13" />
         </LinearLayout>
 
         <TextView
@@ -149,9 +141,6 @@
             android:text="Explanation: "
             android:textColor="@color/black"
             android:textSize="@dimen/common_size_13"
-            android:textStyle="italic"
-
-            />
+            android:textStyle="italic"/>
     </LinearLayout>
-
 </LinearLayout>
