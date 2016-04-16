@@ -14,11 +14,11 @@ public class Question implements Parcelable {
     public String question, choiceA, choiceB, choiceC, choiceD;
     public String explanation;
     public Bitmap image;
-    public int myAnswer = DataSource.ANSWER_NOT_CHOSEN;
+    public int myAnswer ;
     public int correctAnswer;
 
     public Question() {
-
+        myAnswer=-1;
     }
 
     protected Question(Parcel in) {

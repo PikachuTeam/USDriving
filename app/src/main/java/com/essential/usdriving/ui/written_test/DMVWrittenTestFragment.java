@@ -216,6 +216,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             }
 
         } else {
+            questions.get(currentQuesIndex).myAnswer = item.getIndex();
             QuestionNoItemWrapper wrapper = listItemQues.get(currentQuesIndex);
             if (!wrapper.isHighlight) {
                 wrapper.setHighlight();
@@ -288,21 +289,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             for(int i=0;i<arrayList.size();i++){
                 layoutChoice.addView(arrayList.get(i).getView());
                 arrayList.get(i).setOnAnswerChooseListener(this);
-
-//                for(int j=0;i<arrayList.size();i++){
-//                    if( j!=i){
-//                        layoutChoice.addView(arrayList.get(i).getView());
-//                        arrayList.get(i).setOnAnswerChooseListener(this);
-//                    }
-//                }
-
             }
-//            for(int i=0;i<arrayList.size();i++){
-//                if( arrayList.get(i).getListener()!=null){
-//                    arrayList.get(i).setOnAnswerChooseListener(this);
-//                }
-//
-//            }
+
             layoutChoice.invalidate();
             container.addView(view);
             return view;
@@ -331,21 +319,10 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 arrayList.add(answerChoicesItemD);
             }
             resetAllChoices(arrayList);
-            switch (question.myAnswer) {
-                case DataSource.ANSWER_A:
-                    arrayList.get(0).setActive(true);
-                    break;
-                case DataSource.ANSWER_B:
-                    arrayList.get(1).setActive(true);
-
-                    break;
-                case DataSource.ANSWER_C:
-                    arrayList.get(2).setActive(true);
-                    break;
-                case DataSource.ANSWER_D:
-                    arrayList.get(3).setActive(true);
-                    break;
+            if(question.myAnswer!=DataSource.ANSWER_NOT_CHOSEN){
+                arrayList.get(question.myAnswer).setActive(true);
             }
+
             return arrayList;
         }
 
