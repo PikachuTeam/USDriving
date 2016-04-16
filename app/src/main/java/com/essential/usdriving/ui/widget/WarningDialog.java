@@ -58,23 +58,23 @@ public class WarningDialog extends Dialog {
     private void findViews() {
         tvWarning = (TextView) findViewById(R.id.tvWarning);
 
-//        findViewById(R.id.btnCancel).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (listener != null) {
-//                    listener.onDialogItemClick(CANCEL);
-//                }
-//            }
-//        });
-//
-//        findViewById(R.id.btnOk).findViewById(R.id.view_highlight).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (listener != null) {
-//                    listener.onDialogItemClick(OK);
-//                }
-//            }
-//        });
+        findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onDialogItemClick(CANCEL);
+                }
+            }
+        });
+
+        findViewById(R.id.btnOk).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onDialogItemClick(OK);
+                }
+            }
+        });
     }
 
     public interface OnDialogItemClickListener {

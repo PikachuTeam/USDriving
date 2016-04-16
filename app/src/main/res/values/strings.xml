@@ -74,7 +74,7 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
-    <string name="test_card_question">Question: </string>
+    <string name="test_card_question">Question </string>
     <string name="test_card_answer">Answer: </string>
     <string name="title_dialog"> Detail</string>
     <string name="number_of_question">Number of question: </string>

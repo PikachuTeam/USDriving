@@ -20,7 +20,7 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
     public final static String TAG = "Start Fragment";
 
     private LinearLayout layoutRule;
-    private Button btnStart;
+    private ImageView btnStart;
     private LinearLayout layoutNotShowAgain;
     private LinearLayout checkboxNotShowAgain;
     private ImageView imgTick;
@@ -83,7 +83,7 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
 
     private void findViews(View rootView) {
         layoutRule = (LinearLayout) rootView.findViewById(R.id.layoutRule);
-        btnStart = (Button) rootView.findViewById(R.id.btnStart);
+        btnStart = (ImageView) rootView.findViewById(R.id.btnStart);
         layoutNotShowAgain = (LinearLayout) rootView.findViewById(R.id.layoutNotShowAgain);
         checkboxNotShowAgain = (LinearLayout) rootView.findViewById(R.id.checkboxNotShowAgain);
         imgTick = (ImageView) rootView.findViewById(R.id.imgTick);
