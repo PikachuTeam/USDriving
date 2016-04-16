@@ -36,12 +36,6 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
     private final static String PREF_POSITION = "Position";
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
     protected String setTitle() {
         return getString(R.string.title_learning_card);
     }
@@ -50,7 +44,6 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
     protected boolean enableIndicator() {
         return true;
     }
-
 
     @Override
     protected boolean enableBackButton() {
@@ -72,16 +65,15 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
         findViews(rootView);
         loadData();
         currentQuesIndex = loadState();
-
+        if (currentQuesIndex == 0) {
+            disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+        }
+        if (currentQuesIndex == listCard.size() - 1) {
+            disableButton(cardNext, btnNext, R.drawable.ic_right);
+        }
         mEssentialProgressBar.setProgress(currentQuesIndex);
         setData(currentQuesIndex);
         mEssentialProgressBar.setOnProgressBarInteractListener(mEssentialProgressBarInteractListener);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
     }
 
     private void findViews(View rootView) {
@@ -109,7 +101,6 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
         cardNext.setOnClickListener(this);
         imageQuestion.setOnClickListener(this);
         imageZoom.setOnClickListener(this);
-
     }
 
     private void enableButton(CardView cv, ImageView button, int image) {
@@ -174,7 +165,6 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(PREF_POSITION + " " + type, currentQuesIndex);
         editor.commit();
-
     }
 
     private int loadState() {
@@ -204,26 +194,33 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnNextLayout:
-                if (currentQuesIndex == 0) {
-                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
-
-                }
                 if (currentQuesIndex < listCard.size() - 1) {
                     computeSize(NEXT_ID);
-                    enableButton(cardNext, btnNext, R.drawable.ic_right);
-                }else{
-                    disableButton(cardNext, btnNext, R.drawable.ic_right);
+                    if (currentQuesIndex == 1) {
+                        enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                    }
+                    if (currentQuesIndex < listCard.size() - 1) {
+                        if (!cardNext.isEnabled()) {
+                            enableButton(cardNext, btnNext, R.drawable.ic_right);
+                        }
+                    } else {
+                        disableButton(cardNext, btnNext, R.drawable.ic_right);
+                    }
                 }
                 break;
             case R.id.btnPreviousLayout:
-                if (currentQuesIndex == listCard.size() - 1) {
-                    enableButton(cardNext, btnNext, R.drawable.ic_right);
-                }
                 if (currentQuesIndex > 0) {
                     computeSize(PREVIOUS_ID);
-                    enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
-                } else {
-                    disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                    if (currentQuesIndex == listCard.size() - 2) {
+                        enableButton(cardNext, btnNext, R.drawable.ic_right);
+                    }
+                    if (currentQuesIndex > 0) {
+                        if (!cardPrevious.isEnabled()) {
+                            enableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                        }
+                    } else {
+                        disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
+                    }
                 }
                 break;
             case R.id.buttonZoomIn:
