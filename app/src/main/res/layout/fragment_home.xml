@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:weightSum="5.1">
+    android:weightSum="5.6">
 
     <LinearLayout
         android:id="@+id/itemWrittenTest"
@@ -173,4 +173,27 @@
         android:layout_marginRight="@dimen/common_size_10"
         android:layout_weight="0.02"
         android:background="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="@color/ColorPrimary"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/common_size_90"
+            android:text="@string/your_state"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_text_size_20" />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinner_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </LinearLayout>
 </LinearLayout>
