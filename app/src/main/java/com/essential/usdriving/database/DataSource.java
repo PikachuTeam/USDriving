@@ -16,10 +16,16 @@ import java.util.ArrayList;
 import tatteam.com.app_common.sqlite.BaseDataSource;
 
 
-public class DataSource  extends BaseDataSource{
+public class DataSource extends BaseDataSource {
+
+    public final static String DB_STATE_NAME = "StateName";
     public final static int ANSWER_A = 0, ANSWER_B = 1, ANSWER_C = 2, ANSWER_D = 3, ANSWER_NOT_CHOSEN = -1;
+
     private static DataSource instance;
     private Context context;
+
+    private DataSource() {
+    }
 
     public static DataSource getInstance() {
         if (instance == null) {
@@ -27,10 +33,10 @@ public class DataSource  extends BaseDataSource{
         }
         return instance;
     }
+
     public void init(Context context) {
         this.context = context;
     }
-
 
     public ArrayList<TopicCard> getTopicCard() {
         ArrayList<TopicCard> Topic = new ArrayList<>();
@@ -41,7 +47,7 @@ public class DataSource  extends BaseDataSource{
                 " group by USA_LearningCards.TopicID", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            TopicCard tc=new TopicCard();
+            TopicCard tc = new TopicCard();
             tc.setTopic(cursor.getString(0));
             tc.setNumber(cursor.getInt(1));
             tc.setID(cursor.getInt(2));
@@ -59,7 +65,7 @@ public class DataSource  extends BaseDataSource{
         Cursor cursor = sqLite.rawQuery("select Term, Definition,ImageData from USA_LearningCards where TopicID=?", new String[]{term});
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Card tc=new Card();
+            Card tc = new Card();
             tc.setCardTerm(cursor.getString(0));
             tc.setCardDefinition(cursor.getString(1));
             byte[] imageData = cursor.getBlob(2);
@@ -91,6 +97,7 @@ public class DataSource  extends BaseDataSource{
         closeConnection();
         return Topic;
     }
+
     //TEST TOPIC
     public ArrayList<Question> getTopicItem(String ID) {
         ArrayList<Question> questions = new ArrayList<>();
@@ -174,5 +181,20 @@ public class DataSource  extends BaseDataSource{
         cursor.close();
         closeConnection();
         return questions;
+    }
+
+    public ArrayList<String> getStates() {
+        ArrayList<String> states = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = openConnection();
+        String query = "select StateName from USA_States";
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            int stateNameIndex = cursor.getColumnIndex(DB_STATE_NAME);
+            while (!cursor.isAfterLast()) {
+                states.add(cursor.getString(stateNameIndex));
+                cursor.moveToNext();
+            }
+        }
+        return states;
     }
 }

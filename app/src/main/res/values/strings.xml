@@ -131,4 +131,5 @@
 
     <string name="new_test">New Test</string>
     <string name="start">Start</string>
+    <string name="your_state">Your State: </string>
 </resources>
