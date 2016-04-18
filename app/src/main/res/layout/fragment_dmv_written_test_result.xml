@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/window_background"
-    android:orientation="vertical"
-
-    >
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/layout_tvFail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_3"
         android:background="@color/written_test_color_2"
@@ -27,19 +26,17 @@
         android:id="@+id/chartContainer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_200"
+        android:layout_below="@+id/layout_tvFail"
         android:orientation="horizontal" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/stroke_line_size"
-        android:background="@color/written_test_color_2" />
 
     <RelativeLayout
         android:id="@+id/btnCorrectAnswer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_size_65"
-        android:background="@drawable/raised_button"
-        >
+        android:layout_below="@+id/chartContainer"
+        android:layout_marginBottom="@dimen/common_size_3"
+        android:background="@drawable/raised_button">
 
         <ImageView
             android:id="@+id/imgCorrectAnswer"
@@ -56,9 +53,8 @@
             android:layout_marginLeft="@dimen/margin_15"
             android:layout_toRightOf="@+id/imgCorrectAnswer"
             android:text="@string/written_test_correct_answer"
-            android:textSize="@dimen/text_size_7"
             android:textColor="@color/black"
-            />
+            android:textSize="@dimen/text_size_7" />
 
         <TextView
             android:id="@+id/tvCorrectAnswer"
@@ -69,9 +65,8 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/common_size_65"
             android:text="@string/written_test_total_answer"
-            android:textSize="@dimen/text_size_9"
             android:textColor="@color/black"
-            />
+            android:textSize="@dimen/text_size_9" />
 
         <ImageView
             android:layout_width="@dimen/common_size_50"
@@ -81,8 +76,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/margin_5"
             android:background="@drawable/ic_right"
-            android:src="@drawable/bg_button_next"
-            />
+            android:src="@drawable/bg_button_next" />
     </RelativeLayout>
 
     <View
@@ -94,8 +88,9 @@
         android:id="@+id/btnWrongAnswer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_size_65"
-        android:background="@drawable/raised_button"
-        >
+        android:layout_below="@+id/btnCorrectAnswer"
+        android:layout_marginBottom="@dimen/common_size_3"
+        android:background="@drawable/raised_button">
 
         <ImageView
             android:id="@+id/imgWrongAnswer"
@@ -112,9 +107,8 @@
             android:layout_marginLeft="@dimen/margin_15"
             android:layout_toRightOf="@+id/imgWrongAnswer"
             android:text="@string/written_test_wrong_answer"
-            android:textSize="@dimen/text_size_8"
             android:textColor="@color/black"
-            />
+            android:textSize="@dimen/text_size_8" />
 
         <TextView
             android:id="@+id/tvWrongAnswer"
@@ -125,9 +119,8 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/common_size_65"
             android:text="@string/written_test_total_answer"
-            android:textSize="@dimen/text_size_9"
             android:textColor="@color/black"
-            />
+            android:textSize="@dimen/text_size_9" />
 
         <ImageView
             android:layout_width="@dimen/common_size_50"
@@ -137,19 +130,16 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/margin_5"
             android:background="@drawable/ic_right"
-            android:src="@drawable/bg_button_next"
-            />
+            android:src="@drawable/bg_button_next" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/stroke_line_size"
-        android:background="@color/written_test_color_2" />
 
     <RelativeLayout
         android:id="@+id/btnNotAnswered"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_size_65"
+        android:layout_below="@+id/btnWrongAnswer"
+        android:layout_marginBottom="@dimen/common_size_3"
         android:background="@drawable/raised_button"
         >
 
@@ -168,9 +158,8 @@
             android:layout_marginLeft="@dimen/margin_15"
             android:layout_toRightOf="@+id/imgNotAnswered"
             android:text="@string/written_test_not_answered"
-            android:textSize="@dimen/text_size_8"
             android:textColor="@color/black"
-            />
+            android:textSize="@dimen/text_size_8" />
 
         <TextView
             android:id="@+id/tvNotAnswered"
@@ -181,9 +170,8 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/common_size_65"
             android:text="@string/written_test_total_answer"
-            android:textSize="@dimen/text_size_9"
             android:textColor="@color/black"
-            />
+            android:textSize="@dimen/text_size_9" />
 
         <ImageView
             android:layout_width="@dimen/common_size_50"
@@ -193,12 +181,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/margin_5"
             android:background="@drawable/ic_right"
-            android:src="@drawable/bg_button_next"
-            />
+            android:src="@drawable/bg_button_next" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/stroke_line_size"
-        android:background="@color/written_test_color_2" />
-</LinearLayout>
+</RelativeLayout>
