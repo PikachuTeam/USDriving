@@ -95,13 +95,14 @@ public class AnswerChoicesItem implements View.OnClickListener {
                 }
                 setColorLayout(context.getString(R.string.written_test_correct_answer),
                         context.getResources().getColor(R.color.right_answer_color));
+                setVisible(layoutInformation,true);
             } else {
                 setColorLayout(context.getString(R.string.written_test_wrong_answer),
                         context.getResources().getColor(R.color.wrong_answer_color));
-                layoutInformation.setVisibility(View.VISIBLE);
+                setVisible(layoutInformation,true);
             }
         }else{
-            layoutInformation.setVisibility(View.GONE);
+            setVisible(layoutInformation,false);
         }
 
     }
