@@ -21,4 +21,10 @@
         parent="android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:dropDownSelector">?android:selectableItemBackground</item>
+        <item name="android:divider">@null</item>
+    </style>
 </resources>

@@ -101,7 +101,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void populateSpinner() {
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, DataSource.getInstance().getStates());
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), R.layout.item_spinner_state, DataSource.getInstance().getStates());
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(spinnerAdapter);
     }
