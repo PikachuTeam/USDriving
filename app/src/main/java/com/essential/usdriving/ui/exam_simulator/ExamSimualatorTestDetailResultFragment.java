@@ -66,7 +66,6 @@ public class ExamSimualatorTestDetailResultFragment extends BaseFragment {
 
         adapter = new WrittenTestResultDetailListAdapter(this.getActivity(), questions);
         listItem.setAdapter(adapter);
-
     }
 
     @Override
