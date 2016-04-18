@@ -349,7 +349,7 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             if (currentQuesIndex < 29) {
                 currentQuesIndex++;
                 viewPager.setCurrentItem(currentQuesIndex, true);
-                scrollToCenter(wrapper);
+                scrollToCenter(listItemQues.get(currentQuesIndex));
             }
 
         } else {
