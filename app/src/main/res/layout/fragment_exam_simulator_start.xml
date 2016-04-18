@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<tatteam.com.app_common.ui.drawable.FractionFrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<tatteam.com.app_common.ui.drawable.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
@@ -18,7 +17,7 @@
             android:layout_height="@dimen/exam_simulator_layout_rule_height"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_20"
-            android:background="@color/window_background2"
+            android:background="@color/window_background1"
             android:padding="@dimen/common_size_4">
 
             <TextView
@@ -58,22 +57,38 @@
 
         <LinearLayout
             android:id="@+id/layoutNotShowAgain"
-            android:layout_width="@dimen/common_size_300"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/size_3"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_20"
-            android:gravity="center_horizontal"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <include
+            <LinearLayout
                 android:id="@+id/checkboxNotShowAgain"
-                layout="@layout/item_check_box" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/window_background1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="@dimen/size_3"
+                    android:layout_height="@dimen/size_3"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/imgTick"
+                        android:layout_width="@dimen/size_1"
+                        android:layout_height="@dimen/size_1"
+                        android:background="@drawable/ic_tick"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/text_doNotShow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/margin_10"
                 android:text="@string/exam_simulator_not_show_again"
                 android:textSize="@dimen/text_size_4" />

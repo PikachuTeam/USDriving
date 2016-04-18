@@ -1,5 +1,6 @@
 package com.essential.usdriving.ui.written_test;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.util.DebugUtils;
@@ -21,9 +22,12 @@ import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.entity.BaseEntity;
 import com.essential.usdriving.entity.Question;
+import com.essential.usdriving.ui.exam_simulator.ExamSimulatorTestResultFragment;
+import com.essential.usdriving.ui.home.HomeFragment;
 import com.essential.usdriving.ui.widget.AnswerChoicesItem;
 import com.essential.usdriving.ui.widget.QuestionDialogFragment;
 import com.essential.usdriving.ui.widget.QuestionNoItemWrapper;
+import com.essential.usdriving.ui.widget.WarningDialog;
 
 import java.util.ArrayList;
 
@@ -61,11 +65,26 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         menuToolbar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                DMVWrittenTestResultFragment fragment = new DMVWrittenTestResultFragment();
-                Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("Questions", questions);
-                fragment.setArguments(bundle);
-                replaceFragment(fragment, getString(R.string.written_test_result_title));
+
+                warningDialog = new WarningDialog(getActivity(), 1);
+                warningDialog.setOnDialogItemClickListener(new WarningDialog.OnDialogItemClickListener() {
+                    @Override
+                    public void onDialogItemClick(int code) {
+                        if (code == WarningDialog.OK) {
+                            warningDialog.dismiss();
+                            DMVWrittenTestResultFragment fragment = new DMVWrittenTestResultFragment();
+                            Bundle bundle = new Bundle();
+                            bundle.putParcelableArrayList("Questions", questions);
+                            fragment.setArguments(bundle);
+                            replaceFragment(fragment, getString(R.string.written_test_result_title));
+                        } else {
+                            warningDialog.dismiss();
+                        }
+                    }
+                });
+                warningDialog.show();
+
+
                 return true;
             }
         });
@@ -355,4 +374,21 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     }
 
 
+    private WarningDialog warningDialog;
+    @Override
+    public void onBackPressed() {
+        warningDialog = new WarningDialog(getActivity(), 3);
+        warningDialog.setOnDialogItemClickListener(new WarningDialog.OnDialogItemClickListener() {
+            @Override
+            public void onDialogItemClick(int code) {
+                if (code == WarningDialog.OK) {
+                    warningDialog.dismiss();
+                    getFragmentManager().popBackStack(HomeFragment.HOME_TRANSACTION, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                } else {
+                    warningDialog.dismiss();
+                }
+            }
+        });
+        warningDialog.show();
+    }
 }

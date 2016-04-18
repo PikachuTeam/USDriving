@@ -191,7 +191,7 @@ public class DataSource extends BaseDataSource {
         if (cursor.moveToFirst()) {
             int stateNameIndex = cursor.getColumnIndex(DB_STATE_NAME);
             while (!cursor.isAfterLast()) {
-                states.add(cursor.getString(stateNameIndex));
+                states.add(cursor.getString(stateNameIndex).toUpperCase());
                 cursor.moveToNext();
             }
         }

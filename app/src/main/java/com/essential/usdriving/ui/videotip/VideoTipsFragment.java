@@ -89,7 +89,6 @@ public class VideoTipsFragment extends BaseFragment {
             }
         });
 
-
     }
     @Override
     protected boolean enableToolbar() {
@@ -190,9 +189,6 @@ public class VideoTipsFragment extends BaseFragment {
             public void onClick(View v) {
 
             }
-
-
-
 
         }
     }

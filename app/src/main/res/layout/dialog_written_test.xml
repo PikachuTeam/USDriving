@@ -132,7 +132,8 @@
                     android:layout_marginTop="@dimen/margin_5"
                     android:text="Alo"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/common_text_size_16" />
+                    android:textSize="@dimen/common_text_size_16"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
@@ -145,7 +146,7 @@
                 android:layout_marginTop="@dimen/margin_5"
                 android:text="Explanation: "
                 android:textColor="@color/black"
-                android:textSize="@dimen/common_text_size_16"
+                android:textSize="@dimen/common_text_size_15"
                 android:textStyle="italic" />
         </LinearLayout>
     </ScrollView>
