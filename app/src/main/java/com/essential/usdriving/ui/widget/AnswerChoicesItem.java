@@ -88,8 +88,8 @@ public class AnswerChoicesItem implements View.OnClickListener {
         if(isActive){
             if (isCorrect) {
                 if (!checkNullExplanation) {
-                    setVisible(tvExplanation,true);
                     setExplanation(explanation);
+                    setVisible(tvExplanation,true);
                 } else {
                     setVisible(tvExplanation,false);
                 }
