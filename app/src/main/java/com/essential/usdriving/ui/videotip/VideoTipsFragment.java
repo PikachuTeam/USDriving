@@ -10,15 +10,14 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
+import com.essential.usdriving.ui.ultility.DefaultItemDecoration;
 
 import java.util.ArrayList;
 
@@ -49,7 +48,6 @@ public class VideoTipsFragment extends BaseFragment {
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
 
-
         videoTipsList = (RecyclerView) rootView.findViewById(R.id.videoTipsList);
 
         if (videos == null) {
@@ -60,37 +58,9 @@ public class VideoTipsFragment extends BaseFragment {
         adapter = new VideoTipsListAdapter(getActivity(), videos);
         videoTipsList.setAdapter(adapter);
         videoTipsList.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-        videoTipsList.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                if (e.getAction() == MotionEvent.ACTION_DOWN) {
-                    View view = rv.findChildViewUnder(e.getX(), e.getY());
-                    int position = rv.getChildLayoutPosition(view);
-                    if(position>=0){
-                        VideoTipsListItem item = videos.get(position);
-
-                    }
-
-                }
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
-                //
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
-
-
+        videoTipsList.addItemDecoration(new DefaultItemDecoration(getActivity()));
     }
+
     @Override
     protected boolean enableToolbar() {
         return true;
@@ -122,7 +92,7 @@ public class VideoTipsFragment extends BaseFragment {
         }
     }
 
-    private  class VideoTipsListAdapter extends RecyclerView.Adapter<VideoTipsListAdapter.ViewHolder> implements View.OnClickListener {
+    private class VideoTipsListAdapter extends RecyclerView.Adapter<VideoTipsListAdapter.ViewHolder> implements View.OnClickListener {
         private LayoutInflater inflater;
         private ArrayList<VideoTipsListItem> items;
         private VideoTipsListItem item;
@@ -141,7 +111,7 @@ public class VideoTipsFragment extends BaseFragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-             item = items.get(position);
+            item = items.get(position);
             holder.setText(item.sectionTitle);
             holder.setImage(item.image);
             holder.cv.setOnClickListener(this);
@@ -159,13 +129,13 @@ public class VideoTipsFragment extends BaseFragment {
 
         @Override
         public void onClick(View v) {
-            if(v.getId()==R.id.cardVideoTip){
+            if (v.getId() == R.id.cardVideoTip) {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.link));
                 startActivity(browserIntent);
             }
         }
 
-        class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
             private ImageView imgVideoTipsItem;
             private TextView txtVideoTipsItem;
@@ -175,7 +145,7 @@ public class VideoTipsFragment extends BaseFragment {
                 super(itemView);
                 imgVideoTipsItem = (ImageView) itemView.findViewById(R.id.imgVideoTipsItem);
                 txtVideoTipsItem = (TextView) itemView.findViewById(R.id.txtVideoTipsItem);
-                  cv= (CardView) itemView.findViewById(R.id.cardVideoTip);
+                cv = (CardView) itemView.findViewById(R.id.cardVideoTip);
             }
 
             public void setText(String text) {
@@ -190,10 +160,6 @@ public class VideoTipsFragment extends BaseFragment {
             public void onClick(View v) {
 
             }
-
-
-
-
         }
     }
 }

@@ -4,8 +4,6 @@
     android:id="@+id/cardVideoTip"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/common_size_7"
-    android:layout_marginRight="@dimen/common_size_7"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/common_size_3"
     app:cardElevation="@dimen/common_size_3"
