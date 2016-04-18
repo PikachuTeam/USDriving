@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -8,12 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/common_size_5"
+        android:layout_marginBottom="@dimen/common_size_3"
         android:layout_marginLeft="@dimen/common_size_10"
         android:layout_marginRight="@dimen/common_size_10"
+        android:layout_marginTop="@dimen/common_size_3"
         android:minHeight="@dimen/common_size_60"
-        app:cardCornerRadius="@dimen/common_size_3"
-        app:cardPreventCornerOverlap="false">
+        card_view:cardCornerRadius="@dimen/common_size_3"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:id="@+id/choiceLayout"

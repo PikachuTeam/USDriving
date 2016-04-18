@@ -2,7 +2,6 @@ package com.essential.usdriving.app;
 
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -90,9 +89,9 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
         return false;
     }
 
-    public BaseActivity getBaseActivity() {
+    public DMVActivity getBaseActivity() {
 
-        return (BaseActivity) getActivity();
+        return (DMVActivity) getActivity();
     }
 
     protected boolean enableFloatingActionButton() {

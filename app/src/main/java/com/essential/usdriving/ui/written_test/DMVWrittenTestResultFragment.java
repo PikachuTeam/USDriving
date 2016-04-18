@@ -1,5 +1,6 @@
 package com.essential.usdriving.ui.written_test;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.entity.BaseEntity;
 import com.essential.usdriving.entity.Question;
+import com.essential.usdriving.ui.home.HomeFragment;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
@@ -47,7 +49,10 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
     public void defineButtonResult() {
 
     }
-
+    @Override
+    public void onBackPressed() {
+        getFragmentManager().popBackStack(HomeFragment.HOME_TRANSACTION, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
     @Override
     protected int getLayoutResIdContentView() {
         return R.layout.fragment_dmv_written_test_result;
@@ -99,7 +104,7 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
         pieChart = new PieChart(getActivity());
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColorTransparent(true);
-        pieChart.setHoleRadius(getResources().getDimension(R.dimen.pie_chart_hole_radius));
+        pieChart.setHoleRadius(getResources().getDimension(R.dimen.common_size_13));
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setRotationEnabled(false);
         pieChart.setTouchEnabled(false);

@@ -1,5 +1,7 @@
 package com.essential.usdriving.ui.home;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.LinearLayout;
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
+import com.essential.usdriving.ui.exam_simulator.ExamSimulatorDoExamFragment;
 import com.essential.usdriving.ui.exam_simulator.ExamSimulatorStartFragment;
 import com.essential.usdriving.ui.learning_card.LearningCardFragment;
 import com.essential.usdriving.ui.test_topic.TestTopicFragment;
@@ -107,9 +110,14 @@ public class HomeFragment extends BaseFragment {
         @Override
         public void onClick(View v) {
             if (v == itemWrittenTest) {
-                replaceFragment(new DMVWrittenTestFragment(), getString(R.string.written_test_result_title));
+                replaceFragment(new DMVWrittenTestFragment(), HOME_TRANSACTION);
             } else if (v == itemExamSimulator) {
-                replaceFragment(new ExamSimulatorStartFragment(), HOME_TRANSACTION);
+                SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                if (sharedPreferences.getInt(getString(R.string.is_shown_again), 1) == 1) {
+                    replaceFragment(new ExamSimulatorStartFragment(), HOME_TRANSACTION);
+                } else {
+                    replaceFragment(new ExamSimulatorDoExamFragment(), HOME_TRANSACTION, HOME_TRANSACTION);
+                }
             } else if (v == itemTestTopic) {
                 replaceFragment(new TestTopicFragment(), getString(R.string.title_test_topic));
             } else if (v == itemLearningCard) {
