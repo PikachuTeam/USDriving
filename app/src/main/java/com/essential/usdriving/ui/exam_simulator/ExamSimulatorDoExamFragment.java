@@ -424,6 +424,10 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
             ArrayList<AnswerChoicesItem> arrayList = makeChoices(ques);
             for (int i = 0; i < arrayList.size(); i++) {
                 layoutAnswerChoiceContent.addView(arrayList.get(i).getView());
+                LinearLayout.MarginLayoutParams marginParams = (LinearLayout.MarginLayoutParams) arrayList.get(i).getView().getLayoutParams();
+                int margin = getResources().getDimensionPixelSize(R.dimen.common_size_5);
+                marginParams.setMargins(margin, 0, margin, margin);
+                arrayList.get(i).getView().requestLayout();
                 arrayList.get(i).setOnAnswerChooseListener(this);
             }
             layoutAnswerChoiceContent.invalidate();

@@ -36,6 +36,7 @@ public class AnswerChoicesItem implements View.OnClickListener {
     public OnAnswerChooseListener getListener(){
         return  listener;
     }
+
     public View getView() {
         return this.view;
     }
@@ -63,7 +64,6 @@ public class AnswerChoicesItem implements View.OnClickListener {
     public void setActive(boolean isActive) {
         checkBox.setChecked(isActive);
     }
-
 
     private void findViews() {
         tvAnswer = (TextView) view.findViewById(R.id.textViewAnswer);
