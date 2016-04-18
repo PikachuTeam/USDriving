@@ -17,7 +17,7 @@
             android:layout_height="@dimen/exam_simulator_layout_rule_height"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_20"
-            android:background="@color/window_background1"
+            android:background="@drawable/bg_layout_rule"
             android:padding="@dimen/common_size_4">
 
             <TextView
@@ -27,17 +27,13 @@
                 android:layout_marginTop="@dimen/margin_20"
                 android:text="@string/exam_simulator_rule"
                 android:textSize="@dimen/text_size_4" />
-
         </LinearLayout>
 
         <android.support.v7.widget.CardView
             android:id="@+id/btnPreviousLayout"
             android:layout_width="@dimen/common_size_100"
-            android:layout_height="@dimen/common_size_55"
-
-            android:layout_gravity="center"
+            android:layout_height="@dimen/common_size_50"
             android:layout_marginTop="@dimen/common_size_10"
-            android:gravity="center_vertical"
             card_view:cardCornerRadius="@dimen/common_size_3"
             card_view:cardPreventCornerOverlap="false">
 
@@ -45,9 +41,7 @@
                 android:id="@+id/btnStart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:background="@color/ColorPrimary"
+                android:background="@drawable/button_start"
                 android:gravity="center"
                 android:text="@string/start"
                 android:textColor="@color/white"
@@ -68,7 +62,7 @@
                 android:id="@+id/checkboxNotShowAgain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/window_background1"
+                android:background="@drawable/bg_exam_simulator_check_box"
                 android:orientation="vertical">
 
                 <LinearLayout

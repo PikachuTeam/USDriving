@@ -22,10 +22,10 @@
     <string name="sliding_menu_title">US DRIVING</string>
     <string name="sliding_menu_state">Current State: California</string>
 
-    <string name="written_test_result_title">My test result summary</string>
+    <string name="written_test_result_title">My Test Result Summary</string>
     <string name="written_test_correct_answer">Correct</string>
     <string name="written_test_wrong_answer">Wrong</string>
-    <string name="written_test_not_answered">Not answered</string>
+    <string name="written_test_not_answered">Not Answered</string>
     <string name="written_test_total_answer">{0}/30</string>
     <string name="written_test_question_no">Q{0}</string>
     <string name="title_activity_main2">Main2Activity</string>
@@ -129,7 +129,8 @@
 
     <string name="more_app">More Apps</string>
 
-    <string name="new_test">New Test</string>
+    <string name="new_test">NEW TEST</string>
+    <string name="restart">RESTART</string>
     <string name="start">Start</string>
     <string name="your_state">YOUR STATE: </string>
 </resources>

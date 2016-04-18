@@ -1,6 +1,8 @@
 package com.essential.usdriving.app;
 
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
@@ -14,13 +16,20 @@ import tatteam.com.app_common.AppCommon;
 import tatteam.com.app_common.ads.AdsSmallBannerHandler;
 import tatteam.com.app_common.ui.fragment.BaseFragment;
 import tatteam.com.app_common.util.AppConstant;
+import tatteam.com.app_common.util.CloseAppHandler;
 
 public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity {
+
     private Toolbar toolbar;
     private FrameLayout adsContainer;
-    private AdsSmallBannerHandler adsSmallBannerHandler;
     private MenuItem menuToolbar;
     private FloatingActionButton fab;
+    private CoordinatorLayout mCoordinatorLayout;
+
+    private CloseAppHandler mCloseAppHandler;
+    private AdsSmallBannerHandler mAdsSmallBannerHandler;
+
+    private final static boolean ADS_ENABLE = true;
 
     @Override
     protected int getLayoutResIdContentView() {
@@ -29,13 +38,17 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
 
     @Override
     protected void onCreateContentView() {
-        adsContainer = (FrameLayout) findViewById(R.id.adsContainer);
-        adsSmallBannerHandler = new AdsSmallBannerHandler(this, adsContainer, AppConstant.AdsType.SMALL_BANNER_TEST);
-        adsSmallBannerHandler.setup();
         setUpToolbar();
         invalidateOptionsMenu();
+
+        setupAds();
+
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(floatingActionButtonClickListener);
+
+        mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
+        mCloseAppHandler = new CloseAppHandler(this, false);
+        mCloseAppHandler.setListener(closeAppListener);
     }
 
     @Override
@@ -63,6 +76,36 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+        mCloseAppHandler.setKeyBackPress(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mAdsSmallBannerHandler != null) {
+            mAdsSmallBannerHandler.destroy();
+        }
+    }
+
+    private CloseAppHandler.OnCloseAppListener closeAppListener = new CloseAppHandler.OnCloseAppListener() {
+        @Override
+        public void onRateAppDialogClose() {
+            finish();
+        }
+
+        @Override
+        public void onTryToCloseApp() {
+            Snackbar.make(mCoordinatorLayout, getString(R.string.message_exit), Snackbar.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onReallyWantToCloseApp() {
+            finish();
+        }
+    };
+
     public FloatingActionButton getFloatingActionButton() {
         return fab;
     }
@@ -77,4 +120,14 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
             AppCommon.getInstance().openMoreAppDialog(DMVActivity.this);
         }
     };
+
+    private void setupAds() {
+        adsContainer = (FrameLayout) findViewById(R.id.adsContainer);
+        if (ADS_ENABLE) {
+            mAdsSmallBannerHandler = new AdsSmallBannerHandler(this, adsContainer, AppConstant.AdsType.SMALL_BANNER_TEST);
+            mAdsSmallBannerHandler.setup();
+        } else {
+            adsContainer.setVisibility(View.GONE);
+        }
+    }
 }

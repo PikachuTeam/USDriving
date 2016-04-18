@@ -136,11 +136,13 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
 
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
+        currentQuesIndex = 0;
         findViews(rootView);
         min1 = 6;
         min2 = 0;
         sec1 = 0;
         sec2 = 0;
+
         setHasOptionsMenu(true);
     }
 

@@ -59,4 +59,7 @@
 
     <color name="state">#b18742</color>
     <color name="menu_item">#965510</color>
+
+    <color name="button_start_normal_color">#01a2b6</color>
+    <color name="button_start_highlight_color">#008A9B</color>
 </resources>
