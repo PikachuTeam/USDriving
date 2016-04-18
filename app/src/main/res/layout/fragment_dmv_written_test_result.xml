@@ -140,8 +140,7 @@
         android:layout_height="@dimen/common_size_65"
         android:layout_below="@+id/btnWrongAnswer"
         android:layout_marginBottom="@dimen/common_size_3"
-        android:background="@drawable/raised_button"
-        >
+        android:background="@drawable/raised_button">
 
         <ImageView
             android:id="@+id/imgNotAnswered"
