@@ -339,6 +339,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             }
             resetAllChoices(arrayList);
             if(question.myAnswer!=DataSource.ANSWER_NOT_CHOSEN){
+                arrayList.get(question.myAnswer).setActive(true);
                 if(question.myAnswer==question.correctAnswer){
                     if(question.explanation!=null){
                         //arrayList.get(question.myAnswer).setActive(true,true,question.explanation,false);
