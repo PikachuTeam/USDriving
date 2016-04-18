@@ -26,6 +26,9 @@ import java.util.ArrayList;
  */
 public class VideoTipsFragment extends BaseFragment {
 
+    public final static String BUNDLE_URL = "url";
+    public final static String TAG_VIDEO_TIPS_FRAGMENT = "video tips fragment";
+
     private ArrayList<VideoTipsListItem> videos;
     private VideoTipsListAdapter adapter;
     private RecyclerView videoTipsList;
@@ -72,12 +75,13 @@ public class VideoTipsFragment extends BaseFragment {
     }
 
     private void getVideos() {
-        videos.add(new VideoTipsListItem(getString(R.string.dmv_driving_test_tips), ContextCompat.getDrawable(getActivity(), R.drawable.dmv_driving_test_tips), "https://www.youtube.com/watch?v=5M-Kcq2U6CI"));
-        videos.add(new VideoTipsListItem(getString(R.string.ten_tips), ContextCompat.getDrawable(getActivity(), R.drawable.ten_tips), "https://www.youtube.com/watch?v=7ClH977D0Yg"));
-        videos.add(new VideoTipsListItem(getString(R.string.confession), ContextCompat.getDrawable(getActivity(), R.drawable.confession), "https://www.youtube.com/watch?v=RhBMk-na5Q0"));
-        videos.add(new VideoTipsListItem(getString(R.string.ten_reasons_for_failing_driving_test), ContextCompat.getDrawable(getActivity(), R.drawable.ten_reasons), "https://www.youtube.com/watch?list=PL297E87DA9A1025B2&v=xkf_NfEwZls"));
-        videos.add(new VideoTipsListItem(getString(R.string.rules_of_the_road), ContextCompat.getDrawable(getActivity(), R.drawable.rules_of_the_road), "https://www.youtube.com/watch?list=PL2F4E872DBDFF6AFA&v=E9H0yON1Xf0"));
-        videos.add(new VideoTipsListItem(getString(R.string.california_driver_license_info), ContextCompat.getDrawable(getActivity(), R.drawable.california_driver_license), "https://www.youtube.com/watch?list=PL5308680B569DFA20&v=TcFGlHUbKgM"));
+        String[] videoTips = getResources().getStringArray(R.array.video_tips);
+        videos.add(new VideoTipsListItem(videoTips[0], ContextCompat.getDrawable(getActivity(), R.drawable.dmv_driving_test_tips), "https://www.youtube.com/watch?v=5M-Kcq2U6CI"));
+        videos.add(new VideoTipsListItem(videoTips[1], ContextCompat.getDrawable(getActivity(), R.drawable.ten_tips), "https://www.youtube.com/watch?v=7ClH977D0Yg"));
+        videos.add(new VideoTipsListItem(videoTips[2], ContextCompat.getDrawable(getActivity(), R.drawable.confession), "https://www.youtube.com/watch?v=RhBMk-na5Q0"));
+        videos.add(new VideoTipsListItem(videoTips[3], ContextCompat.getDrawable(getActivity(), R.drawable.ten_reasons), "https://www.youtube.com/watch?list=PL297E87DA9A1025B2&v=xkf_NfEwZls"));
+        videos.add(new VideoTipsListItem(videoTips[4], ContextCompat.getDrawable(getActivity(), R.drawable.rules_of_the_road), "https://www.youtube.com/watch?list=PL2F4E872DBDFF6AFA&v=E9H0yON1Xf0"));
+        videos.add(new VideoTipsListItem(videoTips[5], ContextCompat.getDrawable(getActivity(), R.drawable.california_driver_license), "https://www.youtube.com/watch?list=PL5308680B569DFA20&v=TcFGlHUbKgM"));
     }
 
     private static class VideoTipsListItem {
@@ -130,12 +134,15 @@ public class VideoTipsFragment extends BaseFragment {
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.cardVideoTip) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.link));
-                startActivity(browserIntent);
+                WatchVideoFragment fragment = new WatchVideoFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(BUNDLE_URL, item.link);
+                fragment.setArguments(bundle);
+                replaceFragment(fragment, TAG_VIDEO_TIPS_FRAGMENT);
             }
         }
 
-        class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        class ViewHolder extends RecyclerView.ViewHolder {
 
             private ImageView imgVideoTipsItem;
             private TextView txtVideoTipsItem;
@@ -154,11 +161,6 @@ public class VideoTipsFragment extends BaseFragment {
 
             public void setImage(Drawable image) {
                 imgVideoTipsItem.setImageDrawable(image);
-            }
-
-            @Override
-            public void onClick(View v) {
-
             }
         }
     }

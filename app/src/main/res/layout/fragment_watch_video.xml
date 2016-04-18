@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tatteam.com.app_common.ui.drawable.FractionFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/text_no_connection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/no_connection"
+            android:textAllCaps="true"
+            android:textSize="@dimen/common_text_size_25"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </RelativeLayout>
+</tatteam.com.app_common.ui.drawable.FractionFrameLayout>
