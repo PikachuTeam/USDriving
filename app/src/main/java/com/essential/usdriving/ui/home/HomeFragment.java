@@ -51,6 +51,11 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
+    protected String setTitle() {
+        return "US DMV";
+    }
+
+    @Override
     public void defineButtonResult() {
 
     }
