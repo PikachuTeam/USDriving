@@ -89,8 +89,8 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
     private void loadData() {
         list = new ArrayList<>();
         Bundle bundle = this.getArguments();
-        getTopic = bundle.getString(TestTopicFragment.KEY_TESTTOPIC_1);
-        type = bundle.getInt(TestTopicFragment.KEY_TESTTOPIC_2);
+        getTopic = bundle.getString(TestTopicFragment.KEY_TEST_TOPIC_1);
+        type = bundle.getInt(TestTopicFragment.KEY_TEST_TOPIC_2);
         list = DataSource.getInstance().getTopicItem(getTopic);
         computeSize(START_ID);
         mEssentialProgressBar.setMaxProgress(list.size());

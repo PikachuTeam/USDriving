@@ -69,7 +69,7 @@ public class TestTopic_StudyAllInOnePage_Fragment extends BaseFragment {
     private void LoadDataGuide() {
         list_Question = new ArrayList<>();
         Bundle bundle = this.getArguments();
-        getTopic = bundle.getString(TestTopicFragment.KEY_TESTTOPIC_1);
+        getTopic = bundle.getString(TestTopicFragment.KEY_TEST_TOPIC_1);
         list_Question = DataSource.getInstance().getTopicItem(getTopic);
     }
 

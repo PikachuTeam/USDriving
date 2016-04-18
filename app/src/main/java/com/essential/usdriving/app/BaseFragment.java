@@ -16,7 +16,6 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
         setHasOptionsMenu(true);
     }
 
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         if (enableToolbar()) {
@@ -61,12 +60,6 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
 
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    protected int getLayoutResIdContentView() {
-        return 0;
     }
 
     protected String setTitle() {
