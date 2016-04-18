@@ -175,27 +175,50 @@
         android:background="@color/black" />
 
     <LinearLayout
+        android:id="@+id/layout_state"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:background="@color/state"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/your_state"
-            android:textColor="@color/white"
-            android:layout_marginLeft="@dimen/common_size_40"
-            android:textSize="@dimen/common_text_size_20" />
+            android:orientation="horizontal">
 
-        <android.support.v7.widget.AppCompatSpinner
-            android:id="@+id/spinner_state"
-            style="@style/SpinnerStyle"
-            android:layout_marginLeft="@dimen/common_size_5"
-            android:layout_width="wrap_content"
-            android:spinnerMode="dialog"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_size_10"
+                android:text="@string/your_state"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_text_size_15"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spinner_state"
+                style="@style/SpinnerStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_size_5"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/common_size_10"
+                android:text="▼"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_text_size_25" />
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

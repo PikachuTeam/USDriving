@@ -107,8 +107,6 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     @Override
     public void onClick(View v) {
         if (v == btnNewTest) {
-            getFragmentManager().popBackStack(ExamSimulatorStartFragment.TRANSACTION_NAME, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        } else {
             getFragmentManager().popBackStack();
         }
     }

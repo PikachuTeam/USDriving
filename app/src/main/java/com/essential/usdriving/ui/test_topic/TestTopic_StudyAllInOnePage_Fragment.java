@@ -41,7 +41,7 @@ public class TestTopic_StudyAllInOnePage_Fragment extends BaseFragment {
 
     @Override
     protected String setTitle() {
-        return "Test Topic";
+        return getString(R.string.title_test_topic);
     }
     @Override
     protected int getLayoutResIdContentView() {

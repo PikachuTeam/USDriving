@@ -33,6 +33,7 @@ public class HomeFragment extends BaseFragment {
     private LinearLayout itemLearningCard;
     private LinearLayout itemTestTopic;
     private LinearLayout itemVideoTips;
+    private View layout_state;
     private AppCompatSpinner mSpinner;
 
     private int mCurrentState;
@@ -48,6 +49,11 @@ public class HomeFragment extends BaseFragment {
         findViews(rootView);
         populateSpinner();
         mSpinner.setOnItemSelectedListener(spinnerItemSelectedListener);
+    }
+
+    @Override
+    protected String setTitle() {
+        return "US DMV";
     }
 
     @Override
@@ -82,12 +88,19 @@ public class HomeFragment extends BaseFragment {
         itemTestTopic = (LinearLayout) rootView.findViewById(R.id.itemTestTopic);
         itemVideoTips = (LinearLayout) rootView.findViewById(R.id.itemVideoTips);
         mSpinner = (AppCompatSpinner) rootView.findViewById(R.id.spinner_state);
+        layout_state = rootView.findViewById(R.id.layout_state);
 
         itemWrittenTest.setOnClickListener(listItemClickListener);
         itemExamSimulator.setOnClickListener(listItemClickListener);
         itemLearningCard.setOnClickListener(listItemClickListener);
         itemTestTopic.setOnClickListener(listItemClickListener);
         itemVideoTips.setOnClickListener(listItemClickListener);
+        layout_state.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSpinner.performClick();
+            }
+        });
     }
 
     private void loadState() {
