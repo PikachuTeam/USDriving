@@ -268,8 +268,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             View view = View.inflate(this.context, R.layout.written_test_page_item, null);
-            Question ques = data.get(position);
-            ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
+             Question ques = data.get(position);
+             ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
             ImageView imgZoom = (ImageView) view.findViewById(R.id.buttonZoomIn);
             LinearLayout layoutChoice = (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
@@ -307,6 +307,10 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
             ArrayList<AnswerChoicesItem> arrayList= makeChoices(ques);
             for(int i=0;i<arrayList.size();i++){
                 layoutChoice.addView(arrayList.get(i).getView());
+                LinearLayout.MarginLayoutParams marginParams = (LinearLayout.MarginLayoutParams) arrayList.get(i).getView().getLayoutParams();
+                int margin = getResources().getDimensionPixelSize(R.dimen.common_size_5);
+                marginParams.setMargins(margin, 0, margin, margin);
+                arrayList.get(i).getView().requestLayout();
                 arrayList.get(i).setOnAnswerChooseListener(this);
             }
 
@@ -391,6 +395,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
 
     private WarningDialog warningDialog;
+
     @Override
     public void onBackPressed() {
         warningDialog = new WarningDialog(getActivity(), 3);

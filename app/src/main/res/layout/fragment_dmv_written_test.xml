@@ -73,16 +73,12 @@
             android:text="Question"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_5" />
-
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
         android:layout_below="@+id/layout_questionText"
-        android:layout_gravity="center"
         android:background="@color/window_background" />
-
 </RelativeLayout>

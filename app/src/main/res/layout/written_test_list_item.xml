@@ -1,92 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-    <android.support.v7.widget.CardView
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/common_size_60"
+    app:cardCornerRadius="@dimen/common_size_3"
+    app:cardPreventCornerOverlap="false">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/common_size_3"
-        android:layout_marginLeft="@dimen/common_size_10"
-        android:layout_marginRight="@dimen/common_size_10"
-        android:layout_marginTop="@dimen/common_size_3"
-        android:minHeight="@dimen/common_size_60"
-        card_view:cardCornerRadius="@dimen/common_size_3"
-        card_view:cardPreventCornerOverlap="false"
-        card_view:cardUseCompatPadding="true">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/choiceLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/raised_button"
+            android:clickable="true"
+            android:minHeight="@dimen/common_size_60">
 
-            <RelativeLayout
-                android:id="@+id/choiceLayout"
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                app:buttonTint="@color/orange" />
+
+            <TextView
+                android:id="@+id/textViewAnswer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/raised_button"
-                android:clickable="true"
-                android:minHeight="@dimen/common_size_60">
-
-                <android.support.v7.widget.AppCompatCheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    app:buttonTint="@color/orange" />
-
-                <TextView
-                    android:id="@+id/textViewAnswer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginBottom="@dimen/common_size_3"
-                    android:layout_toRightOf="@+id/checkBox"
-                    android:paddingBottom="@dimen/common_size_5"
-                    android:paddingLeft="@dimen/common_size_10"
-                    android:paddingTop="@dimen/common_size_5"
-                    android:text="test"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/common_text_size_17" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/choiceLayout"
-                android:id="@+id/layout_information"
-                android:visibility="gone"
-                >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/common_size_10"
-                    android:text="wrong"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/common_text_size_17"
-                    android:id="@+id/text_checkAnswer"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/common_size_10"
-                    android:text="explanation"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/common_text_size_17"
-                    android:id="@+id/text_Explanation"
-                    android:layout_below="@+id/text_checkAnswer"
-                    android:textStyle="italic"
-                   android:visibility="gone"
-                    />
-            </RelativeLayout>
-
+                android:layout_toRightOf="@+id/checkBox"
+                android:gravity="center_vertical"
+                android:padding="@dimen/common_size_5"
+                android:text="test"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_17" />
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/layout_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/choiceLayout"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/text_checkAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/common_size_3"
+                android:paddingLeft="@dimen/common_size_10"
+                android:paddingTop="@dimen/common_size_3"
+                android:text="wrong"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_17"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_Explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_checkAnswer"
+                android:paddingBottom="@dimen/common_size_5"
+                android:paddingLeft="@dimen/common_size_10"
+                android:paddingRight="@dimen/common_size_10"
+                android:text="explanation"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_17"
+                android:textStyle="italic"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
 
