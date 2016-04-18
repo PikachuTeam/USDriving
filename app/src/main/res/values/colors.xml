@@ -56,4 +56,7 @@
     <color name="essential_progress_bar_color">#01a2b6</color>
     <color name="essential_progress_bar_background_color">#5C5C5C</color>
     <color name="essential_progress_bar_text_color">#efebeb</color>
+
+    <color name="state">#b18742</color>
+    <color name="menu_item">#965510</color>
 </resources>

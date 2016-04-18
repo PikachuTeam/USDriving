@@ -2,7 +2,7 @@ package com.essential.usdriving.ui;
 
 import android.content.Intent;
 
-import com.essential.usdriving.app.BaseActivity;
+import com.essential.usdriving.app.DMVActivity;
 
 import tatteam.com.app_common.AppCommon;
 import tatteam.com.app_common.sqlite.DatabaseLoader;
@@ -30,7 +30,7 @@ public class SplashActivity extends EssentialSplashActivity {
         switchToChooseTargetActivity();
     }
     private void switchToChooseTargetActivity() {
-        Intent intent = new Intent(SplashActivity.this, BaseActivity.class);
+        Intent intent = new Intent(SplashActivity.this, DMVActivity.class);
         startActivity(intent);
         finish();
     }

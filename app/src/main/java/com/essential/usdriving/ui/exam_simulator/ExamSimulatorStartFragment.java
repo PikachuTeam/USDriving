@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,11 +19,10 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
     public final static String TRANSACTION_NAME = "Start Exam";
     public final static String TAG = "Start Fragment";
 
-    private LinearLayout layoutRule;
     private TextView btnStart;
     private LinearLayout layoutNotShowAgain;
-    private LinearLayout checkboxNotShowAgain;
     private ImageView imgTick;
+    private int isShownRule = 1;
 
     @Override
     protected boolean enableBackButton() {
@@ -44,8 +42,6 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
         findViews(rootView);
-        isShownRule();
-
     }
 
     @Override
@@ -63,46 +59,32 @@ public class ExamSimulatorStartFragment extends BaseFragment implements View.OnC
 
     }
 
-
     @Override
     public void onClick(View v) {
         if (v == btnStart) {
             if (imgTick.getVisibility() == View.VISIBLE) {
                 SharedPreferences.Editor editor = getActivity().getPreferences(Context.MODE_PRIVATE).edit();
-                editor.putInt(getString(R.string.is_shown_again), 0);
+                editor.putInt(getString(R.string.is_shown_again), isShownRule);
                 editor.commit();
             }
             replaceFragment(new ExamSimulatorDoExamFragment(), TAG, TRANSACTION_NAME);
-        } else if (v == checkboxNotShowAgain) {
+        } else if (v == layoutNotShowAgain) {
             if (imgTick.getVisibility() == View.VISIBLE) {
                 imgTick.setVisibility(View.GONE);
+                isShownRule = 1;
             } else {
                 imgTick.setVisibility(View.VISIBLE);
+                isShownRule = 0;
             }
         }
     }
 
     private void findViews(View rootView) {
-        layoutRule = (LinearLayout) rootView.findViewById(R.id.layoutRule);
         btnStart = (TextView) rootView.findViewById(R.id.btnStart);
         layoutNotShowAgain = (LinearLayout) rootView.findViewById(R.id.layoutNotShowAgain);
-        checkboxNotShowAgain = (LinearLayout) rootView.findViewById(R.id.checkboxNotShowAgain);
         imgTick = (ImageView) rootView.findViewById(R.id.imgTick);
 
         btnStart.setOnClickListener(this);
-        checkboxNotShowAgain.setOnClickListener(this);
-    }
-
-    private void isShownRule() {
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int defaultValue = 1;
-        int isShown = sharedPref.getInt(getString(R.string.is_shown_again), defaultValue);
-        if (isShown == 1) {
-            layoutNotShowAgain.setVisibility(View.VISIBLE);
-            layoutRule.setVisibility(View.VISIBLE);
-        } else {
-            layoutNotShowAgain.setVisibility(View.GONE);
-            layoutRule.setVisibility(View.GONE);
-        }
+        layoutNotShowAgain.setOnClickListener(this);
     }
 }

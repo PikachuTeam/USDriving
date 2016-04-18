@@ -15,7 +15,7 @@ import tatteam.com.app_common.ads.AdsSmallBannerHandler;
 import tatteam.com.app_common.ui.fragment.BaseFragment;
 import tatteam.com.app_common.util.AppConstant;
 
-public class BaseActivity extends tatteam.com.app_common.ui.activity.BaseActivity {
+public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity {
     private Toolbar toolbar;
     private FrameLayout adsContainer;
     private AdsSmallBannerHandler adsSmallBannerHandler;
@@ -74,7 +74,7 @@ public class BaseActivity extends tatteam.com.app_common.ui.activity.BaseActivit
     private View.OnClickListener floatingActionButtonClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            AppCommon.getInstance().openMoreAppDialog(BaseActivity.this);
+            AppCommon.getInstance().openMoreAppDialog(DMVActivity.this);
         }
     };
 }

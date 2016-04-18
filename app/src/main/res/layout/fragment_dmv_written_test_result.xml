@@ -46,7 +46,7 @@
             android:layout_width="@dimen/size_8"
             android:layout_height="@dimen/size_4"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_25"
+            android:layout_marginLeft="@dimen/margin_10"
             android:background="@drawable/ic_correct_answer" />
 
         <TextView
@@ -102,7 +102,7 @@
             android:layout_width="@dimen/size_8"
             android:layout_height="@dimen/size_4"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_25"
+            android:layout_marginLeft="@dimen/margin_10"
             android:background="@drawable/ic_wrong_answer" />
 
         <TextView
@@ -158,7 +158,7 @@
             android:layout_width="@dimen/size_8"
             android:layout_height="@dimen/size_4"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_25"
+            android:layout_marginLeft="@dimen/margin_10"
             android:background="@drawable/ic_not_answered" />
 
         <TextView
