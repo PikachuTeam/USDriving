@@ -229,9 +229,9 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 horizontalScrollView.invalidate();
             }
             if (currentQuesIndex < 29) {
-//                currentQuesIndex++;
-//                viewPager.setCurrentItem(currentQuesIndex, true);
-//                scrollToCenter(wrapper);
+                currentQuesIndex++;
+                viewPager.setCurrentItem(currentQuesIndex, true);
+                scrollToCenter(wrapper);
             }
 
         } else {
@@ -268,8 +268,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             View view = View.inflate(this.context, R.layout.written_test_page_item, null);
-            Question ques = data.get(position);
-            ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
+             Question ques = data.get(position);
+             ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
             ImageView imgZoom = (ImageView) view.findViewById(R.id.buttonZoomIn);
             LinearLayout layoutChoice = (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
@@ -304,8 +304,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 questionImage.setVisibility(View.GONE);
                 imgZoom.setVisibility(View.GONE);
             }
-            ArrayList<AnswerChoicesItem> arrayList = makeChoices(ques);
-            for (int i = 0; i < arrayList.size(); i++) {
+            ArrayList<AnswerChoicesItem> arrayList= makeChoices(ques);
+            for(int i=0;i<arrayList.size();i++){
                 layoutChoice.addView(arrayList.get(i).getView());
                 LinearLayout.MarginLayoutParams marginParams = (LinearLayout.MarginLayoutParams) arrayList.get(i).getView().getLayoutParams();
                 int margin = getResources().getDimensionPixelSize(R.dimen.common_size_5);
@@ -342,8 +342,23 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 arrayList.add(answerChoicesItemD);
             }
             resetAllChoices(arrayList);
-            if (question.myAnswer != DataSource.ANSWER_NOT_CHOSEN) {
+            if(question.myAnswer!=DataSource.ANSWER_NOT_CHOSEN){
                 arrayList.get(question.myAnswer).setActive(true);
+                if(question.myAnswer==question.correctAnswer){
+                    if(question.explanation!=null){
+                        //arrayList.get(question.myAnswer).setActive(true,true,question.explanation,false);
+                        arrayList.get(question.myAnswer).setCorrectChoice(true,true,question.explanation,false);
+                        Log.v("Explanation not null ",""+question.explanation);
+                    }else{
+                        //arrayList.get(question.myAnswer).setActive(true,true,question.explanation,true);
+                        arrayList.get(question.myAnswer).setCorrectChoice(true,true,question.explanation,true);
+                        Log.v("Explanation null ",""+question.explanation);
+                    }
+
+                }else{
+                    //arrayList.get(question.myAnswer).setActive(true,false,question.explanation,true);
+                    arrayList.get(question.myAnswer).setCorrectChoice(true,false,question.explanation,true);
+                }
             }
 
             return arrayList;
@@ -351,7 +366,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
         public void resetAllChoices(ArrayList<AnswerChoicesItem> list) {
             for (int i = 0; i < list.size(); i++) {
-                list.get(i).setActive(false);
+                // list.get(i).setActive(false,false,"",true);
+                list.get(i).setCorrectChoice(false,false,"",true);
             }
         }
 
