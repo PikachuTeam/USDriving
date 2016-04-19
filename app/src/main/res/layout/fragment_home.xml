@@ -1,229 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:weightSum="5.6">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/itemWrittenTest"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/raised_button_without_corner"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:weightSum="5.6">
 
-        <ImageView
-            android:layout_width="@dimen/home_list_image_item_size"
-            android:layout_height="@dimen/home_list_image_item_size"
-            android:layout_marginLeft="@dimen/common_size_70"
-            android:src="@drawable/ic_dmv_written_test" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/common_size_15"
-            android:text="@string/title_dmv_written_test"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_text_size_18" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/common_size_10"
-        android:layout_marginRight="@dimen/common_size_10"
-        android:layout_weight="0.02"
-        android:background="@color/black" />
-
-    <LinearLayout
-        android:id="@+id/itemExamSimulator"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/raised_button_without_corner"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/home_list_image_item_size"
-            android:layout_height="@dimen/home_list_image_item_size"
-            android:layout_marginLeft="@dimen/common_size_70"
-            android:src="@drawable/ic_exam_simulator" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/common_size_15"
-            android:text="@string/title_exam_simulator"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_text_size_20" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/common_size_10"
-        android:layout_marginRight="@dimen/common_size_10"
-        android:layout_weight="0.02"
-        android:background="@color/black" />
-
-    <LinearLayout
-        android:id="@+id/itemTestTopic"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/raised_button_without_corner"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/home_list_image_item_size"
-            android:layout_height="@dimen/home_list_image_item_size"
-            android:layout_marginLeft="@dimen/common_size_70"
-            android:src="@drawable/ic_dmv_test_topics" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/common_size_15"
-            android:text="@string/title_test_topic"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_text_size_20" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/common_size_10"
-        android:layout_marginRight="@dimen/common_size_10"
-        android:layout_weight="0.02"
-        android:background="@color/black" />
-
-    <LinearLayout
-        android:id="@+id/itemLearningCard"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/raised_button_without_corner"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/home_list_image_item_size"
-            android:layout_height="@dimen/home_list_image_item_size"
-            android:layout_marginLeft="@dimen/common_size_70"
-            android:src="@drawable/ic_learning_cards" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/common_size_15"
-            android:text="@string/title_learning_card"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_text_size_20" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/common_size_10"
-        android:layout_marginRight="@dimen/common_size_10"
-        android:layout_weight="0.02"
-        android:background="@color/black" />
-
-    <LinearLayout
-        android:id="@+id/itemVideoTips"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/raised_button_without_corner"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/home_list_image_item_size"
-            android:layout_height="@dimen/home_list_image_item_size"
-            android:layout_marginLeft="@dimen/common_size_70"
-            android:src="@drawable/ic_driving_tips" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/common_size_15"
-            android:text="@string/title_video_tips"
-            android:textColor="@color/black"
-            android:textSize="@dimen/common_text_size_20" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/common_size_10"
-        android:layout_marginRight="@dimen/common_size_10"
-        android:layout_weight="0.02"
-        android:background="@color/black" />
-
-    <LinearLayout
-        android:id="@+id/layout_state"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:background="@color/state"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/itemWrittenTest"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/raised_button_without_corner"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_toLeftOf="@+id/triangle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerVertical="true">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_size_10"
-                    android:text="@string/your_state"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/common_text_size_15"
-                    android:textStyle="bold" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spinner_state"
-                    style="@style/SpinnerStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_size_5"
-                    android:spinnerMode="dialog"
-                   />
-            </LinearLayout>
-
+            <ImageView
+                android:layout_width="@dimen/home_list_image_item_size"
+                android:layout_height="@dimen/home_list_image_item_size"
+                android:layout_marginLeft="@dimen/common_size_70"
+                android:src="@drawable/ic_dmv_written_test" />
 
             <TextView
-                android:id="@+id/triangle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/common_size_10"
-                android:text="▼"
-                android:textColor="@color/white"
-                android:textSize="@dimen/common_text_size_25" />
-        </RelativeLayout>
+                android:layout_marginLeft="@dimen/common_size_15"
+                android:text="@string/title_dmv_written_test"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_18" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/common_size_10"
+            android:layout_marginRight="@dimen/common_size_10"
+            android:layout_weight="0.02"
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/itemExamSimulator"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/raised_button_without_corner"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/home_list_image_item_size"
+                android:layout_height="@dimen/home_list_image_item_size"
+                android:layout_marginLeft="@dimen/common_size_70"
+                android:src="@drawable/ic_exam_simulator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_size_15"
+                android:text="@string/title_exam_simulator"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_20" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/common_size_10"
+            android:layout_marginRight="@dimen/common_size_10"
+            android:layout_weight="0.02"
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/itemTestTopic"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/raised_button_without_corner"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/home_list_image_item_size"
+                android:layout_height="@dimen/home_list_image_item_size"
+                android:layout_marginLeft="@dimen/common_size_70"
+                android:src="@drawable/ic_dmv_test_topics" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/common_size_15"
+                android:text="@string/title_test_topic"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_20" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/common_size_10"
+            android:layout_marginRight="@dimen/common_size_10"
+            android:layout_weight="0.02"
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/itemLearningCard"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/raised_button_without_corner"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/home_list_image_item_size"
+                android:layout_height="@dimen/home_list_image_item_size"
+                android:layout_marginLeft="@dimen/common_size_70"
+                android:src="@drawable/ic_learning_cards" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/common_size_15"
+                android:text="@string/title_learning_card"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_20" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/common_size_10"
+            android:layout_marginRight="@dimen/common_size_10"
+            android:layout_weight="0.02"
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/itemVideoTips"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/raised_button_without_corner"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/home_list_image_item_size"
+                android:layout_height="@dimen/home_list_image_item_size"
+                android:layout_marginLeft="@dimen/common_size_70"
+                android:src="@drawable/ic_driving_tips" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/common_size_15"
+                android:text="@string/title_video_tips"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_20" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/common_size_10"
+            android:layout_marginRight="@dimen/common_size_10"
+            android:layout_weight="0.02"
+            android:background="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/layout_state"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:background="@color/state"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_toLeftOf="@+id/triangle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_size_10"
+                        android:text="@string/your_state"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_text_size_15"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/spinner_state"
+                        style="@style/SpinnerStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_size_5"
+                        android:spinnerMode="dialog"
+                        />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/triangle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/common_size_10"
+                    android:text="▼"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/common_text_size_25" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+    <View
+        android:id="@+id/view_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/overlay_view_color"
+        android:clickable="true"
+        android:visibility="gone" />
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/floating_actions_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/common_size_25"
+        app:fab_addButtonSize="normal"
+        app:layout_anchor="@id/itemVideoTips"
+        app:layout_anchorGravity="bottom|right"
+        fab:fab_labelStyle="@style/floating_menu_labels_style">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_rate_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/ic_star"
+            fab:fab_size="mini"
+            fab:fab_title="@string/rate_us" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_more_apps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/ic_shopping"
+            fab:fab_size="mini"
+            fab:fab_title="@string/more_apps" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_remove_ads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/ic_shopping"
+            fab:fab_size="mini"
+            fab:fab_title="@string/remove_ads" />
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</android.support.design.widget.CoordinatorLayout>

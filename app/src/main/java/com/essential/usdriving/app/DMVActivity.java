@@ -23,7 +23,6 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
     private Toolbar toolbar;
     private FrameLayout adsContainer;
     private MenuItem menuToolbar;
-    private FloatingActionButton fab;
     private CoordinatorLayout mCoordinatorLayout;
 
     private CloseAppHandler mCloseAppHandler;
@@ -42,9 +41,6 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
         invalidateOptionsMenu();
 
         setupAds();
-
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(floatingActionButtonClickListener);
 
         mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
         mCloseAppHandler = new CloseAppHandler(this, false);
@@ -86,7 +82,7 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
             } else {
                 mCloseAppHandler.setKeyBackPress(this);
             }
-        }else{
+        } else {
             mCloseAppHandler.setKeyBackPress(this);
         }
 
@@ -117,20 +113,9 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
         }
     };
 
-    public FloatingActionButton getFloatingActionButton() {
-        return fab;
-    }
-
     public Toolbar getToolbar() {
         return toolbar;
     }
-
-    private View.OnClickListener floatingActionButtonClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            AppCommon.getInstance().openMoreAppDialog(DMVActivity.this);
-        }
-    };
 
     private void setupAds() {
         adsContainer = (FrameLayout) findViewById(R.id.adsContainer);
