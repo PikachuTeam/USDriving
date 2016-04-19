@@ -229,9 +229,9 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 horizontalScrollView.invalidate();
             }
             if (currentQuesIndex < 29) {
-                currentQuesIndex++;
-                viewPager.setCurrentItem(currentQuesIndex, true);
-                scrollToCenter(listItemQues.get(currentQuesIndex));
+//                currentQuesIndex++;
+//                viewPager.setCurrentItem(currentQuesIndex, true);
+//                scrollToCenter(listItemQues.get(currentQuesIndex));
             }
 
         } else {

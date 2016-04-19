@@ -157,7 +157,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         pieChart.setUsePercentValues(true);
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColorTransparent(true);
-        pieChart.setHoleRadius(getResources().getDimension(R.dimen.common_size_13));
+        pieChart.setHoleRadius(getResources().getDimension(R.dimen.common_size_11));
         pieChart.setTransparentCircleAlpha(0);
         pieChart.setRotationEnabled(false);
         pieChart.setTouchEnabled(false);

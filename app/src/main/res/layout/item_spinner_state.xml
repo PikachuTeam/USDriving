@@ -6,4 +6,5 @@
     android:gravity="center"
     android:text="Alaska"
     android:textColor="@color/white"
-    android:textSize="@dimen/common_text_size_20" />
+    android:textSize="@dimen/common_text_size_20"
+    android:singleLine="true"/>

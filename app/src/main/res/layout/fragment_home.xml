@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -189,34 +189,39 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_size_10"
-                    android:text="@string/your_state"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/common_text_size_15"
-                    android:textStyle="bold" />
-
-                <android.support.v7.widget.AppCompatSpinner
-                    android:id="@+id/spinner_state"
-                    style="@style/SpinnerStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_size_5"
-                    android:spinnerMode="dialog" />
-            </LinearLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <LinearLayout
+                    android:layout_toLeftOf="@+id/triangle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_size_10"
+                        android:text="@string/your_state"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/common_text_size_15"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/spinner_state"
+                        style="@style/SpinnerStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/common_size_5"
+                        android:spinnerMode="dialog"
+                        />
+                </LinearLayout>
+
+
                 <TextView
+                    android:id="@+id/triangle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -228,7 +233,6 @@
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
-
     <View
         android:id="@+id/view_overlay"
         android:layout_width="match_parent"

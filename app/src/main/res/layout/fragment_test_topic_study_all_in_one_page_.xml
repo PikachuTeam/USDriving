@@ -2,7 +2,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/window_background2">
+    android:background="@color/window_background">
 
     <ListView
         android:id="@+id/lv_StudyInOnePage"
