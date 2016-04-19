@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/raised_button"
             android:clickable="true"
-            android:minHeight="@dimen/common_size_60">
+            android:minHeight="@dimen/common_size_60"
+            >
 
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/checkBox"
@@ -32,11 +33,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/checkBox"
-                android:gravity="center_vertical"
                 android:padding="@dimen/common_size_5"
                 android:text="test"
                 android:textColor="@color/black"
-                android:textSize="@dimen/common_text_size_17" />
+                android:textSize="@dimen/common_text_size_17"
+                android:layout_centerVertical="true"
+                />
         </RelativeLayout>
 
         <RelativeLayout
@@ -44,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/choiceLayout"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/text_checkAnswer"
@@ -56,7 +58,7 @@
                 android:text="wrong"
                 android:textColor="@color/black"
                 android:textSize="@dimen/common_text_size_17"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/text_Explanation"

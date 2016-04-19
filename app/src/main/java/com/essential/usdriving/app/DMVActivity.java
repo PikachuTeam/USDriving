@@ -4,9 +4,9 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.essential.usdriving.R;
@@ -78,7 +78,18 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
 
     @Override
     public void onBackPressed() {
-        mCloseAppHandler.setKeyBackPress(this);
+
+        if (getFragmentManager() != null) {
+            if (getFragmentManager().getBackStackEntryCount() > 0) {
+                BaseFragment currentFragment = (BaseFragment) getFragmentManager().findFragmentById(getFragmentContainerId());
+                currentFragment.onBackPressed();
+            } else {
+                mCloseAppHandler.setKeyBackPress(this);
+            }
+        }else{
+            mCloseAppHandler.setKeyBackPress(this);
+        }
+
     }
 
     @Override

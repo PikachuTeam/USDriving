@@ -3,8 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/window_background"
-    android:orientation="vertical">
+    android:background="@color/window_background">
 
     <LinearLayout
         android:id="@+id/layout_tvFail"
@@ -25,16 +24,24 @@
     <LinearLayout
         android:id="@+id/chartContainer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_200"
+        android:layout_height="match_parent"
         android:layout_below="@+id/layout_tvFail"
-        android:orientation="horizontal" />
+        android:layout_above="@+id/layout_Answer"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/common_size_4"
+        android:paddingBottom="@dimen/common_size_4"
+        />
 
-
+<RelativeLayout
+    android:id="@+id/layout_Answer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    >
     <RelativeLayout
         android:id="@+id/btnCorrectAnswer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_size_65"
-        android:layout_below="@+id/chartContainer"
         android:layout_marginBottom="@dimen/common_size_3"
         android:background="@drawable/raised_button">
 
@@ -69,12 +76,12 @@
             android:textSize="@dimen/text_size_9" />
 
         <ImageView
-            android:layout_width="@dimen/common_size_50"
-            android:layout_height="@dimen/common_size_50"
+            android:layout_width="@dimen/common_size_40"
+            android:layout_height="@dimen/common_size_40"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/margin_5"
+            android:layout_marginRight="@dimen/margin_10"
             android:background="@drawable/ic_right"
             android:src="@drawable/bg_button_next" />
     </RelativeLayout>
@@ -123,12 +130,12 @@
             android:textSize="@dimen/text_size_9" />
 
         <ImageView
-            android:layout_width="@dimen/common_size_50"
-            android:layout_height="@dimen/common_size_50"
+            android:layout_width="@dimen/common_size_40"
+            android:layout_height="@dimen/common_size_40"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/margin_5"
+            android:layout_marginRight="@dimen/margin_10"
             android:background="@drawable/ic_right"
             android:src="@drawable/bg_button_next" />
     </RelativeLayout>
@@ -140,7 +147,8 @@
         android:layout_height="@dimen/common_size_65"
         android:layout_below="@+id/btnWrongAnswer"
         android:layout_marginBottom="@dimen/common_size_3"
-        android:background="@drawable/raised_button">
+        android:background="@drawable/raised_button"
+        >
 
         <ImageView
             android:id="@+id/imgNotAnswered"
@@ -173,14 +181,16 @@
             android:textSize="@dimen/text_size_9" />
 
         <ImageView
-            android:layout_width="@dimen/common_size_50"
-            android:layout_height="@dimen/common_size_50"
+            android:layout_width="@dimen/common_size_40"
+            android:layout_height="@dimen/common_size_40"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/margin_5"
+            android:layout_marginRight="@dimen/margin_10"
             android:background="@drawable/ic_right"
             android:src="@drawable/bg_button_next" />
     </RelativeLayout>
+</RelativeLayout>
+
 
 </RelativeLayout>
