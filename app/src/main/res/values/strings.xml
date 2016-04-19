@@ -74,4 +74,7 @@
     <string name="start">Start</string>
     <string name="your_state">YOUR STATE: </string>
     <string name="no_connection">No Internet Connection</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="more_apps">More Apps</string>
+    <string name="remove_ads">Remove Ads</string>
 </resources>
