@@ -41,7 +41,7 @@
                 android:layout_height="match_parent"
                 android:layout_toLeftOf="@+id/rightView"
                 android:layout_toRightOf="@+id/leftView"
-                android:background="@color/white"
+                android:background="@color/window_background"
                 android:scrollbars="none">
 
                 <LinearLayout
