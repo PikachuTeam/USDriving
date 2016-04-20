@@ -8,24 +8,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
+import com.essential.usdriving.ui.utility.LockItemUtil;
 
 import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
 
 
-public class TestTopicFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+public class TestTopicFragment extends BaseFragment implements OnTopicListItemClickListener {
     ListView lv_Topic;
 
     ArrayList<TestTopicListItem> list_Topic;
     TestTopicListAdapter adapter;
-    public static final String KEY_TEST_TOPIC_1 = "Name", KEY_TEST_TOPIC_2 ="Id";
-    private boolean close=true;
+    public static final String KEY_TEST_TOPIC_1 = "Name", KEY_TEST_TOPIC_2 = "Id";
+    private boolean close = true;
 
     @Override
     protected String setTitle() {
@@ -57,15 +61,18 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
 
         lv_Topic = (ListView) rootView.findViewById(R.id.lv_Topic);
-        LoadDataGuide();
+        loadDataGuide();
         adapter = new TestTopicListAdapter(getActivity(), list_Topic);
+        adapter.setOnTopicListItemClickListener(this);
         lv_Topic.setAdapter(adapter);
-        lv_Topic.setOnItemClickListener(this);
+    }
+
+    private void loadDataGuide() {
+        list_Topic = DataSource.getInstance().getTopic();
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+    public void onTopicListItemClick(int position) {
         if (list_Topic.get(position).isClose()) {
             list_Topic.get(position).setClose(false);
             adapter.notifyDataSetChanged();
@@ -76,16 +83,12 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
         }
     }
 
-    private void LoadDataGuide() {
-        list_Topic = DataSource.getInstance().getTopic();
-    }
-
 
     private class TestTopicListAdapter extends BaseAdapter {
         Context mContext;
         ArrayList<TestTopicListItem> topic_List;
         LayoutInflater inflater;
-
+        private OnTopicListItemClickListener mListener;
 
         public TestTopicListAdapter(Context context, ArrayList<TestTopicListItem> objects) {
             this.mContext = context;
@@ -123,7 +126,6 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
             mViewHolder.tvNumberOfQuestion = (TextView) convertView.findViewById(R.id.tv_NumberOfQuestions);
             mViewHolder.tvPracticeOne = (TextView) convertView.findViewById(R.id.tvPracticeOne);
             mViewHolder.tvStudyAll = (TextView) convertView.findViewById(R.id.tvStudyAll);
-
             mViewHolder.tvTopic.setText(topic_List.get(position).getTopicName());
             mViewHolder.tvNumberOfQuestion.setText(topic_List.get(position).getNumberOfQuestion() + "");
             if (topic_List.get(position).getId() < 10) {
@@ -132,7 +134,6 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
                 mViewHolder.tvId.setText(topic_List.get(position).getId() + "");
             }
 
-
             mViewHolder.layoutButton = (LinearLayout) convertView.findViewById(R.id.layout_Button);
             mViewHolder.layoutButton.setVisibility(View.GONE);
             if (topic_List.get(position).isClose()) {
@@ -140,8 +141,8 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
 
             } else {
                 mViewHolder.layoutButton.setVisibility(View.VISIBLE);
-                for (int i=0;i<list_Topic.size();i++) {
-                    if(i!=position){
+                for (int i = 0; i < list_Topic.size(); i++) {
+                    if (i != position) {
                         list_Topic.get(position).setClose(true);
                     }
                 }
@@ -165,12 +166,36 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
                     bundle.putInt(KEY_TEST_TOPIC_2, list_Topic.get(position).getId());
                     TestTopic_StudyOneByOne_Fragment fragment = new TestTopic_StudyOneByOne_Fragment();
                     fragment.setArguments(bundle);
-                    replaceFragment(fragment,getString(R.string.title_test_topic));
+                    replaceFragment(fragment, getString(R.string.title_test_topic));
                 }
             });
+
+            mViewHolder.layoutTestTopic = (RelativeLayout) convertView.findViewById(R.id.layout_test_topic);
+            mViewHolder.imgLock = (ImageView) convertView.findViewById(R.id.image_lock);
+            LockItemUtil.getInstance(getActivity()).lockOrUnlock(position, mViewHolder.imgLock, mViewHolder.layoutTestTopic);
+
+            mViewHolder.layoutTestTopic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch (v.getTag().toString()) {
+                        case LockItemUtil.UNLOCK:
+                            if (mListener != null) {
+                                mListener.onTopicListItemClick(position);
+                            }
+                            break;
+                        case LockItemUtil.LOCKED:
+                            LockItemUtil.getInstance(getActivity()).showToast();
+                            break;
+                    }
+                }
+            });
+
             return convertView;
         }
 
+        public void setOnTopicListItemClickListener(OnTopicListItemClickListener onTopicListItemClickListener) {
+            mListener = onTopicListItemClickListener;
+        }
 
         private class MyViewHolder {
             TextView tvTopic;
@@ -179,8 +204,8 @@ public class TestTopicFragment extends BaseFragment implements AdapterView.OnIte
             TextView tvPracticeOne;
             TextView tvStudyAll;
             LinearLayout layoutButton;
+            RelativeLayout layoutTestTopic;
+            ImageView imgLock;
         }
     }
-
-
 }

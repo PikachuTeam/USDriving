@@ -4,14 +4,18 @@ package com.essential.usdriving.ui.test_topic;
  * Created by Nguyen Huu Thanh on 8/1/2015.
  */
 public class TestTopicListItem {
+
     private int id;
     private String topicName;
     private int numberOfQuestion;
     private boolean close = true;
-    public TestTopicListItem(){
+    private boolean mIsLocked = false;
+
+    public TestTopicListItem() {
 
     }
-    public TestTopicListItem(int id,String topicName,int numberOfQuestion){
+
+    public TestTopicListItem(int id, String topicName, int numberOfQuestion) {
         this.id = id;
         this.topicName = topicName;
         this.numberOfQuestion = numberOfQuestion;
@@ -47,5 +51,13 @@ public class TestTopicListItem {
 
     public void setClose(boolean close) {
         this.close = close;
+    }
+
+    public boolean isLocked() {
+        return mIsLocked;
+    }
+
+    public void setLocked(boolean isLocked) {
+        this.mIsLocked = isLocked;
     }
 }

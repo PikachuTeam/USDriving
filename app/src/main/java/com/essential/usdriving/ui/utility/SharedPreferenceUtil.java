@@ -1,4 +1,4 @@
-package com.essential.usdriving.ui.ultility;
+package com.essential.usdriving.ui.utility;
 
 import android.content.Context;
 import android.content.SharedPreferences;

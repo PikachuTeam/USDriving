@@ -1,7 +1,10 @@
 package com.essential.usdriving.ui.home;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.View;
@@ -17,11 +20,13 @@ import com.essential.usdriving.ui.exam_simulator.ExamSimulatorDoExamFragment;
 import com.essential.usdriving.ui.exam_simulator.ExamSimulatorStartFragment;
 import com.essential.usdriving.ui.learning_card.LearningCardFragment;
 import com.essential.usdriving.ui.test_topic.TestTopicFragment;
-import com.essential.usdriving.ui.ultility.SharedPreferenceUtil;
+import com.essential.usdriving.ui.utility.SharedPreferenceUtil;
 import com.essential.usdriving.ui.videotip.VideoTipsFragment;
 import com.essential.usdriving.ui.written_test.DMVWrittenTestFragment;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
+import tatteam.com.app_common.AppCommon;
 
 /**
  * Created by dongc_000 on 4/9/2016.
@@ -127,9 +132,21 @@ public class HomeFragment extends BaseFragment {
         @Override
         public void onClick(View v) {
             if (v == mFabMoreApps) {
-                Toast.makeText(getActivity(), "More app", Toast.LENGTH_SHORT).show();
+                AppCommon.getInstance().openMoreAppDialog(getActivity());
             } else if (v == mFabRateUs) {
-                Toast.makeText(getActivity(), "Rate us", Toast.LENGTH_SHORT).show();
+                Uri uri = Uri.parse("market://details?id=" + getActivity().getPackageName());
+                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                // To count with Play market backstack, After pressing back button,
+                // to taken back to our application, we need to add following flags to intent.
+                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                        Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET |
+                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                try {
+                    startActivity(goToMarket);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
+                }
             } else if (v == mFabRemoveAds) {
                 Toast.makeText(getActivity(), "Remove ads", Toast.LENGTH_SHORT).show();
             }
