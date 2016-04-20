@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
-import com.essential.usdriving.ui.ultility.NetworkUtil;
+import com.essential.usdriving.ui.utility.NetworkUtil;
 
 /**
  * Created by dongc on 4/18/2016.

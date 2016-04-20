@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardVideoTip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/common_size_7"
@@ -16,33 +15,48 @@
         card_view:cardPreventCornerOverlap="false"
         card_view:cardUseCompatPadding="true">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/layoutVideoItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:background="@drawable/raised_button"
-            android:orientation="horizontal"
-            android:padding="@dimen/common_size_10">
+            android:clickable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:padding="@dimen/common_size_10">
+
+                <ImageView
+                    android:id="@+id/imgVideoTipsItem"
+                    android:layout_width="@dimen/common_size_100"
+                    android:layout_height="@dimen/common_size_60"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/txtVideoTipsItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/common_size_10"
+                    android:layout_marginRight="@dimen/common_size_5"
+                    android:gravity="left"
+                    android:text="Test"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_size_20" />
+            </LinearLayout>
 
             <ImageView
-                android:id="@+id/imgVideoTipsItem"
-                android:layout_width="@dimen/common_size_100"
-                android:layout_height="@dimen/common_size_60"
-                android:layout_gravity="center_vertical" />
-
-            <TextView
-                android:id="@+id/txtVideoTipsItem"
+                android:id="@+id/image_lock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/common_size_10"
-                android:layout_marginRight="@dimen/common_size_5"
-                android:gravity="left"
-                android:text="Test"
-                android:textColor="@color/black"
-                android:textSize="@dimen/common_size_20" />
-        </LinearLayout>
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/common_size_10"
+                android:layout_marginRight="@dimen/common_size_10"
+                android:src="@drawable/ic_lock" />
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
-
 </LinearLayout>

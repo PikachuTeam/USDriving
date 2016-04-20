@@ -194,11 +194,11 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:layout_toLeftOf="@+id/triangle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_centerVertical="true">
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/triangle"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -215,10 +215,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/common_size_5"
-                        android:spinnerMode="dialog"
-                        />
+                        android:spinnerMode="dialog" />
                 </LinearLayout>
-
 
                 <TextView
                     android:id="@+id/triangle"
@@ -233,6 +231,7 @@
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:id="@+id/view_overlay"
         android:layout_width="match_parent"
@@ -246,6 +245,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/common_size_25"
+        android:layout_marginBottom="@dimen/common_size_10"
         app:fab_addButtonSize="normal"
         app:layout_anchor="@id/itemVideoTips"
         app:layout_anchorGravity="bottom|right"
