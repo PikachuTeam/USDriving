@@ -1,5 +1,6 @@
 package com.essential.usdriving.app;
 
+import android.app.FragmentManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
@@ -31,8 +32,7 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
     private CloseAppHandler mCloseAppHandler;
     private AdsSmallBannerHandler mAdsSmallBannerHandler;
     private static boolean sIsProVer;
-
-
+    
     @Override
     protected int getLayoutResIdContentView() {
         return R.layout.activity_home;
@@ -79,18 +79,13 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
 
-        if (getFragmentManager() != null) {
-            if (getFragmentManager().getBackStackEntryCount() > 0) {
-                BaseFragment currentFragment = (BaseFragment) getFragmentManager().findFragmentById(getFragmentContainerId());
-                currentFragment.onBackPressed();
-            } else {
-                mCloseAppHandler.setKeyBackPress(this);
-            }
-        } else {
-            mCloseAppHandler.setKeyBackPress(this);
-        }
+    }
 
+    @Override
+    public void onCloseActivity() {
+        this.mCloseAppHandler.setKeyBackPress(this);
     }
 
     @Override

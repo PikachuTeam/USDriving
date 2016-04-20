@@ -94,6 +94,15 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if(mActionsMenu.isExpanded()){
+            mActionsMenu.collapse();
+        }else {
+            super.onBackPressed();
+        }
+    }
+
     private View.OnClickListener listItemClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
