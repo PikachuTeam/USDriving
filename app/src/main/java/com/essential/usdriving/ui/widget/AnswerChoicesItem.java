@@ -62,29 +62,7 @@ public class AnswerChoicesItem implements View.OnClickListener {
     public String getAnswer() {
         return tvAnswer.getText().toString();
     }
-
-//    public void setActive(boolean isActive, boolean checkRightAnswer, String explanation,boolean checkNullExplanation) {
-//        checkBox.setChecked(isActive);
-//        if(isActive){
-//            if(checkRightAnswer){
-//                tvCheckAnswer.setText(context.getString(R.string.written_test_correct_answer));
-//                if(!checkNullExplanation){
-//                    tvExplanation.setVisibility(View.VISIBLE);
-//                    tvExplanation.setText(EXPLANATION+explanation);
-//                }else{
-//                    tvExplanation.setVisibility(View.GONE);
-//                }
-//                layoutInformation.setBackgroundColor(context.getResources().getColor(R.color.right_answer_color));
-//            }else{
-//                tvCheckAnswer.setText(context.getString(R.string.written_test_wrong_answer));
-//                layoutInformation.setBackgroundColor(context.getResources().getColor(R.color.wrong_answer_color));
-//            }
-//            layoutInformation.setVisibility(View.VISIBLE);
-//        }else{
-//            layoutInformation.setVisibility(View.GONE);
-//        }
-//    }
-
+    
     public void setCorrectChoice(boolean isActive, boolean isCorrect, String explanation,boolean checkNullExplanation) {
         if(isActive){
             if (isCorrect) {
