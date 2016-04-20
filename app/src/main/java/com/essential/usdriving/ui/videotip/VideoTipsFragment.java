@@ -52,12 +52,10 @@ public class VideoTipsFragment extends BaseFragment {
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
 
         videoTipsList = (RecyclerView) rootView.findViewById(R.id.videoTipsList);
-
         if (videos == null) {
             videos = new ArrayList<>();
             getVideos();
         }
-
         adapter = new VideoTipsListAdapter(getActivity(), videos);
         videoTipsList.setAdapter(adapter);
         videoTipsList.setLayoutManager(new LinearLayoutManager(getActivity()));
