@@ -1,23 +1,22 @@
 package com.essential.usdriving.ui.videotip;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
-import com.essential.usdriving.ui.ultility.DefaultItemDecoration;
+import com.essential.usdriving.ui.utility.DefaultItemDecoration;
+import com.essential.usdriving.ui.utility.LockItemUtil;
 
 import java.util.ArrayList;
 
@@ -52,10 +51,12 @@ public class VideoTipsFragment extends BaseFragment {
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
 
         videoTipsList = (RecyclerView) rootView.findViewById(R.id.videoTipsList);
+
         if (videos == null) {
             videos = new ArrayList<>();
             getVideos();
         }
+
         adapter = new VideoTipsListAdapter(getActivity(), videos);
         videoTipsList.setAdapter(adapter);
         videoTipsList.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -116,7 +117,8 @@ public class VideoTipsFragment extends BaseFragment {
             item = items.get(position);
             holder.setText(item.sectionTitle);
             holder.setImage(item.image);
-            holder.cv.setOnClickListener(this);
+            LockItemUtil.getInstance(getActivity()).lockOrUnlock(position, holder.imageLock, holder.layoutVideoItem);
+            holder.layoutVideoItem.setOnClickListener(this);
         }
 
         @Override
@@ -131,12 +133,19 @@ public class VideoTipsFragment extends BaseFragment {
 
         @Override
         public void onClick(View v) {
-            if (v.getId() == R.id.cardVideoTip) {
-                WatchVideoFragment fragment = new WatchVideoFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString(BUNDLE_URL, item.link);
-                fragment.setArguments(bundle);
-                replaceFragment(fragment, TAG_VIDEO_TIPS_FRAGMENT);
+            if (v.getId() == R.id.layoutVideoItem) {
+                switch (v.getTag().toString()) {
+                    case LockItemUtil.UNLOCK:
+                        WatchVideoFragment fragment = new WatchVideoFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString(BUNDLE_URL, item.link);
+                        fragment.setArguments(bundle);
+                        replaceFragment(fragment, TAG_VIDEO_TIPS_FRAGMENT);
+                        break;
+                    case LockItemUtil.LOCKED:
+                        LockItemUtil.getInstance(getActivity()).showToast();
+                        break;
+                }
             }
         }
 
@@ -144,13 +153,15 @@ public class VideoTipsFragment extends BaseFragment {
 
             private ImageView imgVideoTipsItem;
             private TextView txtVideoTipsItem;
-            private CardView cv;
+            RelativeLayout layoutVideoItem;
+            ImageView imageLock;
 
             public ViewHolder(View itemView) {
                 super(itemView);
                 imgVideoTipsItem = (ImageView) itemView.findViewById(R.id.imgVideoTipsItem);
                 txtVideoTipsItem = (TextView) itemView.findViewById(R.id.txtVideoTipsItem);
-                cv = (CardView) itemView.findViewById(R.id.cardVideoTip);
+                layoutVideoItem = (RelativeLayout) itemView.findViewById(R.id.layoutVideoItem);
+                imageLock = (ImageView) itemView.findViewById(R.id.image_lock);
             }
 
             public void setText(String text) {

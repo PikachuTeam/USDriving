@@ -16,21 +16,24 @@ import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.entity.TopicCard;
+import com.essential.usdriving.ui.utility.LockItemUtil;
 
 import java.util.ArrayList;
 
 
 public class LearningCardFragment extends BaseFragment {
+
     ListView lvcard;
     ListCardAdapter cardAdapter;
     ArrayList<TopicCard> arrayListCard;
-    public static final String KEY_CARD = "keycard",KEY_CARD_TOPIC="";
+    public static final String KEY_CARD = "keycard", KEY_CARD_TOPIC = "";
     private int type;
 
     @Override
     protected String setTitle() {
         return getString(R.string.title_learning_card);
     }
+
     @Override
     protected boolean enableBackButton() {
         return true;
@@ -117,21 +120,32 @@ public class LearningCardFragment extends BaseFragment {
             myViewHolder.bookImage = (ImageView) convertView.findViewById(R.id.photo);
             myViewHolder.ID = (TextView) convertView.findViewById(R.id.topic_name);
             myViewHolder.number = (TextView) convertView.findViewById(R.id.number);
-            myViewHolder.relativeLayout= (RelativeLayout) convertView.findViewById(R.id.layout_item_topic_card);
+            myViewHolder.relativeLayout = (RelativeLayout) convertView.findViewById(R.id.layout_item_topic_card);
             myViewHolder.ID.setText(topicCards.get(position).getTopic());
             myViewHolder.number.setText(String.valueOf(topicCards.get(position).getNumber()) + " cards");
             myViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString(KEY_CARD, String.valueOf(topicCards.get(position).getID()));
-                    bundle.putInt(KEY_CARD_TOPIC, topicCards.get(position).getID());
-                    TestCardFragment testCardFragment = new TestCardFragment();
-                    testCardFragment.setArguments(bundle);
-                    replaceFragment(testCardFragment, getString(R.string.title_learning_card));
+                    switch (v.getTag().toString()) {
+                        case LockItemUtil.UNLOCK:
+                            Bundle bundle = new Bundle();
+                            bundle.putString(KEY_CARD, String.valueOf(topicCards.get(position).getID()));
+                            bundle.putInt(KEY_CARD_TOPIC, topicCards.get(position).getID());
+                            TestCardFragment testCardFragment = new TestCardFragment();
+                            testCardFragment.setArguments(bundle);
+                            replaceFragment(testCardFragment, getString(R.string.title_learning_card));
+                            break;
+                        case LockItemUtil.LOCKED:
+                            LockItemUtil.getInstance(getActivity()).showToast();
+                            break;
+                    }
 
                 }
             });
+
+            myViewHolder.imgLock = (ImageView) convertView.findViewById(R.id.image_lock);
+            LockItemUtil.getInstance(getActivity()).lockOrUnlock(position, myViewHolder.imgLock, myViewHolder.relativeLayout);
+
             return convertView;
         }
 
@@ -140,6 +154,7 @@ public class LearningCardFragment extends BaseFragment {
             TextView ID;
             TextView number;
             RelativeLayout relativeLayout;
+            ImageView imgLock;
         }
     }
 

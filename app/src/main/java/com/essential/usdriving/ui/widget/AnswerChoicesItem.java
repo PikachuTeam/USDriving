@@ -1,7 +1,6 @@
 package com.essential.usdriving.ui.widget;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.view.View;
 import android.widget.RelativeLayout;
