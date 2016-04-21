@@ -3,8 +3,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/progress_area_height"
-        android:layout_marginTop="@dimen/common_size_5">
+        android:layout_height="@dimen/progress_area_height">
 
         <RelativeLayout
             android:id="@+id/thumb"
@@ -28,7 +27,7 @@
                 android:paddingBottom="@dimen/common_size_7"
                 android:text="174"
                 android:textColor="@color/essential_progress_bar_text_color"
-                android:textSize="@dimen/common_size_11"
+                android:textSize="@dimen/common_size_12"
                 android:textStyle="bold" />
         </RelativeLayout>
 
