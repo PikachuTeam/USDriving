@@ -71,7 +71,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected String setTitle() {
-        return "US DMV";
+        return getString(R.string.app_name);
     }
 
     @Override
