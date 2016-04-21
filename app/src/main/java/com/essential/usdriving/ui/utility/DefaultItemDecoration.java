@@ -15,7 +15,7 @@ public class DefaultItemDecoration extends RecyclerView.ItemDecoration {
     private int space;
 
     public DefaultItemDecoration(Context context) {
-        space = context.getResources().getDimensionPixelSize(R.dimen.common_size_3);
+        space = context.getResources().getDimensionPixelSize(R.dimen.common_size_5);
     }
 
     @Override

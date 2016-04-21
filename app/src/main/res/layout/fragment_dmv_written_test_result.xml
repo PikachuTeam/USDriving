@@ -129,11 +129,10 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/common_text_size_21"
+                android:layout_marginRight="@dimen/margin_10"
                 android:background="@drawable/ic_right"
                 android:src="@drawable/bg_button_next" />
         </RelativeLayout>
-
 
         <RelativeLayout
             android:id="@+id/btnNotAnswered"
@@ -184,6 +183,4 @@
                 android:src="@drawable/bg_button_next" />
         </RelativeLayout>
     </RelativeLayout>
-
-
 </RelativeLayout>
