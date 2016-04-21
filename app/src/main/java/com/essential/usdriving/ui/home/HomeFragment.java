@@ -142,7 +142,7 @@ public class HomeFragment extends BaseFragment {
             if (v == mFabMoreApps) {
                 AppCommon.getInstance().openMoreAppDialog(getActivity());
             } else if (v == mFabRateUs) {
-                Uri uri = Uri.parse("market://details?id=" + getActivity().getPackageName());
+                Uri uri = Uri.parse("market://details?id=" + PACKAGE_NAME_FREE_VER);
                 Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
                 // To count with Play market backstack, After pressing back button,
                 // to taken back to our application, we need to add following flags to intent.
@@ -153,12 +153,24 @@ public class HomeFragment extends BaseFragment {
                     startActivity(goToMarket);
                 } catch (ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + PACKAGE_NAME_FREE_VER)));
                 }
 
                 SharedPreferenceUtil.getInstance(getActivity()).saveRatedState();
             } else if (v == mFabRemoveAds) {
-
+                Uri uri = Uri.parse("market://details?id=" + PACKAGE_NAME_PRO_VER);
+                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                // To count with Play market backstack, After pressing back button,
+                // to taken back to our application, we need to add following flags to intent.
+                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                        Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET |
+                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                try {
+                    startActivity(goToMarket);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + PACKAGE_NAME_PRO_VER)));
+                }
             }
         }
     };
