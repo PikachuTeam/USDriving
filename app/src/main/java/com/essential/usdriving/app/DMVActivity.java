@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.essential.usdriving.BuildConfig;
 import com.essential.usdriving.R;
 import com.essential.usdriving.ui.home.HomeFragment;
 import com.essential.usdriving.ui.utility.SharedPreferenceUtil;
@@ -21,7 +22,7 @@ import tatteam.com.app_common.util.CloseAppHandler;
 public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity {
 
     public final static boolean ADS_ENABLE = true;
-    public final static String PREF_PRO_VER = "is pro version";
+    public final static String PREF_RATE = "is rated";
     public final static int START_LOCKING_POSITION = 2;
 
     private Toolbar toolbar;
@@ -32,7 +33,8 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
     private CloseAppHandler mCloseAppHandler;
     private AdsSmallBannerHandler mAdsSmallBannerHandler;
     private static boolean sIsProVer;
-    
+    private static boolean sIsRated;
+
     @Override
     protected int getLayoutResIdContentView() {
         return R.layout.activity_home;
@@ -43,13 +45,18 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
         setUpToolbar();
         invalidateOptionsMenu();
 
-        setupAds();
-
         mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
         mCloseAppHandler = new CloseAppHandler(this, false);
         mCloseAppHandler.setListener(closeAppListener);
 
-        sIsProVer = SharedPreferenceUtil.getInstance(this).getSharedPreferences().getBoolean(PREF_PRO_VER, false);
+        sIsProVer = BuildConfig.IS_PRO_VERSION;
+        if (isProVer()) {
+            setRated();
+        } else {
+            sIsRated = SharedPreferenceUtil.getInstance(this).getSharedPreferences().getBoolean(PREF_RATE, false);
+        }
+
+        setupAds();
     }
 
     @Override
@@ -112,6 +119,14 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
             finish();
         }
     };
+
+    public static boolean isRated() {
+        return sIsRated;
+    }
+
+    public static void setRated() {
+        sIsRated = true;
+    }
 
     public static boolean isProVer() {
         return sIsProVer;

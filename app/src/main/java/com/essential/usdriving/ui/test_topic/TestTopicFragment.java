@@ -51,6 +51,12 @@ public class TestTopicFragment extends BaseFragment implements OnTopicListItemCl
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
     protected int getLayoutResIdContentView() {
         return R.layout.fragment_test_topic;
     }

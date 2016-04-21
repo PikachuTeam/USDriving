@@ -64,6 +64,12 @@ public class VideoTipsFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
     protected boolean enableToolbar() {
         return true;
     }

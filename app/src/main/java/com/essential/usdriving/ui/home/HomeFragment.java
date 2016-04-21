@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
+import com.essential.usdriving.app.DMVActivity;
 import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.ui.exam_simulator.ExamSimulatorDoExamFragment;
 import com.essential.usdriving.ui.exam_simulator.ExamSimulatorStartFragment;
@@ -35,6 +37,8 @@ public class HomeFragment extends BaseFragment {
 
     public final static String HOME_TRANSACTION = "home transaction";
     public final static String PREF_CURRENT_STATE = "current state";
+    public final static String PACKAGE_NAME_FREE_VER = "com.essential.usdriving.free";
+    public final static String PACKAGE_NAME_PRO_VER = "com.essential.usdriving.pro";
 
     private LinearLayout itemWrittenTest;
     private LinearLayout itemExamSimulator;
@@ -75,11 +79,6 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    protected boolean enableFloatingActionButton() {
-        return true;
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         loadState();
@@ -96,9 +95,9 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onBackPressed() {
-        if(mActionsMenu.isExpanded()){
+        if (mActionsMenu.isExpanded()) {
             mActionsMenu.collapse();
-        }else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -156,8 +155,10 @@ public class HomeFragment extends BaseFragment {
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             Uri.parse("http://play.google.com/store/apps/details?id=" + getActivity().getPackageName())));
                 }
+
+                SharedPreferenceUtil.getInstance(getActivity()).saveRatedState();
             } else if (v == mFabRemoveAds) {
-                Toast.makeText(getActivity(), "Remove ads", Toast.LENGTH_SHORT).show();
+
             }
         }
     };
