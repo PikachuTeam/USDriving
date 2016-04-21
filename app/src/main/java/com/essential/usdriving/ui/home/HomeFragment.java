@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.essential.usdriving.BuildConfig;
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.app.DMVActivity;
@@ -221,7 +222,11 @@ public class HomeFragment extends BaseFragment {
 
         mFabMoreApps.setOnClickListener(floatingMenuItemClickListener);
         mFabRateUs.setOnClickListener(floatingMenuItemClickListener);
-        mFabRemoveAds.setOnClickListener(floatingMenuItemClickListener);
+        if(!BuildConfig.IS_PRO_VERSION) {
+            mFabRemoveAds.setOnClickListener(floatingMenuItemClickListener);
+        }else{
+            mFabRemoveAds.setVisibility(View.GONE);
+        }
     }
 
     private void loadState() {
