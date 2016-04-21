@@ -4,15 +4,42 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/common_size_5"
-        android:text="@string/title_upgrade"
-        android:textAllCaps="true"
-        android:textColor="@color/ColorPrimaryDark"
-        android:textSize="@dimen/common_text_size_20"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:padding="@dimen/common_size_5">
+
+        <ImageView
+            android:id="@+id/image_star_1"
+            android:layout_width="@dimen/common_size_40"
+            android:layout_height="@dimen/common_size_40"
+            android:src="@drawable/ic_star" />
+
+        <ImageView
+            android:id="@+id/image_star_2"
+            android:layout_width="@dimen/common_size_40"
+            android:layout_height="@dimen/common_size_40"
+            android:src="@drawable/ic_star" />
+
+        <ImageView
+            android:id="@+id/image_star_3"
+            android:layout_width="@dimen/common_size_40"
+            android:layout_height="@dimen/common_size_40"
+            android:src="@drawable/ic_star" />
+
+        <ImageView
+            android:id="@+id/image_star_4"
+            android:layout_width="@dimen/common_size_40"
+            android:layout_height="@dimen/common_size_40"
+            android:src="@drawable/ic_star" />
+
+        <ImageView
+            android:id="@+id/image_star_5"
+            android:layout_width="@dimen/common_size_40"
+            android:layout_height="@dimen/common_size_40"
+            android:src="@drawable/ic_star" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -22,7 +49,7 @@
         android:paddingLeft="@dimen/common_size_10"
         android:paddingRight="@dimen/common_size_10"
         android:paddingTop="@dimen/common_size_15"
-        android:text="@string/content_upgrade"
+        android:text="@string/rate_to_unlock"
         android:textColor="@color/black"
         android:textSize="@dimen/common_size_18" />
 

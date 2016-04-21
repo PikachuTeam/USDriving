@@ -3,6 +3,8 @@ package com.essential.usdriving.ui.utility;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.essential.usdriving.app.DMVActivity;
+
 /**
  * Created by dongc on 4/17/2016.
  */
@@ -36,5 +38,11 @@ public class SharedPreferenceUtil {
 
     public SharedPreferences.Editor getEditor() {
         return mEditor;
+    }
+
+    public void saveRatedState() {
+        DMVActivity.setRated();
+        mEditor.putBoolean(DMVActivity.PREF_RATE, DMVActivity.isRated());
+        mEditor.commit();
     }
 }

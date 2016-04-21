@@ -22,11 +22,6 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
             getBaseActivity().getToolbar().setVisibility(View.VISIBLE);
             getBaseActivity().getSupportActionBar().setTitle(setTitle());
             getBaseActivity().getToolbar().setTitleTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-//            if (enableFloatingActionButton()) {
-//                getBaseActivity().getFloatingActionButton().setVisibility(View.VISIBLE);
-//            } else {
-//                getBaseActivity().getFloatingActionButton().setVisibility(View.GONE);
-//            }
             if (enableIndicator()) {
                 getBaseActivity().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 if (enableBackButton()) {
@@ -85,10 +80,6 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
     public DMVActivity getBaseActivity() {
 
         return (DMVActivity) getActivity();
-    }
-
-    protected boolean enableFloatingActionButton() {
-        return false;
     }
 
     public abstract void defineButtonResult();

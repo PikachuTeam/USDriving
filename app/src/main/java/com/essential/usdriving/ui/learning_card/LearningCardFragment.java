@@ -45,6 +45,12 @@ public class LearningCardFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        cardAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

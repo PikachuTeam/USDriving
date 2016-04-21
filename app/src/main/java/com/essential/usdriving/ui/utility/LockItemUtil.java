@@ -38,7 +38,7 @@ public class LockItemUtil {
     }
 
     public void lockOrUnlock(int position, ImageView lock, View container) {
-        if (!DMVActivity.isProVer()) {
+        if (!DMVActivity.isRated()) {
             if (position >= DMVActivity.START_LOCKING_POSITION) {
                 container.setBackgroundDrawable(ContextCompat.getDrawable(mContext, R.drawable.bg_lock_area));
                 lock.setVisibility(View.VISIBLE);
