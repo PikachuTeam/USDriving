@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,7 +19,6 @@ import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.ui.utility.LockItemUtil;
 
 import java.util.ArrayList;
-import java.util.concurrent.locks.Lock;
 
 
 public class TestTopicFragment extends BaseFragment implements OnTopicListItemClickListener {
@@ -184,7 +182,7 @@ public class TestTopicFragment extends BaseFragment implements OnTopicListItemCl
                             }
                             break;
                         case LockItemUtil.LOCKED:
-                            LockItemUtil.getInstance(getActivity()).showToast();
+                            LockItemUtil.getInstance(getActivity()).showDialog();
                             break;
                     }
                 }

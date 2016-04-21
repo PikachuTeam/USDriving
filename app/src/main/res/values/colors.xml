@@ -64,4 +64,6 @@
     <color name="button_start_highlight_color">#008A9B</color>
     <color name="overlay_view_color">#41000000</color>
     <color name="fab_label">#df343468</color>
+    <color name="overall_result_button_next_normal_color">#027faf</color>
+    <color name="overall_result_button_next_highlight_color">#0095cd</color>
 </resources>

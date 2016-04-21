@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--text size-->
-    <dimen name="text_size_0_5">1.27sp</dimen>
-    <dimen name="text_size_0">30.6sp</dimen>
-    <dimen name="text_size_1">33.15sp</dimen>
-    <dimen name="text_size_2">35.7sp</dimen>
-    <dimen name="text_size_3">38.25sp</dimen>
-    <dimen name="text_size_4">40.8sp</dimen>
-    <dimen name="text_size_5">43.35sp</dimen>
-    <dimen name="text_size_6">45.9sp</dimen>
-    <dimen name="text_size_7">48.45sp</dimen>
-    <dimen name="text_size_8">51sp</dimen>
-    <dimen name="text_size_9">53.55sp</dimen>
     <dimen name="text_size_10">56.1sp</dimen>
     <dimen name="text_size_11">58.65sp</dimen>
     <dimen name="text_size_12">61.2sp</dimen>

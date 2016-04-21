@@ -35,7 +35,7 @@ public class WarningDialog extends Dialog {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_exam_simulator);
+        setContentView(R.layout.dialog_warning);
         setCanceledOnTouchOutside(true);
 
         findViews();

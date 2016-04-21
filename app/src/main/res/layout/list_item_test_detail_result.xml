@@ -33,7 +33,7 @@
                 android:layout_marginLeft="@dimen/common_size_20"
                 android:text="@string/written_test_question_no"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_size_10"
+                android:textSize="@dimen/common_text_size_22"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -56,7 +56,7 @@
                     android:maxLines="1"
                     android:text="Alo"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_5" />
+                    android:textSize="@dimen/common_text_size_17" />
 
                 <TextView
                     android:id="@+id/tvResultAnswer"
@@ -67,7 +67,7 @@
                     android:maxLines="2"
                     android:text="Alo"
                     android:textColor="@color/written_test_text_answer"
-                    android:textSize="@dimen/text_size_3" />
+                    android:textSize="@dimen/common_text_size_15" />
             </LinearLayout>
 
             <ImageView

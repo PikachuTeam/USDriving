@@ -70,7 +70,7 @@
                 android:layout_marginLeft="@dimen/common_size_10"
                 android:text="Question"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_5" />
+                android:textSize="@dimen/common_text_size_17" />
 
             <include
                 layout="@layout/item_clock"

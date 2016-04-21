@@ -143,7 +143,7 @@ public class VideoTipsFragment extends BaseFragment {
                         replaceFragment(fragment, TAG_VIDEO_TIPS_FRAGMENT);
                         break;
                     case LockItemUtil.LOCKED:
-                        LockItemUtil.getInstance(getActivity()).showToast();
+                        LockItemUtil.getInstance(getActivity()).showDialog();
                         break;
                 }
             }

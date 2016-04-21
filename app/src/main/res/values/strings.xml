@@ -77,4 +77,6 @@
     <string name="rate_us">Rate Us</string>
     <string name="more_apps">More Apps</string>
     <string name="remove_ads">Remove Ads</string>
+    <string name="title_upgrade">Upgrade to pro version</string>
+    <string name="content_upgrade">You have to upgrade to pro version to open all locked items</string>
 </resources>

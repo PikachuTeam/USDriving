@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.essential.usdriving.R;
@@ -38,7 +37,7 @@ public class CustomDialog extends Dialog {
     public CustomDialog(Context context, Question question) {
         super(context);
         this.context = context;
-        view = View.inflate(this.context, R.layout.dialog_written_test, null);
+        view = View.inflate(this.context, R.layout.dialog_detail_result, null);
         this.question = question;
         findViews(view);
     }
