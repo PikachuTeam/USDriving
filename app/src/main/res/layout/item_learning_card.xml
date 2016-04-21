@@ -8,8 +8,10 @@
         android:id="@+id/cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_size_4"
         android:layout_marginLeft="@dimen/common_size_7"
         android:layout_marginRight="@dimen/common_size_7"
+        android:layout_marginTop="@dimen/common_size_4"
         card_view:cardCornerRadius="@dimen/common_size_3"
         card_view:cardElevation="@dimen/common_size_3"
         card_view:cardPreventCornerOverlap="false">

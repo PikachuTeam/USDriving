@@ -14,17 +14,17 @@
         <LinearLayout
             android:id="@+id/layoutRule"
             android:layout_width="@dimen/exam_simulator_layout_rule_width"
-            android:layout_height="@dimen/exam_simulator_layout_rule_height"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:gravity="center"
             android:layout_marginTop="@dimen/margin_20"
             android:background="@drawable/bg_layout_rule"
-            android:padding="@dimen/common_size_4">
+            android:minHeight="@dimen/exam_simulator_layout_rule_height">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_3"
-                android:layout_marginTop="@dimen/margin_20"
+                android:padding="@dimen/common_size_10"
                 android:text="@string/exam_simulator_rule"
                 android:textSize="@dimen/common_text_size_16" />
         </LinearLayout>
