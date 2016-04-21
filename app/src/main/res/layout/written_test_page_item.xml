@@ -12,10 +12,10 @@
             android:id="@+id/layout_questionNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:gravity="center"
             android:minHeight="@dimen/size_135"
-            android:orientation="vertical"
-            android:background="@color/white">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvQuestion"
@@ -26,7 +26,7 @@
                 android:layout_marginBottom="@dimen/common_size_20"
                 android:text="aa"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_size_6" />
+                android:textSize="@dimen/common_text_size_18" />
 
             <RelativeLayout
                 android:id="@+id/layout_questionPage"
@@ -48,7 +48,7 @@
                     android:layout_marginLeft="@dimen/common_size_5"
                     android:layout_toRightOf="@id/questionImage"
                     android:clickable="true"
-                    android:src="@drawable/ic_zoom_in_normal"/>
+                    android:src="@drawable/ic_zoom_in_normal" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -70,16 +70,16 @@
                 android:layout_marginLeft="@dimen/common_size_10"
                 android:text="Answer Choices"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_5" />
+                android:textSize="@dimen/common_text_size_17" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutAnswerChoiceContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/common_size_5"
             android:layout_below="@id/layout_questionText"
             android:background="@color/window_background2"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:paddingTop="@dimen/common_size_5" />
     </RelativeLayout>
 </ScrollView>

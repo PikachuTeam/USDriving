@@ -3,8 +3,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/progress_area_height"
-        android:layout_marginTop="@dimen/common_size_5">
+        android:layout_height="@dimen/progress_area_height">
 
         <RelativeLayout
             android:id="@+id/thumb"

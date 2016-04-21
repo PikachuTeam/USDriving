@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="@string/written_test_result_title"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_7"
+            android:textSize="@dimen/common_text_size_19"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -25,167 +25,165 @@
         android:id="@+id/chartContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layout_tvFail"
         android:layout_above="@+id/layout_Answer"
+        android:layout_below="@+id/layout_tvFail"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/common_size_4"
         android:paddingBottom="@dimen/common_size_4"
-        />
-
-<RelativeLayout
-    android:id="@+id/layout_Answer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    >
-    <RelativeLayout
-        android:id="@+id/btnCorrectAnswer"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/common_size_65"
-        android:layout_marginBottom="@dimen/common_size_3"
-        android:background="@drawable/raised_button">
-
-        <ImageView
-            android:id="@+id/imgCorrectAnswer"
-            android:layout_width="@dimen/size_8"
-            android:layout_height="@dimen/size_4"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_10"
-            android:background="@drawable/ic_correct_answer" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_toRightOf="@+id/imgCorrectAnswer"
-            android:text="@string/written_test_correct_answer"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_7" />
-
-        <TextView
-            android:id="@+id/tvCorrectAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/common_size_65"
-            android:text="@string/written_test_total_answer"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_9" />
-
-        <ImageView
-            android:layout_width="@dimen/common_size_40"
-            android:layout_height="@dimen/common_size_40"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/margin_10"
-            android:background="@drawable/ic_right"
-            android:src="@drawable/bg_button_next" />
-    </RelativeLayout>
+        android:paddingTop="@dimen/common_size_4" />
 
     <RelativeLayout
-        android:id="@+id/btnWrongAnswer"
+        android:id="@+id/layout_Answer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_size_65"
-        android:layout_below="@+id/btnCorrectAnswer"
-        android:layout_marginBottom="@dimen/common_size_3"
-        android:background="@drawable/raised_button">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
-        <ImageView
-            android:id="@+id/imgWrongAnswer"
-            android:layout_width="@dimen/size_8"
-            android:layout_height="@dimen/size_4"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_10"
-            android:background="@drawable/ic_wrong_answer" />
+        <RelativeLayout
+            android:id="@+id/btnCorrectAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_size_65"
+            android:layout_marginBottom="@dimen/common_size_3"
+            android:background="@drawable/raised_button">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_toRightOf="@+id/imgWrongAnswer"
-            android:text="@string/written_test_wrong_answer"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_8" />
+            <ImageView
+                android:id="@+id/imgCorrectAnswer"
+                android:layout_width="@dimen/size_8"
+                android:layout_height="@dimen/size_4"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:background="@drawable/ic_correct_answer" />
 
-        <TextView
-            android:id="@+id/tvWrongAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/common_size_65"
-            android:text="@string/written_test_total_answer"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_9" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:layout_toRightOf="@+id/imgCorrectAnswer"
+                android:text="@string/written_test_correct_answer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_19" />
 
-        <ImageView
-            android:layout_width="@dimen/common_size_40"
-            android:layout_height="@dimen/common_size_40"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/margin_10"
-            android:background="@drawable/ic_right"
-            android:src="@drawable/bg_button_next" />
+            <TextView
+                android:id="@+id/tvCorrectAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/common_size_65"
+                android:text="@string/written_test_total_answer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_21" />
+
+            <ImageView
+                android:layout_width="@dimen/common_size_40"
+                android:layout_height="@dimen/common_size_40"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_10"
+                android:background="@drawable/ic_right"
+                android:src="@drawable/bg_button_next" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btnWrongAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_size_65"
+            android:layout_below="@+id/btnCorrectAnswer"
+            android:layout_marginBottom="@dimen/common_size_3"
+            android:background="@drawable/raised_button">
+
+            <ImageView
+                android:id="@+id/imgWrongAnswer"
+                android:layout_width="@dimen/size_8"
+                android:layout_height="@dimen/size_4"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:background="@drawable/ic_wrong_answer" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:layout_toRightOf="@+id/imgWrongAnswer"
+                android:text="@string/written_test_wrong_answer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_20" />
+
+            <TextView
+                android:id="@+id/tvWrongAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/common_size_65"
+                android:text="@string/written_test_total_answer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_21" />
+
+            <ImageView
+                android:layout_width="@dimen/common_size_40"
+                android:layout_height="@dimen/common_size_40"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/common_text_size_21"
+                android:background="@drawable/ic_right"
+                android:src="@drawable/bg_button_next" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/btnNotAnswered"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_size_65"
+            android:layout_below="@+id/btnWrongAnswer"
+            android:layout_marginBottom="@dimen/common_size_3"
+            android:background="@drawable/raised_button">
+
+            <ImageView
+                android:id="@+id/imgNotAnswered"
+                android:layout_width="@dimen/size_8"
+                android:layout_height="@dimen/size_4"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:background="@drawable/ic_not_answered" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_15"
+                android:layout_toRightOf="@+id/imgNotAnswered"
+                android:text="@string/written_test_not_answered"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_20" />
+
+            <TextView
+                android:id="@+id/tvNotAnswered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/common_size_65"
+                android:text="@string/written_test_total_answer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/common_text_size_21" />
+
+            <ImageView
+                android:layout_width="@dimen/common_size_40"
+                android:layout_height="@dimen/common_size_40"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_10"
+                android:background="@drawable/ic_right"
+                android:src="@drawable/bg_button_next" />
+        </RelativeLayout>
     </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/btnNotAnswered"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/common_size_65"
-        android:layout_below="@+id/btnWrongAnswer"
-        android:layout_marginBottom="@dimen/common_size_3"
-        android:background="@drawable/raised_button"
-        >
-
-        <ImageView
-            android:id="@+id/imgNotAnswered"
-            android:layout_width="@dimen/size_8"
-            android:layout_height="@dimen/size_4"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_10"
-            android:background="@drawable/ic_not_answered" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_toRightOf="@+id/imgNotAnswered"
-            android:text="@string/written_test_not_answered"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_8" />
-
-        <TextView
-            android:id="@+id/tvNotAnswered"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/common_size_65"
-            android:text="@string/written_test_total_answer"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_9" />
-
-        <ImageView
-            android:layout_width="@dimen/common_size_40"
-            android:layout_height="@dimen/common_size_40"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/margin_10"
-            android:background="@drawable/ic_right"
-            android:src="@drawable/bg_button_next" />
-    </RelativeLayout>
-</RelativeLayout>
 
 
 </RelativeLayout>

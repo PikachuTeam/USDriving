@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dialog_width"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/common_size_5">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/common_size_5"
+        android:paddingLeft="@dimen/common_size_5"
+        android:paddingTop="@dimen/common_size_5"
+        android:text="Finish answering"
+        android:textAllCaps="true"
+        android:textColor="@color/exam_simulator_stroke_line"
+        android:textSize="@dimen/common_text_size_20"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/common_size_10"
+        android:text="@string/exam_simulator_dialog_text_1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/common_text_size_18" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/common_size_5">
+
+        <TextView
+            android:id="@+id/button_ok"
+            android:layout_width="@dimen/common_size_80"
+            android:layout_height="@dimen/common_size_40"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/flat_button"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:textAllCaps="true"
+            android:textColor="@color/exam_simulator_stroke_line"
+            android:textSize="@dimen/common_text_size_18" />
+
+        <TextView
+            android:id="@+id/button_cancel"
+            android:layout_width="@dimen/common_size_80"
+            android:layout_height="@dimen/common_size_40"
+            android:layout_toLeftOf="@+id/button_ok"
+            android:background="@drawable/flat_button"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textAllCaps="true"
+            android:textColor="@color/exam_simulator_stroke_line"
+            android:textSize="@dimen/common_text_size_18" />
+    </RelativeLayout>
+</LinearLayout>

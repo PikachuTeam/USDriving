@@ -136,7 +136,7 @@ public class LearningCardFragment extends BaseFragment {
                             replaceFragment(testCardFragment, getString(R.string.title_learning_card));
                             break;
                         case LockItemUtil.LOCKED:
-                            LockItemUtil.getInstance(getActivity()).showToast();
+                            LockItemUtil.getInstance(getActivity()).showDialog();
                             break;
                     }
 

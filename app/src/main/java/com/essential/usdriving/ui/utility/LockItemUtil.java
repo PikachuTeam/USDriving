@@ -1,5 +1,6 @@
 package com.essential.usdriving.ui.utility;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 
 import com.essential.usdriving.R;
 import com.essential.usdriving.app.DMVActivity;
+import com.essential.usdriving.ui.widget.ConfirmDialog;
 
 /**
  * Created by yue on 20/04/2016.
@@ -53,7 +55,8 @@ public class LockItemUtil {
         }
     }
 
-    public void showToast() {
-        Toast.makeText(mContext, "Locked", Toast.LENGTH_SHORT).show();
+    public void showDialog() {
+        ConfirmDialog dialog = new ConfirmDialog(mContext);
+        dialog.show();
     }
 }

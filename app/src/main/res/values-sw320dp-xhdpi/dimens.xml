@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--text size-->
-    <dimen name="text_size_0_5">0.5sp</dimen>
-    <dimen name="text_size_0">12sp</dimen>
-    <dimen name="text_size_1">13sp</dimen>
-    <dimen name="text_size_2">14sp</dimen>
-    <dimen name="text_size_3">15sp</dimen>
-    <dimen name="text_size_4">16sp</dimen>
-    <dimen name="text_size_5">17sp</dimen>
-    <dimen name="text_size_6">18sp</dimen>
-    <dimen name="text_size_7">19sp</dimen>
-    <dimen name="text_size_8">20sp</dimen>
-    <dimen name="text_size_9">21sp</dimen>
     <dimen name="text_size_10">22sp</dimen>
     <dimen name="text_size_11">23sp</dimen>
     <dimen name="text_size_12">24sp</dimen>
@@ -145,7 +134,7 @@
 
     <dimen name="stroke_line_size">0.5dp</dimen>
 
-    <dimen name="dialog_width">300dp</dimen>
+    <dimen name="dialog_width">310dp</dimen>
     <dimen name="dialog_button_width">150dp</dimen>
 
     <!--written test screen-->
@@ -192,4 +181,7 @@
 
     <dimen name="test_topic_list_item_height">70dp</dimen>
     <dimen name="learning_card_min_height">120dp</dimen>
+
+    <dimen name="confirm_dialog_button_width">80dp</dimen>
+    <dimen name="confirm_dialog_button_height">40dp</dimen>
 </resources>

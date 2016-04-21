@@ -40,6 +40,6 @@
             android:gravity="center"
             android:text="1"
             android:textColor="@color/written_test_color_2"
-            android:textSize="@dimen/text_size_5" />
+            android:textSize="@dimen/common_text_size_17" />
     </RelativeLayout>
 </LinearLayout>

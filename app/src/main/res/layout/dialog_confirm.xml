@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dialog_width"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_size_5"
+        android:text="@string/title_upgrade"
+        android:textAllCaps="true"
+        android:textColor="@color/ColorPrimaryDark"
+        android:textSize="@dimen/common_text_size_20"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/common_size_15"
+        android:paddingLeft="@dimen/common_size_10"
+        android:paddingRight="@dimen/common_size_10"
+        android:paddingTop="@dimen/common_size_15"
+        android:text="@string/content_upgrade"
+        android:textColor="@color/black"
+        android:textSize="@dimen/common_size_18" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/common_size_5">
+
+        <TextView
+            android:id="@+id/button_ok"
+            android:layout_width="@dimen/confirm_dialog_button_width"
+            android:layout_height="@dimen/confirm_dialog_button_height"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/flat_button"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:textColor="@color/ColorPrimaryDark"
+            android:textSize="@dimen/common_text_size_16" />
+
+        <TextView
+            android:id="@+id/button_cancel"
+            android:layout_width="@dimen/confirm_dialog_button_width"
+            android:layout_height="@dimen/confirm_dialog_button_height"
+            android:layout_toLeftOf="@+id/button_ok"
+            android:background="@drawable/flat_button"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/ColorPrimary"
+            android:textSize="@dimen/common_text_size_16" />
+    </RelativeLayout>
+</LinearLayout>
