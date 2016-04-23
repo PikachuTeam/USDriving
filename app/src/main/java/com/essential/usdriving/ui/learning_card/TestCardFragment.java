@@ -52,7 +52,6 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void defineButtonResult() {
-
     }
 
     @Override
@@ -203,6 +202,7 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
                     } else {
                         disableButton(cardNext, btnNext, R.drawable.ic_right);
                     }
+                    getBaseActivity().showBigAdsIfNeeded();
                 }
                 break;
             case R.id.btnPreviousLayout:
@@ -218,6 +218,7 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
                     } else {
                         disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
                     }
+                    getBaseActivity().showBigAdsIfNeeded();
                 }
                 break;
             case R.id.buttonZoomIn:

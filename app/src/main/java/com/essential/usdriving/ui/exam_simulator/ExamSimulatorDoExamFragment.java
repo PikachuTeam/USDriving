@@ -201,7 +201,6 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
     public void onPageSelected(int position) {
         setAllQuesNoItemInActive();
         listItemQues.get(position).setActive(true);
-        //showChoices(questions.get(position));
         scrollToCenter(listItemQues.get(position));
         currentQuesIndex = position;
     }
@@ -231,7 +230,6 @@ public class ExamSimulatorDoExamFragment extends BaseFragment implements ViewPag
         horizontalScrollView = (HorizontalScrollView) rootView.findViewById(R.id.horizontalScrollView);
         layoutScrollContent = (LinearLayout) rootView.findViewById(R.id.layoutScrollContent);
         viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        //   layoutAnswerChoiceContent = (LinearLayout) rootView.findViewById(R.id.layoutAnswerChoiceContent);
         minute1 = (TextView) rootView.findViewById(R.id.minute_1);
         minute2 = (TextView) rootView.findViewById(R.id.minute_2);
 

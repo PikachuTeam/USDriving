@@ -3,7 +3,6 @@ package com.essential.usdriving.ui.written_test;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.util.DebugUtils;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -11,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,7 +20,6 @@ import com.essential.usdriving.app.BaseFragment;
 import com.essential.usdriving.database.DataSource;
 import com.essential.usdriving.entity.BaseEntity;
 import com.essential.usdriving.entity.Question;
-import com.essential.usdriving.ui.exam_simulator.ExamSimulatorTestResultFragment;
 import com.essential.usdriving.ui.home.HomeFragment;
 import com.essential.usdriving.ui.widget.AnswerChoicesItem;
 import com.essential.usdriving.ui.widget.QuestionDialogFragment;
@@ -65,7 +62,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         menuToolbar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
                 warningDialog = new WarningDialog(getActivity(), 1);
                 warningDialog.setOnDialogItemClickListener(new WarningDialog.OnDialogItemClickListener() {
                     @Override
@@ -83,14 +79,10 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                     }
                 });
                 warningDialog.show();
-
-
                 return true;
             }
         });
         super.onPrepareOptionsMenu(menu);
-
-
     }
 
     @Override
@@ -101,7 +93,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
         findViews(rootView);
-
     }
 
     @Override
@@ -112,8 +103,7 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         adapter = new QuestionPagerAdapter(getActivity(), questions);
         adapter.setOnQuestionPagerClickListener(this);
         viewPager.setAdapter(adapter);
-        viewPager.setOnPageChangeListener(this);
-
+        viewPager.addOnPageChangeListener(this);
     }
 
 
@@ -130,14 +120,12 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         int index = listItemQues.indexOf(item);
         scrollToCenter(item);
         viewPager.setCurrentItem(index, true);
-
         currentQuesIndex = index;
     }
 
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
     }
 
     @Override
@@ -150,7 +138,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
     }
 
     @Override
@@ -172,7 +159,6 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         layoutScrollContent = (LinearLayout) view.findViewById(R.id.layoutScrollContent);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.horizontalScrollView);
-
     }
 
     private void addQuestionList() {
@@ -268,8 +254,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
             View view = View.inflate(this.context, R.layout.written_test_page_item, null);
-             Question ques = data.get(position);
-             ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
+            Question ques = data.get(position);
+            ImageView questionImage = (ImageView) view.findViewById(R.id.questionImage);
             TextView tvQuestion = (TextView) view.findViewById(R.id.tvQuestion);
             ImageView imgZoom = (ImageView) view.findViewById(R.id.buttonZoomIn);
             LinearLayout layoutChoice = (LinearLayout) view.findViewById(R.id.layoutAnswerChoiceContent);
@@ -304,8 +290,8 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 questionImage.setVisibility(View.GONE);
                 imgZoom.setVisibility(View.GONE);
             }
-            ArrayList<AnswerChoicesItem> arrayList= makeChoices(ques);
-            for(int i=0;i<arrayList.size();i++){
+            ArrayList<AnswerChoicesItem> arrayList = makeChoices(ques);
+            for (int i = 0; i < arrayList.size(); i++) {
                 layoutChoice.addView(arrayList.get(i).getView());
                 LinearLayout.MarginLayoutParams marginParams = (LinearLayout.MarginLayoutParams) arrayList.get(i).getView().getLayoutParams();
                 int margin = getResources().getDimensionPixelSize(R.dimen.common_size_5);
@@ -342,22 +328,17 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
                 arrayList.add(answerChoicesItemD);
             }
             resetAllChoices(arrayList);
-            if(question.myAnswer!=DataSource.ANSWER_NOT_CHOSEN){
+            if (question.myAnswer != DataSource.ANSWER_NOT_CHOSEN) {
                 arrayList.get(question.myAnswer).setActive(true);
-                if(question.myAnswer==question.correctAnswer){
-                    if(question.explanation!=null){
-                        //arrayList.get(question.myAnswer).setActive(true,true,question.explanation,false);
-                        arrayList.get(question.myAnswer).setCorrectChoice(true,true,question.explanation,false);
-                        Log.v("Explanation not null ",""+question.explanation);
-                    }else{
-                        //arrayList.get(question.myAnswer).setActive(true,true,question.explanation,true);
-                        arrayList.get(question.myAnswer).setCorrectChoice(true,true,question.explanation,true);
-                        Log.v("Explanation null ",""+question.explanation);
+                if (question.myAnswer == question.correctAnswer) {
+                    if (question.explanation != null) {
+                        arrayList.get(question.myAnswer).setCorrectChoice(true, true, question.explanation, false);
+                    } else {
+                        arrayList.get(question.myAnswer).setCorrectChoice(true, true, question.explanation, true);
                     }
 
-                }else{
-                    //arrayList.get(question.myAnswer).setActive(true,false,question.explanation,true);
-                    arrayList.get(question.myAnswer).setCorrectChoice(true,false,question.explanation,true);
+                } else {
+                    arrayList.get(question.myAnswer).setCorrectChoice(true, false, question.explanation, true);
                 }
             }
 
@@ -366,15 +347,13 @@ public class DMVWrittenTestFragment extends BaseFragment implements ViewPager.On
 
         public void resetAllChoices(ArrayList<AnswerChoicesItem> list) {
             for (int i = 0; i < list.size(); i++) {
-                // list.get(i).setActive(false,false,"",true);
-                list.get(i).setCorrectChoice(false,false,"",true);
+                list.get(i).setCorrectChoice(false, false, "", true);
             }
         }
 
         @Override
         public void onAnswerChoose(AnswerChoicesItem item) {
             listener.OnPagerItemClick(item);
-
         }
 
         @Override

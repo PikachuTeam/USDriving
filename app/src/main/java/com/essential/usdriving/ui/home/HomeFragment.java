@@ -53,6 +53,7 @@ public class HomeFragment extends BaseFragment {
     private FloatingActionButton mFabMoreApps;
     private FloatingActionButton mFabRateUs;
     private FloatingActionButton mFabRemoveAds;
+    private FloatingActionButton mFabShare;
 
     private int mCurrentState;
     private int mTmp;
@@ -120,6 +121,7 @@ public class HomeFragment extends BaseFragment {
             } else if (v == itemLearningCard) {
                 replaceFragment(new LearningCardFragment(), getString(R.string.title_learning_card));
             } else if (v == itemVideoTips) {
+                getBaseActivity().showBigAdsIfNeeded();
                 replaceFragment(new VideoTipsFragment(), getString(R.string.title_video_tips));
             }
         }
@@ -133,7 +135,6 @@ public class HomeFragment extends BaseFragment {
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
-
         }
     };
 
@@ -172,6 +173,8 @@ public class HomeFragment extends BaseFragment {
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             Uri.parse("http://play.google.com/store/apps/details?id=" + PACKAGE_NAME_PRO_VER)));
                 }
+            } else if (v == mFabShare) {
+                sharingEvent();
             }
         }
     };
@@ -189,7 +192,7 @@ public class HomeFragment extends BaseFragment {
         mFabMoreApps = (FloatingActionButton) rootView.findViewById(R.id.fab_more_apps);
         mFabRateUs = (FloatingActionButton) rootView.findViewById(R.id.fab_rate_us);
         mFabRemoveAds = (FloatingActionButton) rootView.findViewById(R.id.fab_remove_ads);
-
+        mFabShare = (FloatingActionButton) rootView.findViewById(R.id.fab_share);
         itemWrittenTest.setOnClickListener(listItemClickListener);
         itemExamSimulator.setOnClickListener(listItemClickListener);
         itemLearningCard.setOnClickListener(listItemClickListener);
@@ -212,19 +215,18 @@ public class HomeFragment extends BaseFragment {
                 mOverlayView.setVisibility(View.GONE);
             }
         });
-
         mOverlayView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mActionsMenu.collapse();
             }
         });
-
         mFabMoreApps.setOnClickListener(floatingMenuItemClickListener);
         mFabRateUs.setOnClickListener(floatingMenuItemClickListener);
-        if(!BuildConfig.IS_PRO_VERSION) {
+        mFabShare.setOnClickListener(floatingMenuItemClickListener);
+        if (!BuildConfig.IS_PRO_VERSION) {
             mFabRemoveAds.setOnClickListener(floatingMenuItemClickListener);
-        }else{
+        } else {
             mFabRemoveAds.setVisibility(View.GONE);
         }
     }

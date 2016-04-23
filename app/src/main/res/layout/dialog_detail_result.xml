@@ -38,9 +38,8 @@
                     android:id="@+id/tvQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_5"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:gravity="center_horizontal"
+                    android:gravity="center"
+                    android:padding="@dimen/common_size_5"
                     android:text="Question"
                     android:textColor="@color/black"
                     android:textSize="@dimen/common_text_size_20" />
@@ -72,40 +71,36 @@
 
                 <TextView
                     android:id="@+id/tvChoiceA"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_size_5"
-                    android:layout_marginTop="@dimen/margin_5"
+                    android:padding="@dimen/common_size_5"
                     android:text="@string/choice_a"
                     android:textColor="@color/black"
                     android:textSize="@dimen/common_text_size_16" />
 
                 <TextView
                     android:id="@+id/tvChoiceB"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_size_5"
-                    android:layout_marginTop="@dimen/margin_5"
+                    android:padding="@dimen/common_size_5"
                     android:text="@string/choice_b"
                     android:textColor="@color/black"
                     android:textSize="@dimen/common_text_size_16" />
 
                 <TextView
                     android:id="@+id/tvChoiceC"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_size_5"
-                    android:layout_marginTop="@dimen/margin_5"
+                    android:padding="@dimen/common_size_5"
                     android:text="@string/choice_c"
                     android:textColor="@color/black"
                     android:textSize="@dimen/common_text_size_16" />
 
                 <TextView
                     android:id="@+id/tvChoiceD"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/common_size_5"
-                    android:layout_marginTop="@dimen/margin_5"
+                    android:padding="@dimen/common_size_5"
                     android:text="@string/choice_d"
                     android:textColor="@color/black"
                     android:textSize="@dimen/common_text_size_16" />
@@ -114,9 +109,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_10"
                 android:layout_marginBottom="@dimen/common_size_4"
-                >
+                android:layout_marginLeft="@dimen/margin_10">
 
                 <TextView
                     android:layout_width="wrap_content"

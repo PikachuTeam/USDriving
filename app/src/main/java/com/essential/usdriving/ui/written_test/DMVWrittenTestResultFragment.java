@@ -32,12 +32,12 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
     private int totalNotAnswered;
     private float[] yData;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getData();
         setHasOptionsMenu(true);
+        getBaseActivity().showBigAdsIfNeeded();
     }
 
     @Override
@@ -49,10 +49,12 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
     public void defineButtonResult() {
 
     }
+
     @Override
     public void onBackPressed() {
         getFragmentManager().popBackStack(HomeFragment.HOME_TRANSACTION, FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
+
     @Override
     protected int getLayoutResIdContentView() {
         return R.layout.fragment_dmv_written_test_result;
@@ -64,7 +66,6 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
         init();
         chartContainer.addView(pieChart);
         pieChart.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
         tvCorrectAnswer.setText(MessageFormat.format(getString(R.string.written_test_total_answer), "" + totalCorrectAnswer));
         tvWrongAnswer.setText(MessageFormat.format(getString(R.string.written_test_total_answer), "" + totalWrongAnswer));
         tvNotAnswered.setText(MessageFormat.format(getString(R.string.written_test_total_answer), "" + totalNotAnswered));
@@ -109,9 +110,7 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
         pieChart.setRotationEnabled(false);
         pieChart.setTouchEnabled(false);
         pieChart.setClickable(false);
-
         addData();
-
         pieChart.getLegend().setEnabled(false);
         pieChart.getData().setDrawValues(false);
         pieChart.setDescription("");
@@ -120,7 +119,6 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
     private void addData() {
         ArrayList<Entry> yVals = new ArrayList<>();
         ArrayList<Integer> colors = new ArrayList<>();
-
         if (yData[0] > 0) {
             yVals.add(new Entry(yData[0], 0));
             colors.add(new Integer(ContextCompat.getColor(getActivity(), R.color.right_answer_color)));
@@ -133,22 +131,15 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
             yVals.add(new Entry(yData[2], 2));
             colors.add(new Integer(ContextCompat.getColor(getActivity(), R.color.result_not_answer)));
         }
-
         ArrayList<String> xVals = new ArrayList<>();
         for (int i = 0; i < yVals.size(); i++) {
             xVals.add("");
         }
-
         PieDataSet dataSet = new PieDataSet(yVals, "");
         dataSet.setSliceSpace(4);
         dataSet.setSelectionShift(5);
         dataSet.setColors(colors);
-
         PieData data = new PieData(xVals, dataSet);
-        //  data.setValueFormatter(new PercentFormatter());
-        // data.setValueTextSize(9f);
-        //  data.setValueTextColor(ContextCompat.getColor(getActivity(), R.color.black));
-
         pieChart.setData(data);
         pieChart.invalidate();
     }
@@ -158,7 +149,6 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
         tvWrongAnswer = (TextView) view.findViewById(R.id.tvWrongAnswer);
         tvNotAnswered = (TextView) view.findViewById(R.id.tvNotAnswered);
         chartContainer = (LinearLayout) view.findViewById(R.id.chartContainer);
-
         view.findViewById(R.id.btnCorrectAnswer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,7 +162,6 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
                 replaceFragment(fragment, getString(R.string.written_test_result_title));
             }
         });
-
         view.findViewById(R.id.btnWrongAnswer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,7 +175,6 @@ public class DMVWrittenTestResultFragment extends BaseFragment {
                 replaceFragment(fragment, getString(R.string.written_test_result_title));
             }
         });
-
         view.findViewById(R.id.btnNotAnswered).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
