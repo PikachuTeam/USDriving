@@ -35,7 +35,8 @@
                 android:layout_marginLeft="@dimen/common_size_15"
                 android:text="@string/title_dmv_written_test"
                 android:textColor="@color/black"
-                android:textSize="@dimen/common_text_size_20" />
+                android:textSize="@dimen/common_text_size_20"
+                android:singleLine="true"/>
         </LinearLayout>
 
         <View
@@ -68,7 +69,8 @@
                 android:layout_marginLeft="@dimen/common_size_15"
                 android:text="@string/title_exam_simulator"
                 android:textColor="@color/black"
-                android:textSize="@dimen/common_text_size_20" />
+                android:textSize="@dimen/common_text_size_20"
+                android:singleLine="true"/>
         </LinearLayout>
 
         <View
@@ -101,7 +103,8 @@
                 android:layout_marginLeft="@dimen/common_size_15"
                 android:text="@string/title_test_topic"
                 android:textColor="@color/black"
-                android:textSize="@dimen/common_text_size_20" />
+                android:textSize="@dimen/common_text_size_20"
+                android:singleLine="true"/>
         </LinearLayout>
 
         <View
@@ -135,7 +138,8 @@
                 android:layout_marginLeft="@dimen/common_size_15"
                 android:text="@string/title_learning_card"
                 android:textColor="@color/black"
-                android:textSize="@dimen/common_text_size_20" />
+                android:textSize="@dimen/common_text_size_20"
+                android:singleLine="true"/>
         </LinearLayout>
 
         <View
@@ -169,7 +173,8 @@
                 android:layout_marginLeft="@dimen/common_size_15"
                 android:text="@string/title_video_tips"
                 android:textColor="@color/black"
-                android:textSize="@dimen/common_text_size_20" />
+                android:textSize="@dimen/common_text_size_20"
+                android:singleLine="true"/>
         </LinearLayout>
 
         <View
