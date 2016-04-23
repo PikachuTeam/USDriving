@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.essential.usdriving.R;
@@ -29,6 +30,7 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
     private CardView cardPrevious;
     private CardView cardNext;
     private ImageView imageQuestion, imageZoom, btnPrevious, btnNext;
+    private RelativeLayout mImageArea;
     private EssentialProgressBar mEssentialProgressBar;
 
     private int type;
@@ -85,6 +87,7 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
         btnNext = (ImageView) rootView.findViewById(R.id.btnNext);
         btnPrevious = (ImageView) rootView.findViewById(R.id.btnPrevious);
         mEssentialProgressBar = (EssentialProgressBar) rootView.findViewById(R.id.essential_progress_bar);
+        mImageArea = (RelativeLayout) rootView.findViewById(R.id.image_area);
     }
 
     private void loadData() {
@@ -118,12 +121,10 @@ public class TestCardFragment extends BaseFragment implements View.OnClickListen
 
     private void setData(int position) {
         if (listCard.get(position).image != null) {
-            imageQuestion.setVisibility(View.VISIBLE);
+            mImageArea.setVisibility(View.VISIBLE);
             imageQuestion.setImageBitmap(listCard.get(currentQuesIndex).image);
-            imageZoom.setVisibility(View.VISIBLE);
         } else {
-            imageQuestion.setVisibility(View.GONE);
-            imageZoom.setVisibility(View.GONE);
+            mImageArea.setVisibility(View.GONE);
         }
         tvQuestion.setText(listCard.get(position).getCardTerm());
         tvAnswer.setText(listCard.get(position).getCardDefinition());
