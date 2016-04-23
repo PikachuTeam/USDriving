@@ -26,7 +26,7 @@
             <ImageView
                 android:layout_width="@dimen/home_list_image_item_size"
                 android:layout_height="@dimen/home_list_image_item_size"
-                android:layout_marginLeft="@dimen/common_size_70"
+                android:layout_marginLeft="@dimen/common_size_60"
                 android:src="@drawable/ic_dmv_written_test" />
 
             <TextView
@@ -60,7 +60,7 @@
             <ImageView
                 android:layout_width="@dimen/home_list_image_item_size"
                 android:layout_height="@dimen/home_list_image_item_size"
-                android:layout_marginLeft="@dimen/common_size_70"
+                android:layout_marginLeft="@dimen/common_size_60"
                 android:src="@drawable/ic_exam_simulator" />
 
             <TextView
@@ -94,7 +94,7 @@
             <ImageView
                 android:layout_width="@dimen/home_list_image_item_size"
                 android:layout_height="@dimen/home_list_image_item_size"
-                android:layout_marginLeft="@dimen/common_size_70"
+                android:layout_marginLeft="@dimen/common_size_60"
                 android:src="@drawable/ic_dmv_test_topics" />
 
             <TextView
@@ -128,7 +128,7 @@
             <ImageView
                 android:layout_width="@dimen/home_list_image_item_size"
                 android:layout_height="@dimen/home_list_image_item_size"
-                android:layout_marginLeft="@dimen/common_size_70"
+                android:layout_marginLeft="@dimen/common_size_60"
                 android:src="@drawable/ic_learning_cards" />
 
             <TextView
@@ -163,7 +163,7 @@
             <ImageView
                 android:layout_width="@dimen/home_list_image_item_size"
                 android:layout_height="@dimen/home_list_image_item_size"
-                android:layout_marginLeft="@dimen/common_size_70"
+                android:layout_marginLeft="@dimen/common_size_60"
                 android:src="@drawable/ic_driving_tips" />
 
             <TextView
