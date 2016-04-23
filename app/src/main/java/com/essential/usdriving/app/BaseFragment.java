@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.essential.usdriving.R;
 
+import tatteam.com.app_common.util.CommonUtil;
+
 
 public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.BaseFragment {
 
@@ -80,6 +82,12 @@ public abstract class BaseFragment extends tatteam.com.app_common.ui.fragment.Ba
     public DMVActivity getBaseActivity() {
 
         return (DMVActivity) getActivity();
+    }
+
+    public void sharingEvent(){
+        String androidLink = "https://play.google.com/store/apps/details?id=" + getActivity().getPackageName();
+        String sharedText = getString(R.string.app_name) + ".\nAndroid: " + androidLink;
+        CommonUtil.sharePlainText(getActivity(), sharedText);
     }
 
     public abstract void defineButtonResult();

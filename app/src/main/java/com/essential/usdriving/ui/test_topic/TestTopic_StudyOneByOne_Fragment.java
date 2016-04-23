@@ -41,7 +41,6 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
 
     @Override
     public void defineButtonResult() {
-
     }
 
     @Override
@@ -156,7 +155,6 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
         } else {
             tvExplanation.setText("");
         }
-
         switch (list.get(position).correctAnswer) {
             case 0:
                 tvChoiceA.setTextColor(ContextCompat.getColor(getActivity(), R.color.right_answer_color));
@@ -244,6 +242,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
                     } else {
                         disableButton(cardNext, btnNext, R.drawable.ic_right);
                     }
+                    getBaseActivity().showBigAdsIfNeeded();
                 }
                 break;
             case R.id.btnPreviousLayout:
@@ -259,6 +258,7 @@ public class TestTopic_StudyOneByOne_Fragment extends BaseFragment implements Vi
                     } else {
                         disableButton(cardPrevious, btnPrevious, R.drawable.ic_left);
                     }
+                    getBaseActivity().showBigAdsIfNeeded();
                 }
                 break;
             case R.id.buttonZoomIn:

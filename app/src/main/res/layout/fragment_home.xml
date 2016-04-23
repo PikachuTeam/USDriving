@@ -273,6 +273,14 @@
             fab:fab_title="@string/more_apps" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/ic_share"
+            fab:fab_size="mini"
+            fab:fab_title="@string/share" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_remove_ads"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

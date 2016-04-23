@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -46,11 +45,11 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     private float[] yData;
     private int button = 0;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getData();
+        getBaseActivity().showBigAdsIfNeeded();
     }
 
     @Override
@@ -71,13 +70,9 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
         findViews(rootView);
-
         init();
         chartContainer.addView(pieChart);
         pieChart.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
-
-
         if (totalCorrectAnswer >= 21) {
             tvState.setText(getString(R.string.pass_exam));
             tvState.setTextColor(ContextCompat.getColor(getActivity(), R.color.right_answer_color));
@@ -85,13 +80,10 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
             tvState.setText(getString(R.string.fail_exam));
             tvState.setTextColor(ContextCompat.getColor(getActivity(), R.color.wrong_answer_color));
         }
-
         tvCorrectAnswer.setText(MessageFormat.format(getString(R.string.written_test_total_answer), "" + totalCorrectAnswer));
         tvWrongAnswer.setText(MessageFormat.format(getString(R.string.written_test_total_answer), "" + totalWrongAnswer));
         tvNotAnswered.setText(MessageFormat.format(getString(R.string.written_test_total_answer), "" + totalNotAnswered));
-
     }
-
 
     @Override
     protected String setTitle() {
@@ -100,9 +92,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
 
     @Override
     public void defineButtonResult() {
-
     }
-
 
     @Override
     public void onClick(View v) {
@@ -145,10 +135,8 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         totalCorrectAnswer = totalCorrectAnswer();
         totalWrongAnswer = totalWrongAnswer();
         totalNotAnswered = totalNotAnswered();
-
         float tmp = 100 / 30f;
         yData = new float[]{totalCorrectAnswer * tmp, totalWrongAnswer * tmp, totalNotAnswered * tmp};
-
         initChart();
     }
 
@@ -162,9 +150,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
         pieChart.setRotationEnabled(false);
         pieChart.setTouchEnabled(false);
         pieChart.setClickable(false);
-
         addData();
-
         pieChart.getLegend().setEnabled(false);
         pieChart.getData().setDrawValues(false);
         pieChart.setDescription("");
@@ -173,7 +159,6 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
     private void addData() {
         ArrayList<Entry> yVals = new ArrayList<>();
         ArrayList<Integer> colors = new ArrayList<>();
-
         if (yData[0] > 0) {
             yVals.add(new Entry(yData[0], 0));
             colors.add(new Integer(ContextCompat.getColor(getActivity(), R.color.right_answer_color)));
@@ -186,17 +171,14 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
             yVals.add(new Entry(yData[2], 2));
             colors.add(new Integer(ContextCompat.getColor(getActivity(), R.color.result_not_answer)));
         }
-
         ArrayList<String> xVals = new ArrayList<>();
         for (int i = 0; i < yVals.size(); i++) {
             xVals.add("");
         }
-
         PieDataSet dataSet = new PieDataSet(yVals, "");
         dataSet.setSliceSpace(4);
         dataSet.setSelectionShift(5);
         dataSet.setColors(colors);
-
         PieData data = new PieData(xVals, dataSet);
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(9f);
@@ -228,7 +210,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
             @Override
             public void onClick(View v) {
 
-                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
+                ExamSimulatorTestDetailResultFragment fragment = new ExamSimulatorTestDetailResultFragment();
                 Bundle bundle = new Bundle();
                 ArrayList<Question> tmp;
                 tmp = getCorrectAnswers();
@@ -244,7 +226,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
             @Override
             public void onClick(View v) {
 
-                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
+                ExamSimulatorTestDetailResultFragment fragment = new ExamSimulatorTestDetailResultFragment();
                 Bundle bundle = new Bundle();
                 ArrayList<Question> tmp;
                 tmp = getWrongAnswers();
@@ -260,7 +242,7 @@ public class ExamSimulatorTestResultFragment extends BaseFragment implements Vie
             @Override
             public void onClick(View v) {
 
-                ExamSimualatorTestDetailResultFragment fragment = new ExamSimualatorTestDetailResultFragment();
+                ExamSimulatorTestDetailResultFragment fragment = new ExamSimulatorTestDetailResultFragment();
                 Bundle bundle = new Bundle();
                 ArrayList<Question> tmp;
                 tmp = getNotAnsweredQuestions();

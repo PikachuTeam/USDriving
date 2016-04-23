@@ -77,6 +77,7 @@
     <string name="rate_us">Rate Us</string>
     <string name="more_apps">More Apps</string>
     <string name="remove_ads">Remove Ads</string>
+    <string name="share">Share</string>
     <string name="title_upgrade">Upgrade to pro version</string>
     <string name="rate_to_unlock">Please rate us 5 stars to unlock all features</string>
 </resources>

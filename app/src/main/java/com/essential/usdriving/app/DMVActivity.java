@@ -1,9 +1,9 @@
 package com.essential.usdriving.app;
 
-import android.app.FragmentManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +14,7 @@ import com.essential.usdriving.R;
 import com.essential.usdriving.ui.home.HomeFragment;
 import com.essential.usdriving.ui.utility.SharedPreferenceUtil;
 
+import tatteam.com.app_common.ads.AdsBigBannerHandler;
 import tatteam.com.app_common.ads.AdsSmallBannerHandler;
 import tatteam.com.app_common.ui.fragment.BaseFragment;
 import tatteam.com.app_common.util.AppConstant;
@@ -24,7 +25,9 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
     public final static boolean ADS_ENABLE = true;
     public final static String PREF_RATE = "is rated";
     public final static int START_LOCKING_POSITION = 2;
+    public final static int BIG_ADS_SHOWING_INTERVAL = 20;
 
+    public static int sCount;
     private Toolbar toolbar;
     private FrameLayout adsContainer;
     private MenuItem menuToolbar;
@@ -32,7 +35,7 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
 
     private CloseAppHandler mCloseAppHandler;
     private AdsSmallBannerHandler mAdsSmallBannerHandler;
-    private static boolean sIsProVer;
+    private AdsBigBannerHandler mAdsBigBannerHandler;
     private static boolean sIsRated;
 
     @Override
@@ -44,19 +47,16 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
     protected void onCreateContentView() {
         setUpToolbar();
         invalidateOptionsMenu();
-
         mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
         mCloseAppHandler = new CloseAppHandler(this, false);
         mCloseAppHandler.setListener(closeAppListener);
-
-        sIsProVer = BuildConfig.IS_PRO_VERSION;
-        if (isProVer()) {
+        if (BuildConfig.IS_PRO_VERSION) {
             setRated();
         } else {
             sIsRated = SharedPreferenceUtil.getInstance(this).getSharedPreferences().getBoolean(PREF_RATE, false);
         }
-
         setupAds();
+        sCount = 0;
     }
 
     @Override
@@ -76,18 +76,10 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.menu_base, menu);
         menuToolbar = menu.findItem(R.id.Result);
         menuToolbar.setVisible(false);
-
         return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
     }
 
     @Override
@@ -100,6 +92,9 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
         super.onDestroy();
         if (mAdsSmallBannerHandler != null) {
             mAdsSmallBannerHandler.destroy();
+        }
+        if (mAdsBigBannerHandler != null) {
+            mAdsBigBannerHandler.destroy();
         }
     }
 
@@ -128,20 +123,31 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
         sIsRated = true;
     }
 
-    public static boolean isProVer() {
-        return sIsProVer;
-    }
-
     public Toolbar getToolbar() {
         return toolbar;
     }
 
+    public void showBigAdsIfNeeded() {
+        if (!BuildConfig.IS_PRO_VERSION) {
+            if (ADS_ENABLE) {
+                sCount++;
+                if (sCount % BIG_ADS_SHOWING_INTERVAL == 0) {
+                    if (mAdsBigBannerHandler != null) {
+                        mAdsBigBannerHandler.show();
+                    }
+                }
+            }
+        }
+    }
+
     private void setupAds() {
         adsContainer = (FrameLayout) findViewById(R.id.adsContainer);
-        if (!sIsProVer) {
+        if (!BuildConfig.IS_PRO_VERSION) {
             if (ADS_ENABLE) {
-                mAdsSmallBannerHandler = new AdsSmallBannerHandler(this, adsContainer, AppConstant.AdsType.SMALL_BANNER_TEST);
+                mAdsSmallBannerHandler = new AdsSmallBannerHandler(this, adsContainer, AppConstant.AdsType.SMALL_BANNER_DRIVING_TEST);
                 mAdsSmallBannerHandler.setup();
+                mAdsBigBannerHandler = new AdsBigBannerHandler(this, AppConstant.AdsType.BIG_BANNER_DRIVING_TEST);
+                mAdsBigBannerHandler.setup();
             } else {
                 adsContainer.setVisibility(View.GONE);
             }

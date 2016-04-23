@@ -39,7 +39,6 @@ public class VideoTipsFragment extends BaseFragment {
 
     @Override
     public void defineButtonResult() {
-
     }
 
     @Override
@@ -49,14 +48,11 @@ public class VideoTipsFragment extends BaseFragment {
 
     @Override
     protected void onCreateContentView(View rootView, Bundle savedInstanceState) {
-
         videoTipsList = (RecyclerView) rootView.findViewById(R.id.videoTipsList);
-
         if (videos == null) {
             videos = new ArrayList<>();
             getVideos();
         }
-
         adapter = new VideoTipsListAdapter(getActivity(), videos);
         videoTipsList.setAdapter(adapter);
         videoTipsList.setLayoutManager(new LinearLayoutManager(getActivity()));
