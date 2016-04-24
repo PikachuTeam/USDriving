@@ -44,7 +44,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:paddingBottom="@dimen/common_size_15"
         android:paddingLeft="@dimen/common_size_10"
         android:paddingRight="@dimen/common_size_10"

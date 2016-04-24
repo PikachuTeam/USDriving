@@ -22,14 +22,14 @@ android {
         pro {
             applicationId = "com.essential.usdriving.pro"
             buildConfigField 'boolean', 'IS_PRO_VERSION', 'true'
-            versionCode 2
-            versionName "1.1"
+            versionCode 3
+            versionName "1.2"
         }
         free {
-            applicationId = "com.essential.usdriving.free"
+            applicationId = "com.essential.usdriving.new.free"
             buildConfigField 'boolean', 'IS_PRO_VERSION', 'false'
-            versionCode 2
-            versionName "1.1"
+            versionCode 3
+            versionName "1.2"
         }
     }
 }

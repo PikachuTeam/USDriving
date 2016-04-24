@@ -38,7 +38,7 @@ public class HomeFragment extends BaseFragment {
 
     public final static String HOME_TRANSACTION = "home transaction";
     public final static String PREF_CURRENT_STATE = "current state";
-    public final static String PACKAGE_NAME_FREE_VER = "com.essential.usdriving.free";
+    public final static String PACKAGE_NAME_FREE_VER = "com.essential.usdriving.new.free";
     public final static String PACKAGE_NAME_PRO_VER = "com.essential.usdriving.pro";
 
     private LinearLayout itemWrittenTest;
