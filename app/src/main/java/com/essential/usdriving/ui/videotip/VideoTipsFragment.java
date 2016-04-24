@@ -1,7 +1,9 @@
 package com.essential.usdriving.ui.videotip;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -138,11 +140,7 @@ public class VideoTipsFragment extends BaseFragment {
             if (v.getId() == R.id.layoutVideoItem) {
                 switch (v.getTag().toString()) {
                     case LockItemUtil.UNLOCK:
-                        WatchVideoFragment fragment = new WatchVideoFragment();
-                        Bundle bundle = new Bundle();
-                        bundle.putString(BUNDLE_URL, item.link);
-                        fragment.setArguments(bundle);
-                        replaceFragment(fragment, TAG_VIDEO_TIPS_FRAGMENT);
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(item.link)));
                         break;
                     case LockItemUtil.LOCKED:
                         LockItemUtil.getInstance(getActivity()).showDialog();
@@ -152,7 +150,6 @@ public class VideoTipsFragment extends BaseFragment {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-
             private ImageView imgVideoTipsItem;
             private TextView txtVideoTipsItem;
             RelativeLayout layoutVideoItem;
