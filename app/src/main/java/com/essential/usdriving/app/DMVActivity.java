@@ -48,12 +48,17 @@ public class DMVActivity extends tatteam.com.app_common.ui.activity.BaseActivity
         setUpToolbar();
         invalidateOptionsMenu();
         mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
-        mCloseAppHandler = new CloseAppHandler(this, false);
+        if(BuildConfig.IS_PRO_VERSION) {
+            mCloseAppHandler = new CloseAppHandler(this, false);
+        }else{
+            mCloseAppHandler = new CloseAppHandler(this, true);
+        }
         mCloseAppHandler.setListener(closeAppListener);
         if (BuildConfig.IS_PRO_VERSION) {
             setRated();
         } else {
             sIsRated = SharedPreferenceUtil.getInstance(this).getSharedPreferences().getBoolean(PREF_RATE, false);
+            setRated();
         }
         setupAds();
         sCount = 0;
