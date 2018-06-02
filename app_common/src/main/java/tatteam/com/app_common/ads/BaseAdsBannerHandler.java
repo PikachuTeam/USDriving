@@ -15,7 +15,7 @@ import tatteam.com.app_common.util.AppLocalSharedPreferences;
 /**
  * Created by ThanhNH on 2/15/2016.
  */
-public abstract class BaseAdsBannerHandler extends AdListener {
+public abstract class BaseAdsBannerHandler extends AdListener{
 
     protected Context context;
     protected AppConstant.AdsType adsType;

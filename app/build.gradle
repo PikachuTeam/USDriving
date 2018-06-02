@@ -1,45 +1,53 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 27
 
     defaultConfig {
         applicationId "com.essential.usdriving"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     productFlavors {
         pro {
             applicationId = "com.essential.usdriving.pro"
             buildConfigField 'boolean', 'IS_PRO_VERSION', 'true'
-            versionCode 4
-            versionName "1.3"
+            versionCode 5
+            versionName "1.4"
         }
         free {
             applicationId = "com.essential.usdriving.new.free"
             buildConfigField 'boolean', 'IS_PRO_VERSION', 'false'
-            versionCode 4
-            versionName "1.3"
+            versionCode 5
+            versionName "1.4"
         }
     }
+
+    flavorDimensions "default"
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile project(':app_common')
-    compile files('libs/mpandroidchartlibrary-2-1-6.jar')
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.getbase:floatingactionbutton:1.10.0'
-    compile 'com.android.support:support-v4:23.1.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+
+    implementation project(':app_common')
+    implementation files('libs/mpandroidchartlibrary-2-1-6.jar')
+    implementation 'com.getbase:floatingactionbutton:1.10.0'
+
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
 }

@@ -34,7 +34,7 @@ public class AdsSmallBannerHandler extends BaseAdsBannerHandler {
             if (!unitId.trim().isEmpty()) {
                 if (this.adView == null) {
                     this.adView = new AdView(this.context);
-                    this.adView.setAdSize(AdSize.SMART_BANNER);
+                    this.adView.setAdSize(AdSize.BANNER);
                     this.adsContainer.addView(adView);
                 }
                 this.adView.setAdUnitId(unitId);
@@ -75,6 +75,4 @@ public class AdsSmallBannerHandler extends BaseAdsBannerHandler {
             adView.setVisibility(View.VISIBLE);
         }
     }
-
-
 }
